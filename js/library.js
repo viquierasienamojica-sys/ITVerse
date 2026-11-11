@@ -154,13 +154,24 @@ if (fifthBook) {
     fifthBook.url = 'book-thirdyear5.html';
 }
 
+
 const sixthBook = books.find(book => book.id === 'y3-b6');
 
 if (sixthBook) {
-    sixthBook.title = 'FORMS AND INPUT VALIDATION';
+    sixthBook.title = 'Advanced HTML Forms and Form Validation';
     sixthBook.available = true;
-    sixthBook.url = 'book-thirdyear5.html';
+    sixthBook.url = 'book-thirdyear6.html';
 }
+
+// 3rd Year Book 07
+const seventhBook = books.find(book => book.id === 'y3-b7');
+
+if (seventhBook) {
+    seventhBook.title = 'User Interface Design and Accessibility Fundamentals';
+    seventhBook.available = true;
+    seventhBook.url = 'book-thirdyear7.html';
+}
+
 
 
 
@@ -344,7 +355,7 @@ document.querySelectorAll('[data-view]').forEach(button => {
     searchInput.value = '';
     render();
 
-    document.getElementById('sidebar').classList.remove('open');
+    closeSidebar();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
@@ -395,7 +406,51 @@ document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !modal.hidden) closeModal();
 });
 
+
 const toggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open sidebar');
+    toggle.textContent = '☰';
+}
+
+toggle.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('open');
+
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Close sidebar' : 'Open sidebar'
+    );
+    toggle.textContent = isOpen ? '✕' : '☰';
+});
+
+document.addEventListener('click', event => {
+    if (
+        sidebar.classList.contains('open') &&
+        !sidebar.contains(event.target) &&
+        !toggle.contains(event.target)
+    ) {
+        closeSidebar();
+    }
+});
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+        closeSidebar();
+        toggle.focus();
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 760) {
+        closeSidebar();
+    }
+});
+
 
 toggle.addEventListener('click', () => {
   const open = document.getElementById('sidebar').classList.toggle('open');
