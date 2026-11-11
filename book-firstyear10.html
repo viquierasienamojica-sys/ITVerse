@@ -1,0 +1,1639 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Year Book 10 | Artificial Intelligence, Machine Learning and Big Data Analytics</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4eee4;
+      color: #342c24
+    }
+
+    header {
+      background: #493526;
+      color: #fff;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px
+    }
+
+    header a {
+      color: white;
+      text-decoration: none
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 19px;
+      color: white
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 65px)
+    }
+
+    aside {
+      width: 295px;
+      flex-shrink: 0;
+      background: #e8dcc9;
+      padding: 22px 15px;
+      border-right: 1px solid #cfbea7;
+      max-height: calc(100vh - 65px);
+      overflow-y: auto;
+      position: sticky;
+      top: 0
+    }
+
+    aside h3 {
+      margin: 0 0 16px
+    }
+
+    #toc button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: #463527;
+      padding: 11px;
+      cursor: pointer;
+      margin: 3px 0;
+      font-size: 13px;
+      line-height: 1.35
+    }
+
+    #toc button.active,
+    #toc button:hover {
+      background: #795a3e;
+      color: white
+    }
+
+    main {
+      flex: 1;
+      min-width: 0;
+      padding: 28px
+    }
+
+    .reader {
+      background: #fffaf2;
+      max-width: 960px;
+      margin: auto;
+      padding: 32px;
+      border: 1px solid #dfd1bd;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px #3b27120d
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.35
+    }
+
+    h1 {
+      font-size: 28px
+    }
+
+    h2 {
+      font-size: 23px;
+      color: #6b4c30
+    }
+
+    h3 {
+      font-size: 19px;
+      color: #6b4c30
+    }
+
+    p,
+    li {
+      line-height: 1.75
+    }
+
+    figure {
+      margin: 25px auto;
+      text-align: center
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      max-width: 750px;
+      max-height: 650px;
+      height: auto;
+      object-fit: contain;
+      margin: auto;
+      border-radius: 8px
+    }
+
+    figcaption {
+      font-size: 12px;
+      color: #867563;
+      margin-top: 7px
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 32px
+    }
+
+    .btn {
+      border: 0;
+      background: #6d5038;
+      color: white;
+      padding: 12px 19px;
+      border-radius: 8px;
+      cursor: pointer
+    }
+
+    .btn:disabled {
+      opacity: .4;
+      cursor: not-allowed
+    }
+
+    .status {
+      text-align: center;
+      color: #756655;
+      font-size: 13px
+    }
+
+    .question {
+      background: #f6eee1;
+      border: 1px solid #e5d7c4;
+      padding: 18px;
+      margin: 17px 0;
+      border-radius: 9px
+    }
+
+    .question strong {
+      display: block;
+      margin-bottom: 12px
+    }
+
+    .option {
+      display: block;
+      margin: 8px 0;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer
+    }
+
+    .option:hover {
+      background: #ede1d0
+    }
+
+    .result {
+      margin-top: 18px;
+      padding: 17px;
+      border-radius: 8px;
+      background: #eee3d1
+    }
+
+    .review {
+      border-top: 1px solid #d5c5ae;
+      margin-top: 12px;
+      padding-top: 10px
+    }
+
+    .correct {
+      color: #267347
+    }
+
+    .wrong {
+      color: #a32d2d
+    }
+
+    @media(max-width:850px) {
+      .layout {
+        display: block
+      }
+
+      aside {
+        width: auto;
+        max-height: 260px;
+        position: static;
+        border-right: 0
+      }
+
+      main {
+        padding: 12px
+      }
+
+      .reader {
+        padding: 20px
+      }
+
+      header {
+        flex-wrap: wrap
+      }
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 18px 0
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px
+    }
+
+    th,
+    td {
+      border: 1px solid #d9cbb8;
+      padding: 10px;
+      text-align: left
+    }
+
+    th {
+      background: #e8dcc9
+    }
+
+    .example {
+      padding: 12px 15px;
+      background: #f3e8d7;
+      border-left: 4px solid #795a3e;
+      overflow-wrap: anywhere;
+      font-weight: bold
+    }
+
+    /* Shared First Year Reader Theme — based on Book 05 */
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0 !important;
+      font-family: Arial, sans-serif !important;
+      background: #f4eee4 !important;
+      color: #342c24 !important;
+      line-height: 1.6
+    }
+
+    header {
+      background: #493526 !important;
+      color: #fff !important;
+      padding: 16px 24px !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 15px !important;
+      border: 0 !important;
+      min-height: 58px
+    }
+
+    header a {
+      color: white !important;
+      text-decoration: none !important
+    }
+
+    header h2 {
+      margin: 0 !important;
+      font-size: 19px !important;
+      color: white !important
+    }
+
+    .layout {
+      display: flex !important;
+      min-height: calc(100vh - 65px) !important;
+      align-items: stretch !important
+    }
+
+    aside,
+    .sidebar {
+      width: 295px !important;
+      flex: 0 0 295px !important;
+      background: #e8dcc9 !important;
+      padding: 22px 15px !important;
+      border-right: 1px solid #cfbea7 !important;
+      max-height: calc(100vh - 65px) !important;
+      overflow-y: auto !important;
+      position: sticky !important;
+      top: 0 !important
+    }
+
+    aside h2,
+    aside h3,
+    .sidebar h2,
+    .sidebar h3 {
+      margin: 0 0 16px !important;
+      font-size: 19px !important;
+      color: #6b4c30 !important
+    }
+
+    #toc button,
+    #chapterList button,
+    #chapterList [role=button],
+    .sidebar button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: #463527;
+      padding: 11px;
+      cursor: pointer;
+      margin: 3px 0;
+      font-size: 13px;
+      line-height: 1.35
+    }
+
+    #toc button.active,
+    #toc button:hover,
+    #chapterList button.active,
+    #chapterList button:hover,
+    .sidebar button.active,
+    .sidebar button:hover {
+      background: #795a3e !important;
+      color: white !important
+    }
+
+    main,
+    .main {
+      flex: 1 !important;
+      width: auto !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      padding: 28px !important;
+      background: transparent !important
+    }
+
+    .reader {
+      background: #fffaf2 !important;
+      max-width: 960px !important;
+      margin: auto !important;
+      padding: 32px !important;
+      border: 1px solid #dfd1bd !important;
+      border-radius: 12px !important;
+      box-shadow: 0 3px 15px #3b27120d !important;
+      min-height: 540px
+    }
+
+    .reader h1 {
+      font-size: 28px !important;
+      line-height: 1.35 !important;
+      color: #6b4c30 !important
+    }
+
+    .reader h2 {
+      font-size: 23px !important;
+      line-height: 1.35 !important;
+      color: #6b4c30 !important
+    }
+
+    .reader h3 {
+      font-size: 19px !important;
+      line-height: 1.35 !important;
+      color: #6b4c30 !important
+    }
+
+    .reader p,
+    .reader li {
+      line-height: 1.75 !important
+    }
+
+    .reader figure {
+      margin: 25px auto !important;
+      text-align: center !important;
+      background: transparent !important;
+      border: 0 !important;
+      padding: 0 !important
+    }
+
+    .reader figure img {
+      display: block !important;
+      width: 100% !important;
+      max-width: 750px !important;
+      max-height: 650px !important;
+      height: auto !important;
+      object-fit: contain !important;
+      margin: auto !important;
+      border-radius: 8px !important
+    }
+
+    .reader figcaption {
+      font-size: 12px !important;
+      color: #867563 !important;
+      margin-top: 7px !important
+    }
+
+    .nav,
+    .navigation,
+    .controls {
+      display: flex !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      margin-top: 32px !important
+    }
+
+    .btn,
+    button.nav,
+    .submit,
+    .retake {
+      border: 0 !important;
+      background: #6d5038 !important;
+      color: white !important;
+      padding: 12px 19px !important;
+      border-radius: 8px !important;
+      cursor: pointer !important;
+      font-size: 14px !important
+    }
+
+    .btn:disabled,
+    button.nav:disabled {
+      opacity: .4 !important;
+      cursor: not-allowed !important
+    }
+
+    .status {
+      text-align: center !important;
+      color: #756655 !important;
+      font-size: 13px !important
+    }
+
+    .question {
+      background: #f6eee1 !important;
+      border: 1px solid #e5d7c4 !important;
+      padding: 18px !important;
+      margin: 17px 0 !important;
+      border-radius: 9px !important
+    }
+
+    .option {
+      display: block;
+      margin: 8px 0;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer
+    }
+
+    .option:hover {
+      background: #ede1d0 !important
+    }
+
+    .result {
+      margin-top: 18px !important;
+      padding: 17px !important;
+      border-radius: 8px !important;
+      background: #eee3d1 !important
+    }
+
+    .reader table {
+      border-collapse: collapse;
+      width: 100%;
+      display: block;
+      overflow-x: auto
+    }
+
+    .reader th,
+    .reader td {
+      border: 1px solid #d9cbb8;
+      padding: 10px;
+      text-align: left
+    }
+
+    .reader th {
+      background: #e8dcc9
+    }
+
+    @media(max-width:850px) {
+      .layout {
+        display: block !important
+      }
+
+      aside,
+      .sidebar {
+        width: 100% !important;
+        max-height: 260px !important;
+        position: static !important;
+        border-right: 0 !important;
+        flex: auto !important
+      }
+
+      main,
+      .main {
+        padding: 12px !important
+      }
+
+      .reader {
+        padding: 20px !important
+      }
+
+      header {
+        flex-wrap: wrap !important
+      }
+    }
+    
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+  
+/* BYTEBLOOM PINK PALETTE — final overrides */
+:root {
+  --pink-bg: #FDE4F2;
+  --pink-header: #F9CEE7;
+  --pink-panel: #F4B8DA;
+  --pink-active: #EEA1CD;
+  --pink-strong: #E68BBE;
+  --pink-text: #612C4D;
+}
+body { background: #FDE4F2 !important; color: #612C4D !important; }
+header { background: #F9CEE7 !important; color: #612C4D !important; border-bottom: 1px solid #EEA1CD !important; }
+header a, header h2, header span { color: #612C4D !important; }
+aside, .sidebar { background: #F4B8DA !important; border-right-color: #EEA1CD !important; }
+aside h2, aside h3, .sidebar h2, .sidebar h3 { color: #612C4D !important; }
+#toc button, #chapterList button, .sidebar button { color: #612C4D !important; }
+#toc button.active, #toc button:hover,
+#chapterList button.active, #chapterList button:hover,
+.sidebar button.active, .sidebar button:hover {
+  background: #EEA1CD !important;
+  color: #612C4D !important;
+}
+.reader:not(.dark-mode) {
+  background: #FFF9FD !important;
+  color: #612C4D !important;
+  border-color: #EEA1CD !important;
+}
+.reader:not(.dark-mode) h1, .reader:not(.dark-mode) h2,
+.reader:not(.dark-mode) h3, .reader:not(.dark-mode) figcaption,
+.reader:not(.dark-mode) .status { color: #612C4D !important; }
+.reader:not(.dark-mode) th { background: #F9CEE7 !important; }
+.reader:not(.dark-mode) td, .reader:not(.dark-mode) th { border-color: #EEA1CD !important; }
+.reader:not(.dark-mode) .example, .reader:not(.dark-mode) .question,
+.reader:not(.dark-mode) .result { background: #FDE4F2 !important; border-color: #EEA1CD !important; }
+.reader:not(.dark-mode) .option:hover { background: #F4B8DA !important; }
+.btn, button.nav, .submit, .retake {
+  background: #E68BBE !important;
+  color: #612C4D !important;
+}
+.btn:hover:not(:disabled), button.nav:hover:not(:disabled), .submit:hover, .retake:hover {
+  background: #EEA1CD !important;
+}
+.reader-theme-toggle {
+  background: #FDE4F2 !important;
+  border-color: #EEA1CD !important;
+  color: #612C4D !important;
+}
+.reader-theme-toggle:hover { background: #F4B8DA !important; }
+/* Dark mode changes the lesson card only, retaining pink site chrome. */
+.reader.dark-mode { background: #25212D !important; color: #F8EAF5 !important; border-color: #E68BBE !important; }
+.reader.dark-mode .question, .reader.dark-mode .result,
+.reader.dark-mode .example { background: #352B3C !important; border-color: #E68BBE !important; }
+.reader.dark-mode .option:hover { background: #51415A !important; }
+.reader.dark-mode th { background: #403549 !important; }
+.reader.dark-mode td, .reader.dark-mode th { border-color: #E68BBE !important; }
+.reader.dark-mode .status { color: #F8EAF5 !important; }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+    <span>1st Year · Book 10</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside>
+      <h3>Table of Contents</h3>
+      <div id="toc"></div>
+    </aside>
+    <main>
+      <article class="reader">
+        <div id="content"></div>
+        <div class="nav">
+          <button class="btn" id="prev">← Previous</button>
+          <button class="btn" id="next">Next →</button>
+        </div>
+        <p class="status" id="status"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+    const PAGES = [
+      {
+        "title": "Book Introduction",
+        "html": "<h1>Artificial Intelligence, Machine Learning and Big Data Analytics</h1><p><strong>First Year · Book 10</strong></p><h3>FIRST YEAR BOOK 10 • AI AND BIG DATA</h3>\n<h3>2</h3>\n<h3>Introduction</h3>\n<p>Artificial intelligence, machine learning, databases, and big data analytics are connected fields used in modern digital services. This book introduces their basic ideas and real-world applications in simple language. It also explains why accuracy, privacy, and human oversight matter.</p>\n<h3>Learning Objectives</h3>\n<p>• Define AI and explain common applications. • Describe how ML models are trained and evaluated. • Compare supervised, unsupervised, semi-supervised, and reinforcement learning. • Explain deep learning and neural networks. • Discuss AI applications in business, healthcare, education, and other industries. • Identify responsible AI practices. • Explain databases, DBMS, and big data analytics.</p><figure><img src=\"assets/firstyear10-figure-01.png\" alt=\"Relationship between AI, machine learning and deep learning\"><figcaption>Original AI, ML and deep learning relationship diagram, PDF page 1.</figcaption></figure>"
+      },
+      {
+        "title": "Chapter 1: Introduction to Artificial Intelligence",
+        "html": "<h1>Chapter 1: Introduction to Artificial Intelligence</h1><p><em>Chapter 1 learning goal: Understand and apply the key ideas of introduction to artificial intelligence.</em></p>\n<h3>What AI Means</h3>\n<p>Artificial intelligence is the field of creating computer systems that perform tasks associated with human intelligence, such as recognizing patterns, understanding language, making predictions, and supporting decisions. AI does not necessarily think or feel like a person.</p>\n<h3>AI in Everyday Life</h3>\n<p>Spell-checking, predictive typing, recommendation systems, navigation suggestions, and customer-service chatbots are familiar examples. Some tools use simple rules, while others use machine learning; not every automated feature is AI.</p>\n<h3>How an AI System Works</h3>\n<p>An AI application receives data, processes it using a model or rules, and produces a result. For example, a shopping service may analyze past purchases and suggest products, but its suggestions can be incorrect.</p>\n<h3>Benefits and Limitations</h3>\n<p>AI can process large datasets quickly, assist with repetitive tasks, and identify patterns. However, poor data, biased examples, privacy problems, and overconfidence can lead to unreliable outputs.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A music app recommends songs after analyzing listening history. The suggestion may help discovery, but a user can still reject it. Chapter Summary Remember: what ai means; ai in everyday life; how an ai system works.</p>"
+      },
+      {
+        "title": "Chapter 1 Quiz",
+        "quiz": [
+          {
+            "q": "What does AI aim to do?",
+            "options": [
+              "Perform intelligence-related tasks",
+              "Replace every computer part",
+              "Provide electricity",
+              "Only store files"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which is an AI-related application?",
+            "options": [
+              "Product recommendation",
+              "Power cable",
+              "Desk",
+              "Paper clip"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is a model used for?",
+            "options": [
+              "Finding patterns in data",
+              "Cleaning a monitor",
+              "Increasing screen size",
+              "Printing paper"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which is an AI limitation?",
+            "options": [
+              "Biased data",
+              "Faster pattern recognition",
+              "Automated suggestions",
+              "Data analysis"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Does all automation require AI?",
+            "options": [
+              "No",
+              "Yes",
+              "Only in schools",
+              "Only on phones"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 2: Machine Learning Fundamentals",
+        "html": "<h1>Chapter 2: Machine Learning Fundamentals</h1><figure><img src=\"assets/firstyear10-figure-02.png\" alt=\"Original learning diagram for Chapter 2\" loading=\"lazy\"><figcaption>Original diagram from PDF page 5.</figcaption></figure><p><em>Chapter 2 learning goal: Understand and apply the key ideas of machine learning fundamentals.</em></p>\n<h3>Collect data Train model Test model Predict</h3>\n<h3>What Machine Learning Is</h3>\n<p>Machine learning (ML) is a branch of AI in which a model learns patterns from examples instead of relying only on manually written instructions.</p>\n<h3>Training and Testing</h3>\n<p>A training dataset helps a model learn. A separate test dataset checks how well it performs on unseen examples. Mixing training and test examples can make performance look better than it really is.</p>\n<h3>Example: Cat Recognition</h3>\n<p>Images labeled cat or not cat can be used to train an image classifier. The model learns useful visual patterns; it does not memorize the meaning of a cat as a human does.</p>\n<h3>Important Terms</h3>\n<p>Features are information used to make predictions; labels are target answers in supervised learning. Accuracy is one evaluation measure, but precision and recall may matter more in some tasks.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A model trains on 800 labeled photos and is evaluated on 200 different photos. Testing on unseen photos helps estimate real performance. Chapter Summary Remember: what machine learning is; training and testing; example: cat recognition.</p>"
+      },
+      {
+        "title": "Chapter 2 Quiz",
+        "quiz": [
+          {
+            "q": "What is ML?",
+            "options": [
+              "Learning patterns from data",
+              "Only writing essays",
+              "Building keyboards",
+              "Sending electricity"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is training data used for?",
+            "options": [
+              "Learning model patterns",
+              "Painting computers",
+              "Replacing networks",
+              "Printing reports"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Why use separate test data?",
+            "options": [
+              "Check unseen performance",
+              "Make labels disappear",
+              "Increase monitor size",
+              "Remove errors entirely"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is a label?",
+            "options": [
+              "Target answer",
+              "USB connector",
+              "Internet cable",
+              "Computer case"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What may cause misleading evaluation?",
+            "options": [
+              "Testing on training examples",
+              "Using new examples",
+              "Checking errors",
+              "Comparing predictions"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 3: Four Machine Learning Methods",
+        "html": "<h1>Chapter 3: Four Machine Learning Methods</h1><figure><img src=\"assets/firstyear10-figure-03.png\" alt=\"Original learning diagram for Chapter 3\" loading=\"lazy\"><figcaption>Original diagram from PDF page 7.</figcaption></figure><p><em>Chapter 3 learning goal: Understand and apply the key ideas of four machine learning methods.</em></p>\n<h3>Supervised Unsupervised Semi-supervised Reinforcement</h3>\n<h3>Supervised Learning</h3>\n<p>Supervised learning uses labeled examples. A model might learn from transactions marked fraudulent or legitimate, then estimate the risk of new transactions.</p>\n<h3>Unsupervised Learning</h3>\n<p>Unsupervised learning looks for structure in data without target labels. A store might group customers with similar shopping habits, but those groups still need human interpretation.</p>\n<h3>Semi-supervised Learning</h3>\n<p>Semi-supervised learning combines a smaller amount of labeled data with a larger amount of unlabeled data. This can help when expert labeling is expensive.</p>\n<h3>Reinforcement Learning</h3>\n<p>In reinforcement learning, an agent chooses actions in an environment and receives rewards or penalties. It learns a policy that aims to increase long-term reward, as in some games and robotic control tasks.</p>\n<h3>Choosing a Method</h3>\n<p>Use supervised learning when known answers are available; unsupervised learning for discovering groups; semi-supervised learning when labels are limited; reinforcement learning for sequential decisions with feedback.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A teacher labels essays as on-topic or off-topic (supervised); a shop groups customers without labels (unsupervised). Chapter Summary Remember: supervised learning; unsupervised learning; semi-supervised learning.</p>"
+      },
+      {
+        "title": "Chapter 3 Quiz",
+        "quiz": [
+          {
+            "q": "Which method uses labeled examples?",
+            "options": [
+              "Supervised",
+              "Unsupervised",
+              "Random",
+              "Manual"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which method discovers customer groups?",
+            "options": [
+              "Unsupervised",
+              "Reinforcement only",
+              "Typing",
+              "Printing"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which method mixes labeled and unlabeled data?",
+            "options": [
+              "Semi-supervised",
+              "Supervised only",
+              "Rule-based only",
+              "None"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which method learns from rewards?",
+            "options": [
+              "Reinforcement",
+              "Unsupervised",
+              "Sorting",
+              "File compression"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What matters when choosing an ML method?",
+            "options": [
+              "Available data and task",
+              "Computer color",
+              "Desk size",
+              "Keyboard layout"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 4: Deep Learning and Neural Networks",
+        "html": "<h1>Chapter 4: Deep Learning and Neural Networks</h1><figure><img src=\"assets/firstyear10-figure-04.png\" alt=\"Original learning diagram for Chapter 4\" loading=\"lazy\"><figcaption>Original diagram from PDF page 9.</figcaption></figure><p><em>Chapter 4 learning goal: Understand and apply the key ideas of deep learning and neural networks.</em></p>\n<h3>Input layer Hidden layers Output layer</h3>\n<h3>Deep Learning</h3>\n<p>Deep learning is a branch of machine learning that uses neural networks with multiple layers to learn complex patterns from data.</p>\n<h3>Neural Network Structure</h3>\n<p>An artificial neural network contains connected processing units, usually arranged into input, hidden, and output layers. Connections have adjustable weights that training changes.</p>\n<h3>How Learning Happens</h3>\n<p>During training, a network compares predictions with expected answers, measures an error, and adjusts weights. This process is repeated over many examples.</p>\n<h3>Applications</h3>\n<p>Deep learning is useful for image recognition, speech processing, text analysis, and other pattern-rich tasks. It can require substantial computing power and data.</p>\n<h3>Common Misconception</h3>\n<p>Neural networks are inspired loosely by biological neurons, but they are not copies of the human brain. Not all neural networks are deep, and not all machine learning uses neural networks.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A network takes pixel values as input, transforms them through hidden layers, and outputs the estimated class of an image. Chapter Summary Remember: deep learning; neural network structure; how learning happens.</p>"
+      },
+      {
+        "title": "Chapter 4 Quiz",
+        "quiz": [
+          {
+            "q": "What makes deep learning deep?",
+            "options": [
+              "Multiple processing layers",
+              "A tall computer",
+              "More screens",
+              "More cables"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What changes during neural-network training?",
+            "options": [
+              "Weights",
+              "Monitor size",
+              "Keyboard keys",
+              "Mouse shape"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which is a deep learning application?",
+            "options": [
+              "Image recognition",
+              "Cable replacement",
+              "Desk assembly",
+              "Paper folding"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Are all ML models neural networks?",
+            "options": [
+              "No",
+              "Yes",
+              "Only on phones",
+              "Only for games"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Are neural networks exact copies of brains?",
+            "options": [
+              "No",
+              "Yes",
+              "Always",
+              "Only in robots"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 5: AI Technology Landscape",
+        "html": "<h1>Chapter 5: AI Technology Landscape</h1><p><em>Chapter 5 learning goal: Understand and apply the key ideas of ai technology landscape.</em></p>\n<h3>Robotics</h3>\n<p>Robots are physical machines that can sense, act, and sometimes use AI for perception or decision-making. Industrial robots may also perform fixed programmed tasks without AI.</p>\n<h3>Language Translation and Assistants</h3>\n<p>Machine translation converts content between languages. Digital assistants may use speech recognition and language understanding to respond to spoken or typed requests.</p>\n<h3>Autonomous Systems</h3>\n<p>An autonomous system can perform some tasks with limited human input. Examples include warehouse robots and some vehicle functions. The degree of autonomy varies, and safety supervision may be required.</p>\n<h3>Gaming, AR, and VR</h3>\n<p>AI can guide non-player characters and adaptive gameplay. Augmented reality adds digital content to a real view, while virtual reality creates an immersive simulated environment; neither technology automatically requires AI.</p>\n<h3>Computer Vision</h3>\n<p>Computer vision helps software interpret visual information such as images and video. Applications include identifying objects, checking product defects, and supporting medical image review.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A warehouse robot reads sensors, identifies obstacles, chooses a safe route, and moves while monitoring its surroundings. Chapter Summary Remember: robotics; language translation and assistants; autonomous systems.</p>"
+      },
+      {
+        "title": "Chapter 5 Quiz",
+        "quiz": [
+          {
+            "q": "Which technology interprets images?",
+            "options": [
+              "Computer vision",
+              "Printer ink",
+              "Ethernet cable",
+              "Battery"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can machine translation do?",
+            "options": [
+              "Convert between languages",
+              "Repair hardware",
+              "Grow plants",
+              "Charge phones"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What does AR do?",
+            "options": [
+              "Adds digital content to a real view",
+              "Deletes the Internet",
+              "Stores passwords",
+              "Only prints photos"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Must every robot use AI?",
+            "options": [
+              "No",
+              "Yes",
+              "Only small robots",
+              "Only drones"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What does autonomous mean?",
+            "options": [
+              "Some independent task performance",
+              "No hardware",
+              "No sensors ever",
+              "Only manual control"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 6: AI in Business and Industry",
+        "html": "<h1>Chapter 6: AI in Business and Industry</h1><p><em>Chapter 6 learning goal: Understand and apply the key ideas of ai in business and industry.</em></p>\n<h3>AI for Business Decisions</h3>\n<p>Organizations may use AI to identify trends, predict demand, support scheduling, and prioritize customer inquiries. Managers should check results against business goals and evidence.</p>\n<h3>Financial Services</h3>\n<p>ML can help detect unusual transactions, estimate risk, and assist analysts. High-impact financial decisions require controls, review, and appropriate regulation.</p>\n<h3>Retail and Marketing</h3>\n<p>Retailers can analyze purchase histories to recommend products and forecast inventory needs. Responsible systems limit data collection and explain relevant privacy choices.</p>\n<h3>Government and Utilities</h3>\n<p>Public services may use data models to detect equipment failures or allocate resources. Fairness, accountability, and security are especially important when public services are affected.</p>\n<h3>Oil, Gas, and Manufacturing</h3>\n<p>Predictive maintenance can identify patterns in equipment sensor data that suggest possible failure. Engineers still need to validate alerts and plan repairs.</p>\n<h3>Tourism and Travel</h3>\n<p>Forecasting models can estimate travel demand or possible price changes. Predictions are uncertain and should not be treated as guaranteed prices.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A retailer forecasts next month’s demand using historical sales, then a manager checks holiday effects before ordering stock. Chapter Summary Remember: ai for business decisions; financial services; retail and marketing.</p>"
+      },
+      {
+        "title": "Chapter 6 Quiz",
+        "quiz": [
+          {
+            "q": "Which is a business AI use?",
+            "options": [
+              "Demand forecasting",
+              "Desk cleaning",
+              "Cable coloring",
+              "Paper cutting"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can fraud models identify?",
+            "options": [
+              "Suspicious patterns",
+              "Perfect certainty",
+              "Every criminal",
+              "All passwords"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is predictive maintenance?",
+            "options": [
+              "Estimating possible equipment problems",
+              "Deleting sensors",
+              "Replacing all engineers",
+              "Turning off machines randomly"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Why review AI decisions?",
+            "options": [
+              "Models can make mistakes",
+              "AI never errs",
+              "Data has no bias",
+              "Rules do not matter"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What should tourism price forecasts be treated as?",
+            "options": [
+              "Estimates",
+              "Guarantees",
+              "Receipts",
+              "Laws"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 7: AI in Healthcare and Education",
+        "html": "<h1>Chapter 7: AI in Healthcare and Education</h1><p><em>Chapter 7 learning goal: Understand and apply the key ideas of ai in healthcare and education.</em></p>\n<h3>Healthcare Applications</h3>\n<p>AI can support image analysis, monitoring, clinical documentation, and research. These systems assist qualified professionals rather than replace medical judgment.</p>\n<h3>Wearable Devices</h3>\n<p>Wearable sensors can record measurements such as heart rate and activity. Algorithms may flag unusual patterns, but alerts are not a diagnosis.</p>\n<h3>Medical Imaging and Genomics</h3>\n<p>Computer vision can highlight patterns in scans. AI may help researchers study genetic data and explore personalized treatment options; evidence and clinical validation remain essential.</p>\n<h3>Robots, Telemedicine, and 3D Printing</h3>\n<p>Robots can help with transport, rehabilitation, or surgical assistance. Telemedicine connects patients and clinicians remotely. 3D printing can produce models, tools, and some medical devices; these are related technologies, not automatically AI.</p>\n<h3>AI in Education</h3>\n<p>AI can help with practice questions, feedback, accessibility, and administrative tasks. Teachers should check automated grading and protect student information.</p>\n<h3>Safety and Ethics</h3>\n<p>Health and education systems need privacy protections, human oversight, careful testing, and clear communication of limitations.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A wearable flags an unusual reading. A healthcare professional evaluates the information and decides whether further tests are needed. Chapter Summary Remember: healthcare applications; wearable devices; medical imaging and genomics.</p>"
+      },
+      {
+        "title": "Chapter 7 Quiz",
+        "quiz": [
+          {
+            "q": "Which healthcare task can AI support?",
+            "options": [
+              "Medical image review",
+              "Guaranteed cures",
+              "Replacing all doctors",
+              "Removing privacy"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can wearables measure?",
+            "options": [
+              "Heart rate",
+              "Every illness directly",
+              "All DNA changes",
+              "Future events exactly"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Is a wearable alert a diagnosis?",
+            "options": [
+              "No",
+              "Yes",
+              "Always",
+              "Only at night"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can AI assist teachers with?",
+            "options": [
+              "Feedback and practice",
+              "Removing learning",
+              "Replacing all instruction",
+              "Ignoring student data"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is important in healthcare AI?",
+            "options": [
+              "Clinical validation and oversight",
+              "Unverified claims",
+              "No testing",
+              "Unlimited data sharing"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 8: Responsible AI and Data Ethics",
+        "html": "<h1>Chapter 8: Responsible AI and Data Ethics</h1><p><em>Chapter 8 learning goal: Understand and apply the key ideas of responsible ai and data ethics.</em></p>\n<h3>Privacy</h3>\n<p>AI systems often depend on data. Collect only what is needed, secure sensitive information, and respect permissions and applicable rules.</p>\n<h3>Bias and Fairness</h3>\n<p>Training data may underrepresent some groups or contain historical unfairness. Testing across relevant populations can reveal performance differences.</p>\n<h3>Accuracy and Transparency</h3>\n<p>AI predictions may sound confident while being incorrect. Explain what a system can and cannot do and verify important outputs.</p>\n<h3>Human Oversight</h3>\n<p>People should remain responsible for important decisions in areas such as education, healthcare, employment, and finance.</p>\n<h3>Responsible Use by Students</h3>\n<p>Check AI-generated information, cite sources where required, avoid uploading confidential data, and follow academic integrity policies.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A student checks an AI-generated explanation against the textbook and does not upload classmates’ private records. Chapter Summary Remember: privacy; bias and fairness; accuracy and transparency.</p>"
+      },
+      {
+        "title": "Chapter 8 Quiz",
+        "quiz": [
+          {
+            "q": "What is a privacy-friendly practice?",
+            "options": [
+              "Collect only needed data",
+              "Publish passwords",
+              "Share private records",
+              "Disable security"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can biased training data cause?",
+            "options": [
+              "Unfair outputs",
+              "Guaranteed fairness",
+              "No errors",
+              "More storage only"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What should students do with AI facts?",
+            "options": [
+              "Verify them",
+              "Assume all are correct",
+              "Hide sources",
+              "Ignore instructions"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Who remains accountable for important decisions?",
+            "options": [
+              "People and organizations",
+              "Only the model",
+              "Only the keyboard",
+              "No one"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What does transparency include?",
+            "options": [
+              "Explaining limitations",
+              "Hiding errors",
+              "Claiming perfection",
+              "Ignoring users"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 9: Databases and Database Management Systems",
+        "html": "<h1>Chapter 9: Databases and Database Management Systems</h1><figure><img src=\"assets/firstyear10-figure-05.png\" alt=\"Original learning diagram for Chapter 9\" loading=\"lazy\"><figcaption>Original diagram from PDF page 19.</figcaption></figure><h3>CHAPTER 9: DATABASES AND DATABASE MANAGEMENT</h3>\n<h3>SYSTEMS</h3>\n<p><em>Chapter 9 learning goal: Understand and apply the key ideas of databases and database management systems.</em></p>\n<h3>Collect records Store in DBMS Query data Use insights</h3>\n<h3>What Is Data?</h3>\n<p>Data consists of recorded facts, measurements, observations, or categories. Information results when data is organized and interpreted for a purpose.</p>\n<h3>What Is a Database?</h3>\n<p>A database is an organized collection of data. For example, a school database may store student records, subjects, and enrollment details.</p>\n<h3>Database Management System</h3>\n<p>A DBMS is software that helps create, store, update, retrieve, and protect data. Examples of database operations include inserting records, searching, editing, and controlling access.</p>\n<h3>Why Databases Matter</h3>\n<p>Databases can improve organization, reduce unnecessary duplication, support data integrity, and make retrieval easier. Proper backups and access controls are still necessary.</p>\n<h3>Tables and Records</h3>\n<p>A relational database often stores data in tables. Rows represent records and columns represent attributes, such as student ID, name, and course.</p>\n<h3>Relationship to AI</h3>\n<p>Well-managed databases can supply useful training and analysis data, but data quality and permission to use it remain important.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A student database stores ID, name, and course in columns. Each student has a separate row, and permissions limit who can edit records. Chapter Summary Remember: what is data?; what is a database?; database management system.</p>"
+      },
+      {
+        "title": "Chapter 9 Quiz",
+        "quiz": [
+          {
+            "q": "What is a DBMS?",
+            "options": [
+              "Software managing databases",
+              "A keyboard",
+              "A display cable",
+              "A drawing"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is a database row?",
+            "options": [
+              "A record",
+              "A computer fan",
+              "A browser tab",
+              "A password rule"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What does a database column represent?",
+            "options": [
+              "An attribute",
+              "A building",
+              "A network cable",
+              "A screen"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which helps protect database information?",
+            "options": [
+              "Access controls and backups",
+              "Public passwords",
+              "No backups",
+              "Unrestricted sharing"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "How can databases help AI?",
+            "options": [
+              "Provide organized data",
+              "Guarantee accurate models",
+              "Replace all algorithms",
+              "Remove the need for review"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter 10: Big Data Analytics and the Future",
+        "html": "<h1>Chapter 10: Big Data Analytics and the Future</h1><figure><img src=\"assets/firstyear10-figure-06.png\" alt=\"Original learning diagram for Chapter 10\" loading=\"lazy\"><figcaption>Original diagram from PDF page 21.</figcaption></figure><p><em>Chapter 10 learning goal: Understand and apply the key ideas of big data analytics and the future.</em></p>\n<h3>Ask question Prepare data Analyze Explain findings</h3>\n<h3>What Is Big Data?</h3>\n<p>Big data refers to datasets that can be difficult to handle with traditional approaches because of their size, speed, variety, or other characteristics. A large dataset alone does not automatically produce useful insights.</p>\n<h3>The Three Vs</h3>\n<p>Volume describes how much data exists; velocity describes how quickly it arrives; variety describes different forms, such as text, images, and sensor measurements. Other useful concerns include veracity and value.</p>\n<h3>Analytics Process</h3>\n<p>An analyst defines a question, collects relevant data, cleans errors, explores patterns, builds or applies methods, and communicates findings.</p>\n<h3>Examples</h3>\n<p>Healthcare organizations may study patient trends; factories can analyze sensor readings; retailers can forecast demand; and researchers can examine environmental data.</p>\n<h3>AI and Big Data</h3>\n<p>Big data can provide material for machine learning, while AI can help analyze complex patterns. However, data quality, privacy, computing costs, and interpretation remain major challenges.</p>\n<h3>Future Directions</h3>\n<p>Cloud platforms, connected sensors, edge computing, and new AI methods may expand data use. Responsible design and critical thinking will remain important.</p>\n<h3>Worked Example / Real-Life Scenario</h3>\n<p>A school studies anonymized attendance trends, checks missing values, and presents findings without exposing individual students. Chapter Summary Remember: what is big data?; the three vs; analytics process.</p>"
+      },
+      {
+        "title": "Chapter 10 Quiz",
+        "quiz": [
+          {
+            "q": "Which V refers to amount of data?",
+            "options": [
+              "Volume",
+              "Velocity",
+              "Variety",
+              "Value only"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which V refers to data speed?",
+            "options": [
+              "Velocity",
+              "Volume",
+              "Veracity",
+              "Visuals"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which is part of analytics?",
+            "options": [
+              "Cleaning data",
+              "Ignoring errors",
+              "Guessing without evidence",
+              "Sharing passwords"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can big data support?",
+            "options": [
+              "Pattern discovery",
+              "Guaranteed correct decisions",
+              "No privacy concerns",
+              "No storage needs"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What remains important for future AI?",
+            "options": [
+              "Responsible design",
+              "No oversight",
+              "No data checks",
+              "Only faster devices"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Learning Activities",
+        "html": "<h1>Learning Activities</h1><h3>Activity 1</h3>\n<p>Identify three AI features in apps you use. Explain the input and output of each.</p>\n<h3>Activity 2</h3>\n<p>Draw a training-versus-testing diagram and explain why separate examples matter.</p>\n<h3>Activity 3</h3>\n<p>Give one school-related example for each of the four ML methods.</p>\n<h3>Activity 4</h3>\n<p>Draw a three-layer neural network and label its input, hidden, and output layers.</p>\n<h3>Activity 5</h3>\n<p>Choose one robot or virtual assistant and describe its sensors, inputs, or tasks.</p>\n<h3>Activity 6</h3>\n<p>Design a simple AI-supported inventory forecast and identify what a human must review.</p>\n<h3>Activity 7</h3>\n<p>Describe a safe use of AI in education or healthcare and two limitations.</p>\n<h3>Activity 8</h3>\n<p>Write five rules for responsible AI use by students.</p>\n<h3>Activity 9</h3>\n<p>Design a student database with five fields and three sample fictional records.</p>\n<h3>Activity 10</h3>\n<p>Choose a big-data example and outline a five-step analytics process.</p>"
+      },
+      {
+        "title": "Final Assessment",
+        "quiz": [
+          {
+            "q": "What does AI aim to do?",
+            "options": [
+              "Perform intelligence-related tasks",
+              "Replace every computer part",
+              "Provide electricity",
+              "Only store files"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which is an AI limitation?",
+            "options": [
+              "Biased data",
+              "Faster pattern recognition",
+              "Automated suggestions",
+              "Data analysis"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is ML?",
+            "options": [
+              "Learning patterns from data",
+              "Only writing essays",
+              "Building keyboards",
+              "Sending electricity"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is a label?",
+            "options": [
+              "Target answer",
+              "USB connector",
+              "Internet cable",
+              "Computer case"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which method uses labeled examples?",
+            "options": [
+              "Supervised",
+              "Unsupervised",
+              "Random",
+              "Manual"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which method learns from rewards?",
+            "options": [
+              "Reinforcement",
+              "Unsupervised",
+              "Sorting",
+              "File compression"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What makes deep learning deep?",
+            "options": [
+              "Multiple processing layers",
+              "A tall computer",
+              "More screens",
+              "More cables"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Are all ML models neural networks?",
+            "options": [
+              "No",
+              "Yes",
+              "Only on phones",
+              "Only for games"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which technology interprets images?",
+            "options": [
+              "Computer vision",
+              "Printer ink",
+              "Ethernet cable",
+              "Battery"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Must every robot use AI?",
+            "options": [
+              "No",
+              "Yes",
+              "Only small robots",
+              "Only drones"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which is a business AI use?",
+            "options": [
+              "Demand forecasting",
+              "Desk cleaning",
+              "Cable coloring",
+              "Paper cutting"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Why review AI decisions?",
+            "options": [
+              "Models can make mistakes",
+              "AI never errs",
+              "Data has no bias",
+              "Rules do not matter"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which healthcare task can AI support?",
+            "options": [
+              "Medical image review",
+              "Guaranteed cures",
+              "Replacing all doctors",
+              "Removing privacy"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can AI assist teachers with?",
+            "options": [
+              "Feedback and practice",
+              "Removing learning",
+              "Replacing all instruction",
+              "Ignoring student data"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is a privacy-friendly practice?",
+            "options": [
+              "Collect only needed data",
+              "Publish passwords",
+              "Share private records",
+              "Disable security"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Who remains accountable for important decisions?",
+            "options": [
+              "People and organizations",
+              "Only the model",
+              "Only the keyboard",
+              "No one"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What is a DBMS?",
+            "options": [
+              "Software managing databases",
+              "A keyboard",
+              "A display cable",
+              "A drawing"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which helps protect database information?",
+            "options": [
+              "Access controls and backups",
+              "Public passwords",
+              "No backups",
+              "Unrestricted sharing"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which V refers to amount of data?",
+            "options": [
+              "Volume",
+              "Velocity",
+              "Variety",
+              "Value only"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What can big data support?",
+            "options": [
+              "Pattern discovery",
+              "Guaranteed correct decisions",
+              "No privacy concerns",
+              "No storage needs"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "title": "Chapter Quiz Answer Keys",
+        "html": "<h1>Chapter Quiz Answer Keys</h1><p>Chapter 1: Introduction to Artificial Intelligence 1. A — Perform intelligence-related tasks. This matches the chapter discussion about introduction to artificial intelligence. 2. A — Product recommendation. This matches the chapter discussion about introduction to artificial intelligence. 3. A — Finding patterns in data. This matches the chapter discussion about introduction to artificial intelligence. 4. A — Biased data. This matches the chapter discussion about introduction to artificial intelligence. 5. A — No. This matches the chapter discussion about introduction to artificial intelligence. Chapter 2: Machine Learning Fundamentals 1. A — Learning patterns from data. This matches the chapter discussion about machine learning fundamentals. 2. A — Learning model patterns. This matches the chapter discussion about machine learning fundamentals. 3. A — Check unseen performance. This matches the chapter discussion about machine learning fundamentals. 4. A — Target answer. This matches the chapter discussion about machine learning fundamentals. 5. A — Testing on training examples. This matches the chapter discussion about machine learning fundamentals. Chapter 3: Four Machine Learning Methods 1. A — Supervised. This matches the chapter discussion about four machine learning methods. 2. A — Unsupervised. This matches the chapter discussion about four machine learning methods. 3. A — Semi-supervised. This matches the chapter discussion about four machine learning methods. 4. A — Reinforcement. This matches the chapter discussion about four machine learning methods. 5. A — Available data and task. This matches the chapter discussion about four machine learning methods. Chapter 4: Deep Learning and Neural Networks 1. A — Multiple processing layers. This matches the chapter discussion about deep learning and neural networks. 2. A — Weights. This matches the chapter discussion about deep learning and neural networks. 3. A — Image recognition. This matches the chapter discussion about deep learning and neural networks. 4. A — No. This matches the chapter discussion about deep learning and neural networks. 5. A — No. This matches the chapter discussion about deep learning and neural networks. Chapter 5: AI Technology Landscape 1. A — Computer vision. This matches the chapter discussion about ai technology landscape. 2. A — Convert between languages. This matches the chapter discussion about ai technology landscape. 3. A — Adds digital content to a real view. This matches the chapter discussion about ai technology landscape. 4. A — No. This matches the chapter discussion about ai technology landscape. 5. A — Some independent task performance. This matches the chapter discussion about ai technology landscape. Chapter 6: AI in Business and Industry 1. A — Demand forecasting. This matches the chapter discussion about ai in business and industry. 2. A — Suspicious patterns. This matches the chapter discussion about ai in business and industry. 3. A — Estimating possible equipment problems. This matches the chapter discussion about ai in business and industry. 4. A — Models can make mistakes. This matches the chapter discussion about ai in business and industry. 5. A — Estimates. This matches the chapter discussion about ai in business and industry. Chapter 7: AI in Healthcare and Education 1. A — Medical image review. This matches the chapter discussion about ai in healthcare and education. 2. A — Heart rate. This matches the chapter discussion about ai in healthcare and education. 3. A — No. This matches the chapter discussion about ai in healthcare and education. 4. A — Feedback and practice. This matches the chapter discussion about ai in healthcare and education. 5. A — Clinical validation and oversight. This matches the chapter discussion about ai in healthcare and education. Chapter 8: Responsible AI and Data Ethics 1. A — Collect only needed data. This matches the chapter discussion about responsible ai and data ethics. 2. A — Unfair outputs. This matches the chapter discussion about responsible ai and data ethics. 3. A — Verify them. This matches the chapter discussion about responsible ai and data ethics. 4. A — People and organizations. This matches the chapter discussion about responsible ai and data ethics. 5. A — Explaining limitations. This matches the chapter discussion about responsible ai and data ethics. Chapter 9: Databases and Database Management Systems 1. A — Software managing databases. This matches the chapter discussion about databases and database management systems. 2. A — A record. This matches the chapter discussion about databases and database management systems. 3. A — An attribute. This matches the chapter discussion about databases and database management systems. 4. A — Access controls and backups. This matches the chapter discussion about databases and database management systems. 5. A — Provide organized data. This matches the chapter discussion about databases and database management systems. Chapter 10: Big Data Analytics and the Future 1. A — Volume. This matches the chapter discussion about big data analytics and the future. 2. A — Velocity. This matches the chapter discussion about big data analytics and the future. 3. A — Cleaning data. This matches the chapter discussion about big data analytics and the future. 4. A — Pattern discovery. This matches the chapter discussion about big data analytics and the future. 5. A — Responsible design. This matches the chapter discussion about big data analytics and the future.</p>"
+      },
+      {
+        "title": "Final Assessment Answer Key",
+        "html": "<h1>Final Assessment Answer Key</h1><p>14. A — Feedback and practice. See Chapter 8. 15. A — Collect only needed data. See Chapter 9. 16. A — People and organizations. See Chapter 9. 17. A — Software managing databases. See Chapter 10. 18. A — Access controls and backups. See Chapter 10. 19. A — Volume. See Chapter 11. 20. A — Pattern discovery. See Chapter 11.</p>"
+      },
+      {
+        "title": "Glossary and References",
+        "html": "<h1>Glossary and References</h1><p>AI — Computer systems performing tasks associated with human intelligence. Algorithm — A defined procedure for solving a problem. Big data — Data that can be challenging to manage due to scale, speed, or variety. Bias — A systematic tendency toward unfair or inaccurate outcomes. Computer vision — Methods that analyze and interpret images or video. Data — Recorded facts, observations, or measurements. Database — An organized collection of data. DBMS — Software for managing databases. Deep learning — Machine learning using neural networks with multiple layers. Feature — Input information used by a model. Label — Known target answer for supervised learning. Machine learning — Learning patterns from examples or experience. Model — A learned or designed representation used to make predictions or decisions. Neural network — A model with connected processing units. Reinforcement learning — Learning actions through reward feedback. Semi-supervised learning — Learning from both labeled and unlabeled examples. Supervised learning — Learning from labeled examples. Training data — Examples used to fit a model. Unsupervised learning — Finding patterns without target labels. Veracity — Reliability or trustworthiness of data.</p>\n<h3>REFERENCES</h3>\n<p>Primary source: User-provided 1stbook10.pdf, 11 pages, “Artificial Intelligence (AI)” and “Database Management for</p>\n<h3>Data Science, Big Data Analytics.”</h3>\n<p>Original PDF lists: Digital Fluency learning material, https://www.jsscacs.edu.in/sites/default/files/Department%20Files/digital%20fluency.pdf The chapter explanations, examples, quizzes, and diagrams are original educational expansions. Some broad or outdated claims in the source have been qualified for accuracy; healthcare and other high-impact uses require professional review.</p>"
+      },
+      {
+        "title": "Conclusion",
+        "html": "<h1>Conclusion</h1><p>AI and data technologies can support learning, communication, industry, and research. Their benefits depend on good data, careful evaluation, privacy protection, and responsible human decisions. Understanding these fundamentals prepares students to study more advanced digital technologies.</p>"
+      }
+    ];
+    let current = 0;
+    const toc = document.getElementById('toc');
+    const content = document.getElementById('content');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const status = document.getElementById('status');
+    const saved = {};
+    function render() {
+      toc.innerHTML = '';
+      PAGES.forEach((p, i) => {
+        const b = document.createElement('button');
+        b.textContent = p.title;
+        if (i === current) b.classList.add('active');
+        b.onclick = () => { current = i; render(); };
+        toc.appendChild(b);
+      });
+      const page = PAGES[current];
+      content.innerHTML = page.html || '';
+      if (page.quiz) {
+        const form = document.createElement('form');
+        form.innerHTML = '<h1>' + page.title + '</h1><p>Select one answer for each question. Passing score: 75%.</p>';
+        page.quiz.forEach((q, i) => {
+          const box = document.createElement('div'); box.className = 'question';
+          const title = document.createElement('strong'); title.textContent = (i + 1) + '. ' + q.q; box.appendChild(title);
+          q.options.forEach((opt, j) => {
+            const lab = document.createElement('label'); lab.className = 'option';
+            const radio = document.createElement('input'); radio.type = 'radio'; radio.name = 'q' + i; radio.value = j;
+            lab.append(radio, document.createTextNode(' ' + String.fromCharCode(65 + j) + '. ' + opt)); box.appendChild(lab);
+          }); form.appendChild(box);
+        });
+        const submit = document.createElement('button'); submit.type = 'submit'; submit.className = 'btn'; submit.textContent = 'Submit Answers'; form.appendChild(submit);
+        const result = document.createElement('div'); result.className = 'result'; result.hidden = true; form.appendChild(result);
+        form.onsubmit = e => {
+          e.preventDefault(); let score = 0; let review = '';
+          page.quiz.forEach((q, i) => {
+            const selected = form.querySelector('input[name="q' + i + '"]:checked');
+            const val = selected ? Number(selected.value) : -1; if (val === q.answer) score++;
+            review += '<div class="review"><p class="' + (val === q.answer ? 'correct' : 'wrong') + '">Question ' + (i + 1) + ': ' + (val === q.answer ? 'Correct' : 'Incorrect') + '</p><p>Correct answer: ' + String.fromCharCode(65 + q.answer) + '. ' + q.options[q.answer] + '</p></div>';
+          });
+          const pct = Math.round(score / page.quiz.length * 100);
+          result.innerHTML = '<h3>Score: ' + score + '/' + page.quiz.length + ' (' + pct + '%) — ' + (pct >= 75 ? 'Passed' : 'Try Again') + '</h3>' + review;
+          result.hidden = false; result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+        const retry = document.createElement('button'); retry.type = 'button'; retry.className = 'btn'; retry.textContent = 'Retake Quiz'; retry.style.marginLeft = '10px';
+        retry.onclick = () => { form.reset(); result.hidden = true; form.scrollIntoView({ behavior: 'smooth' }); }; form.appendChild(retry);
+        content.appendChild(form);
+      }
+      prev.disabled = current === 0; next.disabled = current === PAGES.length - 1;
+      status.textContent = 'Section ' + (current + 1) + ' of ' + PAGES.length;
+      window.scrollTo(0, 0);
+    }
+    prev.onclick = () => { if (current > 0) { current--; render(); } };
+    next.onclick = () => { if (current < PAGES.length - 1) { current++; render(); } };
+    render();
+    
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+  </script>
+</body>
+
+</html>

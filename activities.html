@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Activities & Quizzes | BYTEBLOOM</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/activities.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">🌸 BYTEBLOOM</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="library.html">Library</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+  <main>
+    <p class="eyebrow">PRACTICE AND LEARN</p>
+    <h1>Activities & Quizzes</h1>
+    <p class="intro">Choose your year level and book to access its quizzes. Lessons stay in the Library.</p>
+    <div class="selector">
+      <label for="year">Year Level</label>
+      <select id="year">
+        <option value="">Select year level</option>
+        <option value="1">1st Year BSIT</option>
+        <option value="2">2nd Year BSIT</option>
+        <option value="3">3rd Year BSIT</option>
+      </select>
+      <label for="book">Book</label>
+      <select id="book" disabled><option value="">Select a year level first</option></select>
+    </div>
+    <section id="quizArea" class="quiz-area" aria-live="polite">
+      <h2>Choose a book to begin</h2>
+      <p>Select a year level and book to view available quizzes.</p>
+    </section>
+  </main>
+  <footer>BSIT E-Library · Educational Project</footer>
+  <script src="js/activities.js"></script>
+</body>
+</html>

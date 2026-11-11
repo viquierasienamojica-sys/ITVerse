@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Year Book 05 | Number Systems and Data Representation</title>
+  <style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4eee4;color:#342c24}
+header{background:#493526;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+header a{color:white;text-decoration:none}
+header h2{margin:0;font-size:19px;color:white}
+.layout{display:flex;min-height:calc(100vh - 65px)}
+aside{width:295px;flex-shrink:0;background:#e8dcc9;padding:22px 15px;border-right:1px solid #cfbea7;max-height:calc(100vh - 65px);overflow-y:auto;position:sticky;top:0}
+aside h3{margin:0 0 16px}
+#toc button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover{background:#795a3e;color:white}
+main{flex:1;min-width:0;padding:28px}
+.reader{background:#fffaf2;max-width:960px;margin:auto;padding:32px;border:1px solid #dfd1bd;border-radius:12px;box-shadow:0 3px 15px #3b27120d}
+h1,h2,h3{line-height:1.35}
+h1{font-size:28px}
+h2{font-size:23px;color:#6b4c30}
+h3{font-size:19px;color:#6b4c30}
+p,li{line-height:1.75}
+figure{margin:25px auto;text-align:center}
+figure img{display:block;width:100%;max-width:750px;max-height:650px;height:auto;object-fit:contain;margin:auto;border-radius:8px}
+figcaption{font-size:12px;color:#867563;margin-top:7px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px}
+.btn{border:0;background:#6d5038;color:white;padding:12px 19px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.status{text-align:center;color:#756655;font-size:13px}
+.question{background:#f6eee1;border:1px solid #e5d7c4;padding:18px;margin:17px 0;border-radius:9px}
+.question strong{display:block;margin-bottom:12px}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}
+.option:hover{background:#ede1d0}
+.result{margin-top:18px;padding:17px;border-radius:8px;background:#eee3d1}
+.review{border-top:1px solid #d5c5ae;margin-top:12px;padding-top:10px}
+.correct{color:#267347}
+.wrong{color:#a32d2d}
+@media(max-width:850px){.layout{display:block}
+aside{width:auto;max-height:260px;position:static;border-right:0}
+main{padding:12px}
+.reader{padding:20px}
+header{flex-wrap:wrap}
+}
+  .table-wrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #d9cbb8;padding:10px;text-align:left}th{background:#e8dcc9}.example{padding:12px 15px;background:#f3e8d7;border-left:4px solid #795a3e;overflow-wrap:anywhere;font-weight:bold}
+  
+/* Shared First Year Reader Theme — based on Book 05 */
+html{scroll-behavior:smooth}
+body{margin:0!important;font-family:Arial,sans-serif!important;background:#f4eee4!important;color:#342c24!important;line-height:1.6}
+header{background:#493526!important;color:#fff!important;padding:16px 24px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;border:0!important;min-height:58px}
+header a{color:white!important;text-decoration:none!important}
+header h2{margin:0!important;font-size:19px!important;color:white!important}
+.layout{display:flex!important;min-height:calc(100vh - 65px)!important;align-items:stretch!important}
+aside,.sidebar{width:295px!important;flex:0 0 295px!important;background:#e8dcc9!important;padding:22px 15px!important;border-right:1px solid #cfbea7!important;max-height:calc(100vh - 65px)!important;overflow-y:auto!important;position:sticky!important;top:0!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{margin:0 0 16px!important;font-size:19px!important;color:#6b4c30!important}
+#toc button,#chapterList button,#chapterList [role=button],.sidebar button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:#795a3e!important;color:white!important}
+main,.main{flex:1!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:28px!important;background:transparent!important}
+.reader{background:#fffaf2!important;max-width:960px!important;margin:auto!important;padding:32px!important;border:1px solid #dfd1bd!important;border-radius:12px!important;box-shadow:0 3px 15px #3b27120d!important;min-height:540px}
+.reader h1{font-size:28px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h2{font-size:23px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h3{font-size:19px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader p,.reader li{line-height:1.75!important}
+.reader figure{margin:25px auto!important;text-align:center!important;background:transparent!important;border:0!important;padding:0!important}
+.reader figure img{display:block!important;width:100%!important;max-width:750px!important;max-height:650px!important;height:auto!important;object-fit:contain!important;margin:auto!important;border-radius:8px!important}
+.reader figcaption{font-size:12px!important;color:#867563!important;margin-top:7px!important}
+.nav,.navigation,.controls{display:flex!important;justify-content:space-between!important;gap:12px!important;margin-top:32px!important}
+.btn,button.nav,.submit,.retake{border:0!important;background:#6d5038!important;color:white!important;padding:12px 19px!important;border-radius:8px!important;cursor:pointer!important;font-size:14px!important}
+.btn:disabled,button.nav:disabled{opacity:.4!important;cursor:not-allowed!important}
+.status{text-align:center!important;color:#756655!important;font-size:13px!important}
+.question{background:#f6eee1!important;border:1px solid #e5d7c4!important;padding:18px!important;margin:17px 0!important;border-radius:9px!important}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}.option:hover{background:#ede1d0!important}
+.result{margin-top:18px!important;padding:17px!important;border-radius:8px!important;background:#eee3d1!important}
+.reader table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.reader th,.reader td{border:1px solid #d9cbb8;padding:10px;text-align:left}.reader th{background:#e8dcc9}
+@media(max-width:850px){.layout{display:block!important}aside,.sidebar{width:100%!important;max-height:260px!important;position:static!important;border-right:0!important;flex:auto!important}main,.main{padding:12px!important}.reader{padding:20px!important}header{flex-wrap:wrap!important}}
+
+
+/* BYTEBLOOM Pastel Pink Reader Theme */
+:root{--bb-p1:#FDE4F2;--bb-p2:#F9CEE7;--bb-p3:#F4B8DA;--bb-p4:#EEA1CD;--bb-p5:#E68BBE;--bb-ink:#612C4D;--bb-muted:#795B70}
+body{background:var(--bb-p1)!important;color:var(--bb-ink)!important}
+header{background:var(--bb-p5)!important;color:#52223F!important;border-bottom:1px solid var(--bb-p4)!important}
+header a,header h2,header span{color:#52223F!important}
+aside,.sidebar{background:var(--bb-p2)!important;border-color:var(--bb-p3)!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{color:var(--bb-ink)!important}
+#toc button,#chapterList button,.sidebar button{color:var(--bb-ink)!important}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:var(--bb-p5)!important;color:#52223F!important}
+main,.main{background:transparent!important}
+.reader{background:#FFF8FC!important;border:1px solid var(--bb-p3)!important;box-shadow:0 8px 22px rgba(157,57,112,.08)!important}
+.reader h1,.reader h2,.reader h3,main h1,main h2,main h3{color:var(--bb-ink)!important}
+.reader p,.reader li,main p,main li{color:#57394D}
+.btn,button.nav,.navigation button,.controls button{background:var(--bb-p5)!important;color:#52223F!important;border:0!important}
+.btn:hover,button.nav:hover,.navigation button:hover,.controls button:hover{background:var(--bb-p4)!important}
+.btn:disabled,button.nav:disabled,.navigation button:disabled,.controls button:disabled{opacity:.45!important;cursor:not-allowed!important}
+.status,figcaption,.reader figcaption{color:var(--bb-muted)!important}
+.reader table th,main table th{background:var(--bb-p2)!important}
+.reader table td,.reader table th,main table td,main table th{border-color:var(--bb-p3)!important}
+.reader blockquote,main blockquote,.example{border-left-color:var(--bb-p5)!important;background:#FFF0F8!important}
+.reader figure img,main figure img{max-width:750px;height:auto;object-fit:contain}
+
+
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+    <span>1st Year · Book 05</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside><h3>Table of Contents</h3><div id="toc"></div></aside>
+    <main>
+      <article class="reader">
+        <div id="content"></div>
+        <div class="nav">
+          <button class="btn" id="prev">← Previous</button>
+          <button class="btn" id="next">Next →</button>
+        </div>
+        <p class="status" id="status"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+const LESSON_PAGES = [
+  {
+    "title": "Book Introduction",
+    "html": "<h1>NUMBER SYSTEMS AND DATA REPRESENTATION</h1><p><strong>First Year – Book 05 · Introduction to Computing</strong></p><p>A Beginner-Friendly Guide with Worked Conversions, Practice Activities, Chapter Quizzes, and Final Assessment.</p><h2>Book Introduction</h2><p>Digital computers store and process information using binary patterns. This book explains how numbers and symbols are represented and how to convert values between the binary, decimal, octal, and hexadecimal number systems.</p><h2>General Learning Objectives</h2><ul><li>Describe binary information, registers, data, and control information.</li><li>Identify the base and valid digits of four common number systems.</li><li>Use positional weights to interpret numbers.</li><li>Convert binary numbers to decimal, octal, and hexadecimal.</li><li>Convert decimal numbers to binary, octal, and hexadecimal.</li><li>Check conversion results and explain their use in computing.</li></ul>"
+  },
+  {
+    "title": "Chapter 1: Data Representation in Digital Computers",
+    "html": "<h1>Chapter 1: Data Representation in Digital Computers</h1><h3>Learning Objectives</h3>\n<p>Explain registers, binary-coded data, control information, and why computers use binary.</p>\n<h3>1.1 Data and control information</h3>\n<p>The source lesson explains that binary information is stored in memory or processor registers. A register is a small storage location in a processor. Registers can hold data (such as numbers or encoded characters) or control information (bits used to direct operations).</p>\n<h3>1.2 Why binary?</h3>\n<p>Digital storage circuits commonly distinguish two stable states. We represent these as 0 and 1, called bits. A group of eight bits is called a byte. Patterns of bits can represent numbers, letters, and other symbols.</p>\n<h3>1.3 Categories of data</h3>\n<p>The original lesson groups register data into numbers used in arithmetic, alphabetic letters used in data processing, and other discrete symbols. Letters and symbols require an encoding convention; for example, ASCII and Unicode define ways to represent text digitally. This encoding detail is additional explanatory context.</p>\n<h3>1.4 A simple example</h3>\n<p class=\"example\">Binary pattern: 01000001</p>\n<p>Under ASCII, the eight-bit pattern 01000001 represents the uppercase letter A. The same bits could be interpreted differently under another data format. Context matters.</p>"
+  },
+  {
+    "title": "Chapter 2: Introduction to Number Systems",
+    "html": "<h1>Chapter 2: Introduction to Number Systems</h1><h3>Learning Objectives</h3>\n<p>Identify bases, digits, and positional values of the four common number systems.</p>\n<h3>2.1 Base or radix</h3>\n<p>A number system has a base, also called its radix. In a positional number system, each digit is multiplied by a power of the base. The rightmost position has weight base to the power 0.</p>\n<div class=\"table-wrap\"><table><tr><th>System</th><th>Base</th><th>Valid digits</th><th>Example</th></tr><tr><td>Binary</td><td>2</td><td>0, 1</td><td>1011 (base 2)</td></tr><tr><td>Decimal</td><td>10</td><td>0–9</td><td>27 (base 10)</td></tr><tr><td>Octal</td><td>8</td><td>0–7</td><td>35 (base 8)</td></tr><tr><td>Hexadecimal</td><td>16</td><td>0–9, A–F</td><td>2F (base 16)</td></tr></table></div>\n<h3>2.2 Positional weights</h3>\n<p class=\"example\">Binary 1011 = 1×8 + 0×4 + 1×2 + 1×1 = 11</p>\n<p class=\"example\">Decimal 253 = 2×100 + 5×10 + 3×1 = 253</p>\n<p class=\"example\">Octal 17 = 1×8 + 7×1 = 15 in decimal</p>\n<p class=\"example\">Hex 2F = 2×16 + 15×1 = 47 in decimal</p>\n<h3>2.3 Hexadecimal letters</h3>\n<p>Hexadecimal uses A=10, B=11, C=12, D=13, E=14, and F=15. Octal and hexadecimal are useful shorthand for long binary strings.</p>"
+  },
+  {
+    "title": "Chapter 3: Binary and Decimal Conversion",
+    "html": "<h1>Chapter 3: Binary and Decimal Conversion</h1><h3>Learning Objectives</h3>\n<p>Convert binary values into decimal using powers of two and verify results.</p>\n<h3>3.1 Positional-weight method</h3>\n<p>Write the powers of two from right to left, multiply each bit by its corresponding weight, and add the results.</p>\n<p class=\"example\">1101 (base 2) = 1×8 + 1×4 + 0×2 + 1×1 = 13 (base 10)</p>\n<p class=\"example\">1100110101 (base 2) = 512 + 256 + 32 + 16 + 4 + 1 = 821 (base 10)</p>\n<h3>3.2 Quick table</h3>\n<div class=\"table-wrap\"><table><tr><th>Binary position</th><th>9</th><th>8</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr><tr><td>Power of 2</td><td>512</td><td>256</td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr><tr><td>Bit</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr></table></div>\n<h3>3.3 Check your work</h3>\n<p>Only add the weights where the bit is 1. For example, 10101 in binary equals 16 + 4 + 1 = 21 in decimal.</p>"
+  },
+  {
+    "title": "Chapter 4: Binary and Octal Conversion",
+    "html": "<h1>Chapter 4: Binary and Octal Conversion</h1><h3>Learning Objectives</h3>\n<p>Convert binary to octal by grouping bits into sets of three.</p>\n<h3>4.1 Three-bit groups</h3>\n<p>Starting at the right, divide the binary digits into groups of three. Add leading zeros to the leftmost group if needed. Convert each group to an octal digit.</p>\n<div class=\"table-wrap\"><table><tr><th>Binary</th><th>000</th><th>001</th><th>010</th><th>011</th><th>100</th><th>101</th><th>110</th><th>111</th></tr><tr><td>Octal</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr></table></div>\n<h3>4.2 Worked examples</h3>\n<p class=\"example\">100110110001010 → 100 | 110 | 110 | 001 | 010 → 46612 (base 8)</p>\n<p class=\"example\">01110001 → 001 | 110 | 001 → 161 (base 8)</p>\n<p>The second example pads the leftmost group with a zero: 01 becomes 001. Leading zeros do not change the value.</p>\n<h3>4.3 Reverse conversion</h3>\n<p class=\"example\">Octal 57 → 5 = 101, 7 = 111 → binary 101111</p>"
+  },
+  {
+    "title": "Chapter 5: Binary and Hexadecimal Conversion",
+    "html": "<h1>Chapter 5: Binary and Hexadecimal Conversion</h1><h3>Learning Objectives</h3>\n<p>Convert binary to hexadecimal using four-bit groups and interpret hexadecimal letters.</p>\n<h3>5.1 Four-bit groups</h3>\n<p>Starting at the right, group binary digits in sets of four. Add leading zeros if necessary. Replace each group with its hexadecimal digit.</p>\n<div class=\"table-wrap\"><table><tr><th>Binary</th><th>Hex</th></tr><tr><td>0000</td><td>0</td></tr><tr><td>0001</td><td>1</td></tr><tr><td>0010</td><td>2</td></tr><tr><td>0011</td><td>3</td></tr><tr><td>0100</td><td>4</td></tr><tr><td>0101</td><td>5</td></tr><tr><td>0110</td><td>6</td></tr><tr><td>0111</td><td>7</td></tr><tr><td>1000</td><td>8</td></tr><tr><td>1001</td><td>9</td></tr><tr><td>1010</td><td>A</td></tr><tr><td>1011</td><td>B</td></tr><tr><td>1100</td><td>C</td></tr><tr><td>1101</td><td>D</td></tr><tr><td>1110</td><td>E</td></tr><tr><td>1111</td><td>F</td></tr></table></div>\n<h3>5.2 Worked examples</h3>\n<p class=\"example\">10101111 → 1010 | 1111 → AF (base 16)</p>\n<p class=\"example\">11010100 → 1101 | 0100 → D4 (base 16)</p>\n<p class=\"example\">10111010100 → 0101 | 1101 | 0100 → 5D4 (base 16)</p>\n<h3>5.3 Common use</h3>\n<p>Hexadecimal is a compact way to write binary data. For example, one byte (8 bits) can be written as two hexadecimal digits.</p>"
+  },
+  {
+    "title": "Chapter 6: Decimal to Binary, Octal, and Hexadecimal",
+    "html": "<h1>Chapter 6: Decimal to Binary, Octal, and Hexadecimal</h1><h3>Learning Objectives</h3>\n<p>Use repeated division to convert decimal numbers and convert the result to octal or hexadecimal.</p>\n<h3>6.1 Repeated division by two</h3>\n<p>Divide the decimal number by 2 repeatedly. Record each remainder. Read the remainders from bottom to top to obtain the binary representation.</p>\n<div class=\"table-wrap\"><table><tr><th>Division</th><th>Quotient</th><th>Remainder</th></tr><tr><td>1492 ÷ 2</td><td>746</td><td>0</td></tr><tr><td>746 ÷ 2</td><td>373</td><td>0</td></tr><tr><td>373 ÷ 2</td><td>186</td><td>1</td></tr><tr><td>186 ÷ 2</td><td>93</td><td>0</td></tr><tr><td>93 ÷ 2</td><td>46</td><td>1</td></tr><tr><td>46 ÷ 2</td><td>23</td><td>0</td></tr><tr><td>23 ÷ 2</td><td>11</td><td>1</td></tr><tr><td>11 ÷ 2</td><td>5</td><td>1</td></tr><tr><td>5 ÷ 2</td><td>2</td><td>1</td></tr><tr><td>2 ÷ 2</td><td>1</td><td>0</td></tr><tr><td>1 ÷ 2</td><td>0</td><td>1</td></tr></table></div>\n<p class=\"example\">1492 (base 10) = 10111010100 (base 2)</p>\n<h3>6.2 Convert decimal to octal</h3>\n<p>The source lesson converts decimal to binary first, then groups the bits into threes. This is a valid method.</p>\n<p class=\"example\">1492 (base 10) → 10111010100 (base 2)</p>\n<p class=\"example\">010 | 111 | 010 | 100 → 2724 (base 8)</p>\n<h3>6.3 Convert decimal to hexadecimal</h3>\n<p>Group the same binary value into sets of four from the right.</p>\n<p class=\"example\">1492 (base 10) → 10111010100 (base 2)</p>\n<p class=\"example\">0101 | 1101 | 0100 → 5D4 (base 16)</p>\n<h3>6.4 Verify the conversion</h3>\n<p class=\"example\">Octal 2724 = 2×512 + 7×64 + 2×8 + 4 = 1492</p>\n<p class=\"example\">Hex 5D4 = 5×256 + 13×16 + 4 = 1492</p>"
+  },
+  {
+    "title": "Chapter 7: Conversion Practice and Applications",
+    "html": "<h1>Chapter 7: Conversion Practice and Applications</h1><h3>Learning Objectives</h3>\n<p>Choose efficient conversion methods and verify answers across bases.</p>\n<h3>7.1 Choosing a method</h3>\n<p>Use powers of two for binary-to-decimal conversion. Use three-bit grouping for binary-to-octal conversion and four-bit grouping for binary-to-hexadecimal conversion. For decimal-to-binary conversion, use repeated division by 2. These procedures cover the conversion methods in the original source.</p>\n<h3>7.2 Worked multi-base example</h3>\n<p class=\"example\">Binary 11110000 = decimal 240</p>\n<p class=\"example\">Binary 11110000 → 011 | 110 | 000 = octal 360</p>\n<p class=\"example\">Binary 11110000 → 1111 | 0000 = hexadecimal F0</p>\n<p class=\"example\">Check: 3×64 + 6×8 = 240; F0 = 15×16 = 240.</p>\n<h3>7.3 Frequent mistakes</h3>\n<p>Common mistakes include grouping from the wrong side, forgetting leading zero padding, using invalid digits for a base, reading division remainders in the wrong direction, and confusing hexadecimal letters with decimal digits.</p>\n<h3>7.4 Why this matters</h3>\n<p>Binary is fundamental to digital computing. Octal and hexadecimal shorten binary representations, making them easier to read in programming and technical documentation.</p>"
+  },
+  {
+    "title": "Practical Learning Activities",
+    "html": "<h1>Practical Learning Activities</h1><h3>Activity 1: Identify the Base</h3><p>Write the base and allowed digits for binary, decimal, octal, and hexadecimal.</p><h3>Activity 2: Positional Values</h3><p>Show the powers of two for binary 101101 and convert it to decimal.</p><h3>Activity 3: Three-Bit Grouping</h3><p>Convert binary 101111001 to octal, showing each three-bit group.</p><h3>Activity 4: Four-Bit Grouping</h3><p>Convert binary 110111101010 to hexadecimal, showing each four-bit group.</p><h3>Activity 5: Repeated Division</h3><p>Convert decimal 93 to binary using repeated division by 2.</p><h3>Activity 6: Cross-Check</h3><p>Convert decimal 255 into binary, octal, and hexadecimal. Verify each answer.</p><h3>Activity 7: Short Reflection</h3><p>In five sentences, explain why programmers use binary and hexadecimal.</p>"
+  },
+  {
+    "title": "Glossary",
+    "html": "<h1>Glossary</h1><p><strong>Chapter 1:</strong>  Data Representation in Digital Computers</p><p><strong>Binary pattern:</strong>  01000001</p><p><strong>Directions:</strong>  Choose the best answer.</p><p><strong>Chapter 2:</strong>  Introduction to Number Systems</p><p><strong>Directions:</strong>  Choose the best answer.</p><p><strong>Chapter 3:</strong>  Binary and Decimal Conversion</p><p><strong>Directions:</strong>  Choose the best answer.</p><p><strong>Chapter 4:</strong>  Binary and Octal Conversion</p><p><strong>The second example pads the leftmost group with a zero:</strong>  01 becomes 001. Leading zeros do not</p><p><strong>Directions:</strong>  Choose the best answer.</p><p><strong>Chapter 5:</strong>  Binary and Hexadecimal Conversion</p><p><strong>Directions:</strong>  Choose the best answer.</p><p><strong>Chapter 6:</strong>  Decimal to Binary, Octal, and Hexadecimal</p><p><strong>Directions:</strong>  Choose the best answer.</p><p><strong>Chapter 7:</strong>  Conversion Practice and Applications</p><p><strong>Check:</strong>  3×64 + 6×8 = 240; F0 = 15×16 = 240.</p><p><strong>Directions:</strong>  Choose the best answer.</p><p><strong>Activity 1:</strong>  Identify the Base</p><p><strong>Activity 2:</strong>  Positional Values</p><p><strong>Activity 3:</strong>  Three-Bit Grouping</p><p><strong>Activity 4:</strong>  Four-Bit Grouping</p><p><strong>Activity 5:</strong>  Repeated Division</p><p><strong>Activity 6:</strong>  Cross-Check</p><p><strong>Activity 7:</strong>  Short Reflection</p><p><strong>Final Assessment:</strong>  20 Multiple-Choice Questions</p><p><strong>Answer Key and Explanations:</strong>  Chapter Quizzes</p><p><strong>Answer Key and Explanations:</strong>  Final Assessment</p><p><strong>Base (radix):</strong>  The number of distinct digit values in a positional number system.</p><p><strong>Binary:</strong>  Base-2 number system using 0 and 1.</p><p><strong>Bit:</strong>  A binary digit.</p><p><strong>Byte:</strong>  A group of eight bits.</p><p><strong>Control information:</strong>  Bits used to specify or direct operations.</p><p><strong>Data:</strong>  Information represented and processed by a computer.</p><p><strong>Decimal:</strong>  Base-10 number system using digits 0 through 9.</p><p><strong>Hexadecimal:</strong>  Base-16 number system using 0–9 and A–F.</p><p><strong>Octal:</strong>  Base-8 number system using 0 through 7.</p><p><strong>Positional notation:</strong>  A representation in which a digit’s value depends on its position.</p><p><strong>Register:</strong>  A small, fast storage location in a processor.</p><p><strong>Remainder:</strong>  The amount left after integer division.</p><p><strong>Weight:</strong>  The value of a digit position, determined by a power of the base.</p>"
+  },
+  {
+    "title": "References and Conclusion",
+    "html": "<h1>References and Conclusion</h1><h2>Editorial Note on the Original Lesson</h2><p>The supplied five-page lesson contains the core topics and examples used here. Some original conversion lines have spacing, subscript, or grouping problems in the extracted text. This edition restates those examples using explicit bases and verifies the results.</p><h2>References</h2><p>Primary source: User-provided PDF, “Number Systems and Data Representation,” 5 pages (1stbook5.pdf).</p><p>Source link printed in the original lesson: <a href=\"https://www.scribd.com/document/489551482/LESSON-2-NUMBER-SYSTEMS-AND-DATA-REPRESENTATION\">Scribd – Number Systems and Data Representation</a>.</p><h2>Conclusion</h2><p>Number systems make it possible to represent and understand digital information. Binary is the foundation of digital computing, decimal is familiar in everyday arithmetic, and octal and hexadecimal provide shorter ways to express binary values. By practicing positional weights, bit grouping, and repeated division, students can convert numbers accurately and check their work.</p>"
+  }
+];
+
+const toc = document.getElementById('toc');
+const content = document.getElementById('content');
+const prev = document.getElementById('prev') || document.getElementById('previous');
+const next = document.getElementById('next');
+const status = document.getElementById('status');
+const heading = document.getElementById('heading');
+let current = 0;
+function render() {
+  const page = LESSON_PAGES[current];
+  content.innerHTML = page.html;
+  if (heading) heading.textContent = page.title;
+  toc.replaceChildren();
+  LESSON_PAGES.forEach((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = item.title;
+    if (i === current) b.classList.add('active');
+    b.addEventListener('click', () => go(i));
+    toc.appendChild(b);
+  });
+  prev.disabled = current === 0;
+  next.disabled = current === LESSON_PAGES.length - 1;
+  if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+}
+function go(i) {
+  if (i < 0 || i >= LESSON_PAGES.length) return;
+  current = i;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.addEventListener('click', () => go(current-1));
+next.addEventListener('click', () => go(current+1));
+render();
+
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+/* Resources page only: keeps the BYTEBLOOM pastel theme and original cards */
+.resources-section { margin-top: 0; padding-top: 55px; }
+.resources-heading { margin-bottom: 32px; }
+.resources-heading h2 { font-family: Outfit, Arial, sans-serif; }
+@media (max-width: 700px) { .resources-section { padding-top: 30px; } }

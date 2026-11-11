@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <title>3rd Year Book 04 | BYTEBLOOM</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fde4f2;
+      color: #612c4d
+    }
+
+    .header {
+      height: 62px;
+      background: #f9cee7;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid #e8a9cc;
+      gap: 12px
+    }
+
+    .header a {
+      color: #612c4d;
+      text-decoration: none
+    }
+
+    .header strong {
+      font-size: 19px
+    }
+
+    .header .right {
+      display: flex;
+      align-items: center;
+      gap: 14px
+    }
+
+    .theme {
+      background: #fff7fc;
+      border: 1px solid #a85b88;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      color: #612c4d
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 62px)
+    }
+
+    aside {
+      width: 245px;
+      flex: none;
+      background: #f4b8da;
+      padding: 18px 12px
+    }
+
+    aside h3 {
+      margin: 0 4px 16px
+    }
+
+    .toc-item {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      color: #612c4d;
+      padding: 12px 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-bottom: 4px;
+      font-size: 12px;
+      line-height: 1.4
+    }
+
+    .toc-item small {
+      display: block;
+      opacity: .7;
+      margin-top: 4px
+    }
+
+    .toc-item.active,
+    .toc-item:hover {
+      background: #e68bbe
+    }
+
+    .main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px 24px 25px
+    }
+
+    .reader {
+      width: min(100%, 820px);
+      min-height: 660px;
+      background: #fffafd;
+      padding: 48px 58px;
+      box-shadow: 0 4px 20px #87446c26;
+      border: 1px solid #edc5dc;
+      color: #463341
+    }
+
+    .page {
+      display: none
+    }
+
+    .page.active {
+      display: block
+    }
+
+    .page h1 {
+      color: #85335f;
+      font-size: 27px;
+      line-height: 1.35;
+      margin: 0 0 24px
+    }
+
+    .page h2 {
+      color: #9d3972;
+      font-size: 20px;
+      margin: 22px 0 12px
+    }
+
+    .page p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 0 0 15px;
+      overflow-wrap: anywhere
+    }
+
+    .page .bullet {
+      padding-left: 18px
+    }
+
+    .page .figcap {
+      font-size: 13px;
+      color: #805b73;
+      text-align: center
+    }
+
+    .page figure {
+      margin: 20px auto;
+      text-align: center
+    }
+
+    .page figure img {
+      width: 100%;
+      max-width: 590px;
+      height: auto;
+      border-radius: 8px
+    }
+
+    .cover-title {
+      text-align: center;
+      margin-top: 80px !important;
+      font-size: 32px !important
+    }
+
+    .toc-line {
+      padding: 5px 0;
+      border-bottom: 1px solid #f5d9e9
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 18px
+    }
+
+    .controls button {
+      background: #eea1cd;
+      color: #612c4d;
+      border: 1px solid #db8aba;
+      padding: 10px 24px;
+      border-radius: 7px;
+      cursor: pointer
+    }
+
+    .controls button:disabled {
+      opacity: .4;
+      cursor: default
+    }
+
+    .reader.dark-mode {
+      background: #25202b;
+      color: #f6e8f0;
+      border-color: #504050
+    }
+
+    .reader.dark-mode h1,
+    .reader.dark-mode h2 {
+      color: #ffc3e2
+    }
+
+    .reader.dark-mode .figcap {
+      color: #e7b7d2
+    }
+
+    @media(max-width:760px) {
+      .layout {
+        display: block
+      }
+
+      aside {
+        width: 100%;
+        max-height: 180px;
+        overflow: auto
+      }
+
+      .header {
+        padding: 10px;
+        font-size: 12px
+      }
+
+      .header strong {
+        font-size: 15px
+      }
+
+      .main {
+        padding: 12px
+      }
+
+      .reader {
+        padding: 28px 20px;
+        min-height: 520px
+      }
+
+      .controls {
+        gap: 9px
+      }
+
+      .controls button {
+        padding: 10px
+      }
+    }
+
+    .reader pre {
+      white-space: pre;
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 17px;
+      background: #fff0f8;
+      border: 1px solid #edc5dc;
+      border-radius: 8px;
+      color: #4f2841;
+      line-height: 1.55;
+      font-size: 13px
+    }
+
+    .reader.dark-mode pre {
+      background: #17131b;
+      color: #f7d6ea;
+      border-color: #554056
+    }
+
+    .reader.dark-mode p {
+      color: #f6e8f0
+    }
+
+    .reader .page h2 {
+      margin-top: 18px
+    }
+
+    .reader .page h1 {
+      overflow-wrap: anywhere
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header"><a href="library.html">← Back to Library</a><strong>BYTEBLOOM</strong>
+    <div class="right"><span>3rd Year · Book 04</span><button class="theme" id="themeToggle">☾ Dark Mode</button></div>
+  </header>
+  <div class="layout">
+    <aside>
+      <h3>Table of Contents</h3><button class="toc-item" data-go="0">Cover</button><button class="toc-item"
+        data-go="1">Table of Contents</button><button class="toc-item" data-go="3">Chapter 1 – Foundations of Responsive
+        Web Design</button><button class="toc-item" data-go="8">Chapter 2 – Fluid Layouts and CSS Sizing</button><button
+        class="toc-item" data-go="13">Chapter 3 – Media Queries and Breakpoints</button><button class="toc-item"
+        data-go="18">Chapter 4 – Flexbox and Grid for Responsive Pages</button><button class="toc-item"
+        data-go="23">Chapter 5 – Responsive Images, Media, and Typography</button><button class="toc-item"
+        data-go="28">Chapter 6 – Navigation, Forms, and Responsive Components</button><button class="toc-item"
+        data-go="33">Chapter 7 – Performance, Testing, and Complete Example</button>
+    </aside>
+    <main class="main">
+      <article class="reader" id="reader">
+        <section class="page" data-page="0">
+          <h1 class="cover-title">RESPONSIVE WEB DESIGN FUNDAMENTALS</h1>
+          <p>A practical guide to flexible layouts, media queries, modern CSS, accessible components, and responsive
+            testing.</p>
+          <p>BSIT E-Library | Educational Edition</p>
+          <p>7 Chapters • 35 Lessons • 38 Pages</p>
+        </section>
+        <section class="page" data-page="1">
+          <h1>Table of Contents</h1>
+          <p class="toc-line">Table of Contents</p>
+          <p class="toc-line">Chapter 1: Foundations of Responsive Web Design</p>
+          <p class="toc-line">1.1 What responsive design solves</p>
+          <p class="toc-line">1.2 Viewport and device-independent pixels</p>
+          <p class="toc-line">1.3 Content-first planning</p>
+          <p class="toc-line">1.4 Fixed, fluid, and adaptive layouts</p>
+          <p class="toc-line">1.5 Progressive enhancement and accessibility</p>
+          <p class="toc-line">Chapter 2: Fluid Layouts and CSS Sizing</p>
+          <p class="toc-line">2.1 The CSS box model</p>
+          <p class="toc-line">2.2 Relative and absolute units</p>
+          <p class="toc-line">2.3 Fluid containers and readable measure</p>
+          <p class="toc-line">2.4 Intrinsic sizing and overflow</p>
+          <p class="toc-line">2.5 Modern CSS functions</p>
+          <p class="toc-line">Chapter 3: Media Queries and Breakpoints</p>
+          <p class="toc-line">3.1 Media query fundamentals</p>
+          <p class="toc-line">3.2 Content-driven breakpoints</p>
+          <p class="toc-line">3.3 Combining conditions</p>
+          <p class="toc-line">3.4 Container queries</p>
+          <p class="toc-line">3.5 Testing breakpoints</p>
+          <p class="toc-line">Chapter 4: Flexbox and Grid for Responsive Pages</p>
+          <p class="toc-line">4.1 Flexbox fundamentals</p>
+          <p class="toc-line">4.2 Flex grow, shrink, and basis</p>
+          <p class="toc-line">4.3 Grid fundamentals</p>
+          <p class="toc-line">4.4 Auto-fit and minmax</p>
+          <p class="toc-line">4.5 Choosing Flexbox or Grid</p>
+          <p class="toc-line">Chapter 5: Responsive Images, Media, and Typography</p>
+          <p class="toc-line">5.1 Flexible images</p>
+        </section>
+        <section class="page" data-page="2">
+          <p class="toc-line">5.2 Responsive image sources</p>
+          <p class="toc-line">5.3 Background images</p>
+          <p class="toc-line">5.4 Fluid typography</p>
+          <p class="toc-line">5.5 Responsive video and embeds</p>
+          <p class="toc-line">Chapter 6: Navigation, Forms, and Responsive Components</p>
+          <p class="toc-line">6.1 Responsive navigation patterns</p>
+          <p class="toc-line">6.2 Touch targets and interaction</p>
+          <p class="toc-line">6.3 Responsive forms</p>
+          <p class="toc-line">6.4 Responsive tables and code</p>
+          <p class="toc-line">6.5 Responsive cards and page sections</p>
+          <p class="toc-line">Chapter 7: Performance, Testing, and Complete Example</p>
+          <p class="toc-line">7.1 Mobile performance</p>
+          <p class="toc-line">7.2 Responsive debugging workflow</p>
+          <p class="toc-line">7.3 Accessibility and user preferences</p>
+          <p class="toc-line">7.4 Complete responsive page structure</p>
+          <p class="toc-line">7.5 Maintenance and future-proofing</p>
+        </section>
+        <section class="page" data-page="3">
+          <h1>CHAPTER 1</h1>
+          <p>Foundations of Responsive Web Design</p>
+          <p>Chapter focus: what responsive design solves, viewport and device-independent pixels,</p>
+          <p>content-first planning, fixed, fluid, and adaptive layouts, progressive enhancement and</p>
+          <p>accessibility.</p>
+          <h2>1.1 What responsive design solves</h2>
+          <h2>Core concept</h2>
+          <p>A responsive website changes its layout and presentation according to available space rather</p>
+          <p>than assuming that every visitor has the same screen. The aim is to keep information readable,</p>
+          <p>navigation usable, and controls accessible across narrow phones, tablets, laptops, and large</p>
+          <p>monitors.</p>
+          <h2>How it works in practice</h2>
+          <p>Start with the content and its reading order. A page should remain understandable when all</p>
+          <p>columns become a single column. Avoid designing only for a few named devices because</p>
+          <p>browser windows, zoom levels, and user preferences vary.</p>
+          <h2>Implementation guidance</h2>
+          <p>The three classic foundations are flexible layouts, flexible media, and CSS media queries.</p>
+          <p>Modern CSS adds intrinsic sizing, Flexbox, Grid, and container queries. Together these tools let</p>
+          <p>the design adapt without requiring a separate website for each device.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 4</p>
+        </section>
+        <section class="page" data-page="4">
+          <h2>1.2 Viewport and device-independent pixels</h2>
+          <h2>Core concept</h2>
+          <p>The viewport is the area available for rendering a webpage. On mobile browsers the viewport</p>
+          <p>meta element helps the page use the device width rather than a wide virtual layout. CSS pixels</p>
+          <p>are not identical to physical screen pixels; they are a layout unit influenced by device pixel ratio</p>
+          <p>and zoom.</p>
+          <h2>How it works in practice</h2>
+          <p>A layout may be narrow because a desktop browser window was resized, not because the visitor</p>
+          <p>uses a phone. Therefore responsive rules should react to available width and content needs</p>
+          <p>instead of attempting to identify a device model.</p>
+          <h2>Implementation guidance</h2>
+          <p>Test at multiple widths and with browser zoom increased. If a fixed header covers text or a</p>
+          <p>dialog extends beyond the viewport, the design is not robust even if it looks good in a</p>
+          <p>screenshot.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 5</p>
+        </section>
+        <section class="page" data-page="5">
+          <h2>1.3 Content-first planning</h2>
+          <h2>Core concept</h2>
+          <p>Before writing media queries, identify the essential content, primary actions, and relationships</p>
+          <p>between elements. Place important content early in the HTML and use semantic elements so</p>
+          <p>screen readers and keyboard users can understand the page.</p>
+          <h2>How it works in practice</h2>
+          <p>A course website might prioritize its lesson title, chapter navigation, reading text, and next-page</p>
+          <p>button. Decorative banners and secondary panels should not force the core lesson into a</p>
+          <p>cramped column.</p>
+          <h2>Implementation guidance</h2>
+          <p>Draw a simple narrow-screen wireframe first, then progressively enhance it for wider layouts.</p>
+          <p>This approach reduces the temptation to hide important information on phones.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  &lt;main class="reading-layout"&gt;
+    &lt;article&gt;Lesson content&lt;/article&gt;
+    &lt;aside&gt;Related links&lt;/aside&gt;
+  &lt;/main&gt;</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 6</p>
+        </section>
+        <section class="page" data-page="6">
+          <h2>1.4 Fixed, fluid, and adaptive layouts</h2>
+          <h2>Core concept</h2>
+          <p>A fixed-width layout assigns specific dimensions such as 1000px to a wrapper. It can overflow on</p>
+          <p>smaller screens. A fluid layout uses flexible widths so components can grow or shrink with</p>
+          <p>available space. An adaptive layout switches between selected arrangements at breakpoints.</p>
+          <h2>How it works in practice</h2>
+          <p>Responsive design often combines fluid sizing with intentional layout changes. A content</p>
+          <p>container can grow up to a comfortable reading width, while a sidebar can move below the</p>
+          <p>article when space is limited.</p>
+          <h2>Implementation guidance</h2>
+          <p>Avoid setting every width to a percentage without considering readable line length. Use</p>
+          <p>max-width for articles and minmax() for grids to preserve useful constraints.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .container {
+    width: min(92%, 72rem);
+    margin-inline: auto;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 7</p>
+        </section>
+        <section class="page" data-page="7">
+          <h2>1.5 Progressive enhancement and accessibility</h2>
+          <h2>Core concept</h2>
+          <p>Progressive enhancement begins with meaningful HTML that works before advanced styling or</p>
+          <p>JavaScript loads. CSS then improves the presentation and JavaScript adds optional interactions.</p>
+          <p>This strategy helps on slow networks and less capable devices.</p>
+          <h2>How it works in practice</h2>
+          <p>Responsive design includes more than screen width: text enlargement, touch targets, keyboard</p>
+          <p>navigation, reduced motion, and high contrast can affect usability. A menu that looks compact</p>
+          <p>but cannot be opened with a keyboard is not a successful responsive menu.</p>
+          <h2>Implementation guidance</h2>
+          <p>Check heading order, form labels, focus visibility, and link names. Avoid disabling zoom and do</p>
+          <p>not remove content merely because the screen is small.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto; }
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 8</p>
+        </section>
+        <section class="page" data-page="8">
+          <h1>CHAPTER 2</h1>
+          <p>Fluid Layouts and CSS Sizing</p>
+          <p>Chapter focus: the css box model, relative and absolute units, fluid containers and readable</p>
+          <p>measure, intrinsic sizing and overflow, modern css functions.</p>
+          <h2>2.1 The CSS box model</h2>
+          <h2>Core concept</h2>
+          <p>Each element is laid out as content, padding, border, and margin. Width calculations can</p>
+          <p>become surprising when padding and borders are added to a declared width. The border-box</p>
+          <p>sizing model includes padding and border within the declared width, which makes flexible</p>
+          <p>components easier to reason about.</p>
+          <h2>How it works in practice</h2>
+          <p>For example, a card with width: 100% and padding may overflow if it uses the default</p>
+          <p>content-box model. Setting box-sizing: border-box prevents this common problem.</p>
+          <h2>Implementation guidance</h2>
+          <p>Apply a global border-box reset, then use spacing thoughtfully. Margins create separation</p>
+          <p>outside an element; padding creates space inside it.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  *, *::before, *::after {
+    box-sizing: border-box;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 9</p>
+        </section>
+        <section class="page" data-page="9">
+          <h2>2.2 Relative and absolute units</h2>
+          <h2>Core concept</h2>
+          <p>Pixels are useful for borders and small details, but relative units often work better for responsive</p>
+          <p>layouts. Percentages are relative to a containing dimension. rem is relative to the root font size,</p>
+          <p>and em is relative to the relevant computed font size. Viewport units use the size of the</p>
+          <p>viewport.</p>
+          <h2>How it works in practice</h2>
+          <p>Modern dynamic viewport units such as dvh help account for mobile browser interface changes.</p>
+          <p>However, not every dimension should be tied directly to viewport height. Content should usually</p>
+          <p>be allowed to grow naturally.</p>
+          <h2>Implementation guidance</h2>
+          <p>Choose units based on what should control the size: font size, parent container, or viewport.</p>
+          <p>Combining units with min(), max(), and clamp() produces useful constraints.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .hero {
+    padding: clamp(1rem, 4vw, 4rem);
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 10</p>
+        </section>
+        <section class="page" data-page="10">
+          <h2>2.3 Fluid containers and readable measure</h2>
+          <h2>Core concept</h2>
+          <p>A fluid container expands within limits. The max-width property stops a paragraph from</p>
+          <p>becoming excessively wide on large screens, where long lines are difficult to scan. Horizontal</p>
+          <p>padding prevents text from touching the edge of a phone.</p>
+          <h2>How it works in practice</h2>
+          <p>The ch unit is based on the width of the zero glyph and can approximate a comfortable reading</p>
+          <p>measure. A line length around 60–75 characters is a useful starting point, not a universal</p>
+          <p>requirement.</p>
+          <h2>Implementation guidance</h2>
+          <p>Use a centered wrapper for major sections and a narrower measure for body text. This</p>
+          <p>separation helps pages remain readable across screen sizes.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .article {
+    width: min(100% - 2rem, 68ch);
+    margin-inline: auto;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 11</p>
+        </section>
+        <section class="page" data-page="11">
+          <h2>2.4 Intrinsic sizing and overflow</h2>
+          <h2>Core concept</h2>
+          <p>Intrinsic sizing allows content to influence layout. Images have intrinsic dimensions, and long</p>
+          <p>words or code snippets can create overflow if the layout has no safeguards. A flex or grid child</p>
+          <p>may need min-width: 0 to shrink below its content-based minimum.</p>
+          <h2>How it works in practice</h2>
+          <p>Use overflow-wrap for long addresses, and allow code samples to scroll horizontally when</p>
+          <p>wrapping would destroy their meaning. Avoid applying overflow: hidden indiscriminately</p>
+          <p>because it may clip important content or focus indicators.</p>
+          <h2>Implementation guidance</h2>
+          <p>Inspect pages at narrow widths with unusually long titles, URLs, and translated text. Responsive</p>
+          <p>design should handle real content, not only short placeholder text.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .card { min-width: 0; }
+  .article { overflow-wrap: anywhere; }
+  pre { overflow-x: auto; }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 12</p>
+        </section>
+        <section class="page" data-page="12">
+          <h2>2.5 Modern CSS functions</h2>
+          <h2>Core concept</h2>
+          <p>The min(), max(), and clamp() functions express flexible sizing limits without many breakpoints.</p>
+          <p>clamp() takes a minimum, a preferred value, and a maximum. It is particularly useful for fluid</p>
+          <p>typography and section spacing.</p>
+          <h2>How it works in practice</h2>
+          <p>For example, clamp(1.2rem, 2vw, 2rem) grows as the viewport grows but never falls below</p>
+          <p>1.2rem or exceeds 2rem. This gives designers more control than a purely fixed or purely</p>
+          <p>viewport-based value.</p>
+          <h2>Implementation guidance</h2>
+          <p>Use these functions where smooth changes are desirable, and media queries when the layout</p>
+          <p>needs a structural change such as moving from one column to two.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  h1 {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 13</p>
+        </section>
+        <section class="page" data-page="13">
+          <h1>CHAPTER 3</h1>
+          <p>Media Queries and Breakpoints</p>
+          <p>Chapter focus: media query fundamentals, content-driven breakpoints, combining conditions,</p>
+          <p>container queries, testing breakpoints.</p>
+          <h2>3.1 Media query fundamentals</h2>
+          <h2>Core concept</h2>
+          <p>A media query applies CSS rules only when specified conditions are true. Common features</p>
+          <p>include width, orientation, hover, pointer, and user preferences. Queries should support</p>
+          <p>content-driven layout changes rather than assuming a particular phone or tablet model.</p>
+          <h2>How it works in practice</h2>
+          <p>A mobile-first stylesheet begins with simple default styles and adds enhancements when more</p>
+          <p>space is available. The min-width query is common in this approach. Desktop-first styles can</p>
+          <p>also work, but may require more overrides for narrow screens.</p>
+          <h2>Implementation guidance</h2>
+          <p>Choose a breakpoint where the content begins to feel crowded. Resize the browser slowly and</p>
+          <p>observe when cards, navigation, or sidebars stop fitting comfortably.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  @media (min-width: 48rem) {
+    .layout { grid-template-columns: 2fr 1fr; }
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 14</p>
+        </section>
+        <section class="page" data-page="14">
+          <h2>3.2 Content-driven breakpoints</h2>
+          <h2>Core concept</h2>
+          <p>Popular breakpoint values can be useful starting points, but there is no universal set of phone,</p>
+          <p>tablet, and desktop widths. Devices vary, and browser zoom changes the effective CSS viewport</p>
+          <p>width.</p>
+          <h2>How it works in practice</h2>
+          <p>A three-card row might fit at 1000px but become cramped at 820px. The breakpoint should</p>
+          <p>reflect the card content and minimum useful card width, not the name of a device.</p>
+          <h2>Implementation guidance</h2>
+          <p>Where possible, auto-fitting CSS Grid can remove the need for explicit breakpoints. Use a media</p>
+          <p>query when the design requires a deliberate change in placement or interaction.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 15</p>
+        </section>
+        <section class="page" data-page="15">
+          <h2>3.3 Combining conditions</h2>
+          <h2>Core concept</h2>
+          <p>Media queries can combine features with logical operators. For example, a layout can change</p>
+          <p>based on both viewport width and whether a device supports hover. Pointer queries can help</p>
+          <p>tailor interactions, but they should not be used to exclude keyboard users.</p>
+          <h2>How it works in practice</h2>
+          <p>An interface may be used with a touchscreen laptop, external mouse, or keyboard. Design</p>
+          <p>controls that work for multiple input methods instead of assuming every small screen uses</p>
+          <p>touch and every large screen uses a mouse.</p>
+          <h2>Implementation guidance</h2>
+          <p>Always provide a click or keyboard path for menus; hover-only navigation is fragile. Test with</p>
+          <p>real interactions, not just static screenshots.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  @media (hover: hover) and (pointer: fine) {
+    .menu-item:hover { text-decoration: underline; }
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 16</p>
+        </section>
+        <section class="page" data-page="16">
+          <h2>3.4 Container queries</h2>
+          <h2>Core concept</h2>
+          <p>Container queries let a component respond to the size of its containing element rather than the</p>
+          <p>entire viewport. This is useful when the same card appears in a wide main column and a narrow</p>
+          <p>sidebar.</p>
+          <h2>How it works in practice</h2>
+          <p>Declare a query container with container-type: inline-size, then style descendants using</p>
+          <p>@container. The component can switch its internal arrangement based on the space it actually</p>
+          <p>receives.</p>
+          <h2>Implementation guidance</h2>
+          <p>Container queries complement media queries. Use media queries for page-wide conditions and</p>
+          <p>container queries for reusable components.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .card-wrap { container-type: inline-size; }
+  @container (min-width: 32rem) {
+    .card { display: grid; grid-template-columns: 10rem 1fr; }
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 17</p>
+        </section>
+        <section class="page" data-page="17">
+          <h2>3.5 Testing breakpoints</h2>
+          <h2>Core concept</h2>
+          <p>A breakpoint is not complete until the layout has been tested immediately below, at, and above</p>
+          <p>its threshold. Check whether content jumps unexpectedly, navigation overlaps, or fixed</p>
+          <p>elements hide buttons.</p>
+          <h2>How it works in practice</h2>
+          <p>Test browser zoom at 200%, landscape phone orientation, long text, and reduced motion.</p>
+          <p>Automated responsive previews are useful, but manual keyboard and touch testing catches</p>
+          <p>interaction problems.</p>
+          <h2>Implementation guidance</h2>
+          <p>Record each issue with the width and interaction that reproduces it. Fix the underlying</p>
+          <p>component constraints before adding another breakpoint.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  /* Test at 47.9rem, 48rem, and 48.1rem */</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 18</p>
+        </section>
+        <section class="page" data-page="18">
+          <h1>CHAPTER 4</h1>
+          <p>Flexbox and Grid for Responsive Pages</p>
+          <p>Chapter focus: flexbox fundamentals, flex grow, shrink, and basis, grid fundamentals, auto-fit</p>
+          <p>and minmax, choosing flexbox or grid.</p>
+          <h2>4.1 Flexbox fundamentals</h2>
+          <h2>Core concept</h2>
+          <p>Flexbox arranges items along a main axis and manages space distribution within a row or</p>
+          <p>column. It works well for navigation bars, toolbars, button groups, and small component layouts.</p>
+          <h2>How it works in practice</h2>
+          <p>Use display: flex to create a flex container. The gap property adds consistent spacing, while</p>
+          <p>flex-wrap allows items to move to another line when there is insufficient room.</p>
+          <h2>Implementation guidance</h2>
+          <p>Avoid forcing every item into one row. If controls must remain usable on narrow screens, allow</p>
+          <p>wrapping or change flex-direction at a breakpoint.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 19</p>
+        </section>
+        <section class="page" data-page="19">
+          <h2>4.2 Flex grow, shrink, and basis</h2>
+          <h2>Core concept</h2>
+          <p>The flex property controls how an item grows and shrinks and what initial basis it uses. flex: 1 1</p>
+          <p>15rem is a common pattern for cards that should fill available space but wrap when too narrow.</p>
+          <h2>How it works in practice</h2>
+          <p>The basis value is not a guaranteed minimum width. Apply min-width constraints when needed,</p>
+          <p>and remember that content-based minimums may prevent shrinking until min-width: 0 is used.</p>
+          <h2>Implementation guidance</h2>
+          <p>A flexible card row is helpful when the number of cards varies. Test with different title lengths</p>
+          <p>and images to ensure the alignment remains readable.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .features &gt; article {
+    flex: 1 1 15rem;
+    min-width: 0;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 20</p>
+        </section>
+        <section class="page" data-page="20">
+          <h2>4.3 Grid fundamentals</h2>
+          <h2>Core concept</h2>
+          <p>CSS Grid defines rows and columns and places elements in two dimensions. It is suited to page</p>
+          <p>shells, galleries, dashboards, and complex card layouts. The fr unit distributes available free</p>
+          <p>space among tracks.</p>
+          <h2>How it works in practice</h2>
+          <p>Use grid-template-columns to declare columns and gap to control spacing. A common pattern</p>
+          <p>uses minmax(0, 1fr) to prevent a flexible column from overflowing because of its content.</p>
+          <h2>Implementation guidance</h2>
+          <p>Grid can describe a two-column page on wide screens and a single-column page on narrow</p>
+          <p>screens without changing the HTML order.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .page {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 1.5rem;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 21</p>
+        </section>
+        <section class="page" data-page="21">
+          <h2>4.4 Auto-fit and minmax</h2>
+          <h2>Core concept</h2>
+          <p>The repeat() function can create repeated columns. Combining auto-fit with minmax() allows a</p>
+          <p>grid to choose how many columns fit based on available space.</p>
+          <h2>How it works in practice</h2>
+          <p>For a gallery, minmax(min(100%, 14rem), 1fr) prevents a card from demanding more width than</p>
+          <p>its container on very small screens. This is a flexible alternative to many explicit breakpoint</p>
+          <p>rules.</p>
+          <h2>Implementation guidance</h2>
+          <p>Use auto-fit when empty tracks should collapse; auto-fill can retain empty track positions.</p>
+          <p>Compare the behavior when only one or two items are present.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 1rem;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 22</p>
+        </section>
+        <section class="page" data-page="22">
+          <h2>4.5 Choosing Flexbox or Grid</h2>
+          <h2>Core concept</h2>
+          <p>Flexbox is strongest when the main concern is one-dimensional alignment and distributing</p>
+          <p>space among items. Grid is strongest when rows and columns need coordinated placement.</p>
+          <p>Many responsive websites use both.</p>
+          <h2>How it works in practice</h2>
+          <p>A header can use Flexbox to align a logo and navigation controls, while the main page uses Grid</p>
+          <p>for an article and sidebar. A card may itself use Grid to position an image beside its description.</p>
+          <h2>Implementation guidance</h2>
+          <p>Choose the layout model based on the relationships between items, not because one technique</p>
+          <p>is newer. Keep the document order logical even when visual placement changes.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .site-header { display: flex; justify-content: space-between; }
+  .content { display: grid; gap: 1rem; }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 23</p>
+        </section>
+        <section class="page" data-page="23">
+          <h1>CHAPTER 5</h1>
+          <p>Responsive Images, Media, and Typography</p>
+          <p>Chapter focus: flexible images, responsive image sources, background images, fluid</p>
+          <p>typography, responsive video and embeds.</p>
+          <h2>5.1 Flexible images</h2>
+          <h2>Core concept</h2>
+          <p>A responsive image should fit within its container without distorting its aspect ratio. The</p>
+          <p>common rule max-width: 100%; height: auto allows an image to shrink when necessary.</p>
+          <h2>How it works in practice</h2>
+          <p>Images can still be too large to download even if CSS displays them at a small size. Choose</p>
+          <p>suitable source dimensions and compression to improve performance.</p>
+          <h2>Implementation guidance</h2>
+          <p>For an image that must fill a fixed-size card, object-fit: cover can crop it. For diagrams where</p>
+          <p>every label matters, object-fit: contain is usually more appropriate.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  img {
+    max-width: 100%;
+    height: auto;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 24</p>
+        </section>
+        <section class="page" data-page="24">
+          <h2>5.2 Responsive image sources</h2>
+          <h2>Core concept</h2>
+          <p>The srcset and sizes attributes help browsers choose an appropriately sized image resource.</p>
+          <p>The picture element can offer different crops or formats for different conditions.</p>
+          <h2>How it works in practice</h2>
+          <p>A small phone should not need to download a huge desktop hero image if a suitable smaller</p>
+          <p>resource is available. However, image selection also depends on display density and browser</p>
+          <p>decisions.</p>
+          <h2>Implementation guidance</h2>
+          <p>Use meaningful alt text for informative images and empty alt text for purely decorative images.</p>
+          <p>Diagrams often need captions and surrounding explanation as well.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  &lt;img src="photo-800.jpg"
+    srcset="photo-400.jpg 400w, photo-800.jpg 800w"
+    sizes="(max-width: 40rem) 100vw, 40rem"
+    alt="Student reading a digital lesson"&gt;</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 25</p>
+        </section>
+        <section class="page" data-page="25">
+          <h2>5.3 Background images</h2>
+          <h2>Core concept</h2>
+          <p>Background images are useful for decoration but should not contain essential text that could be</p>
+          <p>cropped. background-size: cover fills the available area while potentially cropping the image;</p>
+          <p>contain shows the entire image but may leave empty space.</p>
+          <h2>How it works in practice</h2>
+          <p>Use a background color behind the image so text remains readable if the image does not load. If</p>
+          <p>the subject of the image matters, use an img element instead of a decorative CSS background.</p>
+          <h2>Implementation guidance</h2>
+          <p>Check focal points at narrow and wide sizes. background-position can keep the important part of</p>
+          <p>an image visible when cropping occurs.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .hero {
+    background: #17375c url("hero.jpg") center / cover no-repeat;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 26</p>
+        </section>
+        <section class="page" data-page="26">
+          <h2>5.4 Fluid typography</h2>
+          <h2>Core concept</h2>
+          <p>Responsive typography balances line length, font size, line height, and spacing. Text must</p>
+          <p>remain legible when users zoom or enlarge fonts. A very small font may fit more words but</p>
+          <p>makes the page harder to read.</p>
+          <h2>How it works in practice</h2>
+          <p>Use rem for scalable font sizes and clamp() for headings that grow gradually. Body text often</p>
+          <p>works best at a stable comfortable size rather than shrinking with viewport width.</p>
+          <h2>Implementation guidance</h2>
+          <p>Test headings with long words and localized content. Use overflow-wrap carefully and avoid</p>
+          <p>clipping text with fixed-height containers.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  h1 { font-size: clamp(1.9rem, 4vw, 3.2rem); }
+  p { line-height: 1.65; }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 27</p>
+        </section>
+        <section class="page" data-page="27">
+          <h2>5.5 Responsive video and embeds</h2>
+          <h2>Core concept</h2>
+          <p>Embedded videos and iframes can overflow narrow layouts if given a fixed width. The</p>
+          <p>aspect-ratio property helps preserve a consistent video frame while its width adapts to the</p>
+          <p>container.</p>
+          <h2>How it works in practice</h2>
+          <p>Provide a descriptive title for iframes and ensure the surrounding page has an accessible</p>
+          <p>alternative when an embedded service cannot load. Avoid autoplaying media with sound.</p>
+          <h2>Implementation guidance</h2>
+          <p>For long tutorials, captions and transcripts improve accessibility and support students who</p>
+          <p>cannot play audio.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  iframe.video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 28</p>
+        </section>
+        <section class="page" data-page="28">
+          <h1>CHAPTER 6</h1>
+          <p>Navigation, Forms, and Responsive Components</p>
+          <p>Chapter focus: responsive navigation patterns, touch targets and interaction, responsive forms,</p>
+          <p>responsive tables and code, responsive cards and page sections.</p>
+          <h2>6.1 Responsive navigation patterns</h2>
+          <h2>Core concept</h2>
+          <p>Navigation should remain discoverable and operable at narrow widths. Common approaches</p>
+          <p>include wrapping links, switching to a stacked menu, or revealing a menu with a button.</p>
+          <h2>How it works in practice</h2>
+          <p>A menu toggle should be a real button with an accessible name and an aria-expanded state that</p>
+          <p>reflects whether the menu is open. JavaScript can control visibility, but basic navigation should</p>
+          <p>remain usable when scripts fail where practical.</p>
+          <h2>Implementation guidance</h2>
+          <p>Do not rely on hover alone. Check keyboard tab order and visible focus styles. Avoid placing a</p>
+          <p>large number of tiny links in a cramped header.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  &lt;button type="button" aria-expanded="false"
+    aria-controls="primary-nav"&gt;Menu&lt;/button&gt;
+  &lt;nav id="primary-nav"&gt;...&lt;/nav&gt;</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 29</p>
+        </section>
+        <section class="page" data-page="29">
+          <h2>6.2 Touch targets and interaction</h2>
+          <h2>Core concept</h2>
+          <p>Interactive elements need enough space for accurate tapping and clicking. Crowded icons can</p>
+          <p>lead to accidental actions, especially on small touchscreens.</p>
+          <h2>How it works in practice</h2>
+          <p>Use padding and gap to create clear hit areas. Do not reduce a button to an icon without an</p>
+          <p>accessible label. Links and controls should show focus clearly for keyboard users.</p>
+          <h2>Implementation guidance</h2>
+          <p>A practical test is to navigate the page without a mouse and then use it on a touchscreen. Both</p>
+          <p>methods should allow completion of the main task.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .button {
+    min-height: 2.75rem;
+    padding: .65rem 1rem;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 30</p>
+        </section>
+        <section class="page" data-page="30">
+          <h2>6.3 Responsive forms</h2>
+          <h2>Core concept</h2>
+          <p>Forms should use visible labels, helpful instructions, and controls that fit within their container.</p>
+          <p>On narrow screens, a single column usually improves readability.</p>
+          <h2>How it works in practice</h2>
+          <p>Use appropriate input types such as email, tel, and number when semantically correct.</p>
+          <p>Validation errors should explain what needs fixing and should not rely only on color.</p>
+          <h2>Implementation guidance</h2>
+          <p>Avoid fixed widths on inputs. Let controls fill their grid cell and use min-width: 0 when necessary</p>
+          <p>to prevent overflow.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .form-grid { display: grid; gap: 1rem; }
+  input, select, textarea { width: 100%; max-width: 100%; }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 31</p>
+        </section>
+        <section class="page" data-page="31">
+          <h2>6.4 Responsive tables and code</h2>
+          <h2>Core concept</h2>
+          <p>Wide tables can be difficult to read on a phone. Sometimes horizontal scrolling is the clearest</p>
+          <p>solution, especially when relationships between columns must be preserved.</p>
+          <h2>How it works in practice</h2>
+          <p>Wrap the table in a region with overflow-x: auto and provide an accessible label when useful. Do</p>
+          <p>not transform every table into cards if doing so obscures headings or comparisons.</p>
+          <h2>Implementation guidance</h2>
+          <p>Code samples should preserve indentation. A horizontally scrollable preformatted block is often</p>
+          <p>better than breaking syntax at arbitrary positions.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .table-scroll, .code-scroll {
+    overflow-x: auto;
+    max-width: 100%;
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 32</p>
+        </section>
+        <section class="page" data-page="32">
+          <h2>6.5 Responsive cards and page sections</h2>
+          <h2>Core concept</h2>
+          <p>Cards combine headings, descriptions, images, and actions. A reusable card should work in both</p>
+          <p>a wide grid and a narrow sidebar without requiring special markup for each context.</p>
+          <h2>How it works in practice</h2>
+          <p>Use consistent internal spacing, natural height, and flexible images. Avoid fixed card heights</p>
+          <p>when content lengths vary because text can overlap or be cut off.</p>
+          <h2>Implementation guidance</h2>
+          <p>When an action button appears at the bottom of a card, a column layout with margin-top: auto</p>
+          <p>can align actions while preserving content flow.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  .card { display: flex; flex-direction: column; gap: .75rem; }
+  .card .action { margin-top: auto; }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 33</p>
+        </section>
+        <section class="page" data-page="33">
+          <h1>CHAPTER 7</h1>
+          <p>Performance, Testing, and Complete Example</p>
+          <p>Chapter focus: mobile performance, responsive debugging workflow, accessibility and user</p>
+          <p>preferences, complete responsive page structure, maintenance and future-proofing.</p>
+          <h2>7.1 Mobile performance</h2>
+          <h2>Core concept</h2>
+          <p>A responsive layout should also load efficiently. Large images, excessive JavaScript, and</p>
+          <p>blocking resources can make a page frustrating on slow connections.</p>
+          <h2>How it works in practice</h2>
+          <p>Optimize image formats and dimensions, lazy-load appropriate below-the-fold images, and</p>
+          <p>avoid downloading assets that are never used. Keep important content visible quickly.</p>
+          <h2>Implementation guidance</h2>
+          <p>Use browser developer tools to inspect network requests and identify large files. Performance is</p>
+          <p>part of the user experience, not a separate concern.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  &lt;img src="lesson-diagram.webp" loading="lazy"
+    width="960" height="540" alt="Network diagram"&gt;</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 34</p>
+        </section>
+        <section class="page" data-page="34">
+          <h2>7.2 Responsive debugging workflow</h2>
+          <h2>Core concept</h2>
+          <p>Start by reproducing the problem at a specific width. Inspect the element that overflows and</p>
+          <p>determine whether its width, minimum size, padding, or content is responsible.</p>
+          <h2>How it works in practice</h2>
+          <p>Common causes include width: 100vw combined with padding, fixed-size images, long unbroken</p>
+          <p>text, and flex children that refuse to shrink. Fix the root cause instead of hiding horizontal</p>
+          <p>overflow on the entire page.</p>
+          <h2>Implementation guidance</h2>
+          <p>Use browser responsive mode, keyboard navigation, and actual devices when available.</p>
+          <p>Recheck nearby widths after every fix.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  /* Helpful temporary debug rule */
+  /* * { outline: 1px solid rgba(255,0,0,.15); } */</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 35</p>
+        </section>
+        <section class="page" data-page="35">
+          <h2>7.3 Accessibility and user preferences</h2>
+          <h2>Core concept</h2>
+          <p>Responsive interfaces should respect reduced-motion preferences, readable contrast, and text</p>
+          <p>scaling. Motion effects that seem attractive on a desktop may be distracting or uncomfortable</p>
+          <p>for some visitors.</p>
+          <h2>How it works in practice</h2>
+          <p>Avoid content that appears only on hover, and ensure that a zoomed layout can still reach all</p>
+          <p>controls. Use semantic HTML and meaningful labels so assistive technologies can interpret the</p>
+          <p>interface.</p>
+          <h2>Implementation guidance</h2>
+          <p>Accessibility testing is ongoing: check focus order, visible focus, form errors, and reading order</p>
+          <p>after each structural layout change.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  @media (prefers-reduced-motion: reduce) {
+    .animated { animation: none; transition: none; }
+  }</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 36</p>
+        </section>
+        <section class="page" data-page="36">
+          <h2>7.4 Complete responsive page structure</h2>
+          <h2>Core concept</h2>
+          <p>A small educational page can combine a semantic header, navigation, main article, sidebar, and</p>
+          <p>footer. On narrow screens the sections stack; on wider screens the sidebar sits beside the</p>
+          <p>article.</p>
+          <h2>How it works in practice</h2>
+          <p>This pattern is useful for an e-book reader because it prioritizes lesson text while leaving space</p>
+          <p>for a table of contents or related links on larger screens. The HTML source order should match</p>
+          <p>the intended reading order.</p>
+          <h2>Implementation guidance</h2>
+          <p>Use a single-column default and add the sidebar column at a content-driven breakpoint. Keep</p>
+          <p>navigation and reading controls accessible.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  &lt;div class="page"&gt;
+    &lt;main&gt;&lt;article&gt;Lesson text&lt;/article&gt;&lt;/main&gt;
+    &lt;aside&gt;Contents&lt;/aside&gt;
+  &lt;/div&gt;
+  &lt;style&gt;
+  .page { display: grid; gap: 1.5rem; }
+  @media (min-width: 52rem) {
+    .page { grid-template-columns: minmax(0, 1fr) 16rem; }
+  }
+  &lt;/style&gt;</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 37</p>
+        </section>
+        <section class="page" data-page="37">
+          <h2>7.5 Maintenance and future-proofing</h2>
+          <h2>Core concept</h2>
+          <p>Responsive design is not a one-time set of breakpoints. Content, browsers, devices, and user</p>
+          <p>expectations change. Components should be easy to maintain and tested whenever new</p>
+          <p>features are added.</p>
+          <h2>How it works in practice</h2>
+          <p>Organize CSS into reusable components, document important layout decisions, and avoid</p>
+          <p>deeply nested overrides. Favor modern layout primitives that respond naturally to available</p>
+          <p>space.</p>
+          <h2>Implementation guidance</h2>
+          <p>A future-proof responsive website is not one that predicts every device; it is one that remains</p>
+          <p>understandable and usable when the available space and content change.</p>
+          <h2>Practical code example</h2>
+          <pre><code>  /* Prefer reusable component rules over device-specific hacks. */</code></pre>
+          <p>Try it: Place the example in a simple HTML/CSS project, resize the browser, and observe how the</p>
+          <p>component behaves. Compare a narrow and a wide viewport, then check whether text, controls,</p>
+          <p>and images remain usable.</p>
+          <p>Design note: Keep the original HTML meaningful, and use CSS to adapt its presentation. The most reliable
+          </p>
+          <p>responsive layouts preserve content access even when the visual arrangement changes.</p>
+          <p>BSIT E-LIBRARY | RESPONSIVE WEB DESIGN FUNDAMENTALS 38</p>
+        </section>
+      </article>
+      <div class="controls"><button id="prev">← Previous</button><b id="count"></b><button id="next">Next →</button>
+      </div>
+    </main>
+  </div>
+  <script>const pages = [...document.querySelectorAll('.page')], toc = [...document.querySelectorAll('.toc-item')]; let current = 0; function show(n) { current = Math.max(0, Math.min(pages.length - 1, n)); pages.forEach((p, i) => p.classList.toggle('active', i === current)); document.getElementById('count').textContent = `Page ${current + 1} of ${pages.length}`; document.getElementById('prev').disabled = current === 0; document.getElementById('next').disabled = current === pages.length - 1; toc.forEach((b, i) => b.classList.toggle('active', Number(b.dataset.go) <= current && (i === toc.length - 1 || Number(toc[i + 1].dataset.go) > current))); window.scrollTo({ top: 0, behavior: 'instant' }); } document.getElementById('prev').onclick = () => show(current - 1); document.getElementById('next').onclick = () => show(current + 1); toc.forEach(b => b.onclick = () => show(Number(b.dataset.go))); const reader = document.getElementById('reader'), toggle = document.getElementById('themeToggle'); function theme(dark) { reader.classList.toggle('dark-mode', dark); toggle.textContent = dark ? '☀ Light Mode' : '☾ Dark Mode'; localStorage.setItem('bytebloom-reader-theme', dark ? 'dark' : 'light') } toggle.onclick = () => theme(!reader.classList.contains('dark-mode')); theme(localStorage.getItem('bytebloom-reader-theme') === 'dark'); show(0);</script>
+</body>
+
+</html>

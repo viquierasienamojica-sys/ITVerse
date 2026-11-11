@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>History and Evolution of Computers | BYTEBLOOM</title>
+
+  </button>
+  <style>
+    :root {
+      --pink1: #FDE4F2;
+      --pink2: #F9CEE7;
+      --pink3: #F4B8DA;
+      --pink4: #EEA1CD;
+      --pink5: #E68BBE;
+      --ink: #612C4D;
+      --muted: #795B70;
+      --accent: #A83375;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--pink1);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    header {
+      min-height: 70px;
+      background: var(--pink2);
+      border-bottom: 1px solid var(--pink3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 15px 25px;
+      flex-wrap: wrap;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    header a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header a:hover {
+      color: var(--accent);
+    }
+
+    header span {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .layout {
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - 70px);
+    }
+
+    .sidebar {
+      width: 295px;
+      flex: 0 0 295px;
+      padding: 24px 15px;
+      background: var(--pink2);
+      border-right: 1px solid var(--pink3);
+      position: sticky;
+      top: 0;
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin: 0 10px 20px;
+      font-size: 19px;
+    }
+
+    .chapter-button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      padding: 13px;
+      margin-bottom: 6px;
+      border-radius: 9px;
+      font-size: 14px;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .chapter-button:hover {
+      background: var(--pink3);
+    }
+
+    .chapter-button.active {
+      background: var(--pink5);
+      color: #52223F;
+      font-weight: bold;
+    }
+
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 30px;
+    }
+
+    .reader {
+      background: #FFF8FC;
+      max-width: 960px;
+      min-height: 540px;
+      margin: auto;
+      padding: 35px;
+      border: 1px solid var(--pink3);
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(157, 57, 112, .09);
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+
+    .reader h1 {
+      font-size: 30px;
+      line-height: 1.35;
+      margin: 14px 0 25px;
+    }
+
+    .reader h2 {
+      font-size: 23px;
+      margin-top: 30px;
+    }
+
+    .reader h3 {
+      font-size: 19px;
+      margin-top: 24px;
+    }
+
+    .reader p,
+    .reader li {
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .reader ul {
+      padding-left: 25px;
+    }
+
+    .reader img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+      border-radius: 8px;
+    }
+
+    .reader table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+    }
+
+    .reader th,
+    .reader td {
+      border: 1px solid var(--pink3);
+      padding: 10px;
+      text-align: left;
+    }
+
+    .reader th {
+      background: var(--pink2);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid var(--pink3);
+      margin-top: 35px;
+      padding-top: 22px;
+    }
+
+    .btn {
+      background: var(--pink5);
+      color: #52223F;
+      border: 0;
+      padding: 12px 20px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: var(--pink4);
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .status {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width:850px) {
+      .layout {
+        display: block;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 260px;
+        position: static;
+        border-right: 0;
+        border-bottom: 1px solid var(--pink3);
+      }
+
+      .main {
+        padding: 14px;
+      }
+
+      .reader {
+        padding: 22px;
+      }
+    }
+
+    /* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+    .reader {
+      color: #57394D !important;
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    .reader.dark-mode {
+      background: #25212D !important;
+      color: #F8EAF5 !important;
+      border-color: #51475D !important;
+    }
+
+    .reader.dark-mode #content,
+    .reader.dark-mode #content :is(h1, h2, h3, h4, h5, h6,
+      p, li, span, strong, em,
+      small, div, blockquote,
+      figcaption, td, th, code),
+    .reader.dark-mode .status {
+      color: #F8EAF5 !important;
+    }
+
+    .reader.dark-mode #content :is(table, td, th) {
+      border-color: #66556B !important;
+    }
+
+    .reader.dark-mode #content th {
+      background: #403549 !important;
+    }
+
+    .reader.dark-mode #content :is(blockquote, .example) {
+      background: #352B3C !important;
+      border-left-color: #E68BBE !important;
+    }
+
+    .reader.dark-mode #content hr {
+      border-color: #66556B !important;
+    }
+
+    .reader.dark-mode #content a {
+      color: #F4B8DA !important;
+    }
+
+    .reader.dark-mode #content :is(pre, code) {
+      background: #403549 !important;
+    }
+
+    .reader.dark-mode #content img {
+      background: transparent;
+    }
+
+    /* THEME BUTTON */
+
+    .reader-theme-toggle {
+      background: #FDE4F2;
+      border: 1px solid #B94D8C;
+      color: #612C4D;
+      border-radius: 9px;
+      padding: 9px 13px;
+      font: 600 13px Arial, sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .reader-theme-toggle:hover {
+      background: #F4B8DA;
+    }
+
+    .reader-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>🌸 BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+      <span>1st Year · Book 01</span>
+
+      <button type="button" id="themeToggle" class="reader-theme-toggle" aria-pressed="false">
+        🌙 Dark Mode
+      </button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <h3>Table of Contents</h3>
+      <div id="chapterList"></div>
+    </aside>
+    <main class="main">
+      <article class="reader">
+        <div id="bookContent">
+          <h1>Loading Book...</h1>
+        </div>
+        <div class="navigation">
+          <button class="btn" id="previousButton">← Previous</button>
+          <button class="btn" id="nextButton">Next →</button>
+        </div>
+        <p class="status" id="pageStatus"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+    const content = document.getElementById('bookContent');
+    const list = document.getElementById('chapterList');
+    const prev = document.getElementById('previousButton');
+    const next = document.getElementById('nextButton');
+    const status = document.getElementById('pageStatus');
+    let pages = [];
+    let currentPage = 0;
+
+    function el(tag, text, className) {
+      const element = document.createElement(tag);
+      if (text !== undefined) element.textContent = text;
+      if (className) element.className = className;
+      return element;
+    }
+
+    function parseLessons(text) {
+      const lines = text.replace(/\r\n/g, '\n').split('\n');
+      const sections = [];
+      let current = { title: 'Introduction', lines: [] };
+      for (const line of lines) {
+        const t = line.trim();
+        let title = null;
+        if (/^## The History of Computers$/i.test(t)) title = 'The History of Computers';
+        else if (/^## Generations of computing$/i.test(t)) title = 'Generations of Computing';
+        else if (/^# Types of Computers$/i.test(t)) title = 'Types of Computers';
+        else if (/^## Analog, Digital & Hybrid Computers$/i.test(t)) title = 'Analog, Digital & Hybrid Computers';
+        if (title) {
+          sections.push(current);
+          current = { title, lines: [] };
+        } else current.lines.push(line);
+      }
+      sections.push(current);
+      return sections.filter(section => section.lines.some(line => line.trim()));
+    }
+
+    function renderLesson(page) {
+      content.replaceChildren(el('div', 'BYTEBLOOM • Complete E-Book', 'eyebrow'), el('h1', page.title));
+      let paragraph = [];
+      function flush() {
+        if (paragraph.length) {
+          content.appendChild(el('p', paragraph.join(' ').trim()));
+          paragraph = [];
+        }
+      }
+      for (const raw of page.lines) {
+        const t = raw.trim();
+        if (!t) { flush(); continue; }
+        if (/^#{1,4}\s+/.test(t)) {
+          flush();
+          const level = t.match(/^#+/)[0].length;
+          content.appendChild(el(level <= 2 ? 'h2' : 'h3', t.replace(/^#+\s*/, '')));
+          continue;
+        }
+        if (/^[-*]\s+/.test(t)) {
+          flush();
+          const last = content.lastElementChild;
+          const ul = last && last.tagName === 'UL' ? last : el('ul');
+          if (ul !== last) content.appendChild(ul);
+          ul.appendChild(el('li', t.slice(2)));
+          continue;
+        }
+        if (/^>\s*/.test(t)) {
+          flush();
+          content.appendChild(el('p', t.replace(/^>\s*/, '')));
+          continue;
+        }
+        paragraph.push(t.replace(/\*\*/g, '').replace(/&#xA0;|&#x20;/g, ' '));
+      }
+      flush();
+    }
+
+    function showPage(index) {
+      if (index < 0 || index >= pages.length) return;
+      currentPage = index;
+      renderLesson(pages[index]);
+      prev.disabled = index === 0;
+      next.disabled = index === pages.length - 1;
+      status.textContent = `Section ${index + 1} of ${pages.length}`;
+      list.replaceChildren();
+      pages.forEach((page, i) => {
+        const button = el('button', page.title, 'chapter-button' + (i === index ? ' active' : ''));
+        button.addEventListener('click', () => showPage(i));
+        list.appendChild(button);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    prev.addEventListener('click', () => showPage(currentPage - 1));
+    next.addEventListener('click', () => showPage(currentPage + 1));
+
+    async function loadBook() {
+      try {
+        const response = await fetch('historycomputers.txt');
+        if (!response.ok) throw new Error('historycomputers.txt not found');
+        const text = await response.text();
+        pages = parseLessons(text);
+        if (pages.length < 5) throw new Error('Incomplete lesson sections');
+        showPage(0);
+      } catch (error) {
+        content.replaceChildren(
+          el('h1', 'Unable to Load Book'),
+          el('p', 'Make sure historycomputers.txt is in the same folder as book-firstyear1.html. Open using VS Code Live Server or XAMPP localhost.')
+        );
+        console.error(error);
+      }
+    }
+    loadBook();
+
+
+    /* BYTEBLOOM - LIGHT AND DARK MODE */
+
+    (function () {
+      const toggle = document.getElementById("themeToggle");
+      const reader = document.querySelector(".reader");
+
+      if (!toggle || !reader) return;
+
+      const key = "bytebloom-reader-theme";
+
+      function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+          ? "☀️ Light Mode"
+          : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+      }
+
+      let saved = "light";
+
+      try {
+        saved = localStorage.getItem(key) || "light";
+      } catch (_) { }
+
+      setTheme(saved);
+
+      toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+          ? "light"
+          : "dark";
+
+        setTheme(mode);
+
+        try {
+          localStorage.setItem(key, mode);
+        } catch (_) { }
+      });
+    })();
+
+  </script>
+</body>
+
+</html>

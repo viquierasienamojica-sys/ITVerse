@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Year Book 09 | Computer Ethics and Cyber Security</title>
+  <style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4eee4;color:#342c24}
+header{background:#493526;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+header a{color:white;text-decoration:none}
+header h2{margin:0;font-size:19px;color:white}
+.layout{display:flex;min-height:calc(100vh - 65px)}
+aside{width:295px;flex-shrink:0;background:#e8dcc9;padding:22px 15px;border-right:1px solid #cfbea7;max-height:calc(100vh - 65px);overflow-y:auto;position:sticky;top:0}
+aside h3{margin:0 0 16px}
+#toc button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover{background:#795a3e;color:white}
+main{flex:1;min-width:0;padding:28px}
+.reader{background:#fffaf2;max-width:960px;margin:auto;padding:32px;border:1px solid #dfd1bd;border-radius:12px;box-shadow:0 3px 15px #3b27120d}
+h1,h2,h3{line-height:1.35}
+h1{font-size:28px}
+h2{font-size:23px;color:#6b4c30}
+h3{font-size:19px;color:#6b4c30}
+p,li{line-height:1.75}
+figure{margin:25px auto;text-align:center}
+figure img{display:block;width:100%;max-width:750px;max-height:650px;height:auto;object-fit:contain;margin:auto;border-radius:8px}
+figcaption{font-size:12px;color:#867563;margin-top:7px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px}
+.btn{border:0;background:#6d5038;color:white;padding:12px 19px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.status{text-align:center;color:#756655;font-size:13px}
+.question{background:#f6eee1;border:1px solid #e5d7c4;padding:18px;margin:17px 0;border-radius:9px}
+.question strong{display:block;margin-bottom:12px}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}
+.option:hover{background:#ede1d0}
+.result{margin-top:18px;padding:17px;border-radius:8px;background:#eee3d1}
+.review{border-top:1px solid #d5c5ae;margin-top:12px;padding-top:10px}
+.correct{color:#267347}
+.wrong{color:#a32d2d}
+@media(max-width:850px){.layout{display:block}
+aside{width:auto;max-height:260px;position:static;border-right:0}
+main{padding:12px}
+.reader{padding:20px}
+header{flex-wrap:wrap}
+}
+  .table-wrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #d9cbb8;padding:10px;text-align:left}th{background:#e8dcc9}.example{padding:12px 15px;background:#f3e8d7;border-left:4px solid #795a3e;overflow-wrap:anywhere;font-weight:bold}
+  
+/* Shared First Year Reader Theme — based on Book 05 */
+html{scroll-behavior:smooth}
+body{margin:0!important;font-family:Arial,sans-serif!important;background:#f4eee4!important;color:#342c24!important;line-height:1.6}
+header{background:#493526!important;color:#fff!important;padding:16px 24px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;border:0!important;min-height:58px}
+header a{color:white!important;text-decoration:none!important}
+header h2{margin:0!important;font-size:19px!important;color:white!important}
+.layout{display:flex!important;min-height:calc(100vh - 65px)!important;align-items:stretch!important}
+aside,.sidebar{width:295px!important;flex:0 0 295px!important;background:#e8dcc9!important;padding:22px 15px!important;border-right:1px solid #cfbea7!important;max-height:calc(100vh - 65px)!important;overflow-y:auto!important;position:sticky!important;top:0!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{margin:0 0 16px!important;font-size:19px!important;color:#6b4c30!important}
+#toc button,#chapterList button,#chapterList [role=button],.sidebar button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:#795a3e!important;color:white!important}
+main,.main{flex:1!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:28px!important;background:transparent!important}
+.reader{background:#fffaf2!important;max-width:960px!important;margin:auto!important;padding:32px!important;border:1px solid #dfd1bd!important;border-radius:12px!important;box-shadow:0 3px 15px #3b27120d!important;min-height:540px}
+.reader h1{font-size:28px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h2{font-size:23px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h3{font-size:19px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader p,.reader li{line-height:1.75!important}
+.reader figure{margin:25px auto!important;text-align:center!important;background:transparent!important;border:0!important;padding:0!important}
+.reader figure img{display:block!important;width:100%!important;max-width:750px!important;max-height:650px!important;height:auto!important;object-fit:contain!important;margin:auto!important;border-radius:8px!important}
+.reader figcaption{font-size:12px!important;color:#867563!important;margin-top:7px!important}
+.nav,.navigation,.controls{display:flex!important;justify-content:space-between!important;gap:12px!important;margin-top:32px!important}
+.btn,button.nav,.submit,.retake{border:0!important;background:#6d5038!important;color:white!important;padding:12px 19px!important;border-radius:8px!important;cursor:pointer!important;font-size:14px!important}
+.btn:disabled,button.nav:disabled{opacity:.4!important;cursor:not-allowed!important}
+.status{text-align:center!important;color:#756655!important;font-size:13px!important}
+.question{background:#f6eee1!important;border:1px solid #e5d7c4!important;padding:18px!important;margin:17px 0!important;border-radius:9px!important}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}.option:hover{background:#ede1d0!important}
+.result{margin-top:18px!important;padding:17px!important;border-radius:8px!important;background:#eee3d1!important}
+.reader table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.reader th,.reader td{border:1px solid #d9cbb8;padding:10px;text-align:left}.reader th{background:#e8dcc9}
+@media(max-width:850px){.layout{display:block!important}aside,.sidebar{width:100%!important;max-height:260px!important;position:static!important;border-right:0!important;flex:auto!important}main,.main{padding:12px!important}.reader{padding:20px!important}header{flex-wrap:wrap!important}}
+
+
+/* BYTEBLOOM Pastel Pink Reader Theme */
+:root{--bb-p1:#FDE4F2;--bb-p2:#F9CEE7;--bb-p3:#F4B8DA;--bb-p4:#EEA1CD;--bb-p5:#E68BBE;--bb-ink:#612C4D;--bb-muted:#795B70}
+body{background:var(--bb-p1)!important;color:var(--bb-ink)!important}
+header{background:var(--bb-p5)!important;color:#52223F!important;border-bottom:1px solid var(--bb-p4)!important}
+header a,header h2,header span{color:#52223F!important}
+aside,.sidebar{background:var(--bb-p2)!important;border-color:var(--bb-p3)!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{color:var(--bb-ink)!important}
+#toc button,#chapterList button,.sidebar button{color:var(--bb-ink)!important}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:var(--bb-p5)!important;color:#52223F!important}
+main,.main{background:transparent!important}
+.reader{background:#FFF8FC!important;border:1px solid var(--bb-p3)!important;box-shadow:0 8px 22px rgba(157,57,112,.08)!important}
+.reader h1,.reader h2,.reader h3,main h1,main h2,main h3{color:var(--bb-ink)!important}
+.reader p,.reader li,main p,main li{color:#57394D}
+.btn,button.nav,.navigation button,.controls button{background:var(--bb-p5)!important;color:#52223F!important;border:0!important}
+.btn:hover,button.nav:hover,.navigation button:hover,.controls button:hover{background:var(--bb-p4)!important}
+.btn:disabled,button.nav:disabled,.navigation button:disabled,.controls button:disabled{opacity:.45!important;cursor:not-allowed!important}
+.status,figcaption,.reader figcaption{color:var(--bb-muted)!important}
+.reader table th,main table th{background:var(--bb-p2)!important}
+.reader table td,.reader table th,main table td,main table th{border-color:var(--bb-p3)!important}
+.reader blockquote,main blockquote,.example{border-left-color:var(--bb-p5)!important;background:#FFF0F8!important}
+.reader figure img,main figure img{max-width:750px;height:auto;object-fit:contain}
+
+
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+    <span>1st Year · Book 09</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside><h3>Table of Contents</h3><div id="toc"></div></aside>
+    <main>
+      <article class="reader">
+        <div id="content"></div>
+        <div class="nav">
+          <button class="btn" id="prev">← Previous</button>
+          <button class="btn" id="next">Next →</button>
+        </div>
+        <p class="status" id="status"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+const LESSON_PAGES = [
+  {
+    "title": "Book Introduction",
+    "html": "<h1>Computer Ethics and Cyber Security</h1><p><strong>First Year · Book 09</strong></p><h2>Introduction</h2><p>The original three-page source introduces ethical behavior, cybercrime, privacy, piracy, unauthorized accounts, and the need to protect information. This book preserves those topics and adds original beginner-friendly explanations and safe everyday examples.</p><h2>Learning Objectives</h2><ul><li>Explain computer ethics and cyber security.</li><li>Recognize common cybercrime threats.</li><li>Use accounts, passwords, and personal data responsibly.</li><li>Describe practical device and network safety measures.</li><li>Respect copyright, privacy, and consent.</li><li>Respond appropriately to suspicious online activity.</li></ul>"
+  },
+  {
+    "title": "Chapter 1: Introduction to Computer Ethics and Cyber Security",
+    "html": "<h1>Chapter 1: Introduction to Computer Ethics and Cyber Security</h1><h3>Why Ethics and Security Matter</h3>\n<p>Computers and the Internet help people learn, work, shop, and communicate. They also create risks when data is stolen, accounts are misused, or digital content is shared without permission. The source lesson explains that valuable information must be protected because computer systems are vulnerable.</p>\n<h3>Computer Ethics</h3>\n<p>Computer ethics concerns the moral principles that guide how people use computers, networks, software, and online services. Ethical decisions consider honesty, fairness, respect, responsibility, and possible harm to other people.</p>\n<h3>Cyber Security</h3>\n<p>Cyber security is the practice of protecting devices, networks, accounts, and information against unauthorized access, damage, or disruption. Ethical behavior and technical safeguards support one another, but they are not identical.</p>\n<h3>Real-Life Example</h3>\n<p>A student finds a classmate’s account still signed in on a shared computer. Ethical behavior means signing out or notifying the owner instead of reading messages. Security practice means using a screen lock and signing out after use.</p>\n<h3>Key Takeaways</h3>\n<p>Review the chapter concepts and identify at least one way to apply them in everyday computer use.</p>"
+  },
+  {
+    "title": "Chapter 2: Responsible and Ethical Computer Use",
+    "html": "<h1>Chapter 2: Responsible and Ethical Computer Use</h1><h3>Rules from the Source</h3>\n<p>The original lesson lists four standards: do not use pirated software; do not use unauthorized user accounts; do not steal other people’s passwords; and do not hack. These rules emphasize consent and respect for digital property.</p>\n<h3>Privacy and Consent</h3>\n<p>Respect privacy by asking permission before accessing, collecting, or sharing someone’s personal information. Information that can identify a person includes names, account details, photos, contact information, and private messages.</p>\n<h3>Copyright and Digital Content</h3>\n<p>Creators may own rights to their software, images, writing, and videos. Use licensed software and follow the permission or license terms of material you reuse. Giving credit is valuable, but credit alone does not always replace permission.</p>\n<h3>Digital Citizenship</h3>\n<p>Responsible digital citizens verify information before reposting, avoid harassment, protect account credentials, and communicate respectfully. A message sent online can affect real people offline.</p>\n<h3>Key Takeaways</h3>\n<p>Review the chapter concepts and identify at least one way to apply them in everyday computer use.</p>"
+  },
+  {
+    "title": "Chapter 3: Cybercrime and Common Online Threats",
+    "html": "<h1>Chapter 3: Cybercrime and Common Online Threats</h1><figure><img src=\"assets/firstyear9-figure-01.png\" alt=\"Original diagram showing cybercrime categories including phishing, hacking, viruses, piracy, pharming and identity theft\" loading=\"lazy\"><figcaption>Original cybercrime diagram from PDF page 7. Financial transactions are criminal only when fraudulent or unauthorized.</figcaption></figure><p>What Is Cybercrime? Cybercrime involves illegal acts using computers, networks, or digital information. The original diagram names hacking, phishing, viruses, piracy, online financial transactions, pharming, and identity theft as related categories. Not every financial transaction is a crime; fraud involving a transaction is the harmful activity.</p>\n<h3>Phishing and Pharming</h3>\n<p>Phishing attempts to trick people into revealing passwords, payment details, or other information through deceptive messages or websites. Pharming redirects users toward fraudulent sites, sometimes by manipulating name-resolution or device settings.</p>\n<h3>Malware and Viruses</h3>\n<p>Malware is harmful software. A computer virus is one type of malware that attaches to other files or programs and spreads when executed. Other threats include ransomware, spyware, and malicious downloads.</p>\n<h3>Identity Theft and Financial Fraud</h3>\n<p>Identity theft occurs when someone misuses another person’s personal information. Financial scams may involve fake shops, fraudulent payment requests, or impersonation. Verify payment details using a trusted channel before sending money.</p>\n<h3>Key Takeaways</h3>\n<p>Review the chapter concepts and identify at least one way to apply them in everyday computer use.</p>"
+  },
+  {
+    "title": "Chapter 4: Protecting Accounts and Personal Information",
+    "html": "<h1>Chapter 4: Protecting Accounts and Personal Information</h1><h3>Strong Passwords and Passphrases</h3>\n<p>Use long, unique passwords or passphrases for important accounts. A password manager can help generate and store them. Reusing the same password increases the damage if one website suffers a breach.</p>\n<h3>Multi-Factor Authentication</h3>\n<p>Multi-factor authentication (MFA) asks for an additional form of verification beyond a password. Authenticator apps and security keys can reduce the risk of account takeover.</p>\n<h3>Recognizing Suspicious Messages</h3>\n<p>Be cautious of urgent requests, unexpected attachments, unusual links, and messages asking for secret codes. Open a service using its known website or app rather than a link in a suspicious message.</p>\n<h3>Protecting Shared Devices</h3>\n<p>Lock the screen, avoid saving passwords in public computers, sign out after use, and keep private files in approved locations. Report a lost device or suspicious account activity promptly.</p>\n<h3>Key Takeaways</h3>\n<p>Review the chapter concepts and identify at least one way to apply them in everyday computer use.</p>"
+  },
+  {
+    "title": "Chapter 5: Device, Network, and Data Security",
+    "html": "<h1>Chapter 5: Device, Network, and Data Security</h1><h3>Software Updates</h3>\n<p>Updates fix errors and may close security weaknesses. Install trusted operating-system, browser, and application updates promptly, especially security patches.</p>\n<h3>Backups</h3>\n<p>A backup is an additional copy of important data. Keep backups in a separate safe location or trusted cloud service and check that files can be restored. Backups help after device failure, accidental deletion, or ransomware.</p>\n<h3>Safe Downloads and Wi-Fi</h3>\n<p>Download applications from trusted sources and check permissions. Public Wi-Fi may expose users to unsafe or deceptive networks; prefer encrypted HTTPS connections and avoid connecting to unknown hotspots.</p>\n<h3>Basic Security Tools</h3>\n<p>Firewalls, endpoint protection, device encryption, and access permissions reduce risk. No single tool guarantees complete safety, so good habits and layered defenses remain important.</p>\n<h3>Key Takeaways</h3>\n<p>Review the chapter concepts and identify at least one way to apply them in everyday computer use.</p>"
+  },
+  {
+    "title": "Chapter 6: Privacy, Copyright, and Online Responsibilities",
+    "html": "<h1>Chapter 6: Privacy, Copyright, and Online Responsibilities</h1><h3>Digital Footprint</h3>\n<p>A digital footprint includes information created through posts, comments, uploads, and online activity. Before posting, consider whether the content exposes private details or could harm another person.</p>\n<h3>Handling Personal Data</h3>\n<p>Collect only the information needed for a legitimate purpose. Store it securely, limit access, and remove it when it is no longer needed under applicable rules.</p>\n<h3>Piracy and Intellectual Property</h3>\n<p>Software piracy means using or distributing software in violation of its license or applicable law. Choose legitimate licenses, open-source options, or educational versions when available.</p>\n<h3>Ethical Decision-Making</h3>\n<p>Before taking an action, ask: Do I have permission? Could this hurt someone? Am I respecting privacy and ownership? Would I be comfortable explaining my action to a teacher, employer, or account owner?</p>\n<h3>Key Takeaways</h3>\n<p>Review the chapter concepts and identify at least one way to apply them in everyday computer use.</p>"
+  },
+  {
+    "title": "Chapter 7: Cyber Safety Scenarios and Response",
+    "html": "<h1>Chapter 7: Cyber Safety Scenarios and Response</h1><h3>Suspicious Login Alert</h3>\n<p>If an account reports a login you do not recognize, visit the service through its official app or site, change the password, review active sessions, enable MFA, and report the event.</p>\n<h3>Possible Malware Infection</h3>\n<p>If a device behaves strangely after an unsafe download, disconnect it from networks if needed, inform a responsible technician, run trusted security checks, and avoid entering sensitive information until it is assessed.</p>\n<h3>A Friend Requests Your Password</h3>\n<p>Do not share passwords or verification codes, even with friends. Offer to help using approved sharing features or ask an authorized administrator to provide access.</p>\n<h3>Reporting and Recovery</h3>\n<p>Save relevant evidence without spreading harmful content, contact the appropriate platform or school IT staff, secure affected accounts, and follow organizational incident procedures. Avoid retaliating or trying to hack back.</p>\n<h3>Key Takeaways</h3>\n<p>Review the chapter concepts and identify at least one way to apply them in everyday computer use.</p>"
+  },
+  {
+    "title": "Learning Activities",
+    "html": "<h1>Learning Activities</h1><h3>Activity 1</h3><p>Create a two-column chart comparing computer ethics and cyber security, with two examples for each.</p><h3>Activity 2</h3><p>Write five classroom rules for responsible computer use and explain why each matters.</p><h3>Activity 3</h3><p>Study the original cybercrime diagram. Choose three threats and write one warning sign and one prevention step for each.</p><h3>Activity 4</h3><p>Draft a short guide for classmates on unique passwords, MFA, and suspicious links.</p><h3>Activity 5</h3><p>Make a checklist for securing a laptop, including updates, backups, and trusted downloads.</p><h3>Activity 6</h3><p>Read a fictional scenario about sharing a copyrighted image; describe a permission-respecting alternative.</p><h3>Activity 7</h3><p>Role-play reporting a suspicious account login to a school IT staff member.</p>"
+  },
+  {
+    "title": "Glossary",
+    "html": "<h1>Glossary</h1><dl><dt><strong>Authentication</strong></dt><dd>A process for verifying identity.</dd><dt><strong>Backup</strong></dt><dd>A separate copy of information for recovery.</dd><dt><strong>Computer ethics</strong></dt><dd>Moral principles guiding computer use.</dd><dt><strong>Copyright</strong></dt><dd>Legal rights associated with original creative works.</dd><dt><strong>Cybercrime</strong></dt><dd>Illegal activity involving computers or networks.</dd><dt><strong>Cyber security</strong></dt><dd>Protection of devices, networks, accounts, and data.</dd><dt><strong>Digital footprint</strong></dt><dd>Information left by online activities.</dd><dt><strong>Firewall</strong></dt><dd>A tool that filters network traffic according to rules.</dd><dt><strong>Identity theft</strong></dt><dd>Misuse of another person’s identifying information.</dd><dt><strong>Malware</strong></dt><dd>Software intended to harm, disrupt, or compromise systems.</dd><dt><strong>MFA</strong></dt><dd>Multi-factor authentication; use of more than one verification factor.</dd><dt><strong>Pharming</strong></dt><dd>A technique that redirects users to fraudulent sites.</dd><dt><strong>Phishing</strong></dt><dd>Deceptive messages or sites used to steal information.</dd><dt><strong>Piracy</strong></dt><dd>Unauthorized use or distribution of copyrighted material.</dd><dt><strong>Privacy</strong></dt><dd>Control over access to and use of personal information.</dd><dt><strong>Ransomware</strong></dt><dd>Malware that disrupts access to data, often for payment.</dd><dt><strong>Virus</strong></dt><dd>Malware that can replicate by infecting other files or programs.</dd></dl>"
+  },
+  {
+    "title": "References and Conclusion",
+    "html": "<h1>References</h1><p>Primary supplied material: 1stbook9.pdf, “Computer Ethics and Cyber Security,” 3 pages. Original material cites BrainKart: https://www.brainkart.com/article/Computer-Ethics-and-Cyber-Security_36701/ The chapter explanations, practical examples, quizzes, learning activities, and glossary are newly written educational expansions. They are not quotations from the original source.</p><h2>Conclusion</h2><p>Computer ethics and cyber security are essential parts of responsible digital life. By respecting privacy and ownership, protecting accounts, recognizing scams, and reporting problems appropriately, students can make safer and more responsible choices online.</p>"
+  }
+];
+
+const toc = document.getElementById('toc');
+const content = document.getElementById('content');
+const prev = document.getElementById('prev') || document.getElementById('previous');
+const next = document.getElementById('next');
+const status = document.getElementById('status');
+const heading = document.getElementById('heading');
+let current = 0;
+function render() {
+  const page = LESSON_PAGES[current];
+  content.innerHTML = page.html;
+  if (heading) heading.textContent = page.title;
+  toc.replaceChildren();
+  LESSON_PAGES.forEach((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = item.title;
+    if (i === current) b.classList.add('active');
+    b.addEventListener('click', () => go(i));
+    toc.appendChild(b);
+  });
+  prev.disabled = current === 0;
+  next.disabled = current === LESSON_PAGES.length - 1;
+  if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+}
+function go(i) {
+  if (i < 0 || i >= LESSON_PAGES.length) return;
+  current = i;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.addEventListener('click', () => go(current-1));
+next.addEventListener('click', () => go(current+1));
+render();
+
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+</script>
+</body>
+</html>

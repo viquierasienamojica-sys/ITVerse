@@ -1,0 +1,336 @@
+{
+  "quiz": [
+    [
+      "What was the main electronic component of first-generation computers?",
+      [
+        "Transistors",
+        "Vacuum tubes",
+        "Integrated circuits",
+        "Microprocessors"
+      ],
+      1,
+      "First-generation computers used vacuum tubes."
+    ],
+    [
+      "Which memory technology was used in second-generation computers?",
+      [
+        "Optical discs",
+        "Flash drives",
+        "Magnetic core",
+        "Solid-state drives"
+      ],
+      2,
+      "Second-generation computers used magnetic core memory."
+    ],
+    [
+      "Which programming language type was mainly used in first-generation computers?",
+      [
+        "Machine language",
+        "Python",
+        "JavaScript",
+        "BASIC"
+      ],
+      0,
+      "The first generation used machine language."
+    ],
+    [
+      "What technology characterized third-generation computers?",
+      [
+        "Vacuum tubes",
+        "Integrated circuits",
+        "Microprocessors",
+        "Mechanical relays"
+      ],
+      1,
+      "Integrated circuits were the main technology of the third generation."
+    ],
+    [
+      "What is the main electronic component of fourth-generation computers?",
+      [
+        "Vacuum tube",
+        "Magnetic drum",
+        "Microprocessor",
+        "Transistor only"
+      ],
+      2,
+      "Fourth-generation computers are based on microprocessors and VLSI."
+    ],
+    [
+      "What does RAM stand for?",
+      [
+        "Read Access Memory",
+        "Random-Access Memory",
+        "Rapid Array Module",
+        "Read-Only Memory"
+      ],
+      1,
+      "RAM means random-access memory and is volatile."
+    ],
+    [
+      "Which memory retains its contents when power is turned off?",
+      [
+        "RAM",
+        "Cache only",
+        "ROM",
+        "Register memory"
+      ],
+      2,
+      "ROM is non-volatile memory."
+    ],
+    [
+      "Which generation is associated with artificial intelligence?",
+      [
+        "First",
+        "Second",
+        "Third",
+        "Fifth"
+      ],
+      3,
+      "The fifth generation is associated with AI."
+    ],
+    [
+      "What does parallel processing mean in the lesson?",
+      [
+        "Running tasks simultaneously using two or more microprocessors",
+        "Using only one processor",
+        "Storing data on tape",
+        "Printing several documents"
+      ],
+      0,
+      "Parallel processing uses two or more microprocessors to run tasks simultaneously."
+    ],
+    [
+      "Which is an example of a first-generation computer in the PDF?",
+      [
+        "IBM PC",
+        "Apple Macintosh",
+        "ENIAC",
+        "PDP-11"
+      ],
+      2,
+      "ENIAC is listed among first-generation computers."
+    ]
+  ],
+  "final": [
+    [
+      "What technology replaced vacuum tubes in second-generation computers?",
+      [
+        "Transistors",
+        "Microprocessors",
+        "ICs",
+        "ULSI"
+      ],
+      0,
+      "Transistors replaced vacuum tubes."
+    ],
+    [
+      "Which component controls electron flow in a vacuum?",
+      [
+        "CPU",
+        "Vacuum tube",
+        "RAM",
+        "IC"
+      ],
+      1,
+      "A vacuum tube controls the flow of electrons in a vacuum."
+    ],
+    [
+      "What does CPU stand for?",
+      [
+        "Central Program Utility",
+        "Computer Processing Unit",
+        "Central Processing Unit",
+        "Core Power Unit"
+      ],
+      2,
+      "CPU means central processing unit."
+    ],
+    [
+      "Which device stores information on a magnetically coated cylinder?",
+      [
+        "Magnetic drum",
+        "Magnetic core",
+        "ROM",
+        "Microprocessor"
+      ],
+      0,
+      "A magnetic drum is a magnetically coated cylinder."
+    ],
+    [
+      "Which language uses abbreviated words such as ADD and SUB?",
+      [
+        "Machine language",
+        "Assembly language",
+        "Natural language",
+        "Binary code only"
+      ],
+      1,
+      "Assembly language uses abbreviated instructions."
+    ],
+    [
+      "What is the main technology of third-generation computers?",
+      [
+        "Transistors",
+        "Vacuum tubes",
+        "Integrated circuits",
+        "Microprocessors"
+      ],
+      2,
+      "Third-generation computers used ICs."
+    ],
+    [
+      "Which is a second-generation computer example?",
+      [
+        "ENIAC",
+        "IBM 1401",
+        "IBM PC",
+        "Apple II"
+      ],
+      1,
+      "IBM 1401 is listed as a second-generation computer."
+    ],
+    [
+      "Which is a third-generation computer example?",
+      [
+        "UNIVAC 1",
+        "IBM 650",
+        "IBM 360",
+        "Macintosh"
+      ],
+      2,
+      "IBM 360 is listed as a third-generation computer."
+    ],
+    [
+      "Which device was commonly used for first-generation input?",
+      [
+        "Touchscreen",
+        "Mouse",
+        "Optical scanner",
+        "Punched cards"
+      ],
+      3,
+      "First-generation computers used punched cards and paper tape."
+    ],
+    [
+      "What does VLSI refer to in the lesson?",
+      [
+        "Thousands of transistors on one microchip",
+        "Vacuum tube circuits",
+        "Magnetic tape storage",
+        "Assembly instructions"
+      ],
+      0,
+      "The PDF describes VLSI as thousands of transistors on a single microchip."
+    ],
+    [
+      "What type of memory is RAM?",
+      [
+        "Non-volatile",
+        "Volatile",
+        "Mechanical",
+        "Optical"
+      ],
+      1,
+      "RAM loses its contents when power is turned off."
+    ],
+    [
+      "What type of memory is ROM?",
+      [
+        "Volatile",
+        "Temporary only",
+        "Non-volatile",
+        "Magnetic drum"
+      ],
+      2,
+      "ROM retains stored contents when power is turned off."
+    ],
+    [
+      "Which is an example of a fourth-generation computer?",
+      [
+        "ENIAC",
+        "IBM 701",
+        "UNIVAC 1107",
+        "Apple II"
+      ],
+      3,
+      "Apple II is listed as a fourth-generation example."
+    ],
+    [
+      "Which generation uses AI as its defining focus?",
+      [
+        "Fifth",
+        "First",
+        "Second",
+        "Third"
+      ],
+      0,
+      "The fifth generation focuses on AI."
+    ],
+    [
+      "What is ULSI described as in the PDF?",
+      [
+        "Dozens of vacuum tubes",
+        "Millions of transistors on one microchip",
+        "Magnetic tape storage",
+        "A programming language"
+      ],
+      1,
+      "ULSI is described as millions of transistors on a microchip."
+    ],
+    [
+      "Which technology was common in second-generation memory?",
+      [
+        "RAM only",
+        "Cloud storage",
+        "Magnetic core",
+        "Blu-ray discs"
+      ],
+      2,
+      "Magnetic core memory was used in the second generation."
+    ],
+    [
+      "Which was an advantage of second-generation computers over first-generation computers?",
+      [
+        "Greater size",
+        "More heat",
+        "More electricity use",
+        "Lower power consumption"
+      ],
+      3,
+      "Transistor-based computers consumed less power."
+    ],
+    [
+      "Which generation is associated with high-level languages such as FORTRAN and BASIC in the lesson?",
+      [
+        "Third",
+        "First",
+        "Second only",
+        "Fifth only"
+      ],
+      0,
+      "The PDF lists high-level languages for the third generation."
+    ],
+    [
+      "What is a computer network?",
+      [
+        "A single keyboard",
+        "Two or more linked computer systems",
+        "A magnetic drum",
+        "A CPU instruction"
+      ],
+      1,
+      "A network links two or more computer systems."
+    ],
+    [
+      "Which input method is listed for fifth-generation devices?",
+      [
+        "Punched cards only",
+        "Paper tape only",
+        "Speech input",
+        "Mechanical gears"
+      ],
+      2,
+      "Speech recognition/input is listed for fifth-generation devices."
+    ]
+  ]
+}

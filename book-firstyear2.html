@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>First Year Book 02 | Evolution of Computers</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4eee4;
+            color: #342c24
+        }
+
+        header {
+            background: #493526;
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 19px;
+            color: white
+        }
+
+        .layout {
+            display: flex;
+            min-height: calc(100vh - 65px)
+        }
+
+        aside {
+            width: 295px;
+            flex-shrink: 0;
+            background: #e8dcc9;
+            padding: 22px 15px;
+            border-right: 1px solid #cfbea7;
+            max-height: calc(100vh - 65px);
+            overflow-y: auto;
+            position: sticky;
+            top: 0
+        }
+
+        aside h3 {
+            margin: 0 0 16px
+        }
+
+        #toc button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: 0;
+            border-radius: 7px;
+            background: transparent;
+            color: #463527;
+            padding: 11px;
+            cursor: pointer;
+            margin: 3px 0;
+            font-size: 13px;
+            line-height: 1.35
+        }
+
+        #toc button.active,
+        #toc button:hover {
+            background: #795a3e;
+            color: white
+        }
+
+        main {
+            flex: 1;
+            min-width: 0;
+            padding: 28px
+        }
+
+        .reader {
+            background: #fffaf2;
+            max-width: 960px;
+            margin: auto;
+            padding: 32px;
+            border: 1px solid #dfd1bd;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px #3b27120d
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.35
+        }
+
+        h1 {
+            font-size: 28px
+        }
+
+        h2 {
+            font-size: 23px;
+            color: #6b4c30
+        }
+
+        h3 {
+            font-size: 19px;
+            color: #6b4c30
+        }
+
+        p,
+        li {
+            line-height: 1.75
+        }
+
+        figure {
+            margin: 22px auto;
+            text-align: center
+        }
+
+        figure img {
+            display: block;
+            width: 100%;
+            max-width: 750px;
+            max-height: 650px;
+            height: auto;
+            object-fit: contain;
+            margin: auto;
+            border-radius: 8px
+        }
+
+        figcaption {
+            font-size: 12px;
+            color: #867563;
+            margin-top: 7px
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 32px
+        }
+
+        .btn {
+            border: 0;
+            background: #6d5038;
+            color: white;
+            padding: 12px 19px;
+            border-radius: 8px;
+            cursor: pointer
+        }
+
+        .btn:disabled {
+            opacity: .4;
+            cursor: not-allowed
+        }
+
+        .status {
+            text-align: center;
+            color: #756655;
+            font-size: 13px
+        }
+
+        .question {
+            background: #f6eee1;
+            border: 1px solid #e5d7c4;
+            padding: 18px;
+            margin: 17px 0;
+            border-radius: 9px
+        }
+
+        .question strong {
+            display: block;
+            margin-bottom: 12px
+        }
+
+        .option {
+            display: block;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .option:hover {
+            background: #ede1d0
+        }
+
+        .result {
+            margin-top: 18px;
+            padding: 17px;
+            border-radius: 8px;
+            background: #eee3d1
+        }
+
+        .review {
+            border-top: 1px solid #d5c5ae;
+            margin-top: 12px;
+            padding-top: 10px
+        }
+
+        .review p {
+            margin: 5px 0
+        }
+
+        .correct {
+            color: #267347
+        }
+
+        .wrong {
+            color: #a32d2d
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            display: block;
+            overflow-x: auto
+        }
+
+        td,
+        th {
+            border: 1px solid #d6c5b1;
+            padding: 10px 12px;
+            text-align: left;
+            min-width: 110px
+        }
+
+        th {
+            background: #eadcc8
+        }
+
+        blockquote {
+            border-left: 4px solid #a08361;
+            padding-left: 15px
+        }
+
+        @media(max-width:850px) {
+            .layout {
+                display: block
+            }
+
+            aside {
+                width: auto;
+                max-height: 260px;
+                position: static;
+                border-right: 0
+            }
+
+            main {
+                padding: 12px
+            }
+
+            .reader {
+                padding: 20px
+            }
+
+            header {
+                flex-wrap: wrap
+            }
+        }
+
+        /* Shared First Year Reader Theme — based on Book 05 */
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0 !important;
+            font-family: Arial, sans-serif !important;
+            background: #f4eee4 !important;
+            color: #342c24 !important;
+            line-height: 1.6
+        }
+
+        header {
+            background: #493526 !important;
+            color: #fff !important;
+            padding: 16px 24px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 15px !important;
+            border: 0 !important;
+            min-height: 58px
+        }
+
+        header a {
+            color: white !important;
+            text-decoration: none !important
+        }
+
+        header h2 {
+            margin: 0 !important;
+            font-size: 19px !important;
+            color: white !important
+        }
+
+        .layout {
+            display: flex !important;
+            min-height: calc(100vh - 65px) !important;
+            align-items: stretch !important
+        }
+
+        aside,
+        .sidebar {
+            width: 295px !important;
+            flex: 0 0 295px !important;
+            background: #e8dcc9 !important;
+            padding: 22px 15px !important;
+            border-right: 1px solid #cfbea7 !important;
+            max-height: calc(100vh - 65px) !important;
+            overflow-y: auto !important;
+            position: sticky !important;
+            top: 0 !important
+        }
+
+        aside h2,
+        aside h3,
+        .sidebar h2,
+        .sidebar h3 {
+            margin: 0 0 16px !important;
+            font-size: 19px !important;
+            color: #6b4c30 !important
+        }
+
+        #toc button,
+        #chapterList button,
+        #chapterList [role=button],
+        .sidebar button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: 0;
+            border-radius: 7px;
+            background: transparent;
+            color: #463527;
+            padding: 11px;
+            cursor: pointer;
+            margin: 3px 0;
+            font-size: 13px;
+            line-height: 1.35
+        }
+
+        #toc button.active,
+        #toc button:hover,
+        #chapterList button.active,
+        #chapterList button:hover,
+        .sidebar button.active,
+        .sidebar button:hover {
+            background: #795a3e !important;
+            color: white !important
+        }
+
+        main,
+        .main {
+            flex: 1 !important;
+            width: auto !important;
+            max-width: none !important;
+            min-width: 0 !important;
+            margin: 0 !important;
+            padding: 28px !important;
+            background: transparent !important
+        }
+
+        .reader {
+            background: #fffaf2 !important;
+            max-width: 960px !important;
+            margin: auto !important;
+            padding: 32px !important;
+            border: 1px solid #dfd1bd !important;
+            border-radius: 12px !important;
+            box-shadow: 0 3px 15px #3b27120d !important;
+            min-height: 540px
+        }
+
+        .reader h1 {
+            font-size: 28px !important;
+            line-height: 1.35 !important;
+            color: #6b4c30 !important
+        }
+
+        .reader h2 {
+            font-size: 23px !important;
+            line-height: 1.35 !important;
+            color: #6b4c30 !important
+        }
+
+        .reader h3 {
+            font-size: 19px !important;
+            line-height: 1.35 !important;
+            color: #6b4c30 !important
+        }
+
+        .reader p,
+        .reader li {
+            line-height: 1.75 !important
+        }
+
+        .reader figure {
+            margin: 25px auto !important;
+            text-align: center !important;
+            background: transparent !important;
+            border: 0 !important;
+            padding: 0 !important
+        }
+
+        .reader figure img {
+            display: block !important;
+            width: 100% !important;
+            max-width: 750px !important;
+            max-height: 650px !important;
+            height: auto !important;
+            object-fit: contain !important;
+            margin: auto !important;
+            border-radius: 8px !important
+        }
+
+        .reader figcaption {
+            font-size: 12px !important;
+            color: #867563 !important;
+            margin-top: 7px !important
+        }
+
+        .nav,
+        .navigation,
+        .controls {
+            display: flex !important;
+            justify-content: space-between !important;
+            gap: 12px !important;
+            margin-top: 32px !important
+        }
+
+        .btn,
+        button.nav,
+        .submit,
+        .retake {
+            border: 0 !important;
+            background: #6d5038 !important;
+            color: white !important;
+            padding: 12px 19px !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            font-size: 14px !important
+        }
+
+        .btn:disabled,
+        button.nav:disabled {
+            opacity: .4 !important;
+            cursor: not-allowed !important
+        }
+
+        .status {
+            text-align: center !important;
+            color: #756655 !important;
+            font-size: 13px !important
+        }
+
+        .question {
+            background: #f6eee1 !important;
+            border: 1px solid #e5d7c4 !important;
+            padding: 18px !important;
+            margin: 17px 0 !important;
+            border-radius: 9px !important
+        }
+
+        .option {
+            display: block;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .option:hover {
+            background: #ede1d0 !important
+        }
+
+        .result {
+            margin-top: 18px !important;
+            padding: 17px !important;
+            border-radius: 8px !important;
+            background: #eee3d1 !important
+        }
+
+        .reader table {
+            border-collapse: collapse;
+            width: 100%;
+            display: block;
+            overflow-x: auto
+        }
+
+        .reader th,
+        .reader td {
+            border: 1px solid #d9cbb8;
+            padding: 10px;
+            text-align: left
+        }
+
+        .reader th {
+            background: #e8dcc9
+        }
+
+        @media(max-width:850px) {
+            .layout {
+                display: block !important
+            }
+
+            aside,
+            .sidebar {
+                width: 100% !important;
+                max-height: 260px !important;
+                position: static !important;
+                border-right: 0 !important;
+                flex: auto !important
+            }
+
+            main,
+            .main {
+                padding: 12px !important
+            }
+
+            .reader {
+                padding: 20px !important
+            }
+
+            header {
+                flex-wrap: wrap !important
+            }
+        }
+    
+/* BYTEBLOOM Pastel Pink Reader Theme */
+:root{--bb-p1:#FDE4F2;--bb-p2:#F9CEE7;--bb-p3:#F4B8DA;--bb-p4:#EEA1CD;--bb-p5:#E68BBE;--bb-ink:#612C4D;--bb-muted:#795B70}
+body{background:var(--bb-p1)!important;color:var(--bb-ink)!important}
+header{background:var(--bb-p5)!important;color:#52223F!important;border-bottom:1px solid var(--bb-p4)!important}
+header a,header h2,header span{color:#52223F!important}
+aside,.sidebar{background:var(--bb-p2)!important;border-color:var(--bb-p3)!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{color:var(--bb-ink)!important}
+#toc button,#chapterList button,.sidebar button{color:var(--bb-ink)!important}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:var(--bb-p5)!important;color:#52223F!important}
+main,.main{background:transparent!important}
+.reader{background:#FFF8FC!important;border:1px solid var(--bb-p3)!important;box-shadow:0 8px 22px rgba(157,57,112,.08)!important}
+.reader h1,.reader h2,.reader h3,main h1,main h2,main h3{color:var(--bb-ink)!important}
+.reader p,.reader li,main p,main li{color:#57394D}
+.btn,button.nav,.navigation button,.controls button{background:var(--bb-p5)!important;color:#52223F!important;border:0!important}
+.btn:hover,button.nav:hover,.navigation button:hover,.controls button:hover{background:var(--bb-p4)!important}
+.btn:disabled,button.nav:disabled,.navigation button:disabled,.controls button:disabled{opacity:.45!important;cursor:not-allowed!important}
+.status,figcaption,.reader figcaption{color:var(--bb-muted)!important}
+.reader table th,main table th{background:var(--bb-p2)!important}
+.reader table td,.reader table th,main table td,main table th{border-color:var(--bb-p3)!important}
+.reader blockquote,main blockquote,.example{border-left-color:var(--bb-p5)!important;background:#FFF0F8!important}
+.reader figure img,main figure img{max-width:750px;height:auto;object-fit:contain}
+
+
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <header><a href="library.html">← Back to Library</a>
+        <h2>BYTEBLOOM</h2><div class="reader-header-actions">
+    <span>1st Year · Book 02</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+    </header>
+    <div class="layout">
+        <aside>
+            <h3>Table of Contents</h3>
+            <div id="toc"></div>
+        </aside>
+        <main>
+            <article class="reader">
+                <div id="content"></div>
+                <div class="nav"><button class="btn" id="prev">← Previous</button><button class="btn" id="next">Next
+                        →</button></div>
+                <p class="status" id="status"></p>
+            </article>
+        </main>
+    </div>
+    <script>
+const LESSON_PAGES = [
+  {
+    "title": "UNIT 7: EVOLUTION OF COMPUTERS",
+    "html": "<h1>UNIT 7: EVOLUTION OF COMPUTERS</h1>\n<p><strong>A Complete Learning Guide to Computer Generations, Components, and Technological Development</strong></p>\n<p>Subject: Introduction to Computing<br />\nYear Level: First Year College<br />\nPrepared by: [Insert Group Members]</p>\n<hr />\n<h1>BOOK INTRODUCTION</h1>\n<p>Computers have changed greatly over the years. Early electronic computers were very large, expensive, and required a lot of electricity. Modern computers are smaller, faster, more reliable, and easier to use.</p>\n<p>These changes became possible because of important developments in electronic components, memory devices, programming languages, and computer processing technology.</p>\n<p>The evolution of computers is commonly divided into five generations. Each generation represents an important development in computer technology.</p>\n<p>This E-Book discusses the basic components that helped computers develop and explains the characteristics of each computer generation.</p>\n<p>It also introduces important concepts such as vacuum tubes, transistors, integrated circuits, microprocessors, memory, programming languages, and artificial intelligence.</p>\n<p>By studying these topics, students will understand how computers developed from large electronic machines into the powerful devices used today.</p>\n<h1>GENERAL LEARNING OBJECTIVES</h1>\n<p>After completing this unit, students should be able to:</p>\n<ol>\n<li>Explain the meaning of computer evolution.</li>\n<li>Identify the five generations of computers.</li>\n<li>Describe the technologies used in each generation.</li>\n<li>Define important computer components.</li>\n<li>Explain the differences between machine language and assembly language.</li>\n<li>Identify the memory technologies used by different generations.</li>\n<li>Compare the characteristics of the five computer generations.</li>\n<li>Explain the importance of artificial intelligence in modern computing.</li>\n<li>Identify examples of computers from different generations.</li>\n<li>Appreciate how computer technology has improved over time.</li>\n</ol>\n<hr />\n<h1>TABLE OF CONTENTS</h1>\n<p><strong>Chapter 1:</strong> Introduction to the Evolution of Computers</p>\n<p><strong>Chapter 2:</strong> Important Computer Components and Technologies</p>\n<p><strong>Chapter 3:</strong> Computer Memory and Programming Languages</p>\n<p><strong>Chapter 4:</strong> First Generation of Computers</p>\n<p><strong>Chapter 5:</strong> Second Generation of Computers</p>\n<p><strong>Chapter 6:</strong> Third Generation of Computers</p>\n<p><strong>Chapter 7:</strong> Fourth Generation of Computers</p>\n<p><strong>Chapter 8:</strong> Fifth Generation of Computers</p>\n<p><strong>Chapter 9:</strong> Comparison of the Five Generations</p>\n<p><strong>Chapter 10:</strong> The Importance of Computer Evolution</p>\n<p><strong>Additional Sections</strong></p>\n<ul>\n<li>Practical Learning Activities</li>\n<li>Chapter Quizzes</li>\n<li>Final Assessment</li>\n<li>Answer Key and Explanations</li>\n<li>Glossary of Terms</li>\n<li>Learning Resources</li>\n<li>References</li>\n<li>Conclusion</li>\n</ul>\n<hr />\n"
+  },
+  {
+    "title": "CHAPTER 1: INTRODUCTION TO THE EVOLUTION OF COMPUTERS",
+    "html": "<h1>CHAPTER 1: INTRODUCTION TO THE EVOLUTION OF COMPUTERS</h1>\n<h2>Learning Objectives</h2>\n<p>After completing this chapter, students should be able to explain computer evolution, describe why computers have changed, and identify the five computer generations.</p>\n<h2>1.1 What Is Computer Evolution?</h2>\n<p>Computer evolution refers to the continuous development and improvement of computer technology over time.</p>\n<p>Computers have changed in terms of size, speed, processing power, memory, reliability, and energy consumption.</p>\n<p>Early electronic computers were large and required entire rooms for installation.</p>\n<p>Today, computers can be found in homes, schools, offices, and even in people's pockets.</p>\n<p>These improvements became possible because scientists and engineers developed new electronic components and better ways of processing information.</p>\n<h2>1.2 Why Do Computers Evolve?</h2>\n<p>Computer technology continues to improve because people need machines that can perform tasks more efficiently.</p>\n<p>Some important reasons for computer development include:</p>\n<p><strong>Faster Processing</strong></p>\n<p>Computers need to perform calculations and process information quickly.</p>\n<p><strong>Smaller Size</strong></p>\n<p>Developers create smaller electronic components so computers can become more portable.</p>\n<p><strong>Lower Power Consumption</strong></p>\n<p>Modern components are designed to use electricity more efficiently.</p>\n<p><strong>Greater Storage Capacity</strong></p>\n<p>Computers need enough memory and storage to handle programs and information.</p>\n<p><strong>Better Reliability</strong></p>\n<p>Computer systems must operate accurately and consistently.</p>\n<p><strong>Improved User Experience</strong></p>\n<p>Modern computers provide easier ways for people to interact with technology.</p>\n<h2>1.3 The Five Generations of Computers</h2>\n<p>Computer evolution is commonly divided into five generations.</p>\n<table>\n<thead>\n<tr>\n  <th>Generation</th>\n  <th>Timeline Used in This Unit</th>\n  <th>Main Technology</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>First Generation</td>\n  <td>1940s–1950s</td>\n  <td>Vacuum tubes</td>\n</tr>\n<tr>\n  <td>Second Generation</td>\n  <td>1950s–1960s</td>\n  <td>Transistors</td>\n</tr>\n<tr>\n  <td>Third Generation</td>\n  <td>1960s–1970s</td>\n  <td>Integrated circuits</td>\n</tr>\n<tr>\n  <td>Fourth Generation</td>\n  <td>1970s–present</td>\n  <td>Microprocessors</td>\n</tr>\n<tr>\n  <td>Fifth Generation</td>\n  <td>Present and future</td>\n  <td>Artificial intelligence</td>\n</tr>\n</tbody>\n</table>\n<p>These periods are approximate. The generations describe major technological developments rather than completely separate periods.</p>\n<h2>1.4 How Computer Generations Are Classified</h2>\n<p>Each generation is identified by important improvements in technology.</p>\n<p>These improvements include:</p>\n<ul>\n<li>Electronic components</li>\n<li>Memory technology</li>\n<li>Programming languages</li>\n<li>Computer size</li>\n<li>Processing speed</li>\n<li>Power consumption</li>\n<li>Input and output devices</li>\n<li>Reliability and efficiency</li>\n</ul>\n<p>For example, first-generation computers used vacuum tubes, while second-generation computers used transistors.</p>\n<p>This replacement made computers smaller and more efficient.</p>\n<h2>1.5 Computer Evolution in Everyday Life</h2>\n<p>The development of computers has changed how people study, work, and communicate.</p>\n<p>Computers are now used for:</p>\n<ul>\n<li>Online learning</li>\n<li>Research</li>\n<li>Communication</li>\n<li>Business operations</li>\n<li>Entertainment</li>\n<li>Programming</li>\n<li>Data processing</li>\n<li>Scientific calculations</li>\n</ul>\n<p>Computer evolution continues as new technologies are developed.</p>\n"
+  },
+  {
+    "title": "CHAPTER 2: IMPORTANT COMPUTER COMPONENTS AND TECHNOLOGIES",
+    "html": "<h1>CHAPTER 2: IMPORTANT COMPUTER COMPONENTS AND TECHNOLOGIES</h1>\n<h2>Learning Objectives</h2>\n<p>After completing this chapter, students should be able to define vacuum tubes, transistors, integrated circuits, microprocessors, and CPUs.</p>\n<h2>2.1 Vacuum Tube</h2>\n<figure><img src=\"assets/firstyear2-figure-01.png\" alt=\"Vacuum tube\" loading=\"lazy\"><figcaption>Vacuum tube — original illustration from the supplied PDF</figcaption></figure>\n<p>A vacuum tube is an electronic device that controls the movement of electrons inside a vacuum.</p>\n<p>Vacuum tubes can work as electronic switches or amplifiers.</p>\n<p>They were used in older electronic equipment such as radios, televisions, and early computers.</p>\n<h3>Characteristics</h3>\n<ul>\n<li>Used in first-generation computers</li>\n<li>Relatively large</li>\n<li>Required considerable electricity</li>\n<li>Produced a lot of heat</li>\n<li>Needed frequent maintenance</li>\n</ul>\n<h3>Importance</h3>\n<p>Vacuum tubes made early electronic computing possible.</p>\n<p>However, their size and power requirements limited the efficiency of early computers.</p>\n<h2>2.2 Transistor</h2>\n<figure><img src=\"assets/firstyear2-figure-02.png\" alt=\"Transistor\" loading=\"lazy\"><figcaption>Transistor — original illustration from the supplied PDF</figcaption></figure>\n<p>A transistor is an electronic component that can act as a switch or amplifier.</p>\n<p>It controls the flow of electrical signals in electronic circuits.</p>\n<p>Transistors replaced vacuum tubes in second-generation computers.</p>\n<h3>Characteristics</h3>\n<ul>\n<li>Smaller than vacuum tubes</li>\n<li>More energy-efficient</li>\n<li>More reliable</li>\n<li>Produced less heat</li>\n<li>Supported faster computer operation</li>\n</ul>\n<h3>Importance</h3>\n<p>The invention and adoption of transistors made computers smaller, faster, and more practical.</p>\n<h2>2.3 Integrated Circuit (IC)</h2>\n<figure><img src=\"assets/firstyear2-figure-03.png\" alt=\"Integrated circuit\" loading=\"lazy\"><figcaption>Integrated circuit — original illustration from the supplied PDF</figcaption></figure>\n<p>An integrated circuit is a small electronic circuit containing several connected components on a chip, usually made of silicon.</p>\n<p>These components may include transistors, diodes, and resistors.</p>\n<p>Integrated circuits became the main technology of third-generation computers.</p>\n<h3>Characteristics</h3>\n<ul>\n<li>Contains multiple electronic components</li>\n<li>Occupies less space than separate components</li>\n<li>Supports faster processing</li>\n<li>Improves reliability</li>\n<li>Reduces manufacturing complexity for many electronic systems</li>\n</ul>\n<h3>Importance</h3>\n<p>Integrated circuits allowed computers to become smaller, cheaper, and more efficient.</p>\n<h2>2.4 Microprocessor</h2>\n<figure><img src=\"assets/firstyear2-figure-04.png\" alt=\"Microprocessor\" loading=\"lazy\"><figcaption>Microprocessor — original illustration from the supplied PDF</figcaption></figure>\n<p>A microprocessor is an electronic component that contains a computer's central processing unit on an integrated circuit.</p>\n<p>It performs instructions and controls many computer operations.</p>\n<p>Microprocessors became the main technology associated with fourth-generation computers.</p>\n<h3>Characteristics</h3>\n<ul>\n<li>Contains processing circuitry on a chip</li>\n<li>Performs calculations</li>\n<li>Executes program instructions</li>\n<li>Supports compact computer designs</li>\n<li>Can process information quickly</li>\n</ul>\n<h3>Importance</h3>\n<p>Microprocessors helped make personal computers possible.</p>\n<p>They also supported the development of many portable electronic devices.</p>\n<h2>2.5 Central Processing Unit (CPU)</h2>\n<figure><img src=\"assets/firstyear2-figure-05.png\" alt=\"Central processing unit\" loading=\"lazy\"><figcaption>Central processing unit — original illustration from the supplied PDF</figcaption></figure>\n<p>The Central Processing Unit, commonly called the CPU, is responsible for executing instructions and processing data.</p>\n<p>It is often described as the brain of the computer.</p>\n<h3>Main Functions</h3>\n<p><strong>Processing Instructions</strong></p>\n<p>The CPU executes instructions from computer programs.</p>\n<p><strong>Performing Calculations</strong></p>\n<p>The CPU carries out arithmetic operations.</p>\n<p><strong>Making Logical Decisions</strong></p>\n<p>The CPU performs comparisons and logical operations.</p>\n<p><strong>Controlling Operations</strong></p>\n<p>The CPU coordinates many activities within the computer system.</p>\n<h3>Example</h3>\n<p>When a student opens a computer application, the CPU processes the instructions needed to run that application.</p>\n<h2>2.6 Comparison of Computer Components</h2>\n<table>\n<thead>\n<tr>\n  <th>Component</th>\n  <th>Main Function</th>\n  <th>Associated Generation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Vacuum tube</td>\n  <td>Electronic switching and amplification</td>\n  <td>First</td>\n</tr>\n<tr>\n  <td>Transistor</td>\n  <td>Controls electrical signals</td>\n  <td>Second</td>\n</tr>\n<tr>\n  <td>Integrated circuit</td>\n  <td>Combines electronic components on a chip</td>\n  <td>Third</td>\n</tr>\n<tr>\n  <td>Microprocessor</td>\n  <td>Executes processing instructions</td>\n  <td>Fourth</td>\n</tr>\n<tr>\n  <td>CPU</td>\n  <td>Performs computer processing</td>\n  <td>Used across generations</td>\n</tr>\n</tbody>\n</table>\n"
+  },
+  {
+    "title": "CHAPTER 3: COMPUTER MEMORY AND PROGRAMMING LANGUAGES",
+    "html": "<h1>CHAPTER 3: COMPUTER MEMORY AND PROGRAMMING LANGUAGES</h1>\n<h2>Learning Objectives</h2>\n<p>Students should be able to define computer memory, identify early memory technologies, and distinguish between machine language and assembly language.</p>\n<h2>3.1 What Is Computer Memory?</h2>\n<p>Computer memory refers to components used to store data and instructions.</p>\n<p>Memory is important because computers need information while performing operations.</p>\n<p>Different generations used different memory technologies.</p>\n<h2>3.2 Magnetic Drum</h2>\n<figure><img src=\"assets/firstyear2-figure-06.png\" alt=\"Magnetic drum\" loading=\"lazy\"><figcaption>Magnetic drum — original illustration from the supplied PDF</figcaption></figure>\n<p>A magnetic drum is a rotating cylinder coated with magnetic material.</p>\n<p>It was used to store data and programs in early computers.</p>\n<h3>Characteristics</h3>\n<ul>\n<li>Uses magnetic material</li>\n<li>Stores information on a rotating cylinder</li>\n<li>Used in early computing systems</li>\n</ul>\n<h3>Importance</h3>\n<p>Magnetic drums were important early memory devices before newer memory technologies became common.</p>\n<h2>3.3 Magnetic Core Memory</h2>\n<figure><img src=\"assets/firstyear2-figure-07.png\" alt=\"Magnetic core memory\" loading=\"lazy\"><figcaption>Magnetic core memory — original illustration from the supplied PDF</figcaption></figure>\n<p>Magnetic core memory uses small rings made of magnetic material to store information.</p>\n<p>Each ring represents information through its magnetic state.</p>\n<h3>Characteristics</h3>\n<ul>\n<li>Uses magnetic cores</li>\n<li>Stores information magnetically</li>\n<li>Was used in early computer systems</li>\n<li>Became an important memory technology in the second and third generations</li>\n</ul>\n<h2>3.4 Machine Language</h2>\n<p>Machine language is a low-level programming language made of binary instructions.</p>\n<p>Binary uses two digits:</p>\n<ul>\n<li>0</li>\n<li>1</li>\n</ul>\n<p>Computers can directly execute machine instructions supported by their processors.</p>\n<h3>Example</h3>\n<p>A simplified binary sequence may look like:</p>\n<p><code>10110010</code></p>\n<p>The meaning of a machine instruction depends on the computer's processor architecture.</p>\n<h3>Characteristics</h3>\n<ul>\n<li>Uses binary instructions</li>\n<li>Closely connected to computer hardware</li>\n<li>Difficult for people to read</li>\n<li>Used in first-generation computing</li>\n</ul>\n<h2>3.5 Assembly Language</h2>\n<p>Assembly language is a low-level programming language that uses symbolic instructions instead of writing every instruction as binary digits.</p>\n<p>Examples of instruction names include:</p>\n<ul>\n<li>ADD</li>\n<li>SUB</li>\n<li>DIV</li>\n</ul>\n<h3>Example</h3>\n<p><code>ADD A, B</code></p>\n<p>This is a simplified illustration of an addition instruction. Actual assembly syntax depends on the processor.</p>\n<h3>Importance</h3>\n<p>Assembly language makes low-level programming easier to read than machine language.</p>\n<p>An assembler converts assembly instructions into machine code.</p>\n<h2>3.6 Machine Language vs. Assembly Language</h2>\n<table>\n<thead>\n<tr>\n  <th>Machine Language</th>\n  <th>Assembly Language</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Uses binary instructions</td>\n  <td>Uses symbolic instructions</td>\n</tr>\n<tr>\n  <td>Directly executed by the processor</td>\n  <td>Requires assembly into machine code</td>\n</tr>\n<tr>\n  <td>Difficult for people to read</td>\n  <td>Easier to read than binary</td>\n</tr>\n<tr>\n  <td>Associated with early computing</td>\n  <td>Commonly associated with second-generation computers</td>\n</tr>\n</tbody>\n</table>\n<h2>3.7 Random-Access Memory (RAM)</h2>\n<figure><img src=\"assets/firstyear2-figure-08.png\" alt=\"Computer memory\" loading=\"lazy\"><figcaption>Computer memory — original illustration from the supplied PDF</figcaption></figure>\n<p>RAM is a type of computer memory used to temporarily store data and instructions.</p>\n<p>RAM is commonly volatile, meaning its contents are lost when power is removed.</p>\n<h3>Example</h3>\n<p>When a user opens an application, information needed by the running application may be stored in RAM.</p>\n<h2>3.8 Read-Only Memory (ROM)</h2>\n<p>ROM is a type of non-volatile memory.</p>\n<p>It retains stored information even when power is removed.</p>\n<p>ROM is commonly associated with firmware and information needed for device operation.</p>\n<h2>3.9 RAM vs. ROM</h2>\n<table>\n<thead>\n<tr>\n  <th>RAM</th>\n  <th>ROM</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Usually volatile</td>\n  <td>Non-volatile</td>\n</tr>\n<tr>\n  <td>Used for temporary working information</td>\n  <td>Used for information intended to persist</td>\n</tr>\n<tr>\n  <td>Supports running programs</td>\n  <td>Often stores firmware</td>\n</tr>\n<tr>\n  <td>Contents are normally lost when power is removed</td>\n  <td>Contents remain without power</td>\n</tr>\n</tbody>\n</table>\n"
+  },
+  {
+    "title": "CHAPTER 4: FIRST GENERATION OF COMPUTERS",
+    "html": "<h1>CHAPTER 4: FIRST GENERATION OF COMPUTERS</h1>\n<h2>Learning Objectives</h2>\n<p>Students should identify the characteristics, technologies, and examples of first-generation computers.</p>\n<h2>4.1 Introduction</h2>\n<figure><img src=\"assets/firstyear2-figure-09.png\" alt=\"Vacuum tube\" loading=\"lazy\"><figcaption>Vacuum tube — original illustration from the supplied PDF</figcaption></figure>\n<figure><img src=\"assets/firstyear2-figure-10.png\" alt=\"First-generation computer\" loading=\"lazy\"><figcaption>First-generation computer — original illustration from the supplied PDF</figcaption></figure>\n<p>The first generation of electronic computers developed during the 1940s and 1950s.</p>\n<p>These computers used vacuum tubes as their main electronic components.</p>\n<p>They were large machines that required significant electricity and produced considerable heat.</p>\n<h2>4.2 Main Electronic Component</h2>\n<p>The main electronic component was the vacuum tube.</p>\n<p>Vacuum tubes performed electronic switching functions needed for computer operations.</p>\n<p>However, they generated heat and required considerable space.</p>\n<h2>4.3 Memory Technology</h2>\n<p>First-generation computers used technologies such as:</p>\n<ul>\n<li>Magnetic drums</li>\n<li>Magnetic tapes</li>\n</ul>\n<p>These devices stored data and instructions.</p>\n<h2>4.4 Programming Language</h2>\n<p>Machine language was used to program first-generation computers.</p>\n<p>Machine language consists of binary instructions.</p>\n<p>Programming these computers was difficult because instructions were closely connected to the hardware.</p>\n<h2>4.5 Power Consumption</h2>\n<p>First-generation computers consumed a large amount of electricity.</p>\n<p>They also generated significant heat.</p>\n<p>This created challenges involving cooling, maintenance, and reliability.</p>\n<h2>4.6 Speed and Size</h2>\n<p>First-generation computers were very large compared with modern computers.</p>\n<p>Some occupied entire rooms.</p>\n<p>Although they were important technological achievements, their performance was limited compared with later generations.</p>\n<h2>4.7 Input and Output Devices</h2>\n<p>Common input and output technologies included:</p>\n<ul>\n<li>Punched cards</li>\n<li>Paper tape</li>\n<li>Printed output</li>\n</ul>\n<h2>4.8 Examples</h2>\n<p><strong>ENIAC</strong></p>\n<p>Electronic Numerical Integrator and Computer.</p>\n<p>An important early electronic general-purpose computer.</p>\n<p><strong>UNIVAC I</strong></p>\n<p>Universal Automatic Computer I.</p>\n<p>An early commercial computer used for data processing.</p>\n<p><strong>IBM 650</strong></p>\n<p>An early IBM computer associated with magnetic drum storage.</p>\n<p><strong>IBM 701</strong></p>\n<p>An early IBM electronic computer designed for scientific computing.</p>\n<h2>4.9 Advantages</h2>\n<ul>\n<li>Made electronic computing possible</li>\n<li>Performed calculations automatically</li>\n<li>Supported scientific and business computing</li>\n</ul>\n<h2>4.10 Limitations</h2>\n<ul>\n<li>Very large</li>\n<li>Expensive</li>\n<li>High electricity consumption</li>\n<li>Generated substantial heat</li>\n<li>Difficult to maintain</li>\n<li>Required specialized programming knowledge</li>\n</ul>\n"
+  },
+  {
+    "title": "CHAPTER 5: SECOND GENERATION OF COMPUTERS",
+    "html": "<h1>CHAPTER 5: SECOND GENERATION OF COMPUTERS</h1>\n<h2>Learning Objectives</h2>\n<p>Students should explain how transistors improved computers and identify the characteristics of second-generation systems.</p>\n<h2>5.1 Introduction</h2>\n<p>Second-generation computers developed during the 1950s and 1960s.</p>\n<p>The major technological improvement was the replacement of vacuum tubes with transistors.</p>\n<p>Transistors allowed computers to become smaller, faster, and more reliable.</p>\n<h2>5.2 Main Electronic Component</h2>\n<p>The main component was the transistor.</p>\n<p>Compared with vacuum tubes, transistors generally:</p>\n<ul>\n<li>Required less electricity</li>\n<li>Produced less heat</li>\n<li>Occupied less space</li>\n<li>Improved reliability</li>\n</ul>\n<h2>5.3 Memory Technology</h2>\n<p>Second-generation computers used:</p>\n<ul>\n<li>Magnetic core memory</li>\n<li>Magnetic tape</li>\n<li>Magnetic disks</li>\n</ul>\n<p>These technologies improved information storage and processing.</p>\n<h2>5.4 Programming Languages</h2>\n<p>Assembly language became important during this generation.</p>\n<p>Assembly language used symbolic instructions instead of requiring programmers to write every instruction directly in binary.</p>\n<p>This made programming more understandable.</p>\n<h2>5.5 Power and Size</h2>\n<p>Second-generation computers consumed less electricity and produced less heat than first-generation computers.</p>\n<p>They were also smaller and easier to maintain.</p>\n<h2>5.6 Speed and Reliability</h2>\n<p>Transistors improved processing speed and reliability.</p>\n<p>Computers could perform tasks more efficiently.</p>\n<h2>5.7 Input and Output Devices</h2>\n<p>Input and output technologies included:</p>\n<ul>\n<li>Punched cards</li>\n<li>Magnetic tape</li>\n<li>Printed output</li>\n</ul>\n<h2>5.8 Examples</h2>\n<p><strong>IBM 1401</strong></p>\n<p>A computer used for business data processing.</p>\n<p><strong>IBM 7090</strong></p>\n<p>A transistor-based computer used for scientific and technical applications.</p>\n<p><strong>IBM 7094</strong></p>\n<p>An improved computer in the IBM 7090 series.</p>\n<p><strong>UNIVAC 1107</strong></p>\n<p>A transistor-based computer used for large-scale processing.</p>\n<h2>5.9 Advantages</h2>\n<ul>\n<li>Smaller than first-generation computers</li>\n<li>Faster processing</li>\n<li>Lower electricity consumption</li>\n<li>Improved reliability</li>\n<li>Less heat production</li>\n</ul>\n<h2>5.10 Limitations</h2>\n<ul>\n<li>Still relatively expensive</li>\n<li>Required specialized operation</li>\n<li>Limited compared with modern computers</li>\n<li>Often relied on batch processing and older input methods</li>\n</ul>\n"
+  },
+  {
+    "title": "CHAPTER 6: THIRD GENERATION OF COMPUTERS",
+    "html": "<h1>CHAPTER 6: THIRD GENERATION OF COMPUTERS</h1>\n<h2>Learning Objectives</h2>\n<p>Students should identify the importance of integrated circuits and explain the improvements introduced during the third generation.</p>\n<h2>6.1 Introduction</h2>\n<figure><img src=\"assets/firstyear2-figure-11.png\" alt=\"Third-generation computer illustration\" loading=\"lazy\"><figcaption>Third-generation computer illustration — original illustration from the supplied PDF</figcaption></figure>\n<figure><img src=\"assets/firstyear2-figure-12.png\" alt=\"Third-generation computer illustration\" loading=\"lazy\"><figcaption>Third-generation computer illustration — original illustration from the supplied PDF</figcaption></figure>\n<p>Third-generation computers developed during the 1960s and 1970s.</p>\n<p>The main technology was the integrated circuit.</p>\n<p>Integrated circuits combined several electronic components on a single chip.</p>\n<p>This helped improve computer speed, size, and efficiency.</p>\n<h2>6.2 Main Electronic Component</h2>\n<p>The main electronic component was the integrated circuit.</p>\n<p>Integrated circuits reduced the need to connect large numbers of separate components.</p>\n<h2>6.3 Memory Technology</h2>\n<p>Third-generation computers used:</p>\n<ul>\n<li>Larger magnetic core memory</li>\n<li>Magnetic tapes</li>\n<li>Magnetic disks</li>\n</ul>\n<p>These technologies supported more demanding applications.</p>\n<h2>6.4 Programming Languages</h2>\n<p>High-level programming languages became increasingly important.</p>\n<p>Examples discussed in the original lesson include:</p>\n<ul>\n<li>FORTRAN</li>\n<li>BASIC</li>\n<li>Pascal</li>\n<li>COBOL</li>\n<li>C</li>\n</ul>\n<p>These languages are associated with the broader period of high-level language development; they were not all introduced at the beginning of the third generation.</p>\n<h2>6.5 Computer Size</h2>\n<p>Third-generation computers became smaller and more efficient.</p>\n<p>Minicomputers also became important during this period.</p>\n<p>Minicomputers provided computing capabilities in systems smaller than traditional large computers.</p>\n<h2>6.6 Speed and Reliability</h2>\n<p>Integrated circuits improved:</p>\n<ul>\n<li>Processing speed</li>\n<li>Reliability</li>\n<li>Efficiency</li>\n<li>Computer performance</li>\n</ul>\n<h2>6.7 Input and Output Devices</h2>\n<p>Common devices included:</p>\n<ul>\n<li>Keyboard</li>\n<li>Monitor</li>\n<li>Printer</li>\n<li>Magnetic tape</li>\n</ul>\n<p>These devices made computers easier to operate.</p>\n<h2>6.8 Examples</h2>\n<p><strong>IBM System/360</strong></p>\n<p>An important family of computers used for business and scientific applications.</p>\n<p><strong>IBM System/370</strong></p>\n<p>A later IBM computer family.</p>\n<p><strong>PDP-11</strong></p>\n<p>A minicomputer family used in education, research, and industry.</p>\n<p><strong>UNIVAC 1108</strong></p>\n<p>A computer used for scientific and large-scale processing.</p>\n<h2>6.9 Advantages</h2>\n<ul>\n<li>Smaller size</li>\n<li>Faster processing</li>\n<li>Improved reliability</li>\n<li>Better user interaction</li>\n<li>Support for high-level programming</li>\n</ul>\n<h2>6.10 Limitations</h2>\n<ul>\n<li>Still required specialized maintenance</li>\n<li>Could be expensive</li>\n<li>Less portable than modern computers</li>\n</ul>\n"
+  },
+  {
+    "title": "CHAPTER 7: FOURTH GENERATION OF COMPUTERS",
+    "html": "<h1>CHAPTER 7: FOURTH GENERATION OF COMPUTERS</h1>\n<h2>Learning Objectives</h2>\n<p>Students should explain microprocessor technology, VLSI, semiconductor memory, and the development of personal computers.</p>\n<h2>7.1 Introduction</h2>\n<figure><img src=\"assets/firstyear2-figure-13.png\" alt=\"Microprocessor and computer technology\" loading=\"lazy\"><figcaption>Microprocessor and computer technology — original illustration from the supplied PDF</figcaption></figure>\n<figure><img src=\"assets/firstyear2-figure-14.png\" alt=\"Personal computer\" loading=\"lazy\"><figcaption>Personal computer — original illustration from the supplied PDF</figcaption></figure>\n<figure><img src=\"assets/firstyear2-figure-15.png\" alt=\"Early computer equipment\" loading=\"lazy\"><figcaption>Early computer equipment — original illustration from the supplied PDF</figcaption></figure>\n<p>Fourth-generation computers began developing during the 1970s.</p>\n<p>Their main technological development was the microprocessor.</p>\n<p>Microprocessors made it possible to place important processing components on small chips.</p>\n<p>This helped computers become smaller, faster, cheaper, and more accessible.</p>\n<h2>7.2 Very Large-Scale Integration (VLSI)</h2>\n<p>VLSI stands for Very Large-Scale Integration.</p>\n<p>It refers to the integration of very large numbers of transistors into a single chip.</p>\n<p>The original lesson describes VLSI as placing thousands of transistors on a microchip.</p>\n<p>This technology supports the development of complex electronic circuits.</p>\n<h2>7.3 Microprocessors</h2>\n<p>A microprocessor contains CPU processing circuitry on a chip.</p>\n<p>It executes program instructions and supports computer operations.</p>\n<p>Microprocessors helped make personal computers practical.</p>\n<h2>7.4 Semiconductor Memory</h2>\n<p>Fourth-generation computers use semiconductor memory technologies.</p>\n<p>Examples include:</p>\n<p><strong>RAM — Random-Access Memory</strong></p>\n<p>RAM temporarily stores information used by running programs.</p>\n<p><strong>ROM — Read-Only Memory</strong></p>\n<p>ROM is non-volatile memory used for information that needs to remain stored without power.</p>\n<h2>7.5 Programming Languages</h2>\n<p>The original lesson includes several high-level programming languages associated with the wider fourth-generation era and modern computing.</p>\n<p>Examples include:</p>\n<ul>\n<li>Python</li>\n<li>C#</li>\n<li>Java</li>\n<li>JavaScript</li>\n<li>Rust</li>\n<li>Kotlin</li>\n</ul>\n<p>These languages were developed at different times, but all are examples of languages used in modern computing.</p>\n<h2>7.6 Computer Size</h2>\n<p>Fourth-generation computers became smaller and more affordable.</p>\n<p>Personal computers became available to more users.</p>\n<h2>7.7 Speed and Reliability</h2>\n<p>Microprocessors and improved electronic circuits supported:</p>\n<ul>\n<li>Faster processing</li>\n<li>Greater accuracy</li>\n<li>Better reliability</li>\n<li>Improved energy efficiency</li>\n</ul>\n<h2>7.8 Input and Output Devices</h2>\n<p>Common devices included:</p>\n<ul>\n<li>Keyboard</li>\n<li>Mouse and other pointing devices</li>\n<li>Monitor</li>\n<li>Printer</li>\n<li>Optical scanners</li>\n</ul>\n<h2>7.9 Computer Networks</h2>\n<p>A computer network is a group of two or more computer systems connected to exchange information and resources.</p>\n<p>Networks allow computers to communicate and share information.</p>\n<h2>7.10 Examples</h2>\n<p><strong>IBM PC</strong></p>\n<p>A personal computer introduced by IBM.</p>\n<p><strong>Apple II</strong></p>\n<p>An early personal computer that helped popularize home computing.</p>\n<p><strong>Apple Macintosh</strong></p>\n<p>A personal computer family known for its graphical user interface.</p>\n<p><strong>STAR 1000</strong></p>\n<p>Listed as an example in the original lesson.</p>\n<h2>7.11 Advantages</h2>\n<ul>\n<li>Smaller computers</li>\n<li>Lower costs</li>\n<li>Faster processing</li>\n<li>Better storage technology</li>\n<li>More accessible personal computing</li>\n<li>Improved networking capabilities</li>\n</ul>\n"
+  },
+  {
+    "title": "CHAPTER 8: FIFTH GENERATION OF COMPUTERS",
+    "html": "<h1>CHAPTER 8: FIFTH GENERATION OF COMPUTERS</h1>\n<h2>Learning Objectives</h2>\n<p>Students should understand artificial intelligence, ULSI, parallel processing, and natural language interaction.</p>\n<h2>8.1 Introduction</h2>\n<p>The fifth generation is commonly described as the present and future of computing.</p>\n<p>The original lesson associates this generation with artificial intelligence, ultra large-scale integration, and parallel processing.</p>\n<p>Unlike the earlier generations, fifth-generation computing is often described as a continuing goal rather than a single hardware replacement.</p>\n<h2>8.2 Artificial Intelligence (AI)</h2>\n<p>Artificial intelligence is an area of computer science focused on developing systems that perform tasks associated with human intelligence.</p>\n<p>Examples include:</p>\n<ul>\n<li>Speech recognition</li>\n<li>Language processing</li>\n<li>Pattern recognition</li>\n<li>Learning from data</li>\n<li>Automated decision support</li>\n</ul>\n<h2>8.3 Ultra Large-Scale Integration (ULSI)</h2>\n<p>ULSI stands for Ultra Large-Scale Integration.</p>\n<p>The original lesson describes ULSI as integrating millions of transistors into a single microchip.</p>\n<p>This supports increasingly complex electronic systems.</p>\n<h2>8.4 Parallel Processing</h2>\n<p>Parallel processing means using multiple processing units or resources to perform tasks simultaneously.</p>\n<p>This can help computers handle complex operations more efficiently.</p>\n<h3>Example</h3>\n<p>A computer system may divide a large calculation into smaller parts that can be processed at the same time.</p>\n<h2>8.5 Natural Language Processing</h2>\n<p>Natural language processing allows computers to work with human language.</p>\n<p>Examples include:</p>\n<ul>\n<li>Voice assistants</li>\n<li>Speech-to-text applications</li>\n<li>Language translation</li>\n<li>Chat-based AI systems</li>\n</ul>\n<h2>8.6 Power and Efficiency</h2>\n<p>The original lesson describes fifth-generation systems as using less power and producing less heat.</p>\n<p>In practice, energy use depends on the type of device and workload. Large AI systems can require substantial electricity, even as individual components become more efficient.</p>\n<h2>8.7 Speed and Reliability</h2>\n<p>Modern computing technologies support improvements in:</p>\n<ul>\n<li>Processing speed</li>\n<li>Accuracy</li>\n<li>Reliability</li>\n<li>Storage capacity</li>\n<li>Advanced data analysis</li>\n</ul>\n<h2>8.8 Input and Output Devices</h2>\n<p>Modern computing systems may use:</p>\n<ul>\n<li>Keyboard</li>\n<li>Monitor</li>\n<li>Mouse</li>\n<li>Touchpad</li>\n<li>Touchscreen</li>\n<li>Digital pen</li>\n<li>Speech input</li>\n<li>Scanner</li>\n<li>Printer</li>\n</ul>\n<h2>8.9 Examples</h2>\n<p>The original lesson lists modern devices such as:</p>\n<ul>\n<li>Desktop computers</li>\n<li>Laptops</li>\n<li>Tablets</li>\n<li>Smartphones</li>\n</ul>\n<p>These are modern computing devices that may support AI applications. The devices themselves are not necessarily classified as fifth-generation computers solely because of their form factor.</p>\n<h2>8.10 Importance of Fifth-Generation Computing</h2>\n<p>Fifth-generation concepts are important because they support the development of more intelligent and capable computer systems.</p>\n<p>They also help researchers explore new approaches to solving complex problems.</p>\n"
+  },
+  {
+    "title": "CHAPTER 9: COMPARISON OF THE FIVE GENERATIONS",
+    "html": "<h1>CHAPTER 9: COMPARISON OF THE FIVE GENERATIONS</h1>\n<h2>Learning Objectives</h2>\n<p>Students should compare the five generations and identify important technological improvements.</p>\n<h2>9.1 Overview</h2>\n<p>The development of computers can be understood by comparing their electronic components, memory technologies, programming languages, and performance.</p>\n<p>Each generation introduced improvements that influenced later technologies.</p>\n<h2>9.2 Comparison Table</h2>\n<table>\n<thead>\n<tr>\n  <th>Generation</th>\n  <th>Main Technology</th>\n  <th>Memory</th>\n  <th>Programming</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>First</td>\n  <td>Vacuum tubes</td>\n  <td>Magnetic drums and tapes</td>\n  <td>Machine language</td>\n</tr>\n<tr>\n  <td>Second</td>\n  <td>Transistors</td>\n  <td>Magnetic core and magnetic storage</td>\n  <td>Assembly language</td>\n</tr>\n<tr>\n  <td>Third</td>\n  <td>Integrated circuits</td>\n  <td>Magnetic core and magnetic storage</td>\n  <td>High-level languages</td>\n</tr>\n<tr>\n  <td>Fourth</td>\n  <td>Microprocessors and VLSI</td>\n  <td>Semiconductor memory</td>\n  <td>Modern high-level languages</td>\n</tr>\n<tr>\n  <td>Fifth</td>\n  <td>AI-oriented systems and advanced integration</td>\n  <td>Advanced memory and storage</td>\n  <td>AI and natural language technologies</td>\n</tr>\n</tbody>\n</table>\n<h2>9.3 Changes in Computer Size</h2>\n<p>First-generation computers were often extremely large.</p>\n<p>Later generations became smaller as electronic components improved.</p>\n<p>Microprocessors made compact personal computers possible.</p>\n<p>Modern devices can be small enough to carry in a pocket.</p>\n<h2>9.4 Changes in Processing Speed</h2>\n<p>Computer speed improved as components became more advanced.</p>\n<p>Vacuum tubes were replaced by transistors.</p>\n<p>Transistors were combined into integrated circuits.</p>\n<p>Microprocessors placed complex processing capabilities on chips.</p>\n<p>Modern systems use advanced processors and parallel processing.</p>\n<h2>9.5 Changes in Programming</h2>\n<p>Programming also became more accessible.</p>\n<p><strong>First Generation:</strong> Machine language</p>\n<p><strong>Second Generation:</strong> Assembly language</p>\n<p><strong>Third Generation:</strong> Greater use of high-level languages</p>\n<p><strong>Fourth Generation:</strong> Broad use of modern programming languages</p>\n<p><strong>Fifth Generation:</strong> Increasing use of AI systems and natural language interaction</p>\n<p>These developments overlap, and earlier programming languages are still used in some systems.</p>\n<h2>9.6 Changes in User Interaction</h2>\n<p>Early computers used punched cards and paper tape.</p>\n<p>Later computers supported keyboards, monitors, and printers.</p>\n<p>Modern computers use graphical interfaces, touchscreens, speech recognition, and other interaction methods.</p>\n<h2>9.7 Why These Changes Matter</h2>\n<p>Computer development has improved access to information and computing services.</p>\n<p>Computers have become important tools in education, business, communication, and scientific research.</p>\n"
+  },
+  {
+    "title": "CHAPTER 10: THE IMPORTANCE OF COMPUTER EVOLUTION",
+    "html": "<h1>CHAPTER 10: THE IMPORTANCE OF COMPUTER EVOLUTION</h1>\n<h2>Learning Objectives</h2>\n<p>Students should explain how computer development has affected society and identify the importance of continued technological improvement.</p>\n<h2>10.1 Computers in Education</h2>\n<p>Computers help students access learning materials, complete assignments, and perform research.</p>\n<p>Educational websites and digital learning platforms make information easier to access.</p>\n<h2>10.2 Computers in Business</h2>\n<p>Businesses use computers to manage information, process transactions, communicate with customers, and prepare reports.</p>\n<p>Computer technology helps organizations perform many tasks efficiently.</p>\n<h2>10.3 Computers in Communication</h2>\n<p>Modern computers support communication through:</p>\n<ul>\n<li>Email</li>\n<li>Messaging applications</li>\n<li>Video conferencing</li>\n<li>Online collaboration</li>\n</ul>\n<p>Computer networks allow people to exchange information across different locations.</p>\n<h2>10.4 Computers in Scientific Research</h2>\n<p>Scientists use computers for calculations, simulations, data analysis, and research.</p>\n<p>Supercomputers and other high-performance systems can process complex scientific problems.</p>\n<h2>10.5 Computers in Everyday Life</h2>\n<p>Computers are used in many daily activities.</p>\n<p>Examples include:</p>\n<ul>\n<li>Online banking</li>\n<li>Shopping</li>\n<li>Entertainment</li>\n<li>Transportation</li>\n<li>Navigation</li>\n<li>Communication</li>\n<li>Education</li>\n</ul>\n<h2>10.6 Artificial Intelligence in Modern Life</h2>\n<p>Artificial intelligence supports applications such as speech recognition, translation, image analysis, and recommendation systems.</p>\n<p>These applications show how computing continues to develop.</p>\n<h2>10.7 Future Computer Technologies</h2>\n<p>Computer development continues through research in areas such as:</p>\n<ul>\n<li>Artificial intelligence</li>\n<li>Quantum computing</li>\n<li>Advanced processors</li>\n<li>Energy-efficient computing</li>\n<li>Robotics</li>\n<li>New memory technologies</li>\n</ul>\n<p>These technologies may influence future generations of computer systems.</p>\n<h2>10.8 The Importance of Understanding Computer History</h2>\n<p>Learning about computer evolution helps students understand how modern technology developed.</p>\n<p>It also explains why new computer systems are faster, smaller, and more powerful than older systems.</p>\n<p>For Information Technology students, this knowledge provides a foundation for studying hardware, software, programming, networking, and modern computing systems.</p>\n"
+  },
+  {
+    "title": "PRACTICAL LEARNING ACTIVITIES",
+    "html": "<h1>PRACTICAL LEARNING ACTIVITIES</h1>\n<h2>ACTIVITY 1: COMPUTER GENERATIONS TIMELINE</h2>\n<p><strong>Objective:</strong> Identify the five generations of computers.</p>\n<p><strong>Instructions:</strong></p>\n<p>Create a timeline showing the five generations of computers.</p>\n<p>Include the approximate period, main technology, and one example for each generation.</p>\n<p><strong>Expected Output:</strong> A timeline illustrating the evolution of computers.</p>\n<h2>ACTIVITY 2: COMPUTER COMPONENT IDENTIFICATION</h2>\n<p><strong>Objective:</strong> Recognize important computer components.</p>\n<p><strong>Instructions:</strong></p>\n<p>Identify the following components using pictures or descriptions:</p>\n<ol>\n<li>Vacuum tube</li>\n<li>Transistor</li>\n<li>Integrated circuit</li>\n<li>Microprocessor</li>\n<li>CPU</li>\n</ol>\n<p>Write the main function of each component.</p>\n<p><strong>Expected Output:</strong> A component identification worksheet.</p>\n<h2>ACTIVITY 3: COMPUTER GENERATION COMPARISON</h2>\n<p><strong>Objective:</strong> Compare different computer generations.</p>\n<p><strong>Instructions:</strong></p>\n<p>Create a table comparing the first, second, third, fourth, and fifth generations.</p>\n<p>Include their main technologies, memory types, programming languages, and characteristics.</p>\n<p><strong>Expected Output:</strong> A comparison table.</p>\n<h2>ACTIVITY 4: MEMORY IDENTIFICATION</h2>\n<p><strong>Objective:</strong> Understand computer memory technologies.</p>\n<p><strong>Instructions:</strong></p>\n<p>Explain the differences between:</p>\n<ol>\n<li>Magnetic drum</li>\n<li>Magnetic core memory</li>\n<li>RAM</li>\n<li>ROM</li>\n</ol>\n<p><strong>Expected Output:</strong> Short explanations for each memory type.</p>\n<h2>ACTIVITY 5: COMPUTER EVOLUTION REFLECTION</h2>\n<p><strong>Objective:</strong> Understand the importance of computer development.</p>\n<p><strong>Instructions:</strong></p>\n<p>Write a short paragraph answering the question:</p>\n<p>&quot;How has the evolution of computers changed the way people study, work, and communicate?&quot;</p>\n<p><strong>Expected Output:</strong> A paragraph of five to seven sentences.</p>\n<hr />\n"
+  },
+  {
+    "title": "GLOSSARY OF TERMS",
+    "html": "<h1>GLOSSARY OF TERMS</h1>\n<p><strong>Artificial Intelligence (AI):</strong> A field of computer science that develops systems capable of performing tasks associated with human intelligence.</p>\n<p><strong>Assembly Language:</strong> A low-level programming language using symbolic instructions.</p>\n<p><strong>Central Processing Unit (CPU):</strong> The main processing component responsible for executing computer instructions.</p>\n<p><strong>Computer Evolution:</strong> The continuous development and improvement of computer technology.</p>\n<p><strong>Computer Generation:</strong> A stage of computer development associated with major technological changes.</p>\n<p><strong>Computer Memory:</strong> Components used to store data and instructions.</p>\n<p><strong>Computer Network:</strong> Two or more connected computer systems that can exchange information.</p>\n<p><strong>Fifth Generation:</strong> A computing classification associated with AI and advanced processing technologies.</p>\n<p><strong>First Generation:</strong> Computers mainly associated with vacuum tube technology.</p>\n<p><strong>Fourth Generation:</strong> Computers mainly associated with microprocessors and VLSI.</p>\n<p><strong>High-Level Programming Language:</strong> A programming language designed to be easier for people to read and write than machine instructions.</p>\n<p><strong>Integrated Circuit (IC):</strong> A chip containing multiple connected electronic components.</p>\n<p><strong>Machine Language:</strong> Binary instructions that can be executed directly by a processor.</p>\n<p><strong>Magnetic Core Memory:</strong> Memory that uses small magnetic rings to store information.</p>\n<p><strong>Magnetic Drum:</strong> A rotating cylinder with magnetic material used for data storage.</p>\n<p><strong>Microprocessor:</strong> A processor implemented on an integrated circuit.</p>\n<p><strong>Natural Language Processing:</strong> Technology that allows computers to process human language.</p>\n<p><strong>Parallel Processing:</strong> The simultaneous execution of tasks using multiple processing resources.</p>\n<p><strong>RAM:</strong> Random-Access Memory, commonly used for temporary working information.</p>\n<p><strong>ROM:</strong> Read-Only Memory, a type of non-volatile memory.</p>\n<p><strong>Second Generation:</strong> Computers mainly associated with transistor technology.</p>\n<p><strong>Semiconductor Memory:</strong> Electronic memory made using semiconductor technology.</p>\n<p><strong>Third Generation:</strong> Computers mainly associated with integrated circuits.</p>\n<p><strong>Transistor:</strong> An electronic component used as a switch or amplifier.</p>\n<p><strong>ULSI:</strong> Ultra Large-Scale Integration.</p>\n<p><strong>Vacuum Tube:</strong> An electronic device that controls electron flow in a vacuum.</p>\n<p><strong>VLSI:</strong> Very Large-Scale Integration.</p>\n<hr />\n"
+  },
+  {
+    "title": "LEARNING RESOURCES",
+    "html": "<h1>LEARNING RESOURCES</h1>\n<h2>Resource 1: Classification of Generations of Computers</h2>\n<p><strong>Platform:</strong> BCcampus Open Education</p>\n<p>https://opentextbc.ca/computerstudies/chapter/classification-of-generations-of-computers/</p>\n<p>This resource discusses the classification and development of computer generations.</p>\n<h2>Resource 2: Computer History Museum</h2>\n<p>https://computerhistory.org/</p>\n<p>Provides historical information about computers, computing devices, and technological development.</p>\n<h2>Resource 3: Encyclopaedia Britannica — Computer</h2>\n<p>https://www.britannica.com/technology/computer</p>\n<p>Provides information about computers, their history, and important technologies.</p>\n<hr />\n"
+  },
+  {
+    "title": "REFERENCES",
+    "html": "<h1>REFERENCES</h1>\n<p><em>ITC GROUP 15 — Unit 7: Evolution of Computers.</em> Original learning material provided for this E-Book.</p>\n<p>BCcampus Open Education. (n.d.). <em>Classification of generations of computers.</em> https://opentextbc.ca/computerstudies/chapter/classification-of-generations-of-computers/</p>\n<p>Computer History Museum. (n.d.). <em>Computer history and technology.</em> https://computerhistory.org/</p>\n<p>Encyclopaedia Britannica. (n.d.). <em>Computer.</em> https://www.britannica.com/technology/computer</p>\n<hr />\n"
+  },
+  {
+    "title": "CONCLUSION",
+    "html": "<h1>CONCLUSION</h1>\n<p>The evolution of computers shows how technology has improved over time.</p>\n<p>First-generation computers used vacuum tubes and were large, expensive, and energy-intensive.</p>\n<p>Second-generation computers introduced transistors, which made computers smaller and more reliable.</p>\n<p>Third-generation computers used integrated circuits, improving speed, efficiency, and accessibility.</p>\n<p>Fourth-generation computers introduced microprocessors, making personal computers more practical and widely available.</p>\n<p>Fifth-generation computing focuses on advanced technologies such as artificial intelligence, natural language processing, and parallel processing.</p>\n<p>These developments have changed how people learn, work, communicate, and solve problems.</p>\n<p>Understanding computer evolution helps students appreciate the importance of hardware, software, memory, programming languages, and modern computing technology.</p>\n<p>As computer technology continues to develop, new innovations will create additional opportunities for education, business, science, and everyday life.</p>\n<p><strong>END OF E-BOOK</strong></p>\n<p><em>UNIT 7: EVOLUTION OF COMPUTERS — A Complete Learning Guide to Computer Generations, Components, and Technological Development</em></p>\n"
+  }
+];
+
+const toc = document.getElementById('toc');
+const content = document.getElementById('content');
+const prev = document.getElementById('prev') || document.getElementById('previous');
+const next = document.getElementById('next');
+const status = document.getElementById('status');
+const heading = document.getElementById('heading');
+let current = 0;
+function render() {
+  const page = LESSON_PAGES[current];
+  content.innerHTML = page.html;
+  if (heading) heading.textContent = page.title;
+  toc.replaceChildren();
+  LESSON_PAGES.forEach((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = item.title;
+    if (i === current) b.classList.add('active');
+    b.addEventListener('click', () => go(i));
+    toc.appendChild(b);
+  });
+  prev.disabled = current === 0;
+  next.disabled = current === LESSON_PAGES.length - 1;
+  if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+}
+function go(i) {
+  if (i < 0 || i >= LESSON_PAGES.length) return;
+  current = i;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.addEventListener('click', () => go(current-1));
+next.addEventListener('click', () => go(current+1));
+render();
+
+
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+</script>
+</body>
+
+</html>

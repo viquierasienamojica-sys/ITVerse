@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Year Book 07 | Programs and Processes</title>
+  <style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4eee4;color:#342c24}
+header{background:#493526;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+header a{color:white;text-decoration:none}
+header h2{margin:0;font-size:19px;color:white}
+.layout{display:flex;min-height:calc(100vh - 65px)}
+aside{width:295px;flex-shrink:0;background:#e8dcc9;padding:22px 15px;border-right:1px solid #cfbea7;max-height:calc(100vh - 65px);overflow-y:auto;position:sticky;top:0}
+aside h3{margin:0 0 16px}
+#toc button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover{background:#795a3e;color:white}
+main{flex:1;min-width:0;padding:28px}
+.reader{background:#fffaf2;max-width:960px;margin:auto;padding:32px;border:1px solid #dfd1bd;border-radius:12px;box-shadow:0 3px 15px #3b27120d}
+h1,h2,h3{line-height:1.35}
+h1{font-size:28px}
+h2{font-size:23px;color:#6b4c30}
+h3{font-size:19px;color:#6b4c30}
+p,li{line-height:1.75}
+figure{margin:25px auto;text-align:center}
+figure img{display:block;width:100%;max-width:750px;max-height:650px;height:auto;object-fit:contain;margin:auto;border-radius:8px}
+figcaption{font-size:12px;color:#867563;margin-top:7px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px}
+.btn{border:0;background:#6d5038;color:white;padding:12px 19px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.status{text-align:center;color:#756655;font-size:13px}
+.question{background:#f6eee1;border:1px solid #e5d7c4;padding:18px;margin:17px 0;border-radius:9px}
+.question strong{display:block;margin-bottom:12px}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}
+.option:hover{background:#ede1d0}
+.result{margin-top:18px;padding:17px;border-radius:8px;background:#eee3d1}
+.review{border-top:1px solid #d5c5ae;margin-top:12px;padding-top:10px}
+.correct{color:#267347}
+.wrong{color:#a32d2d}
+@media(max-width:850px){.layout{display:block}
+aside{width:auto;max-height:260px;position:static;border-right:0}
+main{padding:12px}
+.reader{padding:20px}
+header{flex-wrap:wrap}
+}
+  .table-wrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #d9cbb8;padding:10px;text-align:left}th{background:#e8dcc9}.example{padding:12px 15px;background:#f3e8d7;border-left:4px solid #795a3e;overflow-wrap:anywhere;font-weight:bold}
+  
+/* Shared First Year Reader Theme — based on Book 05 */
+html{scroll-behavior:smooth}
+body{margin:0!important;font-family:Arial,sans-serif!important;background:#f4eee4!important;color:#342c24!important;line-height:1.6}
+header{background:#493526!important;color:#fff!important;padding:16px 24px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;border:0!important;min-height:58px}
+header a{color:white!important;text-decoration:none!important}
+header h2{margin:0!important;font-size:19px!important;color:white!important}
+.layout{display:flex!important;min-height:calc(100vh - 65px)!important;align-items:stretch!important}
+aside,.sidebar{width:295px!important;flex:0 0 295px!important;background:#e8dcc9!important;padding:22px 15px!important;border-right:1px solid #cfbea7!important;max-height:calc(100vh - 65px)!important;overflow-y:auto!important;position:sticky!important;top:0!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{margin:0 0 16px!important;font-size:19px!important;color:#6b4c30!important}
+#toc button,#chapterList button,#chapterList [role=button],.sidebar button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:#795a3e!important;color:white!important}
+main,.main{flex:1!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:28px!important;background:transparent!important}
+.reader{background:#fffaf2!important;max-width:960px!important;margin:auto!important;padding:32px!important;border:1px solid #dfd1bd!important;border-radius:12px!important;box-shadow:0 3px 15px #3b27120d!important;min-height:540px}
+.reader h1{font-size:28px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h2{font-size:23px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h3{font-size:19px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader p,.reader li{line-height:1.75!important}
+.reader figure{margin:25px auto!important;text-align:center!important;background:transparent!important;border:0!important;padding:0!important}
+.reader figure img{display:block!important;width:100%!important;max-width:750px!important;max-height:650px!important;height:auto!important;object-fit:contain!important;margin:auto!important;border-radius:8px!important}
+.reader figcaption{font-size:12px!important;color:#867563!important;margin-top:7px!important}
+.nav,.navigation,.controls{display:flex!important;justify-content:space-between!important;gap:12px!important;margin-top:32px!important}
+.btn,button.nav,.submit,.retake{border:0!important;background:#6d5038!important;color:white!important;padding:12px 19px!important;border-radius:8px!important;cursor:pointer!important;font-size:14px!important}
+.btn:disabled,button.nav:disabled{opacity:.4!important;cursor:not-allowed!important}
+.status{text-align:center!important;color:#756655!important;font-size:13px!important}
+.question{background:#f6eee1!important;border:1px solid #e5d7c4!important;padding:18px!important;margin:17px 0!important;border-radius:9px!important}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}.option:hover{background:#ede1d0!important}
+.result{margin-top:18px!important;padding:17px!important;border-radius:8px!important;background:#eee3d1!important}
+.reader table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.reader th,.reader td{border:1px solid #d9cbb8;padding:10px;text-align:left}.reader th{background:#e8dcc9}
+@media(max-width:850px){.layout{display:block!important}aside,.sidebar{width:100%!important;max-height:260px!important;position:static!important;border-right:0!important;flex:auto!important}main,.main{padding:12px!important}.reader{padding:20px!important}header{flex-wrap:wrap!important}}
+
+
+/* BYTEBLOOM Pastel Pink Reader Theme */
+:root{--bb-p1:#FDE4F2;--bb-p2:#F9CEE7;--bb-p3:#F4B8DA;--bb-p4:#EEA1CD;--bb-p5:#E68BBE;--bb-ink:#612C4D;--bb-muted:#795B70}
+body{background:var(--bb-p1)!important;color:var(--bb-ink)!important}
+header{background:var(--bb-p5)!important;color:#52223F!important;border-bottom:1px solid var(--bb-p4)!important}
+header a,header h2,header span{color:#52223F!important}
+aside,.sidebar{background:var(--bb-p2)!important;border-color:var(--bb-p3)!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{color:var(--bb-ink)!important}
+#toc button,#chapterList button,.sidebar button{color:var(--bb-ink)!important}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:var(--bb-p5)!important;color:#52223F!important}
+main,.main{background:transparent!important}
+.reader{background:#FFF8FC!important;border:1px solid var(--bb-p3)!important;box-shadow:0 8px 22px rgba(157,57,112,.08)!important}
+.reader h1,.reader h2,.reader h3,main h1,main h2,main h3{color:var(--bb-ink)!important}
+.reader p,.reader li,main p,main li{color:#57394D}
+.btn,button.nav,.navigation button,.controls button{background:var(--bb-p5)!important;color:#52223F!important;border:0!important}
+.btn:hover,button.nav:hover,.navigation button:hover,.controls button:hover{background:var(--bb-p4)!important}
+.btn:disabled,button.nav:disabled,.navigation button:disabled,.controls button:disabled{opacity:.45!important;cursor:not-allowed!important}
+.status,figcaption,.reader figcaption{color:var(--bb-muted)!important}
+.reader table th,main table th{background:var(--bb-p2)!important}
+.reader table td,.reader table th,main table td,main table th{border-color:var(--bb-p3)!important}
+.reader blockquote,main blockquote,.example{border-left-color:var(--bb-p5)!important;background:#FFF0F8!important}
+.reader figure img,main figure img{max-width:750px;height:auto;object-fit:contain}
+
+
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <<div class="reader-header-actions">
+    <span>1st Year · Book 07</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside><h3>Table of Contents</h3><div id="toc"></div></aside>
+    <main>
+      <article class="reader">
+        <div id="content"></div>
+        <div class="nav">
+          <button class="btn" id="prev">← Previous</button>
+          <button class="btn" id="next">Next →</button>
+        </div>
+        <p class="status" id="status"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+const LESSON_PAGES = [
+  {
+    "title": "Book Introduction",
+    "html": "<h1>Programs and Processes</h1><p><strong>First Year · Book 07</strong></p><h2>Introduction</h2><p>Programs and processes are related but different concepts. A program is a set of stored instructions. A process is an active instance of those instructions running under operating-system management. This book expands the topics in the supplied 52-page reading into structured, beginner-friendly lessons and original practice questions. Learning Objectives • Explain how programs differ from processes. • Identify process states, scheduling, and resource management. • Describe IPC, synchronization, and memory isolation. • Discuss performance, security, maintenance, and scalability. • Apply these concepts to browsers, games, and other applications.</p>"
+  },
+  {
+    "title": "Chapter 1: Programs: Instructions and Design",
+    "html": "<h1>Chapter 1: Programs: Instructions and Design</h1><figure><img src=\"assets/firstyear7-figure-01.png\" alt=\"Original comparison figure for chapter 1\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 3)</figcaption></figure><h3>What Is a Program?</h3>\n<p>A program is a stored collection of instructions designed to perform a task. It can be a text editor, game, web browser, or utility. The instructions remain available on storage even when the program is not running.</p>\n<h3>Program Structure</h3>\n<p>Programs use variables, conditions, loops, and functions to organize work. A simple calculator program reads two numbers, chooses an operation, and displays the result.</p>\n<h3>Compilation and Interpretation</h3>\n<p>Some development tools compile source code into executable form before running it. Others use interpreters or virtual machines. The details depend on the language and runtime; many systems combine these approaches.</p>\n<h3>Modularity and Reuse</h3>\n<p>Developers often divide software into smaller modules. A login module, for example, may be reused across several applications. This can make testing and maintenance easier.</p>\n<h3>Input, Output, and Errors</h3>\n<p>Programs may read keyboard input, files, or network messages and then show results or save data. Error handling lets a program report problems and recover when possible.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: what is a program?; program structure; compilation and interpretation.</p>"
+  },
+  {
+    "title": "Chapter 2: Processes: Programs in Execution",
+    "html": "<h1>Chapter 2: Processes: Programs in Execution</h1><figure><img src=\"assets/firstyear7-figure-02.png\" alt=\"Original comparison figure for chapter 2\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 5)</figcaption></figure><h3>What Is a Process?</h3>\n<p>A process is a running instance of a program. When an application starts, the operating system creates or manages a process with execution state and access to resources.</p>\n<h3>One Program, Many Processes</h3>\n<p>The same program may have several running instances. For example, two separate launches of an editor may create two processes, each working on a different document.</p>\n<h3>Process Resources</h3>\n<p>A process commonly has an address space, open files, access to devices, and scheduling information. The operating system tracks and manages these resources.</p>\n<h3>Program Versus Process</h3>\n<p>A program is stored instructions; a process is an active execution of those instructions. Closing a process does not normally delete the installed program.</p>\n<h3>Practical Example</h3>\n<p>A browser application is a program. When it is opened, one or more processes may run to display pages and perform background tasks. The exact process layout varies by browser.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: what is a process?; one program, many processes; process resources.</p>"
+  },
+  {
+    "title": "Chapter 3: Process States and Life Cycle",
+    "html": "<h1>Chapter 3: Process States and Life Cycle</h1><h3>Creation</h3>\n<p>A process begins when the operating system creates an execution context for a program and assigns initial resources.</p>\n<h3>Ready</h3>\n<p>A ready process can run but is waiting to receive processor time.</p>\n<h3>Running</h3>\n<p>A running process is currently executing on a processor. On a multi-core machine, multiple processes may run at once.</p>\n<h3>Waiting or Blocked</h3>\n<p>A waiting process cannot continue until an event occurs, such as receiving input from a file or network.</p>\n<h3>Termination</h3>\n<p>A process ends when it finishes, exits because of an error, or is stopped. The OS reclaims many of its resources.</p>\n<h3>A Typical Flow</h3>\n<p>Created -&gt; Ready -&gt; Running -&gt; Waiting -&gt; Ready -&gt; Running -&gt; Terminated. Real operating systems may have additional states and transitions.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: creation; ready; running.</p>"
+  },
+  {
+    "title": "Chapter 4: Process Management and Execution",
+    "html": "<h1>Chapter 4: Process Management and Execution</h1><h3>Scheduling</h3>\n<p>The OS scheduler selects which ready process should use the CPU. Scheduling aims to share processor time and keep the system responsive.</p>\n<h3>Context Switching</h3>\n<p>When the CPU switches from one running task to another, the system saves and restores execution context. This supports multitasking but takes some time.</p>\n<h3>CPU Time and I/O</h3>\n<p>A process may spend some time computing and other time waiting for input or output. The scheduler can give CPU time to other ready processes while one waits.</p>\n<h3>Multitasking</h3>\n<p>Multitasking means that several tasks make progress over time. Concurrency does not always require simultaneous execution on separate cores.</p>\n<h3>Monitoring</h3>\n<p>Task Manager or system-monitoring tools can show process names, CPU use, and memory use. These measurements help diagnose slowdowns.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: scheduling; context switching; cpu time and i/o.</p>"
+  },
+  {
+    "title": "Chapter 5: Inter-Process Communication and Synchronization",
+    "html": "<h1>Chapter 5: Inter-Process Communication and Synchronization</h1><figure><img src=\"assets/firstyear7-figure-03.png\" alt=\"Original comparison figure for chapter 5\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 11)</figcaption></figure><p>SYNCHRONIZATION</p>\n<h3>Why Processes Communicate</h3>\n<p>Separate processes may need to exchange data or coordinate work. For example, one service may send information to another.</p>\n<h3>IPC Methods</h3>\n<p>Common inter-process communication methods include pipes, message passing, shared memory, and network sockets. Each has different tradeoffs.</p>\n<h3>Shared Memory</h3>\n<p>Shared memory lets cooperating processes access a common region of memory. Because multiple processes may access it, coordination is important.</p>\n<h3>Synchronization</h3>\n<p>Synchronization prevents conflicting changes to shared data. Locks, semaphores, and condition variables are examples of tools that can coordinate access.</p>\n<h3>Race Conditions</h3>\n<p>A race condition happens when a result depends on the timing of concurrent operations. For example, two processes updating the same counter without coordination may lose an update.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: why processes communicate; ipc methods; shared memory.</p>"
+  },
+  {
+    "title": "Chapter 6: Memory Management and Address Spaces",
+    "html": "<h1>Chapter 6: Memory Management and Address Spaces</h1><figure><img src=\"assets/firstyear7-figure-04.png\" alt=\"Original comparison figure for chapter 6\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 13)</figcaption></figure><h3>Address Space</h3>\n<p>A process normally has a virtual address space containing its code, data, stack, and other regions. This is a property of the running process, not merely the stored program file.</p>\n<h3>Memory Isolation</h3>\n<p>The OS and hardware help isolate processes so one process cannot freely read or change another process’s memory.</p>\n<h3>Virtual Memory</h3>\n<p>Virtual memory maps virtual addresses to physical memory and, when supported, can use storage to hold some memory contents. It helps provide isolation and flexible allocation.</p>\n<h3>Paging</h3>\n<p>Paging divides virtual memory into pages. The OS and hardware manage mappings between virtual pages and physical frames.</p>\n<h3>Memory Pressure</h3>\n<p>When many processes demand memory, the system may slow down because it must reclaim memory, page data, or reduce available working space.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: address space; memory isolation; virtual memory.</p>"
+  },
+  {
+    "title": "Chapter 7: Performance, Overhead, and Scalability",
+    "html": "<h1>Chapter 7: Performance, Overhead, and Scalability</h1><figure><img src=\"assets/firstyear7-figure-05.png\" alt=\"Original comparison figure for chapter 7\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 15)</figcaption></figure><h3>Resource Use</h3>\n<p>Running processes consume CPU time, memory, and sometimes disk or network bandwidth. High resource use can affect other applications.</p>\n<h3>Overhead</h3>\n<p>Process creation, scheduling, communication, and context switching involve work beyond the application’s main task. Efficient design avoids unnecessary overhead.</p>\n<h3>Parallel Processing</h3>\n<p>Some work can be divided into tasks that execute simultaneously on multiple CPU cores. Not all tasks benefit equally because coordination also costs time.</p>\n<h3>Load Balancing</h3>\n<p>Load balancing distributes work among available workers or servers to reduce bottlenecks and improve response time.</p>\n<h3>Scalability</h3>\n<p>A scalable system can handle more users or data without a disproportionate loss of performance. Monitoring and testing help identify limits.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: resource use; overhead; parallel processing.</p>"
+  },
+  {
+    "title": "Chapter 8: Security and Process Isolation",
+    "html": "<h1>Chapter 8: Security and Process Isolation</h1><figure><img src=\"assets/firstyear7-figure-06.png\" alt=\"Original comparison figure for chapter 8\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 17)</figcaption></figure><h3>Software Vulnerabilities</h3>\n<p>Programs can contain security flaws, such as unsafe input handling or memory errors. These may affect the running processes.</p>\n<h3>Access Controls</h3>\n<p>Operating systems use accounts, permissions, and access rules to restrict what processes can read, modify, or execute.</p>\n<h3>Sandboxing</h3>\n<p>Sandboxing limits a program’s or process’s access to sensitive resources. It can reduce the damage caused by compromised software.</p>\n<h3>Updates and Testing</h3>\n<p>Security patches fix known problems. Testing updates before deployment can help reduce unexpected failures.</p>\n<h3>Safe Habits</h3>\n<p>Install software from trusted sources, update regularly, use appropriate permissions, and avoid giving applications more access than they need.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: software vulnerabilities; access controls; sandboxing.</p>"
+  },
+  {
+    "title": "Chapter 9: Maintenance, Updates, and Monitoring",
+    "html": "<h1>Chapter 9: Maintenance, Updates, and Monitoring</h1><figure><img src=\"assets/firstyear7-figure-07.png\" alt=\"Original comparison figure for chapter 9\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 19)</figcaption></figure><h3>Version Control</h3>\n<p>Developers use version control to record changes to source code, collaborate, and return to earlier versions. A running process is not itself a version-controlled source-code file.</p>\n<h3>Updating Programs</h3>\n<p>Updates may fix bugs, add features, or address security issues. An updated program may need to be restarted before its new code is used by a running instance.</p>\n<h3>Monitoring Processes</h3>\n<p>System tools show running processes and their resource use. Monitoring helps identify memory leaks, stalled applications, or excessive CPU use.</p>\n<h3>Troubleshooting</h3>\n<p>When a program becomes unresponsive, check its process, resource usage, logs, and recent changes before restarting it.</p>\n<h3>Stability</h3>\n<p>Good maintenance includes backups, testing, updates, and careful configuration changes.</p>\n<h3>Chapter Recap</h3>\n<p>Remember: version control; updating programs; monitoring processes.</p>"
+  },
+  {
+    "title": "Chapter 10: Real-World Examples and Best Practices",
+    "html": "<h1>Chapter 10: Real-World Examples and Best Practices</h1><figure><img src=\"assets/firstyear7-figure-08.png\" alt=\"Original comparison figure for chapter 10\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 21)</figcaption></figure><figure><img src=\"assets/firstyear7-figure-09.png\" alt=\"Original comparison figure for chapter 10\" loading=\"lazy\"><figcaption>Original comparison figure from the supplied PDF (page 22)</figcaption></figure><h3>Web Browsing</h3>\n<p>A browser program may launch multiple processes for tabs, rendering, and other services. These processes may be isolated to improve stability and security.</p>\n<h3>Video Editing</h3>\n<p>A video-editing program can run processes that read footage, apply effects, and render output. Rendering may use substantial CPU, GPU, and memory resources.</p>\n<h3>Games and Applications</h3>\n<p>A game is installed as a program. When launched, it becomes one or more running processes that use memory, graphics, and input devices.</p>\n<h3>Best Practices</h3>\n<p>Use appropriate monitoring tools, close unnecessary applications, keep software updated, and design programs to handle errors and resource limits.</p>\n<h3>Final Comparison</h3>\n<p>Program: stored instructions that can be launched repeatedly. Process: a running instance with its own execution state and managed resources. Understanding both helps with programming, troubleshooting, and system administration. FIRST YEAR BOOK 7 • PROGRAMS AND PROCESSES                                                                     21</p>\n<h3>Chapter Recap</h3>\n<p>Remember: web browsing; video editing; games and applications.</p>"
+  },
+  {
+    "title": "Learning Activities",
+    "html": "<h1>Learning Activities</h1><h3>Activity 1</h3><p>Write three examples of programs on a computer and explain what changes when each is launched.</p><h3>Activity 2</h3><p>Open two instances of a text editor. Observe the running processes and compare them.</p><h3>Activity 3</h3><p>Draw a process state diagram showing Ready, Running, Waiting, and Terminated.</p><h3>Activity 4</h3><p>Use a system monitor to observe CPU and memory use when launching and closing an application.</p><h3>Activity 5</h3><p>Explain a situation where two processes must share data. Choose an IPC method.</p><h3>Activity 6</h3><p>Draw a simple process address-space diagram showing code, data, and stack.</p><h3>Activity 7</h3><p>Explain why a program may run slower when many other processes are active.</p><h3>Activity 8</h3><p>List three steps that reduce risks when installing and running software.</p><h3>Activity 9</h3><p>Describe how version control differs from restarting an updated running process.</p><h3>Activity 10</h3><p>Choose a browser, game, or editing application and describe its program file and running processes. FIRST YEAR BOOK 7 • PROGRAMS AND PROCESSES 23</p>"
+  },
+  {
+    "title": "Glossary",
+    "html": "<h1>Glossary</h1><p><strong>Address space:</strong> The virtual memory addresses available to a process.</p><p><strong>Blocked:</strong> A process state in which execution waits for an event.</p><p><strong>Compilation:</strong> Translation of source code into another executable representation.</p><p><strong>Concurrency:</strong> Multiple tasks making progress during overlapping periods.</p><p><strong>Context switch:</strong> Saving and restoring task execution context.</p><p><strong>IPC:</strong> Inter-process communication.</p><p><strong>Kernel:</strong> Core operating-system component that manages low-level resources.</p><p><strong>Load balancing:</strong> Distributing work across available resources.</p><p><strong>Memory isolation:</strong> Restricting access between separate process memory spaces.</p><p><strong>Multitasking:</strong> Managing several tasks so each can make progress.</p><p><strong>Paging:</strong> Managing virtual memory in fixed-size pages.</p><p><strong>Parallel processing:</strong> Executing parts of work simultaneously.</p><p><strong>Process:</strong> A running instance of a program.</p><p><strong>Program:</strong> Stored instructions designed to perform a task.</p><p><strong>Ready:</strong> A process state waiting for CPU scheduling.</p><p><strong>Running:</strong> A process state actively executing instructions.</p><p><strong>Sandboxing:</strong> Limiting software access to resources.</p><p><strong>Scheduler:</strong> OS component that selects tasks to execute.</p><p><strong>Semaphore:</strong> A synchronization primitive for coordinating access.</p><p><strong>Synchronization:</strong> Coordinating concurrent operations.</p><p><strong>Terminated:</strong> A process that has finished execution.</p><p><strong>Virtual memory:</strong> A memory abstraction that maps process addresses to physical memory and possibly storage.</p><p><strong>Version control:</strong> A system for tracking changes to source files.</p>"
+  },
+  {
+    "title": "References and Conclusion",
+    "html": "<h1>References and Conclusion</h1><p>Primary source: User-provided 1stbook7.pdf, 52 pages, on programs and processes, execution, lifespan, IPC, memory management, performance, security, maintenance, scalability, and examples. The original comparison images are reproduced from this user-provided source. The expanded explanations, examples, activities, and questions in this e-book were newly written for educational use. Some concepts were clarified for technical accuracy, including the distinction between stored programs and the address spaces of running processes. CONCLUSION Programs provide instructions; processes bring those instructions into action. The operating system manages processes, their resources, and their interactions. Learning these concepts helps students understand why applications run, wait, communicate, consume resources, and sometimes fail. FIRST YEAR BOOK 7 • PROGRAMS AND PROCESSES                                                                     30</p>"
+  }
+];
+
+const toc = document.getElementById('toc');
+const content = document.getElementById('content');
+const prev = document.getElementById('prev') || document.getElementById('previous');
+const next = document.getElementById('next');
+const status = document.getElementById('status');
+const heading = document.getElementById('heading');
+let current = 0;
+function render() {
+  const page = LESSON_PAGES[current];
+  content.innerHTML = page.html;
+  if (heading) heading.textContent = page.title;
+  toc.replaceChildren();
+  LESSON_PAGES.forEach((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = item.title;
+    if (i === current) b.classList.add('active');
+    b.addEventListener('click', () => go(i));
+    toc.appendChild(b);
+  });
+  prev.disabled = current === 0;
+  next.disabled = current === LESSON_PAGES.length - 1;
+  if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+}
+function go(i) {
+  if (i < 0 || i >= LESSON_PAGES.length) return;
+  current = i;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.addEventListener('click', () => go(current-1));
+next.addEventListener('click', () => go(current+1));
+render();
+
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,4148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3rd Year Book 06 | Advanced HTML Forms and Form Validation | BYTEBLOOM</title>
+
+<style>
+:root {
+    --bg: #FDE4F2;
+    --header: #F9CEE7;
+    --sidebar: #F4B8DA;
+    --accent: #EEA1CD;
+    --hover: #E68BBE;
+    --ink: #612C4D;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+}
+
+header {
+    min-height: 70px;
+    background: var(--header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    gap: 12px;
+    border-bottom: 1px solid var(--accent);
+}
+
+header a {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+header strong {
+    font-size: 21px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-toggle,
+.navbtn,
+.toc-link,
+.contents-link {
+    cursor: pointer;
+    font: inherit;
+}
+
+.theme-toggle {
+    padding: 10px 14px;
+    border: 1px solid var(--ink);
+    border-radius: 10px;
+    background: #fff5fb;
+    color: var(--ink);
+    font-weight: bold;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 245px minmax(0, 1fr);
+    height: calc(100dvh - 70px);
+}
+
+aside {
+    background: var(--sidebar);
+    padding: 20px 12px;
+    overflow: auto;
+    border-right: 1px solid var(--accent);
+}
+
+aside h2 {
+    font-size: 18px;
+    margin: 4px 6px 18px;
+}
+
+.toc-link {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-radius: 7px;
+    padding: 12px 10px;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+.toc-link:hover,
+.toc-link.active {
+    background: var(--hover);
+}
+
+.toc-link small {
+    white-space: nowrap;
+}
+
+main {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+}
+
+.viewport {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.lesson-page {
+    width: min(100%, 850px);
+    min-height: 100%;
+    background: #fffafc;
+    color: #44313d;
+    box-shadow: 0 5px 25px #6b365333;
+    border: 1px solid #edc2d8;
+    border-radius: 8px;
+    padding: clamp(24px, 5vw, 58px);
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-page[hidden] {
+    display: none;
+}
+
+.lesson-content {
+    flex: 1;
+}
+
+.lesson-page h1 {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.25;
+    color: #8e336b;
+    margin: 0 0 26px;
+}
+
+.lesson-page h2 {
+    font-size: 21px;
+    color: #a23b78;
+    margin: 28px 0 12px;
+}
+
+.lesson-page h3 {
+    font-size: 17px;
+    color: #a23b78;
+    margin: 24px 0 10px;
+}
+
+.lesson-page p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+.note {
+    border-left: 4px solid #df84b5;
+    background: #fff0f8;
+    padding: 12px 17px;
+    border-radius: 5px;
+    margin: 17px 0;
+}
+
+.note strong {
+    color: #943567;
+}
+
+.note p {
+    margin: 5px 0 0;
+}
+
+.diagram {
+    margin: 25px 0;
+    background: #fff0f8;
+    border: 1px solid #ecc3d8;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.diagram-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.diagram-flow span {
+    padding: 12px;
+    background: #f4b8da;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.diagram-flow b {
+    color: #a23b78;
+}
+
+.diagram figcaption {
+    font-size: 12px;
+    color: #725568;
+    margin-top: 12px;
+}
+
+.page-foot {
+    border-top: 1px solid #e9c7d8;
+    padding-top: 15px;
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #a37a91;
+    font-size: 11px;
+}
+
+.cover {
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cover h1 {
+    font-size: clamp(30px, 4vw, 48px);
+    max-width: 640px;
+}
+
+.cover p {
+    color: #7e5b71;
+}
+
+.eyebrow {
+    letter-spacing: 3px;
+    font-size: 12px;
+    color: #b14d89;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.cover-rule {
+    width: 90px;
+    height: 4px;
+    background: #eaa1cc;
+    border-radius: 4px;
+    margin: 28px;
+}
+
+.contents {
+    display: grid;
+    gap: 12px;
+}
+
+.contents-link {
+    border: 1px solid #edc7db;
+    background: #fff0f8;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 15px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.contents-link:hover {
+    background: #f9cee7;
+}
+
+.pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 4px 0 8px;
+}
+
+.navbtn {
+    background: var(--accent);
+    color: var(--ink);
+    border: 1px solid #d88eb8;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-weight: bold;
+}
+
+.navbtn:hover {
+    background: var(--hover);
+}
+
+.navbtn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+#counter {
+    min-width: 110px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.reader.dark-mode .lesson-page {
+    background: #25212d;
+    color: #f8eaf5;
+    border-color: #51475d;
+}
+
+.reader.dark-mode .lesson-page h1,
+.reader.dark-mode .lesson-page h2,
+.reader.dark-mode .lesson-page h3 {
+    color: #ffb8dc;
+}
+
+.reader.dark-mode .note,
+.reader.dark-mode .diagram,
+.reader.dark-mode .contents-link {
+    background: #352b3c;
+    border-color: #69526a;
+    color: #f8eaf5;
+}
+
+.reader.dark-mode .note strong,
+.reader.dark-mode .diagram figcaption,
+.reader.dark-mode .cover p,
+.reader.dark-mode .page-foot {
+    color: #e7bad3;
+}
+
+.reader.dark-mode .diagram-flow span {
+    background: #62415b;
+    color: #fff;
+}
+
+.reader.dark-mode .eyebrow {
+    color: #f2a6d0;
+}
+
+.lesson-page pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow-x: auto;
+    background: #fff0f8;
+    color: #572b48;
+    border: 1px solid #eac4d8;
+    border-radius: 9px;
+    padding: 18px;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.lesson-page code {
+    font-family: Consolas, Monaco, monospace;
+}
+
+.lesson-page :not(pre) > code {
+    background: #fce4f1;
+    color: #873d68;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.lesson-page ul,
+.lesson-page ol {
+    line-height: 1.8;
+    padding-left: 25px;
+}
+
+.lesson-page figure {
+    max-width: 100%;
+    overflow: auto;
+}
+
+.lesson-page img,
+.lesson-page svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.reader.dark-mode .lesson-page pre {
+    background: #352b3c;
+    color: #f8eaf5;
+    border-color: #69526a;
+}
+
+.reader.dark-mode .lesson-page :not(pre) > code {
+    background: #4b3548;
+    color: #ffe1f2;
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 9px 12px;
+        flex-wrap: wrap;
+    }
+
+    header strong {
+        font-size: 17px;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+        height: calc(100dvh - 105px);
+    }
+
+    aside {
+        max-height: 145px;
+        padding: 8px 12px;
+        border-right: 0;
+        border-bottom: 1px solid var(--accent);
+    }
+
+    aside h2 {
+        margin: 4px 6px;
+    }
+
+    .toc-link {
+        display: inline-flex;
+        width: auto;
+        padding: 8px;
+    }
+
+    main {
+        padding: 10px 6px;
+    }
+
+    .pager {
+        gap: 8px;
+    }
+
+    .navbtn {
+        padding: 10px 12px;
+    }
+
+    .lesson-page {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body class="reader">
+
+<header>
+    <div>
+        <a href="library.html">
+            <strong>🌸 BYTEBLOOM</strong>
+        </a>
+        <span> | 3rd Year BSIT — Book 06</span>
+    </div>
+
+    <div class="actions">
+        <button class="theme-toggle" id="themeToggle"
+                type="button">
+            🌙 Dark Mode
+        </button>
+        <a href="library.html">← Back to Library</a>
+    </div>
+</header>
+
+<div class="layout">
+
+    <!-- SIDEBAR TABLE OF CONTENTS -->
+    <aside>
+        <h2>Table of Contents</h2>
+
+        <button class="toc-link" data-page="0">
+            Cover <small>01</small>
+        </button>
+
+        <button class="toc-link" data-page="1">
+            Table of Contents <small>02</small>
+        </button>
+
+        <button class="toc-link" data-page="2">
+            Chapter 1: Understanding Web Forms
+            <small>03</small>
+        </button>
+
+        <button class="toc-link" data-page="7">
+            Chapter 2: HTML Input Types
+            <small>08</small>
+        </button>
+
+        <button class="toc-link" data-page="12">
+            Chapter 3: Built-In HTML Validation
+            <small>13</small>
+        </button>
+
+        <button class="toc-link" data-page="17">
+            Chapter 4: Styling and Accessible Feedback
+            <small>18</small>
+        </button>
+
+        <button class="toc-link" data-page="22">
+            Chapter 5: JavaScript Form Validation
+            <small>23</small>
+        </button>
+
+        <button class="toc-link" data-page="27">
+            Chapter 6: Practical Form Projects
+            <small>28</small>
+        </button>
+    </aside>
+
+    <!-- MAIN READER -->
+    <main>
+        <div class="viewport" id="viewport">
+
+            <!-- PAGE 1: COVER -->
+            <article class="lesson-page" data-title="Cover">
+                <div class="lesson-content cover">
+                    <div class="eyebrow">
+                        BYTEBLOOM DIGITAL LIBRARY
+                    </div>
+
+                    <h1>
+                        ADVANCED HTML FORMS
+                        AND FORM VALIDATION
+                    </h1>
+
+                    <div class="cover-rule"></div>
+
+                    <p>
+                        A Practical Educational Book
+                        for BSIT Students
+                    </p>
+
+                    <p>
+                        Six Chapters • 30 Detailed Lessons
+                    </p>
+
+                    <p>
+                        HTML, CSS and JavaScript Examples
+                    </p>
+
+                    <p><strong>3rd Year BSIT — Book 06</strong></p>
+                </div>
+
+                <div class="page-foot">
+                    <span>BYTEBLOOM DIGITAL LIBRARY</span>
+                    <span>Book 06</span>
+                </div>
+            </article>
+
+            <!-- PAGE 2: TABLE OF CONTENTS -->
+            <article class="lesson-page" data-title="Table of Contents" hidden>
+                <div class="lesson-content">
+                    <h1>Table of Contents</h1>
+
+                    <p>
+                        Explore the six chapters of
+                        Advanced HTML Forms and Form Validation.
+                    </p>
+
+                    <div class="contents">
+
+                        <button class="contents-link" data-page="2">
+                            <span>
+                                Chapter 1: Understanding Web Forms
+                            </span>
+                            <span>03</span>
+                        </button>
+
+                        <button class="contents-link" data-page="7">
+                            <span>
+                                Chapter 2: HTML Input Types
+                            </span>
+                            <span>08</span>
+                        </button>
+
+                        <button class="contents-link" data-page="12">
+                            <span>
+                                Chapter 3: Built-In HTML Validation
+                            </span>
+                            <span>13</span>
+                        </button>
+
+                        <button class="contents-link" data-page="17">
+                            <span>
+                                Chapter 4: Styling and Accessible Feedback
+                            </span>
+                            <span>18</span>
+                        </button>
+
+                        <button class="contents-link" data-page="22">
+                            <span>
+                                Chapter 5: JavaScript Form Validation
+                            </span>
+                            <span>23</span>
+                        </button>
+
+                        <button class="contents-link" data-page="27">
+                            <span>
+                                Chapter 6: Practical Form Projects
+                            </span>
+                            <span>28</span>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>BYTEBLOOM DIGITAL LIBRARY</span>
+                    <span>Table of Contents</span>
+                </div>
+            </article>
+
+            <!-- PAGE 3: LESSON 1.1 -->
+            <article class="lesson-page" data-title="1.1 Purpose and Structure of Forms" hidden>
+                <div class="lesson-content">
+                    <h1>Chapter 1: Understanding Web Forms</h1>
+                    <h2>1.1 Purpose and Structure of Forms</h2>
+
+                    <p>
+                        A web form collects structured information
+                        from a visitor. Registration, search,
+                        contact, checkout, and feedback interfaces
+                        all use forms.
+                    </p>
+
+                    <p>
+                        The form element groups controls and
+                        determines how their values are submitted.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        The <code>action</code> attribute names the
+                        destination that receives submitted data.
+                        The <code>method</code> attribute specifies
+                        how the browser sends it.
+                    </p>
+
+                    <p>
+                        GET normally encodes fields in the URL query
+                        string and suits searches. POST sends data
+                        in the request body and suits creating records.
+                    </p>
+
+                    <div class="note">
+                        <strong>Important:</strong>
+                        <p>
+                            Neither GET nor POST alone provides
+                            confidentiality. HTTPS protects data
+                            while it is being transmitted.
+                        </p>
+                    </div>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form action="/search" method="get"&gt;
+  &lt;label for="q"&gt;Search lessons&lt;/label&gt;
+  &lt;input id="q" name="q" type="search"&gt;
+  &lt;button type="submit"&gt;Search&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The browser uses HTML to construct form
+                        controls. CSS changes their appearance,
+                        while JavaScript can add behavior.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Open the page and submit a search. Observe
+                        the query parameter in the address bar.
+                        Remove the name attribute and compare
+                        what the browser sends.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Forms need clear labels, understandable
+                            feedback, and predictable keyboard behavior.
+                            Client-side validation cannot replace
+                            server-side validation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 1: Understanding Web Forms</span>
+                    <span>Lesson 1.1</span>
+                </div>
+            </article>
+
+            <!-- PAGE 4: LESSON 1.2 -->
+            <article class="lesson-page" data-title="1.2 Labels, Names, and IDs" hidden>
+                <div class="lesson-content">
+                    <h1>1.2 Labels, Names, and IDs</h1>
+
+                    <p>
+                        A label tells users what information a
+                        control requests. Its <code>for</code>
+                        attribute should match the control's
+                        <code>id</code>.
+                    </p>
+
+                    <p>
+                        This allows the label to focus the field
+                        when clicked.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        The <code>name</code> attribute identifies
+                        the submitted key, while <code>id</code>
+                        uniquely identifies the element in the
+                        document.
+                    </p>
+
+                    <p>
+                        A placeholder is only a hint and should
+                        not replace a visible label. Screen readers
+                        benefit from proper label associations.
+                    </p>
+
+                    <p>
+                        Use <code>fieldset</code> and
+                        <code>legend</code> to group related
+                        controls when needed.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="student"&gt;Student name&lt;/label&gt;
+
+&lt;input
+  id="student"
+  name="student_name"
+  autocomplete="name"
+  required
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The label is connected to the input through
+                        the matching <code>for</code> and
+                        <code>id</code> values.
+                    </p>
+
+                    <p>
+                        The name attribute determines the field
+                        name included when the form is submitted.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Click the label and check whether the input
+                        receives focus. Change the name but not the
+                        id to compare their purposes.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use visible labels and clear instructions
+                            so users understand each field.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 1: Understanding Web Forms</span>
+                    <span>Lesson 1.2</span>
+                </div>
+            </article>
+
+            <!-- PAGE 5: LESSON 1.3 -->
+            <article class="lesson-page" data-title="1.3 Text Inputs and Textareas" hidden>
+                <div class="lesson-content">
+                    <h1>1.3 Text Inputs and Textareas</h1>
+
+                    <p>
+                        Single-line text controls work well for
+                        short responses such as usernames and
+                        subject lines.
+                    </p>
+
+                    <p>
+                        A <code>textarea</code> is designed for
+                        longer, multi-line content.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        The input type controls the browser interface,
+                        while the name attribute determines how the
+                        value is submitted.
+                    </p>
+
+                    <p>
+                        Use <code>maxlength</code> for practical
+                        length limits, but verify length again
+                        on the server.
+                    </p>
+
+                    <p>
+                        A disabled control is not submitted, while
+                        a readonly control is generally submitted.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="subject"&gt;Subject&lt;/label&gt;
+
+&lt;input
+  id="subject"
+  name="subject"
+  maxlength="80"
+&gt;
+
+&lt;label for="message"&gt;Message&lt;/label&gt;
+
+&lt;textarea
+  id="message"
+  name="message"
+  rows="5"
+  required
+&gt;&lt;/textarea&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The subject input accepts one line of text
+                        and limits the length to 80 characters.
+                    </p>
+
+                    <p>
+                        The message textarea supports multiple
+                        lines and requires a value.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Enter a multi-line message. Compare how
+                        the Enter key behaves in the text field
+                        and textarea.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Provide instructions before inputs when
+                            the expected format is unfamiliar.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 1: Understanding Web Forms</span>
+                    <span>Lesson 1.3</span>
+                </div>
+            </article>
+
+            <!-- PAGE 6: LESSON 1.4 -->
+            <article class="lesson-page" data-title="1.4 Selections and Buttons" hidden>
+                <div class="lesson-content">
+                    <h1>1.4 Selections and Buttons</h1>
+
+                    <p>
+                        Checkboxes allow independent choices,
+                        while radio buttons represent mutually
+                        exclusive choices when they share a name.
+                    </p>
+
+                    <p>
+                        A select element offers a menu of options.
+                        Buttons should clearly state what they do.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Checkboxes that are not selected are normally
+                        absent from submitted data.
+                    </p>
+
+                    <p>
+                        Radio groups require a shared name and
+                        distinct values. Use fieldset and legend
+                        to explain a group of choices.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Preferred format&lt;/legend&gt;
+
+  &lt;label&gt;
+    &lt;input
+      type="radio"
+      name="format"
+      value="pdf"
+      required
+    &gt;
+    PDF
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    &lt;input
+      type="radio"
+      name="format"
+      value="html"
+    &gt;
+    HTML
+  &lt;/label&gt;
+&lt;/fieldset&gt;
+
+&lt;button type="submit"&gt;
+  Save preference
+&lt;/button&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        Both radio buttons use the same name,
+                        so only one option can be selected
+                        at a time.
+                    </p>
+
+                    <p>
+                        The submit button sends the selected
+                        preference when the form is submitted.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Try selecting both radio options.
+                        Notice that only one remains selected.
+                        Replace radio with checkbox to compare
+                        the behavior.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use an explicit button type to avoid
+                            accidental form submission.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 1: Understanding Web Forms</span>
+                    <span>Lesson 1.4</span>
+                </div>
+            </article>
+
+            <!-- PAGE 7: LESSON 1.5 -->
+            <article class="lesson-page" data-title="1.5 How Submission Works" hidden>
+                <div class="lesson-content">
+                    <h1>1.5 How Submission Works</h1>
+
+                    <p>
+                        When a form is submitted, the browser
+                        identifies successful controls, applies
+                        built-in constraint checks unless disabled,
+                        and constructs a request.
+                    </p>
+
+                    <p>
+                        The server receives the data, validates it,
+                        performs the requested operation, and sends
+                        a response.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Client-side validation does not make submitted
+                        values automatically safe.
+                    </p>
+
+                    <p>
+                        Attackers can bypass browser checks.
+                        Production systems require server-side
+                        validation, authorization, appropriate
+                        encoding, and secure storage.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form action="/register" method="post"&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+
+  &lt;input
+    id="email"
+    name="email"
+    type="email"
+    required
+  &gt;
+
+  &lt;button type="submit"&gt;
+    Register
+  &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The form sends information using POST
+                        to the /register endpoint.
+                    </p>
+
+                    <p>
+                        The email input uses built-in format
+                        validation and requires a value before
+                        normal submission.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Use the browser developer tools Network
+                        panel on a test endpoint to observe
+                        requests.
+                    </p>
+
+                    <p>
+                        Do not submit real personal data to
+                        unknown endpoints.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Always use HTTPS when collecting
+                            real information. Client-side checks
+                            improve the user experience but cannot
+                            replace server-side security.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 1: Understanding Web Forms</span>
+                    <span>Lesson 1.5</span>
+                </div>
+            </article>
+
+            <!-- PART 3 CONTINUES HERE -->
+
+            <!-- PAGE 8: LESSON 2.1 -->
+            <article class="lesson-page" data-title="2.1 Email, URL, Search, and Telephone" hidden>
+                <div class="lesson-content">
+                    <h1>Chapter 2: HTML Input Types</h1>
+                    <h2>2.1 Email, URL, Search, and Telephone</h2>
+
+                    <p>
+                        Input types provide browsers with hints
+                        about expected data and can activate
+                        built-in validation.
+                    </p>
+
+                    <p>
+                        Email checks basic address syntax,
+                        URL checks URL syntax, search is useful
+                        for search boxes, and telephone inputs
+                        generally do not enforce a telephone
+                        number format.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Choosing the correct input type improves
+                        mobile keyboards and assistive technology
+                        behavior.
+                    </p>
+
+                    <p>
+                        Format validation does not prove that
+                        an email inbox exists or that a URL
+                        is safe.
+                    </p>
+
+                    <p>
+                        Telephone formats vary by region,
+                        so developers should provide clear
+                        instructions instead of assuming
+                        one universal format.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;input type="email"
+       name="email"
+       required&gt;
+
+&lt;input type="url"
+       name="portfolio"&gt;
+
+&lt;input type="search"
+       name="query"&gt;
+
+&lt;input type="tel"
+       name="phone"
+       autocomplete="tel"&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The email input checks whether the
+                        entered value follows basic email
+                        address syntax.
+                    </p>
+
+                    <p>
+                        The URL input expects a valid URL format.
+                        Search is intended for search queries,
+                        while telephone provides a suitable
+                        input interface for phone numbers.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Test an email without an @ symbol and
+                        a malformed URL. Compare the browser
+                        feedback with the telephone input,
+                        which has no built-in format requirement.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Always provide clear labels and
+                            instructions. Browser validation
+                            cannot replace server-side checks.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 2: HTML Input Types</span>
+                    <span>Lesson 2.1</span>
+                </div>
+            </article>
+
+            <!-- PAGE 9: LESSON 2.2 -->
+            <article class="lesson-page" data-title="2.2 Numbers, Ranges, and Dates" hidden>
+                <div class="lesson-content">
+                    <h1>2.2 Numbers, Ranges, and Dates</h1>
+
+                    <p>
+                        The number input type accepts numeric
+                        values and supports minimum, maximum,
+                        and step constraints.
+                    </p>
+
+                    <p>
+                        Range provides a slider for approximate
+                        numeric selection. Date, time, month,
+                        and week input types offer date-related
+                        controls when supported by the browser.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        A number field is not ideal for identifiers
+                        such as postal codes or student numbers
+                        because leading zeros may be important.
+                    </p>
+
+                    <p>
+                        Identifiers are not used for arithmetic,
+                        so a text input with an appropriate
+                        inputmode is often a better choice.
+                    </p>
+
+                    <p>
+                        Date controls may appear differently
+                        depending on the browser, device,
+                        and locale.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="units"&gt;
+  Units (1-6)
+&lt;/label&gt;
+
+&lt;input
+  id="units"
+  type="number"
+  name="units"
+  min="1"
+  max="6"
+  step="1"
+&gt;
+
+&lt;label for="start"&gt;
+  Start date
+&lt;/label&gt;
+
+&lt;input
+  id="start"
+  type="date"
+  name="start"
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The units input accepts numbers
+                        between 1 and 6, with increments
+                        of one.
+                    </p>
+
+                    <p>
+                        The date input allows users to select
+                        a date using the browser's supported
+                        date control.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Try entering a number outside the
+                        allowed range. Observe the validation
+                        message and test how the date picker
+                        behaves on your device.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use the correct input type for the
+                            information being collected and
+                            verify submitted values on the server.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 2: HTML Input Types</span>
+                    <span>Lesson 2.2</span>
+                </div>
+            </article>
+
+            <!-- PAGE 10: LESSON 2.3 -->
+            <article class="lesson-page" data-title="2.3 Passwords and Autocomplete" hidden>
+                <div class="lesson-content">
+                    <h1>2.3 Passwords and Autocomplete</h1>
+
+                    <p>
+                        A password input hides characters
+                        visually while the user types.
+                    </p>
+
+                    <p>
+                        However, masking a password does not
+                        encrypt it. Secure transmission
+                        requires HTTPS.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Autocomplete tokens help browsers fill
+                        known fields such as names, email
+                        addresses, current passwords,
+                        and new passwords.
+                    </p>
+
+                    <p>
+                        Developers should avoid unnecessarily
+                        restrictive password rules.
+                    </p>
+
+                    <p>
+                        Longer passwords and support for
+                        password managers are recommended.
+                    </p>
+
+                    <p>
+                        Password storage and verification
+                        must be implemented securely
+                        on the server.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="password"&gt;
+  Password
+&lt;/label&gt;
+
+&lt;input
+  id="password"
+  type="password"
+  name="password"
+  minlength="12"
+  autocomplete="new-password"
+  required
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The password input masks typed
+                        characters. The minlength attribute
+                        requires at least 12 characters
+                        during normal browser validation.
+                    </p>
+
+                    <p>
+                        The new-password autocomplete token
+                        tells the browser that the field is
+                        intended for creating a password.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Compare current-password and
+                        new-password autocomplete values.
+                        Check that the browser does not
+                        openly display typed characters.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use HTTPS and secure server-side
+                            password handling. Do not reveal
+                            whether an account exists through
+                            public error messages.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 2: HTML Input Types</span>
+                    <span>Lesson 2.3</span>
+                </div>
+            </article>
+
+            <!-- PAGE 11: LESSON 2.4 -->
+            <article class="lesson-page" data-title="2.4 Files, Colors, and Hidden Fields" hidden>
+                <div class="lesson-content">
+                    <h1>2.4 Files, Colors, and Hidden Fields</h1>
+
+                    <p>
+                        A file input allows visitors to select
+                        files from their devices.
+                    </p>
+
+                    <p>
+                        A color input opens a color chooser,
+                        while hidden inputs transmit values
+                        without displaying visible controls.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        The accept attribute suggests which
+                        file types users may select, but
+                        it is not a security control.
+                    </p>
+
+                    <p>
+                        File extensions and MIME types supplied
+                        by the client cannot be trusted.
+                    </p>
+
+                    <p>
+                        The server should independently check
+                        uploaded file content, file size,
+                        permissions, and storage location.
+                    </p>
+
+                    <p>
+                        Hidden input values can also be modified,
+                        so they must not be treated as proof
+                        of identity or authorization.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form
+  method="post"
+  enctype="multipart/form-data"
+&gt;
+
+  &lt;label for="attachment"&gt;
+    Attach a file
+  &lt;/label&gt;
+
+  &lt;input
+    id="attachment"
+    type="file"
+    name="attachment"
+    accept=".pdf,.png"
+  &gt;
+
+  &lt;input
+    type="hidden"
+    name="form_version"
+    value="2"
+  &gt;
+
+&lt;/form&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The form uses multipart/form-data
+                        to support file uploads.
+                    </p>
+
+                    <p>
+                        The file input suggests PDF and PNG
+                        files. The hidden field submits
+                        a form version value.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Try choosing a file and inspect
+                        the selected filename.
+                    </p>
+
+                    <p>
+                        Explain why the server must inspect
+                        uploaded files independently.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            File selection restrictions in HTML
+                            are not enough to protect a system.
+                            Always validate uploads on the server.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 2: HTML Input Types</span>
+                    <span>Lesson 2.4</span>
+                </div>
+            </article>
+
+            <!-- PAGE 12: LESSON 2.5 -->
+            <article class="lesson-page" data-title="2.5 Choosing the Right Input Type" hidden>
+                <div class="lesson-content">
+                    <h1>2.5 Choosing the Right Input Type</h1>
+
+                    <p>
+                        Choosing an input control should begin
+                        with the nature of the data and the
+                        task the user needs to complete.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Use email inputs for email addresses,
+                        date inputs for dates, number inputs
+                        for quantities, and text inputs
+                        for identifiers.
+                    </p>
+
+                    <p>
+                        Use radio buttons when users must
+                        select one choice, checkboxes when
+                        multiple choices are allowed,
+                        and select menus for compact
+                        option lists.
+                    </p>
+
+                    <p>
+                        A form can be technically valid but
+                        still difficult to use.
+                    </p>
+
+                    <p>
+                        Clear labels, helpful descriptions,
+                        keyboard access, and sensible defaults
+                        improve the user experience.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="student-id"&gt;
+  Student ID
+&lt;/label&gt;
+
+&lt;input
+  id="student-id"
+  name="student_id"
+  type="text"
+  inputmode="numeric"
+  pattern="[0-9]{8}"
+  required
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The student ID uses a text input
+                        instead of a number input because
+                        student identifiers may contain
+                        leading zeros.
+                    </p>
+
+                    <p>
+                        The inputmode attribute suggests
+                        a numeric keyboard on supported
+                        mobile devices.
+                    </p>
+
+                    <p>
+                        The pattern requires exactly
+                        eight digits.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Try entering a student ID beginning
+                        with zero.
+                    </p>
+
+                    <p>
+                        Observe that a text input preserves
+                        the leading zero, unlike treating
+                        the identifier as a numeric quantity.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Choose controls based on user needs.
+                            Test forms on desktop and mobile
+                            browsers, and always validate
+                            submitted data on the server.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 2: HTML Input Types</span>
+                    <span>Lesson 2.5</span>
+                </div>
+            </article>
+
+            <!-- PART 4 CONTINUES HERE -->
+
+            <!-- PAGE 13: LESSON 3.1 -->
+            <article class="lesson-page" data-title="3.1 Required Fields and Basic Constraints" hidden>
+                <div class="lesson-content">
+                    <h1>Chapter 3: Built-In HTML Validation</h1>
+                    <h2>3.1 Required Fields and Basic Constraints</h2>
+
+                    <p>
+                        The required attribute prevents normal
+                        form submission when a supported control
+                        has no acceptable value.
+                    </p>
+
+                    <p>
+                        Email and URL input types also check
+                        basic syntax. Browser constraint validation
+                        provides immediate feedback before a
+                        request is sent.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Built-in checks improve usability, but
+                        users can disable or bypass them.
+                    </p>
+
+                    <p>
+                        Every required field must also be
+                        checked on the server.
+                    </p>
+
+                    <p>
+                        Explain why a field is needed when
+                        its purpose is not obvious.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="contact"&gt;
+  Contact email
+&lt;/label&gt;
+
+&lt;input
+  id="contact"
+  type="email"
+  name="contact"
+  required
+&gt;
+
+&lt;button type="submit"&gt;
+  Continue
+&lt;/button&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The email input requires the user to
+                        enter a value before normal submission.
+                    </p>
+
+                    <p>
+                        The browser also checks whether the
+                        entered value follows basic email
+                        address syntax.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Submit the form with the field empty,
+                        then with an invalid email address,
+                        and finally with a syntactically
+                        valid email address.
+                    </p>
+
+                    <p>
+                        Compare the browser validation messages.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Client-side validation improves the
+                            user experience but cannot replace
+                            server-side validation. Use HTTPS
+                            when collecting real information.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 3: Built-In HTML Validation</span>
+                    <span>Lesson 3.1</span>
+                </div>
+            </article>
+
+            <!-- PAGE 14: LESSON 3.2 -->
+            <article class="lesson-page" data-title="3.2 Minimum and Maximum Length" hidden>
+                <div class="lesson-content">
+                    <h1>3.2 Minimum and Maximum Length</h1>
+
+                    <p>
+                        The minlength and maxlength attributes
+                        constrain the number of characters
+                        in supported text controls.
+                    </p>
+
+                    <p>
+                        Minimum length is useful when a response
+                        must contain enough detail, while maximum
+                        length helps keep short fields manageable.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Length is not the same as content quality.
+                        A ten-character string may still be
+                        meaningless.
+                    </p>
+
+                    <p>
+                        Avoid using arbitrary short password
+                        limits, and validate actual stored
+                        lengths on the server.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="summary"&gt;
+  Project summary
+&lt;/label&gt;
+
+&lt;textarea
+  id="summary"
+  name="summary"
+  minlength="30"
+  maxlength="500"
+  required
+&gt;&lt;/textarea&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The textarea requires a project summary
+                        containing at least 30 characters
+                        and no more than 500 characters.
+                    </p>
+
+                    <p>
+                        The required attribute prevents normal
+                        submission when the field is empty.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Enter a short summary and attempt
+                        to submit the form.
+                    </p>
+
+                    <p>
+                        Then enter enough text to meet
+                        the minimum length requirement.
+                        Observe when validation occurs
+                        after user input.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Character limits should match
+                            the actual purpose of the field.
+                            Always verify input length
+                            on the server.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 3: Built-In HTML Validation</span>
+                    <span>Lesson 3.2</span>
+                </div>
+            </article>
+
+            <!-- PAGE 15: LESSON 3.3 -->
+            <article class="lesson-page" data-title="3.3 Patterns and Regular Expressions" hidden>
+                <div class="lesson-content">
+                    <h1>3.3 Patterns and Regular Expressions</h1>
+
+                    <p>
+                        The pattern attribute checks a text-like
+                        value against a regular expression.
+                    </p>
+
+                    <p>
+                        It is useful for narrowly defined formats
+                        such as a fixed-length campus code.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        A pattern should match the entire
+                        expected value and should be accompanied
+                        by human-readable instructions.
+                    </p>
+
+                    <p>
+                        Avoid using complicated regular expressions
+                        to decide whether all real-world names
+                        or email addresses are valid.
+                    </p>
+
+                    <p>
+                        Overly strict patterns can accidentally
+                        reject legitimate users.
+                    </p>
+
+                    <p>
+                        A pattern does not make submitted
+                        information trustworthy to the server.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="code"&gt;
+  Course code (ABC-123)
+&lt;/label&gt;
+
+&lt;input
+  id="code"
+  name="course_code"
+  pattern="[A-Z]{3}-[0-9]{3}"
+  title="Three uppercase letters, a hyphen, and three digits"
+  required
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The pattern requires three uppercase
+                        letters, followed by a hyphen
+                        and three digits.
+                    </p>
+
+                    <p>
+                        For example, ABC-123 follows
+                        the required format.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Test the following values:
+                    </p>
+
+                    <ul>
+                        <li>ABC-123</li>
+                        <li>abc-123</li>
+                        <li>AB-123</li>
+                    </ul>
+
+                    <p>
+                        Identify which value satisfies
+                        the pattern and explain why.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Keep validation patterns simple
+                            and provide clear instructions
+                            about the required format.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 3: Built-In HTML Validation</span>
+                    <span>Lesson 3.3</span>
+                </div>
+            </article>
+
+            <!-- PAGE 16: LESSON 3.4 -->
+            <article class="lesson-page" data-title="3.4 Numeric Limits and Step" hidden>
+                <div class="lesson-content">
+                    <h1>3.4 Numeric Limits and Step</h1>
+
+                    <p>
+                        The min, max, and step attributes
+                        describe acceptable values for
+                        numeric and date-related controls.
+                    </p>
+
+                    <p>
+                        A value outside the allowed range
+                        can cause a rangeUnderflow
+                        or rangeOverflow validity state.
+                    </p>
+
+                    <p>
+                        A value that does not fit the step
+                        can cause stepMismatch.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        The step attribute is not simply
+                        a visual increment for spinner buttons.
+                        It also affects validation.
+                    </p>
+
+                    <p>
+                        Choose units carefully. For example,
+                        a price may use step="0.01",
+                        while a count usually uses step="1".
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="rating"&gt;
+  Rating (1-5)
+&lt;/label&gt;
+
+&lt;input
+  id="rating"
+  type="number"
+  name="rating"
+  min="1"
+  max="5"
+  step="1"
+  required
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The input accepts ratings from
+                        1 to 5 in whole-number steps.
+                    </p>
+
+                    <p>
+                        Values outside this range or values
+                        that do not follow the step rule
+                        can fail browser validation.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Try entering these values:
+                    </p>
+
+                    <ul>
+                        <li>0</li>
+                        <li>3.5</li>
+                        <li>4</li>
+                    </ul>
+
+                    <p>
+                        Identify whether each value violates
+                        the minimum, maximum, or step
+                        constraint.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use appropriate numeric limits
+                            and verify submitted values
+                            on the server.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 3: Built-In HTML Validation</span>
+                    <span>Lesson 3.4</span>
+                </div>
+            </article>
+
+            <!-- PAGE 17: LESSON 3.5 -->
+            <article class="lesson-page" data-title="3.5 Validity States and Browser Feedback" hidden>
+                <div class="lesson-content">
+                    <h1>3.5 Validity States and Browser Feedback</h1>
+
+                    <p>
+                        Browsers provide validity states
+                        that describe whether an input
+                        satisfies its constraints.
+                    </p>
+
+                    <h3>Common Validity States</h3>
+
+                    <ul>
+                        <li><code>valueMissing</code> — a required value is missing.</li>
+                        <li><code>typeMismatch</code> — the value does not match the input type.</li>
+                        <li><code>patternMismatch</code> — the value does not match the required pattern.</li>
+                        <li><code>tooShort</code> — the entered value is too short.</li>
+                        <li><code>tooLong</code> — the entered value is too long.</li>
+                        <li><code>rangeUnderflow</code> — the value is below the minimum.</li>
+                        <li><code>rangeOverflow</code> — the value is above the maximum.</li>
+                        <li><code>stepMismatch</code> — the value does not follow the required step.</li>
+                        <li><code>customError</code> — a custom validation error exists.</li>
+                    </ul>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        A field is valid only when none
+                        of its applicable constraints fail.
+                    </p>
+
+                    <p>
+                        Native error messages can differ
+                        depending on the browser and language.
+                    </p>
+
+                    <p>
+                        Validation should clearly explain
+                        what the user needs to correct,
+                        rather than simply displaying
+                        a red border.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>const field = document.querySelector("#email");
+
+console.log(field.validity.valueMissing);
+
+console.log(field.validity.typeMismatch);
+
+console.log(field.checkValidity());</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The JavaScript code selects an email
+                        input and checks its validity properties.
+                    </p>
+
+                    <p>
+                        The checkValidity() method returns
+                        true when the input satisfies its
+                        applicable constraints and false
+                        when it does not.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Open the browser developer tools
+                        and inspect the validity properties
+                        after entering an invalid value.
+                    </p>
+
+                    <p>
+                        Identify which validity state
+                        is responsible for the failure.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Provide helpful validation messages.
+                            Client-side checks improve usability,
+                            but server-side validation remains
+                            necessary for security.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 3: Built-In HTML Validation</span>
+                    <span>Lesson 3.5</span>
+                </div>
+            </article>
+
+            <!-- PART 5 CONTINUES HERE -->
+
+            <!-- PAGE 18: LESSON 4.1 -->
+            <article class="lesson-page" data-title="4.1 Valid and Invalid CSS States" hidden>
+                <div class="lesson-content">
+                    <h1>Chapter 4: Styling and Accessible Feedback</h1>
+                    <h2>4.1 Valid and Invalid CSS States</h2>
+
+                    <p>
+                        CSS provides the :valid and :invalid
+                        pseudo-classes to style form fields
+                        based on their current validation status.
+                    </p>
+
+                    <p>
+                        These styles help users identify whether
+                        their entered values meet the required
+                        rules.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        A required empty field may match
+                        the :invalid pseudo-class before
+                        the user interacts with it.
+                    </p>
+
+                    <p>
+                        To avoid overwhelming users, combine
+                        validation styling with careful timing
+                        and clear instructional text.
+                    </p>
+
+                    <p>
+                        Visual appearance alone should not
+                        communicate an error.
+                    </p>
+
+                    <p>
+                        Always keep visible focus indicators
+                        so keyboard users can identify
+                        the currently selected field.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>input:focus-visible {
+    outline: 3px solid #2563eb;
+}
+
+input:invalid {
+    border-color: #b91c1c;
+}
+
+input:valid {
+    border-color: #15803d;
+}</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The focus-visible selector adds
+                        an outline when the input receives
+                        keyboard focus.
+                    </p>
+
+                    <p>
+                        The invalid selector changes the
+                        border color when the input fails
+                        validation.
+                    </p>
+
+                    <p>
+                        The valid selector changes the border
+                        color when the input satisfies its
+                        applicable constraints.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Test keyboard navigation and check
+                        whether focused controls remain visible.
+                    </p>
+
+                    <p>
+                        Make sure validation feedback can
+                        be understood without relying
+                        only on colors.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use clear error messages together
+                            with visual feedback. Never remove
+                            visible keyboard focus indicators.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 4: Styling and Accessible Feedback</span>
+                    <span>Lesson 4.1</span>
+                </div>
+            </article>
+
+            <!-- PAGE 19: LESSON 4.2 -->
+            <article class="lesson-page" data-title="4.2 Helpful Error Messages" hidden>
+                <div class="lesson-content">
+                    <h1>4.2 Helpful Error Messages</h1>
+
+                    <p>
+                        A useful error message identifies
+                        the problem and explains how
+                        the user can correct it.
+                    </p>
+
+                    <p>
+                        For example, "Invalid input" is less
+                        helpful than "Enter a course code
+                        like ABC-123."
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Place guidance near the relevant
+                        input field and avoid clearing
+                        the user's work after a failed
+                        submission.
+                    </p>
+
+                    <p>
+                        When possible, preserve entered
+                        values and move focus to the
+                        first invalid field.
+                    </p>
+
+                    <p>
+                        An error summary can help users
+                        understand problems in longer forms.
+                    </p>
+
+                    <p>
+                        Error messages should be short,
+                        understandable, and should not
+                        expose sensitive server details.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="campus"&gt;
+  Campus code
+&lt;/label&gt;
+
+&lt;input
+  id="campus"
+  name="campus"
+  aria-describedby="campus-help"
+  required
+&gt;
+
+&lt;p id="campus-help"&gt;
+  Use your assigned code.
+&lt;/p&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The input has a visible label
+                        identifying the requested information.
+                    </p>
+
+                    <p>
+                        The aria-describedby attribute
+                        connects the input to additional
+                        instructions.
+                    </p>
+
+                    <p>
+                        This helps assistive technologies
+                        communicate the instructions
+                        to the user.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Write a helpful error message
+                        for a missing student ID.
+                    </p>
+
+                    <p>
+                        Compare it with a vague error
+                        message and decide which one
+                        is easier to understand.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Explain what went wrong and
+                            how to fix it. Keep messages
+                            close to the affected field.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 4: Styling and Accessible Feedback</span>
+                    <span>Lesson 4.2</span>
+                </div>
+            </article>
+
+            <!-- PAGE 20: LESSON 4.3 -->
+            <article class="lesson-page" data-title="4.3 Labels, Instructions, and ARIA" hidden>
+                <div class="lesson-content">
+                    <h1>4.3 Labels, Instructions, and ARIA</h1>
+
+                    <p>
+                        Native HTML labels and fieldsets
+                        provide a reliable starting point
+                        for creating accessible forms.
+                    </p>
+
+                    <p>
+                        The aria-describedby attribute
+                        connects an input to additional
+                        instructions or an error message.
+                    </p>
+
+                    <p>
+                        The aria-invalid attribute can
+                        indicate an error state when
+                        custom validation is applied.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        ARIA supports native HTML semantics,
+                        but it does not replace proper
+                        HTML structure.
+                    </p>
+
+                    <p>
+                        Important instructions should remain
+                        visible in the interface instead
+                        of being hidden from sighted users.
+                    </p>
+
+                    <p>
+                        Error messages must be accessible
+                        to keyboard and screen reader users.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="pin"&gt;
+  Access code
+&lt;/label&gt;
+
+&lt;p id="pin-help"&gt;
+  Enter six digits.
+&lt;/p&gt;
+
+&lt;input
+  id="pin"
+  name="pin"
+  inputmode="numeric"
+  pattern="[0-9]{6}"
+  aria-describedby="pin-help"
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The label identifies the input
+                        as an access code field.
+                    </p>
+
+                    <p>
+                        The pattern attribute expects
+                        exactly six digits.
+                    </p>
+
+                    <p>
+                        The aria-describedby attribute
+                        connects the input to the
+                        instruction "Enter six digits."
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Navigate through the form using
+                        the Tab key without a mouse.
+                    </p>
+
+                    <p>
+                        Confirm that every field has
+                        a meaningful label and clear
+                        instructions.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use native HTML labels first.
+                            Add ARIA attributes when
+                            additional accessibility
+                            information is needed.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 4: Styling and Accessible Feedback</span>
+                    <span>Lesson 4.3</span>
+                </div>
+            </article>
+
+            <!-- PAGE 21: LESSON 4.4 -->
+            <article class="lesson-page" data-title="4.4 Designing for Mobile and Keyboard" hidden>
+                <div class="lesson-content">
+                    <h1>4.4 Designing for Mobile and Keyboard</h1>
+
+                    <p>
+                        A responsive form uses readable
+                        text, sufficient spacing, clear
+                        focus indicators, and controls
+                        large enough to activate comfortably.
+                    </p>
+
+                    <p>
+                        The inputmode attribute suggests
+                        a suitable mobile keyboard without
+                        changing the underlying input type.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Do not rely on hover effects
+                        for important instructions.
+                    </p>
+
+                    <p>
+                        Keep keyboard tab order consistent
+                        with the visual reading order.
+                    </p>
+
+                    <p>
+                        Avoid preventing users from pasting
+                        into password fields because they
+                        may use password managers.
+                    </p>
+
+                    <p>
+                        Test forms using both desktop
+                        and mobile devices.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;label for="phone"&gt;
+  Phone number
+&lt;/label&gt;
+
+&lt;input
+  id="phone"
+  type="tel"
+  name="phone"
+  autocomplete="tel"
+&gt;
+
+&lt;style&gt;
+  input {
+    max-width: 100%;
+    padding: 12px;
+  }
+&lt;/style&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The telephone input helps browsers
+                        provide a suitable keyboard
+                        for entering phone numbers.
+                    </p>
+
+                    <p>
+                        The autocomplete attribute allows
+                        supported browsers to suggest
+                        saved telephone information.
+                    </p>
+
+                    <p>
+                        The CSS provides spacing inside
+                        the input and prevents it from
+                        exceeding the available width.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Try completing a form using
+                        only the following keys:
+                    </p>
+
+                    <ul>
+                        <li>Tab</li>
+                        <li>Shift + Tab</li>
+                        <li>Space</li>
+                        <li>Enter</li>
+                    </ul>
+
+                    <p>
+                        Identify any point where keyboard
+                        focus becomes confusing.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Design forms that work for
+                            mouse, keyboard, touch,
+                            and assistive technology users.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 4: Styling and Accessible Feedback</span>
+                    <span>Lesson 4.4</span>
+                </div>
+            </article>
+
+            <!-- PAGE 22: LESSON 4.5 -->
+            <article class="lesson-page" data-title="4.5 Avoiding Common Validation Mistakes" hidden>
+                <div class="lesson-content">
+                    <h1>4.5 Avoiding Common Validation Mistakes</h1>
+
+                    <p>
+                        Common validation mistakes include
+                        using placeholders instead of labels,
+                        relying only on red borders,
+                        and requesting unnecessary information.
+                    </p>
+
+                    <p>
+                        Other mistakes include overly strict
+                        validation patterns and rejecting
+                        submissions without explaining
+                        the problem.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        A strong form reduces unnecessary
+                        steps while protecting user data.
+                    </p>
+
+                    <p>
+                        Ask only for information needed
+                        to complete the task.
+                    </p>
+
+                    <p>
+                        Keep forms short, provide examples
+                        where necessary, and make error
+                        messages specific.
+                    </p>
+
+                    <p>
+                        Always validate information
+                        on the server, even when browser
+                        validation appears complete.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;!-- Clear labels are better than
+     placeholders alone --&gt;
+
+&lt;label for="fullname"&gt;
+  Full name
+&lt;/label&gt;
+
+&lt;input
+  id="fullname"
+  name="fullname"
+  autocomplete="name"
+  required
+&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The visible label clearly tells
+                        users what information is needed.
+                    </p>
+
+                    <p>
+                        The autocomplete attribute allows
+                        supported browsers to suggest
+                        the user's saved name.
+                    </p>
+
+                    <p>
+                        The required attribute prevents
+                        normal submission when the
+                        field is empty.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Review a registration form
+                        you have used before.
+                    </p>
+
+                    <p>
+                        Identify one design choice
+                        that made the form easier
+                        or harder to complete.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use clear labels, helpful
+                            instructions, simple validation
+                            rules, and server-side checks
+                            to create reliable forms.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 4: Styling and Accessible Feedback</span>
+                    <span>Lesson 4.5</span>
+                </div>
+            </article>
+
+            <!-- PART 6 CONTINUES HERE -->
+
+            <!-- PAGE 23: LESSON 5.1 -->
+            <article class="lesson-page" data-title="5.1 The Constraint Validation API" hidden>
+                <div class="lesson-content">
+                    <h1>Chapter 5: JavaScript Form Validation</h1>
+                    <h2>5.1 The Constraint Validation API</h2>
+
+                    <p>
+                        JavaScript can inspect browser validity
+                        using checkValidity(), reportValidity(),
+                        and the validity property.
+                    </p>
+
+                    <p>
+                        The checkValidity() method returns a
+                        Boolean value, while reportValidity()
+                        also asks the browser to display
+                        validation feedback.
+                    </p>
+
+                    <p>
+                        These methods are useful when creating
+                        custom form submission processes.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Developers should not replace native
+                        browser validation without a good reason.
+                    </p>
+
+                    <p>
+                        Built-in HTML controls are usually
+                        more consistent and accessible than
+                        completely custom implementations.
+                    </p>
+
+                    <p>
+                        Always test empty fields, invalid
+                        values, and boundary values.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>const form = document.querySelector("form");
+
+form.addEventListener("submit", event => {
+
+    if (!form.checkValidity()) {
+
+        event.preventDefault();
+
+        form.reportValidity();
+
+    }
+
+});</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The JavaScript selects a form and
+                        listens for its submit event.
+                    </p>
+
+                    <p>
+                        When the form is invalid,
+                        preventDefault() stops the
+                        submission process.
+                    </p>
+
+                    <p>
+                        The reportValidity() method asks
+                        the browser to display validation
+                        feedback to the user.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Create a form with a required email
+                        field. Submit it while empty and
+                        then with a valid email address.
+                    </p>
+
+                    <p>
+                        Observe when the submission handler
+                        blocks the request.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Use native HTML validation when
+                            possible. Client-side checks
+                            cannot replace server-side
+                            validation and security.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 5: JavaScript Form Validation</span>
+                    <span>Lesson 5.1</span>
+                </div>
+            </article>
+
+            <!-- PAGE 24: LESSON 5.2 -->
+            <article class="lesson-page" data-title="5.2 Custom Validity Messages" hidden>
+                <div class="lesson-content">
+                    <h1>5.2 Custom Validity Messages</h1>
+
+                    <p>
+                        The setCustomValidity(message) method
+                        allows JavaScript to mark an input
+                        as invalid using a custom explanation.
+                    </p>
+
+                    <p>
+                        Calling setCustomValidity("") clears
+                        the custom error.
+                    </p>
+
+                    <p>
+                        Forgetting to clear the message can
+                        cause a corrected field to remain
+                        invalid.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Custom validation is useful for rules
+                        that built-in HTML attributes cannot
+                        express clearly.
+                    </p>
+
+                    <p>
+                        One example is checking whether
+                        two password fields contain
+                        matching values.
+                    </p>
+
+                    <p>
+                        Custom messages should be specific
+                        and should not expose sensitive
+                        information.
+                    </p>
+
+                    <p>
+                        Validation should run again whenever
+                        a relevant input changes.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>const confirm = document.querySelector("#confirm");
+
+const password = document.querySelector("#password");
+
+function match() {
+
+    confirm.setCustomValidity(
+
+        confirm.value === password.value
+            ? ""
+            : "Passwords do not match"
+
+    );
+
+}
+
+confirm.addEventListener("input", match);
+
+password.addEventListener("input", match);</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The code selects the password and
+                        confirmation fields.
+                    </p>
+
+                    <p>
+                        The match() function compares
+                        their values.
+                    </p>
+
+                    <p>
+                        If the values match, the custom
+                        validation message is cleared.
+                    </p>
+
+                    <p>
+                        If they are different, the confirmation
+                        field receives the message
+                        "Passwords do not match."
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Enter different passwords in the
+                        two fields, then make them match.
+                    </p>
+
+                    <p>
+                        Verify that the custom error
+                        disappears when both values
+                        become equal.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Always clear custom errors when
+                            the user corrects the input.
+                            Revalidate when related
+                            fields change.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 5: JavaScript Form Validation</span>
+                    <span>Lesson 5.2</span>
+                </div>
+            </article>
+
+            <!-- PAGE 25: LESSON 5.3 -->
+            <article class="lesson-page" data-title="5.3 Validating on Input and Blur" hidden>
+                <div class="lesson-content">
+                    <h1>5.3 Validating on Input and Blur</h1>
+
+                    <p>
+                        The input event fires while users
+                        edit the value of a form control.
+                    </p>
+
+                    <p>
+                        The blur event occurs when focus
+                        leaves a control.
+                    </p>
+
+                    <p>
+                        Immediate feedback can help with
+                        simple validation rules, while
+                        delayed feedback may be less
+                        distracting for longer entries.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Avoid displaying harsh error messages
+                        before users have enough time
+                        to finish typing.
+                    </p>
+
+                    <p>
+                        A useful approach is to display
+                        instructions first and reveal
+                        errors after a field has been
+                        visited or after submission.
+                    </p>
+
+                    <p>
+                        Accessibility requires feedback
+                        that users can understand
+                        without relying only on color.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>const email = document.querySelector("#email");
+
+email.addEventListener("blur", () => {
+
+    if (!email.checkValidity()) {
+
+        email.setAttribute(
+            "aria-invalid",
+            "true"
+        );
+
+    } else {
+
+        email.removeAttribute("aria-invalid");
+
+    }
+
+});</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The JavaScript listens for the
+                        blur event on an email input.
+                    </p>
+
+                    <p>
+                        When the user leaves the field,
+                        the code checks whether the
+                        entered value is valid.
+                    </p>
+
+                    <p>
+                        If invalid, the aria-invalid
+                        attribute is set to true.
+                    </p>
+
+                    <p>
+                        If valid, the attribute is removed.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Type an incomplete email address,
+                        leave the field, and return
+                        to correct it.
+                    </p>
+
+                    <p>
+                        Observe how the validation state
+                        changes after the correction.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Display validation feedback
+                            at an appropriate time.
+                            Avoid interrupting users
+                            while they are typing.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 5: JavaScript Form Validation</span>
+                    <span>Lesson 5.3</span>
+                </div>
+            </article>
+
+            <!-- PAGE 26: LESSON 5.4 -->
+            <article class="lesson-page" data-title="5.4 Preventing Submission and Showing Errors" hidden>
+                <div class="lesson-content">
+                    <h1>5.4 Preventing Submission and Showing Errors</h1>
+
+                    <p>
+                        A submit event listener can call
+                        preventDefault() to stop a request
+                        while the application displays
+                        validation errors.
+                    </p>
+
+                    <p>
+                        In a real application, the handler
+                        must also manage successful submission,
+                        server responses, and unexpected
+                        failures.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        An application should not display
+                        "Saved successfully" until the
+                        server confirms that the operation
+                        was completed.
+                    </p>
+
+                    <p>
+                        A form that only blocks submission
+                        without explaining the problem
+                        is difficult to use.
+                    </p>
+
+                    <p>
+                        Developers should consider keyboard
+                        focus management and accessible
+                        error announcements.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>form.addEventListener("submit", event => {
+
+    if (!form.checkValidity()) {
+
+        event.preventDefault();
+
+        form.reportValidity();
+
+    }
+
+});</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The submit event listener checks
+                        the validity of the form.
+                    </p>
+
+                    <p>
+                        If the form contains invalid values,
+                        preventDefault() stops submission.
+                    </p>
+
+                    <p>
+                        The reportValidity() method requests
+                        browser validation feedback.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Test the form using both valid
+                        and invalid information.
+                    </p>
+
+                    <p>
+                        Explain why preventing a submission
+                        is different from successfully
+                        saving information.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Do not claim that data was saved
+                            until the server confirms it.
+                            Provide clear error messages
+                            when submission fails.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 5: JavaScript Form Validation</span>
+                    <span>Lesson 5.4</span>
+                </div>
+            </article>
+
+            <!-- PAGE 27: LESSON 5.5 -->
+            <article class="lesson-page" data-title="5.5 Client and Server Validation" hidden>
+                <div class="lesson-content">
+                    <h1>5.5 Client and Server Validation</h1>
+
+                    <p>
+                        Client-side validation provides
+                        quick feedback to users.
+                    </p>
+
+                    <p>
+                        However, server-side validation
+                        is the main security boundary.
+                    </p>
+
+                    <p>
+                        A request can be created and sent
+                        without using the browser's form
+                        controls at all.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        The server must enforce required
+                        formats, length restrictions,
+                        authorization rules, and
+                        application-specific requirements.
+                    </p>
+
+                    <p>
+                        For example, a registration form
+                        may check email syntax in the browser.
+                    </p>
+
+                    <p>
+                        The server must also check whether
+                        registration is allowed and whether
+                        the email address is already in use.
+                    </p>
+
+                    <p>
+                        Parameterized database queries
+                        and appropriate output encoding
+                        help reduce injection risks.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>// Illustrative server-side pseudocode
+
+if (!isValidEmail(request.email)) {
+
+    return error(400, "Invalid email");
+
+}
+
+if (!userMayRegister(request.user)) {
+
+    return error(403, "Not allowed");
+
+}
+
+createAccountSafely(request);</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The first condition checks whether
+                        the submitted email address
+                        follows the required format.
+                    </p>
+
+                    <p>
+                        The second condition checks whether
+                        the user is allowed to register.
+                    </p>
+
+                    <p>
+                        Only after these checks does
+                        the example proceed to create
+                        the account safely.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        List three rules that a server
+                        must check even when the browser
+                        has already validated the form.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Never rely only on browser
+                            validation. Use HTTPS,
+                            server-side validation,
+                            secure database operations,
+                            and proper authorization.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 5: JavaScript Form Validation</span>
+                    <span>Lesson 5.5</span>
+                </div>
+            </article>
+
+            <!-- PART 7 CONTINUES HERE -->
+
+            <!-- PAGE 28: LESSON 6.1 -->
+            <article class="lesson-page" data-title="6.1 Student Registration Form" hidden>
+                <div class="lesson-content">
+                    <h1>Chapter 6: Practical Form Projects</h1>
+                    <h2>6.1 Student Registration Form</h2>
+
+                    <p>
+                        A student registration form collects
+                        information needed to create or update
+                        a student record.
+                    </p>
+
+                    <p>
+                        Common fields include the student's
+                        name, email address, course,
+                        year level, and other required
+                        registration details.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Registration forms should use
+                        meaningful labels, appropriate
+                        input types, and clear instructions.
+                    </p>
+
+                    <p>
+                        Required fields should be identified,
+                        and validation messages should
+                        explain how users can correct
+                        invalid information.
+                    </p>
+
+                    <p>
+                        The form should collect only
+                        the information necessary for
+                        the registration process.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form action="/register" method="post"&gt;
+
+  &lt;label for="student-name"&gt;
+    Full Name
+  &lt;/label&gt;
+
+  &lt;input
+    id="student-name"
+    type="text"
+    name="student_name"
+    autocomplete="name"
+    required
+  &gt;
+
+  &lt;label for="student-email"&gt;
+    Email Address
+  &lt;/label&gt;
+
+  &lt;input
+    id="student-email"
+    type="email"
+    name="email"
+    autocomplete="email"
+    required
+  &gt;
+
+  &lt;label for="course"&gt;
+    Course
+  &lt;/label&gt;
+
+  &lt;select
+    id="course"
+    name="course"
+    required
+  &gt;
+    &lt;option value=""&gt;
+      Select Course
+    &lt;/option&gt;
+
+    &lt;option value="BSIT"&gt;
+      BS Information Technology
+    &lt;/option&gt;
+
+    &lt;option value="BSCS"&gt;
+      BS Computer Science
+    &lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;button type="submit"&gt;
+    Register
+  &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The form uses text, email, and
+                        select controls to collect
+                        registration information.
+                    </p>
+
+                    <p>
+                        The required attributes prevent
+                        normal submission when important
+                        fields are empty.
+                    </p>
+
+                    <p>
+                        The email input also checks
+                        basic email address syntax.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Create the registration form
+                        and test it with empty fields,
+                        invalid email addresses,
+                        and complete information.
+                    </p>
+
+                    <p>
+                        Observe how the browser responds
+                        to different values.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            A real registration system
+                            requires a working server
+                            endpoint, secure storage,
+                            and server-side validation.
+                            HTML alone does not save
+                            student records.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 6: Practical Form Projects</span>
+                    <span>Lesson 6.1</span>
+                </div>
+            </article>
+
+            <!-- PAGE 29: LESSON 6.2 -->
+            <article class="lesson-page" data-title="6.2 Contact and Feedback Form" hidden>
+                <div class="lesson-content">
+                    <h1>6.2 Contact and Feedback Form</h1>
+
+                    <p>
+                        Contact and feedback forms allow
+                        visitors to send questions,
+                        suggestions, and comments.
+                    </p>
+
+                    <p>
+                        These forms commonly include
+                        a name, email address,
+                        subject, and message field.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        A contact form should be simple
+                        and easy to complete.
+                    </p>
+
+                    <p>
+                        The message field should use
+                        a textarea because users may
+                        need to enter multiple lines.
+                    </p>
+
+                    <p>
+                        Helpful instructions and reasonable
+                        character limits can improve
+                        the quality of submitted feedback.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form action="/feedback" method="post"&gt;
+
+  &lt;label for="feedback-name"&gt;
+    Name
+  &lt;/label&gt;
+
+  &lt;input
+    id="feedback-name"
+    name="name"
+    required
+  &gt;
+
+  &lt;label for="feedback-email"&gt;
+    Email
+  &lt;/label&gt;
+
+  &lt;input
+    id="feedback-email"
+    type="email"
+    name="email"
+    required
+  &gt;
+
+  &lt;label for="feedback-message"&gt;
+    Your Message
+  &lt;/label&gt;
+
+  &lt;textarea
+    id="feedback-message"
+    name="message"
+    rows="5"
+    minlength="10"
+    maxlength="1000"
+    required
+  &gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;
+    Send Feedback
+  &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The form collects the visitor's
+                        name, email address, and message.
+                    </p>
+
+                    <p>
+                        The textarea allows a message
+                        containing multiple lines.
+                    </p>
+
+                    <p>
+                        The minlength and maxlength
+                        attributes define acceptable
+                        character lengths.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Test the form using a short
+                        message, an empty message,
+                        and a complete message.
+                    </p>
+
+                    <p>
+                        Compare the browser validation
+                        feedback for each attempt.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            A production contact form
+                            needs a server or form service
+                            to receive messages. Protect
+                            the service against spam
+                            and malicious submissions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 6: Practical Form Projects</span>
+                    <span>Lesson 6.2</span>
+                </div>
+            </article>
+
+            <!-- PAGE 30: LESSON 6.3 -->
+            <article class="lesson-page" data-title="6.3 Login and Password Reset Forms" hidden>
+                <div class="lesson-content">
+                    <h1>6.3 Login and Password Reset Forms</h1>
+
+                    <p>
+                        Login forms allow registered users
+                        to access their accounts.
+                    </p>
+
+                    <p>
+                        A typical login form asks for
+                        an email address or username
+                        and a password.
+                    </p>
+
+                    <p>
+                        Password reset forms help users
+                        recover access when they
+                        forget their credentials.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Login forms should use the correct
+                        autocomplete attributes and
+                        should support password managers.
+                    </p>
+
+                    <p>
+                        Password fields should use
+                        type="password" to mask
+                        typed characters.
+                    </p>
+
+                    <p>
+                        A secure system must verify
+                        credentials on the server
+                        and protect authentication
+                        requests with HTTPS.
+                    </p>
+
+                    <p>
+                        Password reset requests should
+                        avoid revealing whether a
+                        particular account exists.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form action="/login" method="post"&gt;
+
+  &lt;label for="login-email"&gt;
+    Email Address
+  &lt;/label&gt;
+
+  &lt;input
+    id="login-email"
+    type="email"
+    name="email"
+    autocomplete="username"
+    required
+  &gt;
+
+  &lt;label for="login-password"&gt;
+    Password
+  &lt;/label&gt;
+
+  &lt;input
+    id="login-password"
+    type="password"
+    name="password"
+    autocomplete="current-password"
+    required
+  &gt;
+
+  &lt;button type="submit"&gt;
+    Log In
+  &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The email field identifies
+                        the user's account.
+                    </p>
+
+                    <p>
+                        The password input masks
+                        the characters entered
+                        by the user.
+                    </p>
+
+                    <p>
+                        The autocomplete attributes
+                        help supported browsers
+                        and password managers
+                        recognize the login fields.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Test the form with empty fields
+                        and invalid email addresses.
+                    </p>
+
+                    <p>
+                        Explain why HTML validation
+                        cannot determine whether
+                        the user's password is correct.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Authentication requires
+                            secure server-side processing.
+                            Never store passwords
+                            in plain text or rely
+                            on HTML validation
+                            to protect accounts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 6: Practical Form Projects</span>
+                    <span>Lesson 6.3</span>
+                </div>
+            </article>
+
+            <!-- PAGE 31: LESSON 6.4 -->
+            <article class="lesson-page" data-title="6.4 Multi-Step Forms and Progress" hidden>
+                <div class="lesson-content">
+                    <h1>6.4 Multi-Step Forms and Progress</h1>
+
+                    <p>
+                        Multi-step forms divide a long
+                        process into smaller sections.
+                    </p>
+
+                    <p>
+                        This approach can make complicated
+                        registration or application
+                        forms easier to understand.
+                    </p>
+
+                    <p>
+                        Each step should have a clear
+                        title and indicate the user's
+                        current progress.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        A multi-step form should preserve
+                        information when users move
+                        backward or forward.
+                    </p>
+
+                    <p>
+                        Users should be able to review
+                        and correct their information
+                        before final submission.
+                    </p>
+
+                    <p>
+                        Validation can occur at each
+                        step, but all information
+                        must still be validated
+                        on the server.
+                    </p>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form id="application"&gt;
+
+  &lt;div id="step1"&gt;
+
+    &lt;h2&gt;Step 1: Personal Details&lt;/h2&gt;
+
+    &lt;label for="app-name"&gt;
+      Full Name
+    &lt;/label&gt;
+
+    &lt;input
+      id="app-name"
+      name="name"
+      required
+    &gt;
+
+    &lt;button type="button" id="next"&gt;
+      Next
+    &lt;/button&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="step2" hidden&gt;
+
+    &lt;h2&gt;Step 2: Review&lt;/h2&gt;
+
+    &lt;p&gt;
+      Review your information.
+    &lt;/p&gt;
+
+    &lt;button type="button" id="back"&gt;
+      Back
+    &lt;/button&gt;
+
+    &lt;button type="submit"&gt;
+      Submit
+    &lt;/button&gt;
+
+  &lt;/div&gt;
+
+&lt;/form&gt;
+
+&lt;script&gt;
+const step1 = document.querySelector("#step1");
+const step2 = document.querySelector("#step2");
+const nameInput = document.querySelector("#app-name");
+
+document.querySelector("#next")
+  .addEventListener("click", () =&gt; {
+    if (!nameInput.reportValidity()) return;
+    step1.hidden = true;
+    step2.hidden = false;
+  });
+
+document.querySelector("#back")
+  .addEventListener("click", () =&gt; {
+    step2.hidden = true;
+    step1.hidden = false;
+  });
+&lt;/script&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The first section collects
+                        the user's name.
+                    </p>
+
+                    <p>
+                        JavaScript checks the required
+                        field before allowing the user
+                        to continue.
+                    </p>
+
+                    <p>
+                        The second section provides
+                        a review stage and a button
+                        to return to the previous step.
+                    </p>
+
+                    <p>
+                        This simplified example demonstrates
+                        step navigation. A complete
+                        application would also display
+                        the entered information for review
+                        and process the final submission.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Test the Next and Back buttons.
+                        Confirm that the name remains
+                        entered when returning
+                        to the first step.
+                    </p>
+
+                    <div class="note">
+                        <strong>Implementation Reminder</strong>
+                        <p>
+                            Multi-step forms should
+                            preserve entered information,
+                            show progress clearly,
+                            and validate all submitted
+                            data on the server.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 6: Practical Form Projects</span>
+                    <span>Lesson 6.4</span>
+                </div>
+            </article>
+
+            <!-- PAGE 32: LESSON 6.5 -->
+            <article class="lesson-page" data-title="6.5 Complete Validation Checklist" hidden>
+                <div class="lesson-content">
+                    <h1>6.5 Complete Validation Checklist</h1>
+
+                    <p>
+                        A validation checklist helps
+                        developers review whether
+                        a form is understandable,
+                        accessible, and secure.
+                    </p>
+
+                    <p>
+                        The checklist should cover
+                        input types, labels, required
+                        fields, error messages,
+                        keyboard support, and
+                        server-side validation.
+                    </p>
+
+                    <h3>Key Concepts and Implementation</h3>
+
+                    <p>
+                        Validation is not complete
+                        simply because a form
+                        prevents empty submissions.
+                    </p>
+
+                    <p>
+                        Developers must also consider
+                        incorrect formats, unexpected
+                        values, accessibility,
+                        privacy, and security.
+                    </p>
+
+                    <h3>Form Validation Checklist</h3>
+
+                    <ul>
+                        <li>
+                            Every input has a clear
+                            and meaningful label.
+                        </li>
+                        <li>
+                            Required fields are identified.
+                        </li>
+                        <li>
+                            Appropriate input types are used.
+                        </li>
+                        <li>
+                            Minimum and maximum values
+                            are reasonable.
+                        </li>
+                        <li>
+                            Validation messages explain
+                            how to correct errors.
+                        </li>
+                        <li>
+                            Keyboard navigation works correctly.
+                        </li>
+                        <li>
+                            The form is usable on mobile devices.
+                        </li>
+                        <li>
+                            Entered information is preserved
+                            after validation errors.
+                        </li>
+                        <li>
+                            Sensitive information is protected
+                            using HTTPS.
+                        </li>
+                        <li>
+                            The server validates all
+                            submitted information.
+                        </li>
+                    </ul>
+
+                    <h3>Code Example</h3>
+
+<pre><code>&lt;form action="/submit" method="post"&gt;
+
+  &lt;label for="final-email"&gt;
+    Email Address
+  &lt;/label&gt;
+
+  &lt;input
+    id="final-email"
+    type="email"
+    name="email"
+    autocomplete="email"
+    required
+  &gt;
+
+  &lt;label for="final-message"&gt;
+    Message
+  &lt;/label&gt;
+
+  &lt;textarea
+    id="final-message"
+    name="message"
+    minlength="10"
+    required
+  &gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;
+    Submit Form
+  &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+                    <h3>Understanding the Example</h3>
+
+                    <p>
+                        The form uses clear labels,
+                        appropriate input types,
+                        and built-in validation
+                        attributes.
+                    </p>
+
+                    <p>
+                        The email field checks basic
+                        email syntax, while the
+                        message field requires
+                        a minimum length.
+                    </p>
+
+                    <p>
+                        These browser checks help
+                        users correct mistakes
+                        before submission.
+                    </p>
+
+                    <h3>Practical Observation</h3>
+
+                    <p>
+                        Review the example using
+                        the validation checklist.
+                    </p>
+
+                    <p>
+                        Identify which requirements
+                        are handled by HTML and
+                        which still require
+                        server-side implementation.
+                    </p>
+
+                    <div class="note">
+                        <strong>Final Reminder</strong>
+                        <p>
+                            Good form validation combines
+                            clear design, accessible
+                            feedback, appropriate HTML
+                            controls, JavaScript when
+                            necessary, and secure
+                            server-side processing.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="page-foot">
+                    <span>Chapter 6: Practical Form Projects</span>
+                    <span>Lesson 6.5</span>
+                </div>
+            </article>
+
+            <!-- PART 8: NAVIGATION AND JAVASCRIPT -->
+
+        </div>
+        <!-- END OF VIEWPORT -->
+
+        <!-- PAGE NAVIGATION -->
+        <div class="pager">
+
+            <button
+                class="navbtn"
+                id="prevBtn"
+                type="button">
+                ← Previous
+            </button>
+
+            <span id="counter">
+                Page 1 of 32
+            </span>
+
+            <button
+                class="navbtn"
+                id="nextBtn"
+                type="button">
+                Next →
+            </button>
+
+        </div>
+
+    </main>
+    <!-- END OF MAIN -->
+
+</div>
+<!-- END OF LAYOUT -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // GET ALL READER PAGES
+    const pages = Array.from(
+        document.querySelectorAll(".lesson-page")
+    );
+
+    // GET NAVIGATION ELEMENTS
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const counter = document.getElementById("counter");
+    const viewport = document.getElementById("viewport");
+
+    // GET TABLE OF CONTENTS BUTTONS
+    const tocLinks = Array.from(
+        document.querySelectorAll(".toc-link")
+    );
+
+    const contentsLinks = Array.from(
+        document.querySelectorAll(".contents-link")
+    );
+
+    // GET DARK MODE BUTTON
+    const themeToggle = document.getElementById("themeToggle");
+
+    // CURRENT PAGE INDEX
+    let currentPage = 0;
+
+    // TOTAL NUMBER OF PAGES
+    const totalPages = pages.length;
+
+    // DISPLAY SELECTED PAGE
+    function showPage(pageIndex) {
+
+        // PREVENT INVALID PAGE INDEX
+        if (pageIndex < 0 || pageIndex >= totalPages) {
+            return;
+        }
+
+        // UPDATE CURRENT PAGE
+        currentPage = pageIndex;
+
+        // HIDE ALL PAGES EXCEPT SELECTED PAGE
+        pages.forEach(function (page, index) {
+
+            page.hidden = index !== currentPage;
+
+        });
+
+        // UPDATE PAGE COUNTER
+        counter.textContent =
+            "Page " + (currentPage + 1) +
+            " of " + totalPages;
+
+        // DISABLE PREVIOUS ON FIRST PAGE
+        prevBtn.disabled = currentPage === 0;
+
+        // DISABLE NEXT ON LAST PAGE
+        nextBtn.disabled =
+            currentPage === totalPages - 1;
+
+        // UPDATE ACTIVE SIDEBAR LINK
+        tocLinks.forEach(function (link) {
+
+            const startPage = Number(
+                link.getAttribute("data-page")
+            );
+
+            const linkIndex = tocLinks.indexOf(link);
+
+            const nextLink = tocLinks[linkIndex + 1];
+
+            const endPage = nextLink
+                ? Number(nextLink.getAttribute("data-page"))
+                : totalPages;
+
+            const isActive =
+                currentPage >= startPage &&
+                currentPage < endPage;
+
+            link.classList.toggle("active", isActive);
+
+        });
+
+        // RETURN SCROLL TO TOP
+        viewport.scrollTop = 0;
+
+    }
+
+    // PREVIOUS BUTTON
+    prevBtn.addEventListener("click", function () {
+
+        showPage(currentPage - 1);
+
+    });
+
+    // NEXT BUTTON
+    nextBtn.addEventListener("click", function () {
+
+        showPage(currentPage + 1);
+
+    });
+
+    // SIDEBAR TABLE OF CONTENTS
+    tocLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            const targetPage = Number(
+                link.getAttribute("data-page")
+            );
+
+            showPage(targetPage);
+
+        });
+
+    });
+
+    // TABLE OF CONTENTS INSIDE BOOK
+    contentsLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            const targetPage = Number(
+                link.getAttribute("data-page")
+            );
+
+            showPage(targetPage);
+
+        });
+
+    });
+
+    // LIGHT / DARK MODE
+    let darkMode = false;
+
+    themeToggle.addEventListener("click", function () {
+
+        darkMode = !darkMode;
+
+        document.body.classList.toggle(
+            "dark-mode",
+            darkMode
+        );
+
+        if (darkMode) {
+
+            themeToggle.textContent = "☀️ Light Mode";
+
+        } else {
+
+            themeToggle.textContent = "🌙 Dark Mode";
+
+        }
+
+    });
+
+    // KEYBOARD NAVIGATION
+    document.addEventListener("keydown", function (event) {
+
+        const activeTag = document.activeElement.tagName;
+
+        // DO NOT INTERRUPT FORM INPUTS
+        if (
+            activeTag === "INPUT" ||
+            activeTag === "TEXTAREA" ||
+            activeTag === "SELECT"
+        ) {
+            return;
+        }
+
+        if (event.key === "ArrowRight") {
+
+            showPage(currentPage + 1);
+
+        }
+
+        if (event.key === "ArrowLeft") {
+
+            showPage(currentPage - 1);
+
+        }
+
+    });
+
+    // INITIALIZE FIRST PAGE
+    showPage(0);
+
+});
+</script>
+
+</body>
+</html>

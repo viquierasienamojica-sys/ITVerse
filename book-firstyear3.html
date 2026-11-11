@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Year Book 03 | Computer Hardware and Software</title>
+  <style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4eee4;color:#342c24}
+header{background:#493526;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+header a{color:white;text-decoration:none}
+header h2{margin:0;font-size:19px;color:white}
+.layout{display:flex;min-height:calc(100vh - 65px)}
+aside{width:295px;flex-shrink:0;background:#e8dcc9;padding:22px 15px;border-right:1px solid #cfbea7;max-height:calc(100vh - 65px);overflow-y:auto;position:sticky;top:0}
+aside h3{margin:0 0 16px}
+#toc button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover{background:#795a3e;color:white}
+main{flex:1;min-width:0;padding:28px}
+.reader{background:#fffaf2;max-width:960px;margin:auto;padding:32px;border:1px solid #dfd1bd;border-radius:12px;box-shadow:0 3px 15px #3b27120d}
+h1,h2,h3{line-height:1.35}
+h1{font-size:28px}
+h2{font-size:23px;color:#6b4c30}
+h3{font-size:19px;color:#6b4c30}
+p,li{line-height:1.75}
+figure{margin:25px auto;text-align:center}
+figure img{display:block;width:100%;max-width:750px;max-height:650px;height:auto;object-fit:contain;margin:auto;border-radius:8px}
+figcaption{font-size:12px;color:#867563;margin-top:7px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px}
+.btn{border:0;background:#6d5038;color:white;padding:12px 19px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.status{text-align:center;color:#756655;font-size:13px}
+.question{background:#f6eee1;border:1px solid #e5d7c4;padding:18px;margin:17px 0;border-radius:9px}
+.question strong{display:block;margin-bottom:12px}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}
+.option:hover{background:#ede1d0}
+.result{margin-top:18px;padding:17px;border-radius:8px;background:#eee3d1}
+.review{border-top:1px solid #d5c5ae;margin-top:12px;padding-top:10px}
+.correct{color:#267347}
+.wrong{color:#a32d2d}
+@media(max-width:850px){.layout{display:block}
+aside{width:auto;max-height:260px;position:static;border-right:0}
+main{padding:12px}
+.reader{padding:20px}
+header{flex-wrap:wrap}
+}
+  
+/* Shared First Year Reader Theme — based on Book 05 */
+html{scroll-behavior:smooth}
+body{margin:0!important;font-family:Arial,sans-serif!important;background:#f4eee4!important;color:#342c24!important;line-height:1.6}
+header{background:#493526!important;color:#fff!important;padding:16px 24px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;border:0!important;min-height:58px}
+header a{color:white!important;text-decoration:none!important}
+header h2{margin:0!important;font-size:19px!important;color:white!important}
+.layout{display:flex!important;min-height:calc(100vh - 65px)!important;align-items:stretch!important}
+aside,.sidebar{width:295px!important;flex:0 0 295px!important;background:#e8dcc9!important;padding:22px 15px!important;border-right:1px solid #cfbea7!important;max-height:calc(100vh - 65px)!important;overflow-y:auto!important;position:sticky!important;top:0!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{margin:0 0 16px!important;font-size:19px!important;color:#6b4c30!important}
+#toc button,#chapterList button,#chapterList [role=button],.sidebar button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:#795a3e!important;color:white!important}
+main,.main{flex:1!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:28px!important;background:transparent!important}
+.reader{background:#fffaf2!important;max-width:960px!important;margin:auto!important;padding:32px!important;border:1px solid #dfd1bd!important;border-radius:12px!important;box-shadow:0 3px 15px #3b27120d!important;min-height:540px}
+.reader h1{font-size:28px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h2{font-size:23px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h3{font-size:19px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader p,.reader li{line-height:1.75!important}
+.reader figure{margin:25px auto!important;text-align:center!important;background:transparent!important;border:0!important;padding:0!important}
+.reader figure img{display:block!important;width:100%!important;max-width:750px!important;max-height:650px!important;height:auto!important;object-fit:contain!important;margin:auto!important;border-radius:8px!important}
+.reader figcaption{font-size:12px!important;color:#867563!important;margin-top:7px!important}
+.nav,.navigation,.controls{display:flex!important;justify-content:space-between!important;gap:12px!important;margin-top:32px!important}
+.btn,button.nav,.submit,.retake{border:0!important;background:#6d5038!important;color:white!important;padding:12px 19px!important;border-radius:8px!important;cursor:pointer!important;font-size:14px!important}
+.btn:disabled,button.nav:disabled{opacity:.4!important;cursor:not-allowed!important}
+.status{text-align:center!important;color:#756655!important;font-size:13px!important}
+.question{background:#f6eee1!important;border:1px solid #e5d7c4!important;padding:18px!important;margin:17px 0!important;border-radius:9px!important}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}.option:hover{background:#ede1d0!important}
+.result{margin-top:18px!important;padding:17px!important;border-radius:8px!important;background:#eee3d1!important}
+.reader table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.reader th,.reader td{border:1px solid #d9cbb8;padding:10px;text-align:left}.reader th{background:#e8dcc9}
+@media(max-width:850px){.layout{display:block!important}aside,.sidebar{width:100%!important;max-height:260px!important;position:static!important;border-right:0!important;flex:auto!important}main,.main{padding:12px!important}.reader{padding:20px!important}header{flex-wrap:wrap!important}}
+
+
+/* BYTEBLOOM Pastel Pink Reader Theme */
+:root{--bb-p1:#FDE4F2;--bb-p2:#F9CEE7;--bb-p3:#F4B8DA;--bb-p4:#EEA1CD;--bb-p5:#E68BBE;--bb-ink:#612C4D;--bb-muted:#795B70}
+body{background:var(--bb-p1)!important;color:var(--bb-ink)!important}
+header{background:var(--bb-p5)!important;color:#52223F!important;border-bottom:1px solid var(--bb-p4)!important}
+header a,header h2,header span{color:#52223F!important}
+aside,.sidebar{background:var(--bb-p2)!important;border-color:var(--bb-p3)!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{color:var(--bb-ink)!important}
+#toc button,#chapterList button,.sidebar button{color:var(--bb-ink)!important}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:var(--bb-p5)!important;color:#52223F!important}
+main,.main{background:transparent!important}
+.reader{background:#FFF8FC!important;border:1px solid var(--bb-p3)!important;box-shadow:0 8px 22px rgba(157,57,112,.08)!important}
+.reader h1,.reader h2,.reader h3,main h1,main h2,main h3{color:var(--bb-ink)!important}
+.reader p,.reader li,main p,main li{color:#57394D}
+.btn,button.nav,.navigation button,.controls button{background:var(--bb-p5)!important;color:#52223F!important;border:0!important}
+.btn:hover,button.nav:hover,.navigation button:hover,.controls button:hover{background:var(--bb-p4)!important}
+.btn:disabled,button.nav:disabled,.navigation button:disabled,.controls button:disabled{opacity:.45!important;cursor:not-allowed!important}
+.status,figcaption,.reader figcaption{color:var(--bb-muted)!important}
+.reader table th,main table th{background:var(--bb-p2)!important}
+.reader table td,.reader table th,main table td,main table th{border-color:var(--bb-p3)!important}
+.reader blockquote,main blockquote,.example{border-left-color:var(--bb-p5)!important;background:#FFF0F8!important}
+.reader figure img,main figure img{max-width:750px;height:auto;object-fit:contain}
+
+
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+    <span>1st Year · Book 03</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside><h3>Table of Contents</h3><div id="toc"></div></aside>
+    <main>
+      <article class="reader">
+        <div id="content"></div>
+        <div class="nav">
+          <button class="btn" id="prev">← Previous</button>
+          <button class="btn" id="next">Next →</button>
+        </div>
+        <p class="status" id="status"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+const LESSON_PAGES = [
+  {
+    "title": "Book Introduction",
+    "html": "<h1>COMPUTER HARDWARE AND SOFTWARE</h1><p>A Complete Beginner’s Guide to Computer Components, Devices, and Software Systems</p><p>Computers help people study, communicate, work, and manage information. A computer system depends on hardware, the physical components, and software, the programs and instructions. This book explains their functions and relationships using simple examples and original illustrations from the supplied source.</p>\n<h3>General Learning Objectives</h3>\n<p>By the end of the book, students should be able to define hardware and software, identify input and output devices, describe internal components, distinguish application and system software, explain operating systems and drivers, and recognize basic maintenance practices.</p>"
+  },
+  {
+    "title": "Chapter 1: Introduction To Computer Hardware And Software",
+    "html": "<h1>CHAPTER 1: INTRODUCTION TO COMPUTER HARDWARE AND SOFTWARE</h1>\n<h3>INTRODUCTION TO COMPUTER HARDWARE</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Computer system</h3>\n<p>A computer system combines physical hardware and software instructions to receive input, process information, store data, and produce output.</p>\n<h3>Computer hardware</h3>\n<p>Hardware is the physical equipment that can be seen and touched: keyboards, monitors, printers, memory modules, processors, and storage devices.</p>\n<h3>Computer software</h3>\n<p>Software is a collection of programs and instructions that makes hardware perform useful tasks. Examples include operating systems, web browsers, and word processors.</p>\n<h3>Working together</h3>\n<p>When printing a document, the word processor prepares the content, the operating system and driver handle the request, and the printer produces the paper output.</p>"
+  },
+  {
+    "title": "Chapter 2: Computer Hardware Basics",
+    "html": "<h1>CHAPTER 2: COMPUTER HARDWARE BASICS</h1>\n<h3>COMPUTER HARDWARE BASICS</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>External hardware</h3>\n<p>External devices, often called peripherals, are connected to or used outside the main computer unit. Examples include keyboards, mice, displays, microphones, and projectors.</p>\n<h3>Internal hardware</h3>\n<p>Internal components reside inside the computer case and support processing, memory, and storage. Examples include the CPU, RAM, ROM, and hard disk drive.</p>\n<h3>Why hardware matters</h3>\n<p>Physical components provide the actual electronic equipment on which software runs and through which users interact with a computer.</p>"
+  },
+  {
+    "title": "Chapter 3: Input Devices",
+    "html": "<h1>CHAPTER 3: INPUT DEVICES</h1>\n<h3>INPUT DEVICES</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Definition</h3>\n<p>An input device sends information or commands to a computer. Input may consist of text, sound, images, gestures, or movement.</p>\n<h3>Keyboard and mouse</h3>\n<p>A keyboard enters text and commands. A mouse moves the pointer and allows selection, clicking, and dragging.</p>\n<h3>Trackpad and touchscreen</h3>\n<p>A trackpad senses finger movement to control a pointer. A touchscreen accepts touch and also displays visual output.</p>\n<h3>Joystick, microphone, and webcam</h3>\n<p>A joystick controls movement, especially in games. A microphone captures audio, while a webcam captures images and video.</p>\n<h3>Light pen and speech input</h3>\n<p>A light pen is a historical pointing device used with compatible displays. Speech input uses a microphone and recognition software to interpret spoken commands.</p>\n<figure><img src=\"assets/firstyear3-figure-01.png\" alt=\"Original illustration for chapter 3\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>\n<figure><img src=\"assets/firstyear3-figure-02.png\" alt=\"Original illustration for chapter 3\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>"
+  },
+  {
+    "title": "Chapter 4: Output Devices",
+    "html": "<h1>CHAPTER 4: OUTPUT DEVICES</h1>\n<h3>OUTPUT DEVICES</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Definition</h3>\n<p>An output device presents processed information as visual, printed, or audio output.</p>\n<h3>Monitor and printer</h3>\n<p>A monitor displays text, images, and video. A printer produces physical copies, sometimes called hard copies.</p>\n<h3>Speakers and headphones</h3>\n<p>Speakers deliver audio to a room; headphones deliver sound directly to the listener.</p>\n<h3>Projector and display screens</h3>\n<p>A projector enlarges visual information on a surface. Tablet and smartphone screens display information and may also accept touch input.</p>\n<h3>Scanner clarification</h3>\n<p>The original lesson mentions scanners with output devices; technically, a scanner is an input device because it captures a physical document and sends its image to a computer.</p>\n<figure><img src=\"assets/firstyear3-figure-03.png\" alt=\"Original illustration for chapter 4\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>\n<figure><img src=\"assets/firstyear3-figure-04.png\" alt=\"Original illustration for chapter 4\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>\n<figure><img src=\"assets/firstyear3-figure-05.png\" alt=\"Original illustration for chapter 4\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>"
+  },
+  {
+    "title": "Chapter 5: Internal Computer Hardware",
+    "html": "<h1>CHAPTER 5: INTERNAL COMPUTER HARDWARE</h1>\n<h3>INTERNAL COMPUTER HARDWARE</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>CPU</h3>\n<p>The Central Processing Unit executes instructions, performs calculations, and coordinates computer operations.</p>\n<h3>RAM</h3>\n<p>Random-Access Memory holds working information for running programs. It is typically volatile and loses its contents without power.</p>\n<h3>ROM</h3>\n<p>Read-Only Memory is non-volatile memory often associated with firmware and startup-related information.</p>\n<h3>Hard disk drive</h3>\n<p>An HDD provides long-term storage for files, applications, and operating system data. Its contents normally remain after power is removed.</p>\n<h3>Comparison</h3>\n<p>CPU: processing. RAM: temporary working memory. ROM: persistent firmware-related information. HDD: long-term storage.</p>\n<figure><img src=\"assets/firstyear3-figure-06.png\" alt=\"Original illustration for chapter 5\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>"
+  },
+  {
+    "title": "Chapter 6: Computer Software Basics",
+    "html": "<h1>CHAPTER 6: COMPUTER SOFTWARE BASICS</h1>\n<h3>COMPUTER SOFTWARE BASICS</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Definition</h3>\n<p>Computer software consists of instructions and programs that enable computer hardware to perform useful work.</p>\n<h3>Two main categories</h3>\n<p>System software manages hardware and supports applications. Application software helps users accomplish specific tasks.</p>\n<h3>Examples</h3>\n<p>Windows and device drivers are system software. Word processors, web browsers, and media players are application software.</p>\n<h3>Why software matters</h3>\n<p>Without appropriate software, users cannot easily perform tasks such as writing documents, opening websites, or organizing records.</p>"
+  },
+  {
+    "title": "Chapter 7: Application Software",
+    "html": "<h1>CHAPTER 7: APPLICATION SOFTWARE</h1>\n<h3>APPLICATION SOFTWARE</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Word processing and spreadsheets</h3>\n<p>Word processors create and format text documents. Spreadsheets arrange data in rows and columns and perform calculations.</p>\n<h3>Presentations and databases</h3>\n<p>Presentation programs create slides. Database management programs organize and retrieve structured information.</p>\n<h3>Browsers, email, and media players</h3>\n<p>Browsers display websites. Email programs handle electronic messages. Media players play audio and video.</p>\n<h3>Specialized applications</h3>\n<p>Accounting software manages financial information; translation and pronunciation tools assist language learning; desktop publishing software creates page layouts; enterprise software supports organizational processes.</p>"
+  },
+  {
+    "title": "Chapter 8: System Software",
+    "html": "<h1>CHAPTER 8: SYSTEM SOFTWARE</h1>\n<h3>SYSTEM SOFTWARE</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Definition</h3>\n<p>System software controls computer operations, manages resources, and supports applications.</p>\n<h3>Resource and file management</h3>\n<p>It allocates processing and memory resources, helps manage storage space, and supports creating and retrieving files.</p>\n<h3>Security and device support</h3>\n<p>System software provides access controls and supports communication with hardware.</p>\n<h3>Main categories</h3>\n<p>The source lesson identifies operating systems, device drivers, utility software, and programming software as major categories.</p>\n<h3>How the parts connect</h3>\n<p>A simplified relationship is: User → Application → Operating System → Hardware.</p>\n<figure><img src=\"assets/firstyear3-figure-07.png\" alt=\"Original illustration for chapter 8\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>"
+  },
+  {
+    "title": "Chapter 9: Operating Systems And Device Drivers",
+    "html": "<h1>CHAPTER 9: OPERATING SYSTEMS AND DEVICE DRIVERS</h1>\n<h3>OPERATING SYSTEMS AND DEVICE</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Operating system</h3>\n<p>An operating system manages computer resources and provides services needed by programs. Examples include Windows, macOS, Linux, Android, and iOS.</p>\n<h3>Operating system functions</h3>\n<p>It starts during booting, manages memory and processing, organizes files, handles input and output, and supports application execution.</p>\n<h3>Device drivers</h3>\n<p>A device driver helps an operating system communicate with particular hardware, such as a printer, display adapter, USB device, or audio device.</p>\n<h3>Printing example</h3>\n<p>An application requests printing; the operating system passes the job through the printer driver; the printer produces the output.</p>"
+  },
+  {
+    "title": "Chapter 10: Utility Software And Maintenance",
+    "html": "<h1>CHAPTER 10: UTILITY SOFTWARE AND MAINTENANCE</h1>\n<h3>UTILITY SOFTWARE AND MAINTENANCE</h3>\n<p><strong>Learning objective: Understand and explain the main concepts and examples presented in this chapter.</strong></p>\n<h3>Utility software</h3>\n<p>Utility programs help protect, configure, analyze, and maintain computer systems.</p>\n<h3>Antivirus and backups</h3>\n<p>Antivirus tools detect and help prevent malicious software. Backup tools make copies of important data for recovery.</p>\n<h3>Memory testing</h3>\n<p>Memory testing software checks RAM for errors that may contribute to system instability.</p>\n<h3>Screen savers</h3>\n<p>The original material includes screen savers as utilities. Historically they helped protect certain displays; screen locking and sleep settings are generally more useful on modern devices.</p>\n<h3>Good maintenance practices</h3>\n<p>Install trusted updates, back up important documents, avoid suspicious downloads, check available storage, and use compatible drivers.</p>\n<figure><img src=\"assets/firstyear3-figure-08.png\" alt=\"Original illustration for chapter 10\" loading=\"lazy\"><figcaption>Original illustration from the supplied learning material</figcaption></figure>"
+  },
+  {
+    "title": "Practical Learning Activities",
+    "html": "<h1>PRACTICAL LEARNING ACTIVITIES</h1><h3>Activity 1: Hardware Identification</h3>\n<p>List five physical computer components and describe each function.</p>\n<h3>Activity 2: Input and Output</h3>\n<p>Classify keyboard, monitor, mouse, printer, microphone, speaker, webcam, projector, scanner, and headphones.</p>\n<h3>Activity 3: Internal Components</h3>\n<p>Compare CPU, RAM, ROM, and HDD in a four-row table.</p>\n<h3>Activity 4: Software Classification</h3>\n<p>Classify Windows, Word, Chrome, a printer driver, antivirus, Excel, Android, and a media player.</p>\n<h3>Activity 5: Operating System Exploration</h3>\n<p>Identify the operating system on a computer or phone and list five of its functions.</p>\n<h3>Activity 6: Maintenance Checklist</h3>\n<p>Write five practices that help protect and maintain a computer.</p>\n<h3>Activity 7: Reflection</h3>\n<p>In five to seven sentences, explain why hardware and software must work together.</p>"
+  },
+  {
+    "title": "Glossary of Terms",
+    "html": "<h1>Glossary of Terms</h1><p>Application software: Programs that help users perform specific tasks. Antivirus: Software that detects and helps prevent malicious software. Backup: A copy of important data for recovery. Booting: Starting a computer and loading the operating system. CPU: Central Processing Unit; executes instructions. Device driver: Software supporting communication with hardware. External hardware: Devices located outside the main computer unit. HDD: Hard Disk Drive; persistent storage. Hardware: Physical components of a computer. Input device: Hardware used to enter information. Internal hardware: Components inside the computer. Operating system: System software that manages hardware and applications. Output device: Hardware that presents information. Peripheral: An external computer device. RAM: Volatile working memory. ROM: Non-volatile memory often used for firmware. Software: Programs and instructions. System software: Programs that support and manage computer operations. Touchscreen: Display that also accepts touch input. Utility software: Software used for maintenance, protection, or management.</p>"
+  },
+  {
+    "title": "Learning Resources and References",
+    "html": "<h1>Learning Resources and References</h1><p>Primary source: Computer Hardware and Software, six-page PDF provided by the user (firstyearb3.pdf). Original illustrations retained in the relevant chapters. BCcampus Open Education, Computer Hardware and Software: https://opentextbc.ca/computerstudies/chapter/computer-hardware-and-software/ GCFGlobal, Computer Basics: https://edu.gcfglobal.org/en/computerbasics/ Encyclopaedia Britannica, Computer: https://www.britannica.com/technology/computer</p>"
+  },
+  {
+    "title": "Conclusion",
+    "html": "<h1>Conclusion</h1><p>Computer hardware and software are both essential to computing. Input and output devices help users interact with machines, internal components perform processing and storage, application software helps people accomplish tasks, and system software manages the underlying computer. Understanding these foundations supports future learning in programming, networking, and information technology.</p>"
+  }
+];
+
+const toc = document.getElementById('toc');
+const content = document.getElementById('content');
+const prev = document.getElementById('prev') || document.getElementById('previous');
+const next = document.getElementById('next');
+const status = document.getElementById('status');
+const heading = document.getElementById('heading');
+let current = 0;
+function render() {
+  const page = LESSON_PAGES[current];
+  content.innerHTML = page.html;
+  if (heading) heading.textContent = page.title;
+  toc.replaceChildren();
+  LESSON_PAGES.forEach((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = item.title;
+    if (i === current) b.classList.add('active');
+    b.addEventListener('click', () => go(i));
+    toc.appendChild(b);
+  });
+  prev.disabled = current === 0;
+  next.disabled = current === LESSON_PAGES.length - 1;
+  if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+}
+function go(i) {
+  if (i < 0 || i >= LESSON_PAGES.length) return;
+  current = i;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.addEventListener('click', () => go(current-1));
+next.addEventListener('click', () => go(current+1));
+render();
+
+
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+</script>
+</body>
+</html>

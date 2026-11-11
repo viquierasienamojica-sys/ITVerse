@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3rd Year Book 02 | Web Browsers, Servers, and HTTP/HTTPS Fundamentals | BYTEBLOOM</title>
+    <style>
+        :root {
+            --bg: #FDE4F2;
+            --header: #F9CEE7;
+            --sidebar: #F4B8DA;
+            --accent: #EEA1CD;
+            --hover: #E68BBE;
+            --ink: #612C4D
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            min-height: 70px;
+            background: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            gap: 12px;
+            border-bottom: 1px solid var(--accent)
+        }
+
+        header a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        header strong {
+            font-size: 21px
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .theme-toggle,
+        .navbtn,
+        .toc-link,
+        .contents-link {
+            cursor: pointer;
+            font: inherit
+        }
+
+        .theme-toggle {
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            border-radius: 10px;
+            background: #fff5fb;
+            color: var(--ink);
+            font-weight: bold
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 245px minmax(0, 1fr);
+            height: calc(100dvh - 70px)
+        }
+
+        aside {
+            background: var(--sidebar);
+            padding: 20px 12px;
+            overflow: auto;
+            border-right: 1px solid var(--accent)
+        }
+
+        aside h2 {
+            font-size: 18px;
+            margin: 4px 6px 18px
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-radius: 7px;
+            padding: 12px 10px;
+            color: var(--ink);
+            line-height: 1.4;
+            margin-bottom: 4px;
+            font-size: 13px
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: var(--hover)
+        }
+
+        .toc-link small {
+            white-space: nowrap
+        }
+
+        main {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px
+        }
+
+        .viewport {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start
+        }
+
+        .lesson-page {
+            width: min(100%, 850px);
+            min-height: 100%;
+            background: #fffafc;
+            color: #44313d;
+            box-shadow: 0 5px 25px #6b365333;
+            border: 1px solid #edc2d8;
+            border-radius: 8px;
+            padding: clamp(24px, 5vw, 58px);
+            display: flex;
+            flex-direction: column
+        }
+
+        .lesson-page[hidden] {
+            display: none
+        }
+
+        .lesson-content {
+            flex: 1
+        }
+
+        .lesson-page h1 {
+            font-size: clamp(24px, 3vw, 32px);
+            line-height: 1.25;
+            color: #8e336b;
+            margin: 0 0 26px
+        }
+
+        .lesson-page h2 {
+            font-size: 21px;
+            color: #a23b78;
+            margin: 28px 0 12px
+        }
+
+        .lesson-page h3 {
+            font-size: 17px;
+            color: #a23b78;
+            margin: 24px 0 10px
+        }
+
+        .lesson-page p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 12px 0
+        }
+
+        .note {
+            border-left: 4px solid #df84b5;
+            background: #fff0f8;
+            padding: 12px 17px;
+            border-radius: 5px;
+            margin: 17px 0
+        }
+
+        .note strong {
+            color: #943567
+        }
+
+        .note p {
+            margin: 5px 0 0
+        }
+
+        .diagram {
+            margin: 25px 0;
+            background: #fff0f8;
+            border: 1px solid #ecc3d8;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center
+        }
+
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .diagram-flow span {
+            padding: 12px;
+            background: #f4b8da;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: bold
+        }
+
+        .diagram-flow b {
+            color: #a23b78
+        }
+
+        .diagram figcaption {
+            font-size: 12px;
+            color: #725568;
+            margin-top: 12px
+        }
+
+        .page-foot {
+            border-top: 1px solid #e9c7d8;
+            padding-top: 15px;
+            margin-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: #a37a91;
+            font-size: 11px
+        }
+
+        .cover {
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center
+        }
+
+        .cover h1 {
+            font-size: clamp(30px, 4vw, 48px);
+            max-width: 640px
+        }
+
+        .cover p {
+            color: #7e5b71
+        }
+
+        .eyebrow {
+            letter-spacing: 3px;
+            font-size: 12px;
+            color: #b14d89;
+            font-weight: bold;
+            margin-bottom: 24px
+        }
+
+        .cover-rule {
+            width: 90px;
+            height: 4px;
+            background: #eaa1cc;
+            border-radius: 4px;
+            margin: 28px
+        }
+
+        .contents {
+            display: grid;
+            gap: 12px
+        }
+
+        .contents-link {
+            border: 1px solid #edc7db;
+            background: #fff0f8;
+            color: #612C4D;
+            border-radius: 9px;
+            padding: 15px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            gap: 14px
+        }
+
+        .contents-link:hover {
+            background: #f9cee7
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 4px 0 8px
+        }
+
+        .navbtn {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1px solid #d88eb8;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: bold
+        }
+
+        .navbtn:hover {
+            background: var(--hover)
+        }
+
+        .navbtn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        #counter {
+            min-width: 110px;
+            text-align: center;
+            font-weight: bold
+        }
+
+        .reader.dark-mode .lesson-page {
+            background: #25212d;
+            color: #f8eaf5;
+            border-color: #51475d
+        }
+
+        .reader.dark-mode .lesson-page h1,
+        .reader.dark-mode .lesson-page h2,
+        .reader.dark-mode .lesson-page h3 {
+            color: #ffb8dc
+        }
+
+        .reader.dark-mode .note,
+        .reader.dark-mode .diagram,
+        .reader.dark-mode .contents-link {
+            background: #352b3c;
+            border-color: #69526a;
+            color: #f8eaf5
+        }
+
+        .reader.dark-mode .note strong,
+        .reader.dark-mode .diagram figcaption,
+        .reader.dark-mode .cover p,
+        .reader.dark-mode .page-foot {
+            color: #e7bad3
+        }
+
+        .reader.dark-mode .diagram-flow span {
+            background: #62415b;
+            color: #fff
+        }
+
+        .reader.dark-mode .eyebrow {
+            color: #f2a6d0
+        }
+
+        @media(max-width:700px) {
+            header {
+                padding: 9px 12px;
+                flex-wrap: wrap
+            }
+
+            header strong {
+                font-size: 17px
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                height: calc(100dvh - 105px)
+            }
+
+            aside {
+                max-height: 145px;
+                padding: 8px 12px;
+                border-right: 0;
+                border-bottom: 1px solid var(--accent)
+            }
+
+            aside h2 {
+                margin: 4px 6px
+            }
+
+            .toc-link {
+                display: inline-flex;
+                width: auto;
+                padding: 8px
+            }
+
+            main {
+                padding: 10px 6px
+            }
+
+            .pager {
+                gap: 8px
+            }
+
+            .navbtn {
+                padding: 10px 12px
+            }
+
+            .lesson-page {
+                padding: 22px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header><a href="library.html">← Back to Library</a><strong>BYTEBLOOM</strong>
+        <div class="actions"><span>3rd Year · Book 02</span><button type="button" class="theme-toggle"
+                id="themeToggle">🌙 Dark Mode</button></div>
+    </header>
+    <div class="layout">
+        <aside>
+            <h2>Table of Contents</h2><button type="button" class="toc-link" data-page="0">Cover <small>p.
+                    1</small></button><button type="button" class="toc-link" data-page="1">Table of Contents <small>p.
+                    2</small></button><button type="button" class="toc-link" data-page="2">Chapter 1: Introduction to
+                Web Technologies <small>p. 3</small></button><button type="button" class="toc-link"
+                data-page="4">Chapter 2: Understanding Web Browsers <small>p. 5</small></button><button type="button"
+                class="toc-link" data-page="6">Chapter 3: Web Servers and Application Servers <small>p.
+                    7</small></button><button type="button" class="toc-link" data-page="8">Chapter 4: Hypertext Transfer
+                Protocol (HTTP) <small>p. 9</small></button><button type="button" class="toc-link"
+                data-page="10">Chapter 5: HTTPS and Secure Web Communication <small>p. 11</small></button><button
+                type="button" class="toc-link" data-page="12">Chapter 6: How Browsers and Servers Communicate <small>p.
+                    13</small></button><button type="button" class="toc-link" data-page="14">Chapter 7: Modern Web
+                Technologies <small>p. 15</small></button>
+        </aside>
+        <main class="reader">
+            <div class="viewport" id="viewport">
+                <article class="lesson-page" data-index="0" aria-label="Page 1 of 17">
+                    <div class="lesson-content">
+                        <div class="cover">
+                            <div class="eyebrow">BYTEBLOOM • THIRD YEAR BSIT</div>
+                            <h1>Web Browsers, Servers, and HTTP/HTTPS Fundamentals</h1>
+                            <p>An Educational Book for Information Technology Students</p>
+                            <div class="cover-rule"></div>
+                            <p>Seven chapters • Concepts, examples, and practical explanations</p>
+                        </div>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>1</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="1" aria-label="Page 2 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Table of Contents</h1>
+                        <div class="contents"><button class="contents-link" data-page="2"><span>Chapter 1: Introduction
+                                    to Web Technologies</span><span>Page 3</span></button><button class="contents-link"
+                                data-page="4"><span>Chapter 2: Understanding Web Browsers</span><span>Page
+                                    5</span></button><button class="contents-link" data-page="6"><span>Chapter 3: Web
+                                    Servers and Application Servers</span><span>Page 7</span></button><button
+                                class="contents-link" data-page="8"><span>Chapter 4: Hypertext Transfer Protocol
+                                    (HTTP)</span><span>Page 9</span></button><button class="contents-link"
+                                data-page="10"><span>Chapter 5: HTTPS and Secure Web Communication</span><span>Page
+                                    11</span></button><button class="contents-link" data-page="12"><span>Chapter 6: How
+                                    Browsers and Servers Communicate</span><span>Page 13</span></button><button
+                                class="contents-link" data-page="14"><span>Chapter 7: Modern Web
+                                    Technologies</span><span>Page 15</span></button></div>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>2</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="2" aria-label="Page 3 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Chapter 1 — Introduction to Web Technologies</h1>
+                        <h3>Chapter overview</h3>
+                        <p>This chapter explains the foundational ideas behind introduction to web technologies and
+                            connects</p>
+                        <p>them to practical web development. Each section includes an explanation, a realistic example,
+                            and</p>
+                        <p>implementation considerations for beginning IT students.</p>
+                        <h2>1.1 Understanding the Internet and the Web</h2>
+                        <p>The Internet is the interconnected network infrastructure that carries data among devices.
+                            The World</p>
+                        <p>Wide Web is a collection of linked resources accessed through browsers using web protocols. A
+                        </p>
+                        <p>website is typically hosted on a server and identified by a domain name. The distinction
+                            matters:</p>
+                        <p>email and other Internet services can operate without a web browser.</p>
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Understanding the Internet and the Web is best understood as part of a complete</p>
+                        </div>
+                        <p>request-to-response workflow, rather than as an isolated definition.</p>
+                        <h2>1.2 How Websites Work</h2>
+                        <p>A browser takes a URL, resolves its hostname, connects to a server, requests resources, and
+                        </p>
+                        <p>interprets the returned HTML, CSS, and JavaScript. A webpage may require many requests for
+                        </p>
+                        <p>fonts, images, scripts, and data. Servers can respond with stored files or generate responses
+                        </p>
+                        <p>dynamically.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>How Websites Work is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <figure class="diagram">
+                            <div class="diagram-flow"><span>CLIENT / BROWSER</span><b>⇄</b><span>NETWORK /
+                                    HTTP(S)</span><b>⇄</b><span>WEB SERVER</span></div>
+                            <figcaption>Figure 1.1 — Conceptual communication diagram. Replaceable diagram placeholder.
+                            </figcaption>
+                        </figure>
+                        <h2>1.3 Client-Server Architecture</h2>
+                        <p>A client initiates requests, while a server listens and responds. This separation makes it
+                            possible for</p>
+                        <p>many devices to use the same application. A web server may forward requests to an application
+                        </p>
+                        <p>process, which reads data from a database and constructs the response.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>3</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="3" aria-label="Page 4 of 17" hidden>
+                    <div class="lesson-content">
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Client-Server Architecture is best understood as part of a complete request-to-response
+                            </p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>1.4 Static and Dynamic Websites</h2>
+                        <p>A static page is delivered largely as stored content. A dynamic application can vary its
+                            response</p>
+                        <p>according to the requested URL, authenticated user, or stored data. Modern sites often
+                            combine</p>
+                        <p>static assets, browser-side rendering, and server-generated responses.</p>
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Static and Dynamic Websites is best understood as part of a complete</p>
+                        </div>
+                        <p>request-to-response workflow, rather than as an isolated definition.</p>
+                        <h3>Chapter recap</h3>
+                        <p>The topics in this chapter work together in real web applications. A developer should be able
+                            to</p>
+                        <p>explain what the browser does, what the server does, how the network transports messages, and
+                        </p>
+                        <p>which safeguards are required for reliable and secure communication.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>4</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="4" aria-label="Page 5 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Chapter 2 — Understanding Web Browsers</h1>
+                        <h3>Chapter overview</h3>
+                        <p>This chapter explains the foundational ideas behind understanding web browsers and connects
+                        </p>
+                        <p>them to practical web development. Each section includes an explanation, a realistic example,
+                            and</p>
+                        <p>implementation considerations for beginning IT students.</p>
+                        <h2>2.1 What a Browser Does</h2>
+                        <p>A browser is a software application that retrieves, interprets, and displays web resources.
+                            Examples</p>
+                        <p>include Chrome, Firefox, Safari, and Edge. Browsers manage tabs, navigation, downloads,</p>
+                        <p>permissions, and privacy settings while enforcing security boundaries between sites.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>What a Browser Does is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>2.2 Browser Components</h2>
+                        <p>The user interface includes the address bar, back and forward controls, and tabs. The
+                            networking</p>
+                        <p>subsystem manages connections and resource fetching. The rendering engine builds the visual
+                        </p>
+                        <p>page, while a JavaScript engine executes scripts. Storage systems maintain cookies, caches,
+                            and</p>
+                        <p>site data.</p>
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Browser Components is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <figure class="diagram">
+                            <div class="diagram-flow"><span>CLIENT / BROWSER</span><b>⇄</b><span>NETWORK /
+                                    HTTP(S)</span><b>⇄</b><span>WEB SERVER</span></div>
+                            <figcaption>Figure 2.1 — Conceptual communication diagram. Replaceable diagram placeholder.
+                            </figcaption>
+                        </figure>
+                        <h2>2.3 Rendering HTML and CSS</h2>
+                        <p>After receiving HTML, the browser parses it into a Document Object Model (DOM). It parses CSS
+                        </p>
+                        <p>into style rules, computes layout, paints visual elements, and composites layers. JavaScript
+                            may</p>
+                        <p>change the DOM or styles, causing additional rendering work. A large script or image can
+                            delay</p>
+                        <p>visible content.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>5</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="5" aria-label="Page 6 of 17" hidden>
+                    <div class="lesson-content">
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Rendering HTML and CSS is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>2.4 Caching and Cookies</h2>
+                        <p>Caching stores reusable resources so later page loads can be faster. HTTP cache headers help
+                        </p>
+                        <p>determine when resources may be reused. Cookies are small pieces of state that a browser can
+                        </p>
+                        <p>send with matching requests. Cookies may support sessions, preferences, and analytics, but
+                            require</p>
+                        <p>careful privacy and security controls.</p>
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Caching and Cookies is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>2.5 Browser Safety</h2>
+                        <p>Browsers enforce the same-origin policy and other protections that limit how one site
+                            accesses</p>
+                        <p>another site’s data. HTTPS helps protect data in transit. Users should keep browsers updated,
+                            check</p>
+                        <p>suspicious URLs, and limit unnecessary site permissions.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Browser Safety is best understood as part of a complete request-to-response workflow,</p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h3>Chapter recap</h3>
+                        <p>The topics in this chapter work together in real web applications. A developer should be able
+                            to</p>
+                        <p>explain what the browser does, what the server does, how the network transports messages, and
+                        </p>
+                        <p>which safeguards are required for reliable and secure communication.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>6</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="6" aria-label="Page 7 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Chapter 3 — Web Servers and Application Servers</h1>
+                        <h3>Chapter overview</h3>
+                        <p>This chapter explains the foundational ideas behind web servers and application servers and
+                        </p>
+                        <p>connects them to practical web development. Each section includes an explanation, a realistic
+                        </p>
+                        <p>example, and implementation considerations for beginning IT students.</p>
+                        <h2>3.1 Web Server Basics</h2>
+                        <p>A web server accepts HTTP requests and returns HTTP responses. It may serve HTML, CSS,</p>
+                        <p>JavaScript, and images directly, or act as a reverse proxy for an application. Apache HTTP
+                            Server</p>
+                        <p>and Nginx are widely used examples.</p>
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Web Server Basics is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>3.2 Request Handling</h2>
+                        <p>When a request arrives, the server identifies the host and route, applies configured rules,
+                            and</p>
+                        <p>chooses a response. It can return a file, redirect the client, reject unauthorized access, or
+                            pass the</p>
+                        <p>request to application code. Logs help operators diagnose errors and performance issues.</p>
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Request Handling is best understood as part of a complete request-to-response workflow,
+                            </p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <figure class="diagram">
+                            <div class="diagram-flow"><span>CLIENT / BROWSER</span><b>⇄</b><span>NETWORK /
+                                    HTTP(S)</span><b>⇄</b><span>WEB SERVER</span></div>
+                            <figcaption>Figure 3.1 — Conceptual communication diagram. Replaceable diagram placeholder.
+                            </figcaption>
+                        </figure>
+                        <h2>3.3 Web Server vs Application Server</h2>
+                        <p>A web server specializes in handling HTTP traffic, static files, connection management, and
+                        </p>
+                        <p>proxying. An application server runs business logic, authenticates users, and interacts with
+                        </p>
+                        <p>databases. In practice, their roles can overlap, and modern frameworks can handle HTTP
+                            directly.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>7</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="7" aria-label="Page 8 of 17" hidden>
+                    <div class="lesson-content">
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Web Server vs Application Server is best understood as part of a complete</p>
+                        </div>
+                        <p>request-to-response workflow, rather than as an isolated definition.</p>
+                        <h2>3.4 Databases and Backends</h2>
+                        <p>A backend can retrieve or update data in a database, then send JSON or HTML to the client.
+                        </p>
+                        <p>Parameterized queries reduce SQL injection risks. Access control should be checked on the
+                            server</p>
+                        <p>for every protected operation, not only hidden in the browser interface.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Databases and Backends is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>3.5 Hosting and Operations</h2>
+                        <p>A site can be hosted on shared infrastructure, virtual machines, containers, or managed cloud
+                        </p>
+                        <p>services. Operators configure domains, certificates, backups, logging, monitoring, and
+                            deployment</p>
+                        <p>processes. Reliability depends on both software and infrastructure.</p>
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Hosting and Operations is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h3>Chapter recap</h3>
+                        <p>The topics in this chapter work together in real web applications. A developer should be able
+                            to</p>
+                        <p>explain what the browser does, what the server does, how the network transports messages, and
+                        </p>
+                        <p>which safeguards are required for reliable and secure communication.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>8</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="8" aria-label="Page 9 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Chapter 4 — Hypertext Transfer Protocol (HTTP)</h1>
+                        <h3>Chapter overview</h3>
+                        <p>This chapter explains the foundational ideas behind hypertext transfer protocol (http) and
+                            connects</p>
+                        <p>them to practical web development. Each section includes an explanation, a realistic example,
+                            and</p>
+                        <p>implementation considerations for beginning IT students.</p>
+                        <h2>4.1 What HTTP Is</h2>
+                        <p>HTTP is an application-layer request-response protocol used to transfer web resources and API
+                        </p>
+                        <p>messages. It is stateless: each request has its own meaning, while applications can maintain
+                        </p>
+                        <p>continuity through cookies, tokens, or other state mechanisms.</p>
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>What HTTP Is is best understood as part of a complete request-to-response workflow,</p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h2>4.2 Request Structure</h2>
+                        <p>An HTTP request includes a method, target, protocol version, headers, and optionally a body.
+                            A</p>
+                        <p>GET request generally retrieves a representation. POST commonly submits data for processing.
+                        </p>
+                        <p>PUT is typically used to replace a resource, PATCH to modify part of it, and DELETE to
+                            request</p>
+                        <p>removal.</p>
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Request Structure is best understood as part of a complete request-to-response workflow,
+                            </p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <figure class="diagram">
+                            <div class="diagram-flow"><span>CLIENT / BROWSER</span><b>⇄</b><span>NETWORK /
+                                    HTTP(S)</span><b>⇄</b><span>WEB SERVER</span></div>
+                            <figcaption>Figure 4.1 — Conceptual communication diagram. Replaceable diagram placeholder.
+                            </figcaption>
+                        </figure>
+                        <h2>4.3 Response Structure</h2>
+                        <p>A response contains a status code, headers, and usually a body. The Content-Type header tells
+                            the</p>
+                        <p>client how to interpret the representation. Cache-Control provides caching instructions.
+                            Location may</p>
+                        <p>identify a redirect destination.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>9</span>
+                    </div>
+                </article>
+                <article class="lesson-page" data-index="9" aria-label="Page 10 of 17" hidden>
+                    <div class="lesson-content">
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Response Structure is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>4.4 Status Codes</h2>
+                        <p>Codes in the 2xx range indicate success, 3xx indicate redirection, 4xx indicate
+                            client-related errors,</p>
+                        <p>and 5xx indicate server errors. Examples: 200 OK, 201 Created, 301 Moved Permanently, 304 Not
+                        </p>
+                        <p>Modified, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, and 500 Internal
+                        </p>
+                        <p>Server Error.</p>
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Status Codes is best understood as part of a complete request-to-response workflow,</p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h2>4.5 HTTP Versions</h2>
+                        <p>HTTP/1.1 commonly uses persistent connections. HTTP/2 introduces multiplexed streams over a
+                        </p>
+                        <p>connection and compressed headers. HTTP/3 uses QUIC over UDP to improve connection behavior
+                        </p>
+                        <p>under some network conditions. The application-level semantics remain broadly consistent.</p>
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>HTTP Versions is best understood as part of a complete request-to-response workflow,</p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h3>Chapter recap</h3>
+                        <p>The topics in this chapter work together in real web applications. A developer should be able
+                            to</p>
+                        <p>explain what the browser does, what the server does, how the network transports messages, and
+                        </p>
+                        <p>which safeguards are required for reliable and secure communication.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>10</span></div>
+                </article>
+                <article class="lesson-page" data-index="10" aria-label="Page 11 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Chapter 5 — HTTPS and Secure Web Communication</h1>
+                        <h3>Chapter overview</h3>
+                        <p>This chapter explains the foundational ideas behind https and secure web communication and
+                        </p>
+                        <p>connects them to practical web development. Each section includes an explanation, a realistic
+                        </p>
+                        <p>example, and implementation considerations for beginning IT students.</p>
+                        <h2>5.1 HTTP Versus HTTPS</h2>
+                        <p>HTTPS is HTTP carried over a secure transport, normally TLS. It protects information against
+                        </p>
+                        <p>passive eavesdropping and helps detect tampering in transit. Plain HTTP does not provide
+                            these</p>
+                        <p>transport protections.</p>
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>HTTP Versus HTTPS is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>5.2 TLS and Certificates</h2>
+                        <p>During a TLS connection, the client and server negotiate security parameters and establish
+                            keys.</p>
+                        <p>The server typically presents a certificate binding its identity to a public key. The browser
+                            checks</p>
+                        <p>certificate validity and whether the hostname matches. A certificate alone does not prove a
+                            website</p>
+                        <p>is trustworthy in every respect.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>TLS and Certificates is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <figure class="diagram">
+                            <div class="diagram-flow"><span>CLIENT / BROWSER</span><b>⇄</b><span>NETWORK /
+                                    HTTP(S)</span><b>⇄</b><span>WEB SERVER</span></div>
+                            <figcaption>Figure 5.1 — Conceptual communication diagram. Replaceable diagram placeholder.
+                            </figcaption>
+                        </figure>
+                        <h2>5.3 Confidentiality and Integrity</h2>
+                        <p>Encryption prevents observers from easily reading transmitted content. Integrity protection
+                            helps</p>
+                        <p>detect unauthorized modifications. Authentication helps the browser establish that it is</p>
+                        <p>communicating with the intended server, assuming the certificate trust system is working
+                            correctly.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>11</span></div>
+                </article>
+                <article class="lesson-page" data-index="11" aria-label="Page 12 of 17" hidden>
+                    <div class="lesson-content">
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Confidentiality and Integrity is best understood as part of a complete
+                                request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>5.4 Secure Site Practices</h2>
+                        <p>Use HTTPS throughout the site, keep dependencies updated, protect credentials, validate
+                            input, and</p>
+                        <p>set appropriate cookie flags such as Secure, HttpOnly, and SameSite. Do not place secret API
+                            keys</p>
+                        <p>in browser code. Implement authorization checks on the server.</p>
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Secure Site Practices is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>5.5 Limits of HTTPS</h2>
+                        <p>HTTPS does not prevent phishing, malicious content on a legitimate site, insecure passwords,
+                            or</p>
+                        <p>compromised endpoints. Secure browsing combines transport security with careful site design
+                            and</p>
+                        <p>informed user behavior.</p>
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Limits of HTTPS is best understood as part of a complete request-to-response workflow,
+                            </p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h3>Chapter recap</h3>
+                        <p>The topics in this chapter work together in real web applications. A developer should be able
+                            to</p>
+                        <p>explain what the browser does, what the server does, how the network transports messages, and
+                        </p>
+                        <p>which safeguards are required for reliable and secure communication.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>12</span></div>
+                </article>
+                <article class="lesson-page" data-index="12" aria-label="Page 13 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Chapter 6 — How Browsers and Servers Communicate</h1>
+                        <h3>Chapter overview</h3>
+                        <p>This chapter explains the foundational ideas behind how browsers and servers communicate and
+                        </p>
+                        <p>connects them to practical web development. Each section includes an explanation, a realistic
+                        </p>
+                        <p>example, and implementation considerations for beginning IT students.</p>
+                        <h2>6.1 URL Anatomy</h2>
+                        <p>A URL can contain a scheme, hostname, port, path, query, and fragment. For example,</p>
+                        <p>https://example.org/articles?id=7 uses HTTPS, the host example.org, the path /articles, and
+                            the</p>
+                        <p>query id=7. The fragment, when present, is normally handled by the browser and is not sent as
+                            part</p>
+                        <p>of the HTTP request target.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>URL Anatomy is best understood as part of a complete request-to-response workflow,</p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h2>6.2 DNS Resolution</h2>
+                        <p>The Domain Name System translates names into records, including IP addresses. A browser or
+                        </p>
+                        <p>operating system may consult caches before contacting a DNS resolver. DNS answers help locate
+                        </p>
+                        <p>the destination, but DNS itself does not deliver the webpage.</p>
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>DNS Resolution is best understood as part of a complete request-to-response workflow,</p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <figure class="diagram">
+                            <div class="diagram-flow"><span>CLIENT / BROWSER</span><b>⇄</b><span>NETWORK /
+                                    HTTP(S)</span><b>⇄</b><span>WEB SERVER</span></div>
+                            <figcaption>Figure 6.1 — Conceptual communication diagram. Replaceable diagram placeholder.
+                            </figcaption>
+                        </figure>
+                        <h2>6.3 Connecting and Requesting</h2>
+                        <p>After resolving the destination, the browser establishes a suitable network connection and
+                        </p>
+                        <p>negotiates TLS for HTTPS. It then sends an HTTP request. The server processes the request and
+                        </p>
+                        <p>returns headers and content. Additional resources may trigger further requests.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>13</span></div>
+                </article>
+                <article class="lesson-page" data-index="13" aria-label="Page 14 of 17" hidden>
+                    <div class="lesson-content">
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Connecting and Requesting is best understood as part of a complete request-to-response
+                            </p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>6.4 Sessions and State</h2>
+                        <p>Web applications often associate requests with a user session using a cookie or an
+                            authorization</p>
+                        <p>token. Session identifiers must be protected from theft and fixation. Expiration, logout
+                            behavior, and</p>
+                        <p>access control are important aspects of session management.</p>
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Sessions and State is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>6.5 Troubleshooting</h2>
+                        <p>A DNS error may indicate name resolution problems. A connection timeout can point to
+                            networking</p>
+                        <p>or server availability. A 404 means the requested resource was not found; a 500 suggests an
+                        </p>
+                        <p>internal server failure. Developer tools expose network timing, request headers, responses,
+                            and</p>
+                        <p>console messages.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Troubleshooting is best understood as part of a complete request-to-response workflow,
+                            </p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h3>Chapter recap</h3>
+                        <p>The topics in this chapter work together in real web applications. A developer should be able
+                            to</p>
+                        <p>explain what the browser does, what the server does, how the network transports messages, and
+                        </p>
+                        <p>which safeguards are required for reliable and secure communication.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>14</span></div>
+                </article>
+                <article class="lesson-page" data-index="14" aria-label="Page 15 of 17" hidden>
+                    <div class="lesson-content">
+                        <h1>Chapter 7 — Modern Web Technologies</h1>
+                        <h3>Chapter overview</h3>
+                        <p>This chapter explains the foundational ideas behind modern web technologies and connects them
+                            to</p>
+                        <p>practical web development. Each section includes an explanation, a realistic example, and</p>
+                        <p>implementation considerations for beginning IT students.</p>
+                        <h2>7.1 APIs and JSON</h2>
+                        <p>An Application Programming Interface (API) lets software exchange structured information. Web
+                        </p>
+                        <p>APIs often use HTTP and JSON. A browser might request /api/books to retrieve a list of books
+                            and</p>
+                        <p>render them dynamically. API contracts should define inputs, outputs, errors, and
+                            authentication</p>
+                        <p>requirements.</p>
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>APIs and JSON is best understood as part of a complete request-to-response workflow,</p>
+                        </div>
+                        <p>rather than as an isolated definition.</p>
+                        <h2>7.2 REST and Resource Design</h2>
+                        <p>REST is an architectural style that emphasizes resources, representations, stateless
+                            interactions,</p>
+                        <p>and uniform interfaces. HTTP methods and status codes help express operations. A practical
+                            API</p>
+                        <p>should use consistent URLs, clear error messages, and documented behavior.</p>
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>REST and Resource Design is best understood as part of a complete</p>
+                        </div>
+                        <p>request-to-response workflow, rather than as an isolated definition.</p>
+                        <figure class="diagram">
+                            <div class="diagram-flow"><span>CLIENT / BROWSER</span><b>⇄</b><span>NETWORK /
+                                    HTTP(S)</span><b>⇄</b><span>WEB SERVER</span></div>
+                            <figcaption>Figure 7.1 — Conceptual communication diagram. Replaceable diagram placeholder.
+                            </figcaption>
+                        </figure>
+                        <h2>7.3 Content Delivery Networks</h2>
+                        <p>A Content Delivery Network (CDN) distributes cached content across multiple locations to
+                            reduce</p>
+                        <p>latency and load on an origin server. Images, scripts, and stylesheets are common CDN assets.
+                        </p>
+                        <p>Cache invalidation must be planned when content changes.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>15</span></div>
+                </article>
+                <article class="lesson-page" data-index="15" aria-label="Page 16 of 17" hidden>
+                    <div class="lesson-content">
+                        <div class="note"><strong>Design consideration</strong>
+                            <p>A website should remain understandable when connections are slow.</p>
+                        </div>
+                        <p>Developers can compress images, use meaningful error messages, and test the application on
+                        </p>
+                        <p>different devices.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Content Delivery Networks is best understood as part of a complete request-to-response
+                            </p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>7.4 Performance Optimization</h2>
+                        <p>Web performance can improve through image compression, responsive image sizes, caching, fewer
+                        </p>
+                        <p>blocking resources, and efficient scripts. Developers can inspect network waterfalls and core
+                        </p>
+                        <p>performance metrics. Optimizing perceived speed often matters as much as reducing total
+                            bytes.</p>
+                        <div class="note"><strong>Technical note</strong>
+                            <p>Distinguish a protocol from a product: HTTP defines message semantics, while a</p>
+                        </div>
+                        <p>particular browser, server, or framework implements those semantics in software.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Performance Optimization is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                        <h2>7.5 Accessibility and Responsive Design</h2>
+                        <p>Modern sites should work across screen sizes and input methods. Semantic HTML, clear labels,
+                        </p>
+                        <p>keyboard navigation, sufficient contrast, and meaningful alternative text improve
+                            accessibility.</p>
+                        <p>Responsive CSS layouts adapt content to phones, tablets, and desktops.</p>
+                        <div class="note"><strong>Worked example</strong>
+                            <p>A student opens a course website. The browser retrieves the page, and the</p>
+                        </div>
+                        <p>server responds with the requested resources. Observe which components are responsible for
+                        </p>
+                        <p>networking, presentation, and application logic.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Accessibility and Responsive Design is best understood as part of a complete</p>
+                        </div>
+                        <p>request-to-response workflow, rather than as an isolated definition.</p>
+                        <h2>7.6 Emerging Web Practices</h2>
+                        <p>Progressive web applications, server-side rendering, edge computing, and automated deployment
+                        </p>
+                        <p>are common modern approaches. Each introduces tradeoffs in complexity, caching, cost, and</p>
+                        <p>maintenance. The best architecture depends on user needs, reliability targets, and team
+                            capabilities.</p>
+                        <div class="note"><strong>Practical example</strong>
+                            <p>Consider an e-library that shows book covers and a Read button. The browser</p>
+                        </div>
+                        <p>renders the interface, while a server or static hosting platform supplies the HTML and image
+                            files. If</p>
+                        <p>accounts are added, authorization should be verified by a trusted backend.</p>
+                        <div class="note"><strong>Key idea</strong>
+                            <p>Emerging Web Practices is best understood as part of a complete request-to-response</p>
+                        </div>
+                        <p>workflow, rather than as an isolated definition.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>16</span></div>
+                </article>
+                <article class="lesson-page" data-index="16" aria-label="Page 17 of 17" hidden>
+                    <div class="lesson-content">
+                        <h3>Chapter recap</h3>
+                        <p>The topics in this chapter work together in real web applications. A developer should be able
+                            to</p>
+                        <p>explain what the browser does, what the server does, how the network transports messages, and
+                        </p>
+                        <p>which safeguards are required for reliable and secure communication.</p>
+                    </div>
+                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>17</span></div>
+                </article>
+            </div>
+            <div class="pager"><button type="button" class="navbtn" id="prev">← Previous</button><span
+                    id="counter"></span><button type="button" class="navbtn" id="next">Next →</button></div>
+        </main>
+    </div>
+    <script>
+        const pages = [...document.querySelectorAll('.lesson-page')]; let current = 0; const viewport = document.getElementById('viewport');
+        function goToPage(n) { current = Math.max(0, Math.min(pages.length - 1, n)); pages.forEach((p, i) => p.hidden = i !== current); document.getElementById('counter').textContent = `Page ${current + 1} of ${pages.length}`; document.getElementById('prev').disabled = current === 0; document.getElementById('next').disabled = current === pages.length - 1; document.querySelectorAll('[data-page]').forEach(b => b.classList.toggle('active', Number(b.dataset.page) === current)); viewport.scrollTop = 0; }
+        document.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => goToPage(Number(b.dataset.page)))); document.getElementById('prev').addEventListener('click', () => goToPage(current - 1)); document.getElementById('next').addEventListener('click', () => goToPage(current + 1));
+        const reader = document.querySelector('.reader'); const toggle = document.getElementById('themeToggle'); function setTheme(dark) { reader.classList.toggle('dark-mode', dark); toggle.textContent = dark ? '☀️ Light Mode' : '🌙 Dark Mode'; localStorage.setItem('bytebloom-reader-theme', dark ? 'dark' : 'light'); } toggle.addEventListener('click', () => setTheme(!reader.classList.contains('dark-mode'))); setTheme(localStorage.getItem('bytebloom-reader-theme') === 'dark'); goToPage(0);
+    </script>
+</body>
+
+</html>

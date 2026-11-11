@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Web Browsers, Servers, and HTTP/HTTPS | BSIT E-Library</title>
+
+<style>
+
+  * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4eee4;
+    color: #342c24;
+}
+
+
+header {
+    background: #fffaf2;
+    border-bottom: 1px solid #dfd1be;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+header h2 {
+    font-family: Georgia, serif;
+    color: #684b34;
+    margin: 0;
+}
+
+header a {
+    color: #76543b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.layout {
+    display: flex;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    background: #fffaf2;
+    border-right: 1px solid #e1d4c1;
+    padding: 25px 15px;
+    height: calc(100vh - 75px);
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar h3 {
+    font-family: Georgia, serif;
+    margin: 0 10px 20px;
+}
+
+.chapter-button {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 5px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: #51402e;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.chapter-button:hover {
+    background: #eee2d2;
+}
+
+.chapter-button.active {
+    background: #79583c;
+    color: white;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+    padding: 35px;
+}
+
+.reader {
+    background: white;
+    border: 1px solid #e5d9c9;
+    border-radius: 15px;
+    padding: 45px;
+    max-width: 980px;
+    min-height: 600px;
+    margin: auto;
+    box-shadow: 0 5px 20px rgba(50, 30, 10, 0.05);
+}
+
+.eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #99734c;
+    font-weight: bold;
+}
+
+.reader h1 {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    color: #503723;
+    line-height: 1.3;
+}
+
+.reader h2 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: #6d4c32;
+    margin-top: 32px;
+}
+
+.reader h3 {
+    color: #79583c;
+    margin-top: 25px;
+}
+
+.reader p {
+    line-height: 1.85;
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+.reader ul,
+.reader ol {
+    line-height: 1.8;
+}
+
+.lesson-section {
+    margin-bottom: 25px;
+}
+
+.learning-box {
+    background: #faf3e9;
+    border-left: 4px solid #a77a4f;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+.learning-box p {
+    margin: 7px 0;
+}
+
+.code-block {
+    background: #292522;
+    color: #f4e9d9;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+    line-height: 1.6;
+}
+
+.resource-link {
+    display: block;
+    color: #785538;
+    margin: 10px 0;
+    overflow-wrap: anywhere;
+}
+
+.quiz-question {
+    background: #faf7f2;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #e5d9c9;
+    border-radius: 10px;
+}
+
+.quiz-question p {
+    font-weight: bold;
+}
+
+.quiz-question label {
+    display: block;
+    margin: 12px 0;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.quiz-question input {
+    margin-right: 10px;
+}
+
+.quiz-result {
+    background: #f4eadb;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.answer-review {
+    border-top: 1px solid #d7c5af;
+    padding-top: 12px;
+    margin-top: 12px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid #e8ded0;
+    margin-top: 40px;
+    padding-top: 25px;
+}
+
+.btn {
+    background: #79583c;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #5d402b;
+}
+
+.btn:disabled {
+    background: #c7b9aa;
+    cursor: not-allowed;
+}
+
+.status {
+    font-size: 14px;
+    color: #856b51;
+    text-align: center;
+}
+
+@media (max-width: 850px) {
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 240px;
+        position: static;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .main {
+        padding: 15px;
+    }
+
+    .reader {
+        padding: 24px;
+    }
+
+    header {
+        padding: 15px;
+    }
+
+    header h2 {
+        font-size: 18px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <a href="library.html">← Back to Library</a>
+
+    <h2>BSIT E-Library</h2>
+
+    <span>Book 02</span>
+
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h3>Table of Contents</h3>
+
+        <div id="chapterList"></div>
+
+    </aside>
+
+    <main class="main">
+
+        <article class="reader">
+
+            <div id="bookContent">
+
+                <h1>Loading Book...</h1>
+
+                <p>Please wait while the complete book is loaded.</p>
+
+            </div>
+
+            <div class="navigation">
+
+                <button class="btn" id="previousButton">
+
+                    ← Previous
+
+                </button>
+
+                <button class="btn" id="nextButton">
+
+                    Next →
+
+                </button>
+
+            </div>
+
+            <p class="status" id="pageStatus"></p>
+
+        </article>
+
+    </main>
+
+</div>
+
+<script>
+
+let bookPages = [];
+
+let currentPage = 0;
+
+const bookContent = document.getElementById("bookContent");
+
+const chapterList = document.getElementById("chapterList");
+
+const previousButton = document.getElementById("previousButton");
+
+const nextButton = document.getElementById("nextButton");
+
+const pageStatus = document.getElementById("pageStatus");
+
+// Exact answers from the supplied book's answer key.
+
+const finalAnswers = [
+"B", "A", "B", "B", "A",
+"C", "B", "A", "C", "A",
+"C", "B", "B", "A", "A",
+"D", "B", "B", "A", "C"
+];
+
+// Explanations from the supplied book.
+
+const explanations = [
+
+    "The Internet connects networks around the world.",
+
+    "The Web is a system of linked resources accessed through Internet technologies.",
+
+    "A web browser retrieves and displays webpages.",
+
+    "Web servers process requests and provide resources.",
+
+    "HTTP means Hypertext Transfer Protocol.",
+
+    "HTTPS uses TLS to protect communication.",
+
+    "GET requests a representation of a resource.",
+
+    "POST commonly submits data for processing.",
+
+    "200 OK indicates success.",
+
+    "404 means the requested resource was not found.",
+
+    "401 indicates missing or invalid authentication credentials.",
+
+    "DNS means Domain Name System.",
+
+    "DNS helps resolve domain names to network information.",
+
+    "TCP provides reliable, ordered byte-stream communication.",
+
+    "IP addresses support addressing and routing.",
+
+    "HTTPS commonly uses port 443.",
+
+    "Content-Type identifies the content media type.",
+
+    "Caching can reuse previously retrieved resources.",
+
+    "Cookies are commonly used for sessions and preferences.",
+
+    "The Network panel displays requests and responses."
+
+];
+
+function createElement(tag, text, className) {
+
+    const element = document.createElement(tag);
+
+    if (text !== undefined) {
+
+        element.textContent = text;
+
+    }
+
+    if (className) {
+
+        element.className = className;
+
+    }
+
+    return element;
+
+}
+
+function normalizeText(text) {
+
+    return text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+}
+
+function parseBook(text) {
+
+    const lines = normalizeText(text).split("\n");
+
+    const pages = [];
+
+    let current = {
+
+        title: "Book Introduction",
+
+        lines: []
+
+    };
+
+    const sectionNames = new Set([
+
+        "PRACTICAL LEARNING ACTIVITIES",
+
+        "FINAL ASSESSMENT",
+
+        "ANSWER KEY AND EXPLANATIONS",
+
+        "GLOSSARY OF TERMS",
+
+            "GLOSSARY OF TECHNICAL TERMS",
+
+        "LEARNING RESOURCES",
+
+        "REFERENCES",
+
+        "CONCLUSION"
+
+    ]);
+
+    for (const line of lines) {
+
+        const trimmed = line.trim();
+
+        const isChapter = /^CHAPTER\s+\d+\s*:/.test(trimmed);
+
+        const isSection = sectionNames.has(trimmed);
+
+        if (isChapter || isSection) {
+
+            if (current.lines.length > 0) {
+
+                pages.push(current);
+
+            }
+
+            current = {
+
+                title: trimmed,
+
+                lines: []
+
+            };
+
+        } else {
+
+            current.lines.push(line);
+
+        }
+
+    }
+
+    if (current.lines.length > 0) {
+
+        pages.push(current);
+
+    }
+
+    return pages;
+
+}
+
+function buildTableOfContents() {
+
+    chapterList.innerHTML = "";
+
+    bookPages.forEach((page, index) => {
+
+        const button = createElement(
+
+            "button",
+
+            page.title,
+
+            "chapter-button"
+
+        );
+
+        if (index === currentPage) {
+
+            button.classList.add("active");
+
+        }
+
+        button.addEventListener("click", () => showPage(index));
+
+        chapterList.appendChild(button);
+
+    });
+
+}
+
+function renderTextPage(page) {
+
+    bookContent.innerHTML = "";
+
+    bookContent.appendChild(
+
+        createElement("div", "BSIT E-Library • Complete E-Book", "eyebrow")
+
+    );
+
+    bookContent.appendChild(
+
+        createElement("h1", page.title)
+
+    );
+
+    const lines = page.lines;
+
+    let paragraphLines = [];
+
+    let codeLines = [];
+
+    let insideCode = false;
+
+    function flushParagraph() {
+
+        if (paragraphLines.length === 0) return;
+
+        const paragraph = createElement(
+
+            "p",
+
+            paragraphLines.join("\n")
+
+        );
+
+        paragraph.style.whiteSpace = "pre-wrap";
+
+        bookContent.appendChild(paragraph);
+
+        paragraphLines = [];
+
+    }
+
+    function flushCode() {
+
+        if (codeLines.length === 0) return;
+
+        const code = createElement(
+
+            "pre",
+
+            codeLines.join("\n"),
+
+            "code-block"
+
+        );
+
+        bookContent.appendChild(code);
+
+        codeLines = [];
+
+    }
+
+    for (const line of lines) {
+
+        const trimmed = line.trim();
+
+        // Preserve original HTML and CSS examples as code.
+
+        if (
+
+            !insideCode &&
+
+            (
+
+                /^<!DOCTYPE html>/i.test(trimmed) ||
+
+                /^<html\b/i.test(trimmed)
+
+            )
+
+        ) {
+
+            flushParagraph();
+
+            insideCode = true;
+
+        }
+
+        if (insideCode) {
+
+            codeLines.push(line);
+
+            if (/^<\/html>$/i.test(trimmed)) {
+
+                flushCode();
+
+                insideCode = false;
+
+            }
+
+            continue;
+
+        }
+
+        if (trimmed === "") {
+
+            flushParagraph();
+
+            continue;
+
+        }
+
+        // Display original resource links as clickable links.
+
+        if (/^https?:\/\/\S+$/i.test(trimmed)) {
+
+            flushParagraph();
+
+            const link = createElement(
+
+                "a",
+
+                trimmed,
+
+                "resource-link"
+
+            );
+
+            link.href = trimmed;
+
+            link.target = "_blank";
+
+            link.rel = "noopener noreferrer";
+
+            bookContent.appendChild(link);
+
+            continue;
+
+        }
+
+        // Chapter subtopics: 1.1, 1.2, 2.1, etc.
+
+        if (/^\d{1,2}\.\d{1,2}\s+\S/.test(trimmed)) {
+
+            flushParagraph();
+
+            bookContent.appendChild(
+
+                createElement("h2", trimmed)
+
+            );
+
+            continue;
+
+        }
+
+        // Other headings from the original book.
+
+        if (
+
+            /^(Learning Objectives|General Learning Objectives|Chapter \d+ Activity|Chapter \d+ Assessment|Project Objective|Project Requirements|Required Tools|Expected Output|Directions:)/i.test(trimmed)
+
+        ) {
+
+            flushParagraph();
+
+            bookContent.appendChild(
+
+                createElement("h3", trimmed)
+
+            );
+
+            continue;
+
+        }
+
+        paragraphLines.push(line);
+
+    }
+
+    flushParagraph();
+
+    flushCode();
+
+}
+
+function extractQuizQuestions(lines) {
+
+    const questions = [];
+
+    let currentQuestion = null;
+
+    for (const line of lines) {
+
+        const trimmed = line.trim();
+
+        const questionMatch = trimmed.match(/^(\d{1,2})\.\s+(.+)$/);
+
+        const optionMatch = trimmed.match(/^([A-D])\.\s+(.+)$/);
+
+        if (questionMatch) {
+
+            if (currentQuestion) {
+
+                questions.push(currentQuestion);
+
+            }
+
+            currentQuestion = {
+
+                number: Number(questionMatch[1]),
+
+                question: questionMatch[2],
+
+                options: []
+
+            };
+
+        } else if (optionMatch && currentQuestion) {
+
+            currentQuestion.options.push({
+
+                letter: optionMatch[1],
+
+                text: optionMatch[2]
+
+            });
+
+        } else if (
+
+            currentQuestion &&
+
+            trimmed &&
+
+            currentQuestion.options.length === 0 &&
+
+            !/^Directions:/i.test(trimmed)
+
+        ) {
+
+            currentQuestion.question += " " + trimmed;
+
+        } else if (
+
+            currentQuestion &&
+
+            trimmed &&
+
+            currentQuestion.options.length > 0
+
+        ) {
+
+            currentQuestion.options[
+
+                currentQuestion.options.length - 1
+
+            ].text += " " + trimmed;
+
+        }
+
+    }
+
+    if (currentQuestion) {
+
+        questions.push(currentQuestion);
+
+    }
+
+    return questions;
+
+}
+
+function renderFinalAssessment(page) {
+
+    bookContent.innerHTML = "";
+
+    bookContent.appendChild(
+
+        createElement("div", "Final Knowledge Check", "eyebrow")
+
+    );
+
+    bookContent.appendChild(
+
+        createElement("h1", "Final Assessment")
+
+    );
+
+    bookContent.appendChild(
+
+        createElement(
+
+            "p",
+
+            "Choose the correct answer for all 20 questions."
+
+        )
+
+    );
+
+    const questions = extractQuizQuestions(page.lines);
+
+    const form = createElement("form");
+
+    form.id = "finalQuizForm";
+
+    questions.forEach((item) => {
+
+        const questionBox = createElement(
+
+            "div",
+
+            undefined,
+
+            "quiz-question"
+
+        );
+
+        questionBox.appendChild(
+
+            createElement(
+
+                "p",
+
+                item.number + ". " + item.question
+
+            )
+
+        );
+
+        item.options.forEach((option) => {
+
+            const label = createElement("label");
+
+            const radio = document.createElement("input");
+
+            radio.type = "radio";
+
+            radio.name = "question" + item.number;
+
+            radio.value = option.letter;
+
+            label.appendChild(radio);
+
+            label.appendChild(
+
+                document.createTextNode(
+
+                    option.letter + ". " + option.text
+
+                )
+
+            );
+
+            questionBox.appendChild(label);
+
+        });
+
+        form.appendChild(questionBox);
+
+    });
+
+    const submitButton = createElement(
+
+        "button",
+
+        "Submit Answers",
+
+        "btn"
+
+    );
+
+    submitButton.type = "submit";
+
+    form.appendChild(submitButton);
+
+    const result = createElement("div");
+
+    result.id = "quizResult";
+
+    bookContent.appendChild(form);
+
+    bookContent.appendChild(result);
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        if (questions.length !== 20) {
+
+            alert("The quiz questions could not be loaded completely.");
+
+            return;
+
+        }
+
+        const answers = [];
+
+        let unanswered = 0;
+
+        questions.forEach((item) => {
+
+            const selected = form.querySelector(
+
+                'input[name="question' + item.number + '"]:checked'
+
+            );
+
+            if (!selected) {
+
+                unanswered++;
+
+            }
+
+            answers.push(selected ? selected.value : null);
+
+        });
+
+        if (unanswered > 0) {
+
+            alert(
+
+                "Please answer the remaining " +
+
+                unanswered +
+
+                " question(s)."
+
+            );
+
+            return;
+
+        }
+
+        let score = 0;
+
+        result.innerHTML = "";
+
+        questions.forEach((item, index) => {
+
+            const correct = finalAnswers[item.number - 1];
+
+            const selected = answers[index];
+
+            if (selected === correct) {
+
+                score++;
+
+            }
+
+        });
+
+        const percentage = Math.round(
+
+            score / questions.length * 100
+
+        );
+
+        const summary = createElement(
+
+            "div",
+
+            undefined,
+
+            "quiz-result"
+
+        );
+
+        summary.appendChild(
+
+            createElement(
+
+                "h2",
+
+                "Your Score: " + score + " / " + questions.length
+
+            )
+
+        );
+
+        summary.appendChild(
+
+            createElement("h3", percentage + "%")
+
+        );
+
+        summary.appendChild(
+
+            createElement(
+
+                "p",
+
+                percentage >= 75
+
+                    ? "Congratulations! You passed."
+
+                    : "Keep studying and try again."
+
+            )
+
+        );
+
+        summary.appendChild(
+
+            createElement("h2", "Answer Review")
+
+        );
+
+        questions.forEach((item, index) => {
+
+            const correct = finalAnswers[item.number - 1];
+
+            const selected = answers[index];
+
+            const review = createElement(
+
+                "div",
+
+                undefined,
+
+                "answer-review"
+
+            );
+
+            review.appendChild(
+
+                createElement(
+
+                    "p",
+
+                    "Question " + item.number + ": " +
+
+                    (selected === correct ? "Correct" : "Incorrect")
+
+                )
+
+            );
+
+            const correctOption = item.options.find(
+
+                option => option.letter === correct
+
+            );
+
+            review.appendChild(
+
+                createElement(
+
+                    "p",
+
+                    "Correct Answer: " + correct + ". " +
+
+                    (correctOption ? correctOption.text : "")
+
+                )
+
+            );
+
+            review.appendChild(
+
+                createElement(
+
+                    "p",
+
+                    explanations[item.number - 1]
+
+                )
+
+            );
+
+            summary.appendChild(review);
+
+        });
+
+        const retryButton = createElement(
+
+            "button",
+
+            "Retake Quiz",
+
+            "btn"
+
+        );
+
+        retryButton.addEventListener("click", () => {
+
+            showPage(currentPage);
+
+        });
+
+        summary.appendChild(retryButton);
+
+        result.appendChild(summary);
+
+        result.scrollIntoView({ behavior: "smooth" });
+
+    });
+
+}
+
+function showPage(index) {
+
+    if (index < 0 || index >= bookPages.length) {
+
+        return;
+
+    }
+
+    currentPage = index;
+
+    const page = bookPages[index];
+
+    if (page.title === "FINAL ASSESSMENT") {
+
+        renderFinalAssessment(page);
+
+    } else {
+
+        renderTextPage(page);
+
+    }
+
+    previousButton.disabled = index === 0;
+
+    nextButton.disabled = index === bookPages.length - 1;
+
+    pageStatus.textContent =
+
+        "Section " + (index + 1) + " of " + bookPages.length;
+
+    buildTableOfContents();
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+previousButton.addEventListener("click", () => {
+
+    showPage(currentPage - 1);
+
+});
+
+nextButton.addEventListener("click", () => {
+
+    showPage(currentPage + 1);
+
+});
+
+async function loadBook() {
+
+    try {
+
+        const response = await fetch("webbrowsers.txt");
+
+        if (!response.ok) {
+
+            throw new Error("Unable to find webbrowsers.txt");
+
+        }
+
+        const text = await response.text();
+
+        if (!text.trim()) {
+
+            throw new Error("The book content file is empty.");
+
+        }
+
+        bookPages = parseBook(text);
+
+        if (bookPages.length === 0) {
+
+            throw new Error("No book content was found.");
+
+        }
+
+        showPage(0);
+
+    } catch (error) {
+
+        bookContent.innerHTML = "";
+
+        bookContent.appendChild(
+
+            createElement("h1", "Unable to Load Book")
+
+        );
+
+        bookContent.appendChild(
+
+            createElement(
+
+                "p",
+
+                "Make sure webbrowsers.txt is in the same folder as book2.html."
+
+            )
+
+        );
+
+        bookContent.appendChild(
+
+            createElement(
+
+                "p",
+
+                "Open this project using VS Code Live Server or XAMPP localhost."
+
+            )
+
+        );
+
+        console.error(error);
+
+    }
+
+}
+
+loadBook();
+
+</script>
+
+</body>
+
+</html>

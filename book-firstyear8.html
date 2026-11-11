@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Year Book 08 | Computer Networks and Internet Communication</title>
+  <style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4eee4;color:#342c24}
+header{background:#493526;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+header a{color:white;text-decoration:none}
+header h2{margin:0;font-size:19px;color:white}
+.layout{display:flex;min-height:calc(100vh - 65px)}
+aside{width:295px;flex-shrink:0;background:#e8dcc9;padding:22px 15px;border-right:1px solid #cfbea7;max-height:calc(100vh - 65px);overflow-y:auto;position:sticky;top:0}
+aside h3{margin:0 0 16px}
+#toc button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover{background:#795a3e;color:white}
+main{flex:1;min-width:0;padding:28px}
+.reader{background:#fffaf2;max-width:960px;margin:auto;padding:32px;border:1px solid #dfd1bd;border-radius:12px;box-shadow:0 3px 15px #3b27120d}
+h1,h2,h3{line-height:1.35}
+h1{font-size:28px}
+h2{font-size:23px;color:#6b4c30}
+h3{font-size:19px;color:#6b4c30}
+p,li{line-height:1.75}
+figure{margin:25px auto;text-align:center}
+figure img{display:block;width:100%;max-width:750px;max-height:650px;height:auto;object-fit:contain;margin:auto;border-radius:8px}
+figcaption{font-size:12px;color:#867563;margin-top:7px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px}
+.btn{border:0;background:#6d5038;color:white;padding:12px 19px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.status{text-align:center;color:#756655;font-size:13px}
+.question{background:#f6eee1;border:1px solid #e5d7c4;padding:18px;margin:17px 0;border-radius:9px}
+.question strong{display:block;margin-bottom:12px}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}
+.option:hover{background:#ede1d0}
+.result{margin-top:18px;padding:17px;border-radius:8px;background:#eee3d1}
+.review{border-top:1px solid #d5c5ae;margin-top:12px;padding-top:10px}
+.correct{color:#267347}
+.wrong{color:#a32d2d}
+@media(max-width:850px){.layout{display:block}
+aside{width:auto;max-height:260px;position:static;border-right:0}
+main{padding:12px}
+.reader{padding:20px}
+header{flex-wrap:wrap}
+}
+  .table-wrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #d9cbb8;padding:10px;text-align:left}th{background:#e8dcc9}.example{padding:12px 15px;background:#f3e8d7;border-left:4px solid #795a3e;overflow-wrap:anywhere;font-weight:bold}
+  
+/* Shared First Year Reader Theme — based on Book 05 */
+html{scroll-behavior:smooth}
+body{margin:0!important;font-family:Arial,sans-serif!important;background:#f4eee4!important;color:#342c24!important;line-height:1.6}
+header{background:#493526!important;color:#fff!important;padding:16px 24px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;border:0!important;min-height:58px}
+header a{color:white!important;text-decoration:none!important}
+header h2{margin:0!important;font-size:19px!important;color:white!important}
+.layout{display:flex!important;min-height:calc(100vh - 65px)!important;align-items:stretch!important}
+aside,.sidebar{width:295px!important;flex:0 0 295px!important;background:#e8dcc9!important;padding:22px 15px!important;border-right:1px solid #cfbea7!important;max-height:calc(100vh - 65px)!important;overflow-y:auto!important;position:sticky!important;top:0!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{margin:0 0 16px!important;font-size:19px!important;color:#6b4c30!important}
+#toc button,#chapterList button,#chapterList [role=button],.sidebar button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:#795a3e!important;color:white!important}
+main,.main{flex:1!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:28px!important;background:transparent!important}
+.reader{background:#fffaf2!important;max-width:960px!important;margin:auto!important;padding:32px!important;border:1px solid #dfd1bd!important;border-radius:12px!important;box-shadow:0 3px 15px #3b27120d!important;min-height:540px}
+.reader h1{font-size:28px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h2{font-size:23px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h3{font-size:19px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader p,.reader li{line-height:1.75!important}
+.reader figure{margin:25px auto!important;text-align:center!important;background:transparent!important;border:0!important;padding:0!important}
+.reader figure img{display:block!important;width:100%!important;max-width:750px!important;max-height:650px!important;height:auto!important;object-fit:contain!important;margin:auto!important;border-radius:8px!important}
+.reader figcaption{font-size:12px!important;color:#867563!important;margin-top:7px!important}
+.nav,.navigation,.controls{display:flex!important;justify-content:space-between!important;gap:12px!important;margin-top:32px!important}
+.btn,button.nav,.submit,.retake{border:0!important;background:#6d5038!important;color:white!important;padding:12px 19px!important;border-radius:8px!important;cursor:pointer!important;font-size:14px!important}
+.btn:disabled,button.nav:disabled{opacity:.4!important;cursor:not-allowed!important}
+.status{text-align:center!important;color:#756655!important;font-size:13px!important}
+.question{background:#f6eee1!important;border:1px solid #e5d7c4!important;padding:18px!important;margin:17px 0!important;border-radius:9px!important}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}.option:hover{background:#ede1d0!important}
+.result{margin-top:18px!important;padding:17px!important;border-radius:8px!important;background:#eee3d1!important}
+.reader table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.reader th,.reader td{border:1px solid #d9cbb8;padding:10px;text-align:left}.reader th{background:#e8dcc9}
+@media(max-width:850px){.layout{display:block!important}aside,.sidebar{width:100%!important;max-height:260px!important;position:static!important;border-right:0!important;flex:auto!important}main,.main{padding:12px!important}.reader{padding:20px!important}header{flex-wrap:wrap!important}}
+
+
+/* BYTEBLOOM Pastel Pink Reader Theme */
+:root{--bb-p1:#FDE4F2;--bb-p2:#F9CEE7;--bb-p3:#F4B8DA;--bb-p4:#EEA1CD;--bb-p5:#E68BBE;--bb-ink:#612C4D;--bb-muted:#795B70}
+body{background:var(--bb-p1)!important;color:var(--bb-ink)!important}
+header{background:var(--bb-p5)!important;color:#52223F!important;border-bottom:1px solid var(--bb-p4)!important}
+header a,header h2,header span{color:#52223F!important}
+aside,.sidebar{background:var(--bb-p2)!important;border-color:var(--bb-p3)!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{color:var(--bb-ink)!important}
+#toc button,#chapterList button,.sidebar button{color:var(--bb-ink)!important}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:var(--bb-p5)!important;color:#52223F!important}
+main,.main{background:transparent!important}
+.reader{background:#FFF8FC!important;border:1px solid var(--bb-p3)!important;box-shadow:0 8px 22px rgba(157,57,112,.08)!important}
+.reader h1,.reader h2,.reader h3,main h1,main h2,main h3{color:var(--bb-ink)!important}
+.reader p,.reader li,main p,main li{color:#57394D}
+.btn,button.nav,.navigation button,.controls button{background:var(--bb-p5)!important;color:#52223F!important;border:0!important}
+.btn:hover,button.nav:hover,.navigation button:hover,.controls button:hover{background:var(--bb-p4)!important}
+.btn:disabled,button.nav:disabled,.navigation button:disabled,.controls button:disabled{opacity:.45!important;cursor:not-allowed!important}
+.status,figcaption,.reader figcaption{color:var(--bb-muted)!important}
+.reader table th,main table th{background:var(--bb-p2)!important}
+.reader table td,.reader table th,main table td,main table th{border-color:var(--bb-p3)!important}
+.reader blockquote,main blockquote,.example{border-left-color:var(--bb-p5)!important;background:#FFF0F8!important}
+.reader figure img,main figure img{max-width:750px;height:auto;object-fit:contain}
+
+
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+    <span>1st Year · Book 08</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside><h3>Table of Contents</h3><div id="toc"></div></aside>
+    <main>
+      <article class="reader">
+        <div id="content"></div>
+        <div class="nav">
+          <button class="btn" id="prev">← Previous</button>
+          <button class="btn" id="next">Next →</button>
+        </div>
+        <p class="status" id="status"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+const LESSON_PAGES = [
+  {
+    "title": "Book Introduction",
+    "html": "<h1>Computer Networks and Internet Communication</h1><p><strong>First Year · Book 08</strong></p><h2>Introduction</h2><p>Computer networks connect devices and enable online communication. This book develops the topics in the supplied 21-page source into seven organized chapters, with original explanations, diagrams, practical examples, quizzes, and review materials. Some details clarify or update simplified statements in the source.</p><figure><img src=\"assets/firstyear8-figure-01.png\" alt=\"Laptop through Wi-Fi router and ISP to web server\"><figcaption>Original instructional diagram from PDF page 1</figcaption></figure><h2>Learning Objectives</h2><ul><li>Describe networks, the Internet, and the Web.</li><li>Identify common connection types and networking devices.</li><li>Explain IP and MAC addressing and packet forwarding.</li><li>Distinguish IP, TCP, UDP, and application protocols.</li><li>Explain how browsers, URLs, and DNS work together.</li><li>Outline major milestones in Internet history.</li><li>Apply safe browsing and basic troubleshooting techniques.</li></ul>"
+  },
+  {
+    "title": "Chapter 1: Networks and the Internet",
+    "html": "<h1>Chapter 1: Networks and the Internet</h1><figure><img src=\"assets/firstyear8-figure-02.png\" alt=\"Network communication diagram for chapter 1\" loading=\"lazy\"><figcaption>Original instructional diagram from PDF page 3</figcaption></figure><h3>What Is a Computer Network?</h3>\n<p>A computer network connects two or more devices so they can exchange information and share resources. A home network might connect a laptop, smartphone, smart television, and printer through a router.</p>\n<h3>Internet Versus World Wide Web</h3>\n<p>The Internet is the global network infrastructure that carries data. The World Wide Web is one service built on the Internet: interconnected websites and pages accessed through browsers. Email, online games, and messaging also use the Internet.</p>\n<h3>Client and Server</h3>\n<p>A client requests a service, and a server responds. When you open a website, the browser is a client and a web server provides the requested content. Some systems combine client and server roles.</p>\n<h3>Internet Service Providers</h3>\n<p>An ISP connects customers to wider networks. ISPs operate and connect equipment such as routers, optical links, and wireless infrastructure. Data can cross multiple networks before reaching a destination.</p>\n<h3>Real-Life Example</h3>\n<p>When a student watches an educational video, a device sends a request through a local network and ISP to a remote service. Video data returns in packets and the application plays the content.</p>\n<h3>Chapter Summary</h3>\n<p>Remember: what is a computer network?, internet versus world wide web, client and server, internet service providers.</p>"
+  },
+  {
+    "title": "Chapter 2: Network Connections and Devices",
+    "html": "<h1>Chapter 2: Network Connections and Devices</h1><figure><img src=\"assets/firstyear8-figure-03.png\" alt=\"Network communication diagram for chapter 2\" loading=\"lazy\"><figcaption>Original instructional diagram from PDF page 5</figcaption></figure><h3>Ethernet</h3>\n<p>Ethernet is a common wired networking technology. Many copper Ethernet cables use an RJ-45-style connector. Wired connections often offer predictable performance and low interference.</p>\n<h3>Wi-Fi</h3>\n<p>Wi-Fi uses radio communication to connect devices to wireless access points. It is convenient for mobile devices, but distance, walls, and interference can affect performance.</p>\n<h3>Fiber-Optic Connections</h3>\n<p>Fiber-optic cables carry signals as light. They are useful for high-bandwidth and long-distance links and are widely used in ISP networks and data centers.</p>\n<h3>Routers, Switches, and Hubs</h3>\n<p>Routers forward packets between networks. Switches connect devices on a local network and forward Ethernet frames to the appropriate ports. Hubs repeat incoming signals to all ports and are rarely used today.</p>\n<h3>Network Troubleshooting</h3>\n<p>Start by checking the device, cable or Wi-Fi connection, local router, IP settings, and Internet service. Test one part at a time to find where communication stops.</p>\n<h3>Chapter Summary</h3>\n<p>Remember: ethernet, wi-fi, fiber-optic connections, routers, switches, and hubs.</p>"
+  },
+  {
+    "title": "Chapter 3: IP Addresses, MAC Addresses, and Packets",
+    "html": "<h1>Chapter 3: IP Addresses, MAC Addresses, and Packets</h1><figure><img src=\"assets/firstyear8-figure-04.png\" alt=\"Network communication diagram for chapter 3\" loading=\"lazy\"><figcaption>Original instructional diagram from PDF page 7</figcaption></figure><h3>Why Addresses Matter</h3>\n<p>Devices need addressing information to exchange data. An IP address identifies a network interface in an IP network and supports routing to a destination.</p>\n<h3>IP and MAC Addresses</h3>\n<p>IP addresses are logical addresses used for network communication. MAC addresses are link-layer identifiers commonly used on local networks. A MAC address is not always permanent or globally unique because it can be changed or randomized.</p>\n<h3>IPv4 and IPv6</h3>\n<p>IPv4 addresses contain 32 bits, commonly written as four decimal numbers such as 192.0.2.10. IPv6 uses 128-bit addresses, commonly written in hexadecimal, and supports a much larger address space.</p>\n<h3>Packets and Routing</h3>\n<p>Large communications are handled as smaller units. IP packets carry source and destination addresses, while routers examine destination addresses to choose a next hop. Different packets can take different paths.</p>\n<h3>Delivery and Reassembly</h3>\n<p>Depending on the protocol, a receiver can reorder data and detect missing information. TCP provides reliable ordered byte-stream delivery; IP by itself does not guarantee that packets arrive.</p>\n<h3>Chapter Summary</h3>\n<p>Remember: why addresses matter, ip and mac addresses, ipv4 and ipv6, packets and routing.</p>"
+  },
+  {
+    "title": "Chapter 4: Network Protocols and TCP/IP",
+    "html": "<h1>Chapter 4: Network Protocols and TCP/IP</h1><h3>What Is a Protocol?</h3>\n<p>A network protocol is a set of agreed rules for formatting and exchanging data. Protocols let different devices and operating systems communicate.</p>\n<h3>Internet Protocol</h3>\n<p>IP supplies addressing and packet forwarding. Routers use IP destination addresses to move packets toward their destination, but IP does not itself promise reliable delivery.</p>\n<h3>Transmission Control Protocol</h3>\n<p>TCP creates a connection and provides ordered, reliable data delivery using acknowledgments, sequence numbers, and retransmissions. It is commonly used for file transfers and many web connections.</p>\n<h3>UDP and Modern Web Transport</h3>\n<p>UDP sends datagrams without built-in reliability or ordering. Some real-time applications use UDP. HTTP/3 uses QUIC, a protocol built over UDP that adds secure, reliable transport capabilities.</p>\n<h3>A Practical Example</h3>\n<p>When a browser accesses a web service, application protocols and transport protocols work together. DNS may locate the server address, IP routes packets, and TCP or QUIC carries application data.</p>\n<h3>Chapter Summary</h3>\n<p>Remember: what is a protocol?, internet protocol, transmission control protocol, udp and modern web transport.</p>"
+  },
+  {
+    "title": "Chapter 5: Websites, URLs, and DNS",
+    "html": "<h1>Chapter 5: Websites, URLs, and DNS</h1><figure><img src=\"assets/firstyear8-figure-05.png\" alt=\"Network communication diagram for chapter 5\" loading=\"lazy\"><figcaption>Original instructional diagram from PDF page 11</figcaption></figure><h3>Web Pages and Browsers</h3>\n<p>Web pages commonly use HTML to structure content, CSS to style it, and JavaScript for interaction. A browser requests resources and displays the result.</p>\n<h3>Understanding URLs</h3>\n<p>A URL identifies a resource and may include a scheme, hostname, path, query, and fragment. Example: https://example.org/lessons/networking. The https scheme indicates secure HTTP communication.</p>\n<h3>Domains and Top-Level Domains</h3>\n<p>A domain is a human-readable name. Common top-level domains include .com, .org, and .edu, but a suffix alone does not guarantee what kind of organization owns a website.</p>\n<h3>Domain Name System</h3>\n<p>DNS translates names to records such as IP addresses. A resolver may answer from its cache or query other DNS servers. Websites can have multiple addresses, and addresses can change.</p>\n<h3>Visiting a Website Step by Step</h3>\n<p>First, enter a URL. The browser resolves the hostname, establishes a connection, sends an HTTP request, receives a response, and renders the page. HTTPS also uses encryption to protect the connection.</p>\n<h3>Troubleshooting DNS</h3>\n<p>If a domain name fails to resolve, check spelling, network connection, DNS configuration, and whether the site itself is reachable. A failed domain lookup is only one possible reason a page will not load.</p>\n<h3>Chapter Summary</h3>\n<p>Remember: web pages and browsers, understanding urls, domains and top-level domains, domain name system.</p>"
+  },
+  {
+    "title": "Chapter 6: History and Evolution of the Internet",
+    "html": "<h1>Chapter 6: History and Evolution of the Internet</h1><h3>Early Networking</h3>\n<p>Early computers were expensive and often used in centralized environments. Researchers sought ways to share computing resources across distances.</p>\n<h3>ARPANET</h3>\n<p>ARPANET began operating in 1969 as a pioneering packet-switched network supported by the U.S. Advanced Research Projects Agency (ARPA). It connected research institutions and influenced later networking.</p>\n<h3>TCP/IP Development</h3>\n<p>Vint Cerf and Bob Kahn helped develop internetworking protocols during the 1970s. ARPANET transitioned to TCP/IP in 1983, an important milestone for the Internet.</p>\n<h3>Birth of the World Wide Web</h3>\n<p>Tim Berners-Lee developed the World Wide Web at CERN around 1989-1991. Web pages, URLs, and HTTP made information easier to link and access. The Web is newer than the Internet.</p>\n<h3>Growth and Modern Services</h3>\n<p>Over time, the Internet expanded to support email, search, streaming, online learning, mobile apps, and cloud computing. Modern networks continue evolving with IPv6, faster access technologies, and connected devices.</p>\n<h3>Chapter Summary</h3>\n<p>Remember: early networking, arpanet, tcp/ip development, birth of the world wide web.</p>"
+  },
+  {
+    "title": "Chapter 7: Practical Internet Communication and Safety",
+    "html": "<h1>Chapter 7: Practical Internet Communication and Safety</h1><h3>Putting the Layers Together</h3>\n<p>When you visit a website, several systems cooperate: Wi-Fi or Ethernet links your device locally, routers forward IP packets, DNS resolves the hostname, and HTTP exchanges web content.</p>\n<h3>Bandwidth and Latency</h3>\n<p>Bandwidth describes data-carrying capacity; latency describes delay. A fast download can still feel slow when latency is high. Congestion, weak wireless signals, and remote servers affect experience.</p>\n<h3>Safe Online Communication</h3>\n<p>Use HTTPS, update software, choose strong unique passwords, and be careful with unexpected links and attachments. HTTPS protects data in transit but does not guarantee that a website itself is trustworthy.</p>\n<h3>Troubleshooting Scenario</h3>\n<p>If a student cannot open a school website, first check whether the device is connected to Wi-Fi. Then try another website, check the address, and test whether the issue affects one device or the whole network.</p>\n<h3>Mini Case Study</h3>\n<p>A student sends an assignment through a learning platform. The browser finds the platform using DNS, communicates over an encrypted connection, uploads data in packets, and waits for a server response confirming the submission.</p>\n<h3>Chapter Summary</h3>\n<p>Remember: putting the layers together, bandwidth and latency, safe online communication, troubleshooting scenario.</p>"
+  },
+  {
+    "title": "Learning Activities",
+    "html": "<h1>Learning Activities</h1><h3>Activity 1</h3><p>Draw a home network with a phone, laptop, router, ISP, and remote server. Explain each connection.</p><h3>Activity 2</h3><p>Compare Ethernet, Wi-Fi, and fiber-optic connections in a table. Include one benefit and limitation of each.</p><h3>Activity 3</h3><p>Write down an example IPv4 address and identify which device forwards IP packets between networks.</p><h3>Activity 4</h3><p>Explain in your own words why TCP can recover from missing data but IP alone cannot guarantee delivery.</p><h3>Activity 5</h3><p>Break down the URL https://example.org/lessons/networking into scheme, host, and path.</p><h3>Activity 6</h3><p>Create a five-event timeline from ARPANET to the modern Web.</p><h3>Activity 7</h3><p>Make a troubleshooting checklist for a student who cannot open an online classroom.</p>"
+  },
+  {
+    "title": "Glossary",
+    "html": "<h1>Glossary</h1><p><strong>Bandwidth:</strong> Amount of data a connection can carry per unit time.</p><p><strong>Browser:</strong> Software for accessing and displaying web resources.</p><p><strong>Client:</strong> Device or software that requests a network service.</p><p><strong>DNS:</strong> Domain Name System; resolves domain names to DNS records.</p><p><strong>Ethernet:</strong> Common wired networking technology.</p><p><strong>Fiber-optic cable:</strong> Cable that carries data using light signals.</p><p><strong>HTTP:</strong> Protocol used to exchange web resources.</p><p><strong>HTTPS:</strong> HTTP protected using transport encryption.</p><p><strong>Internet:</strong> Global network of interconnected networks.</p><p><strong>IP address:</strong> Logical network address used by Internet Protocol.</p><p><strong>ISP:</strong> Internet Service Provider.</p><p><strong>Latency:</strong> Delay in communication.</p><p><strong>MAC address:</strong> Link-layer identifier used on local networks.</p><p><strong>Packet:</strong> Unit of data carried across a network.</p><p><strong>Router:</strong> Device that forwards packets between networks.</p><p><strong>Server:</strong> System that provides requested network services.</p><p><strong>Switch:</strong> Device that forwards frames within a local network.</p><p><strong>TCP:</strong> Reliable, ordered transport protocol.</p><p><strong>UDP:</strong> Datagram transport protocol without built-in reliability.</p><p><strong>URL:</strong> Uniform Resource Locator, an address for a resource.</p><p><strong>Wi-Fi:</strong> Wireless local-area networking technology.</p><p><strong>WWW:</strong> World Wide Web, a service using the Internet.</p>"
+  },
+  {
+    "title": "References and Conclusion",
+    "html": "<h1>References</h1><p>Primary material: User-provided 1stbook8.pdf, 21 pages, covering Internet communication, network connections, TCP/IP, websites and DNS, and Internet history. Source attribution appearing in the provided PDF: Medium article by Asfand Gul Kasi (author profile: medium.com/@arbabasfand1). Supplemental clarifications and original learning materials: standard introductory networking concepts, including IPv4/IPv6, UDP/QUIC, DNS caching, and HTTPS. The new diagrams are original instructional illustrations, not images extracted from the source.</p><h2>Conclusion</h2><p>Computer networks allow people and devices to share information across local and global distances. By understanding devices, addresses, packets, protocols, websites, and DNS, students can better use the Internet, troubleshoot common problems, and practice safer online communication.</p>"
+  }
+];
+
+const toc = document.getElementById('toc');
+const content = document.getElementById('content');
+const prev = document.getElementById('prev') || document.getElementById('previous');
+const next = document.getElementById('next');
+const status = document.getElementById('status');
+const heading = document.getElementById('heading');
+let current = 0;
+function render() {
+  const page = LESSON_PAGES[current];
+  content.innerHTML = page.html;
+  if (heading) heading.textContent = page.title;
+  toc.replaceChildren();
+  LESSON_PAGES.forEach((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = item.title;
+    if (i === current) b.classList.add('active');
+    b.addEventListener('click', () => go(i));
+    toc.appendChild(b);
+  });
+  prev.disabled = current === 0;
+  next.disabled = current === LESSON_PAGES.length - 1;
+  if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+}
+function go(i) {
+  if (i < 0 || i >= LESSON_PAGES.length) return;
+  current = i;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.addEventListener('click', () => go(current-1));
+next.addEventListener('click', () => go(current+1));
+render();
+
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+</script>
+</body>
+</html>

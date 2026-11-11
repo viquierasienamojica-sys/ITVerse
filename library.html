@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Library | BYTEBLOOM</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/library.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="logo" href="index.html"><span class="logo-mark">▤</span><span>BYTEBLOOM </span></a>
+    <p class="nav-caption">EXPLORE</p>
+    <nav class="side-nav" aria-label="Library navigation">
+      <a href="index.html" class="nav-item"><span>⌂</span> Home</a>
+      <button type="button" class="nav-item active" data-view="all"><span>▦</span> My Library</button>
+      <button type="button" class="nav-item" data-view="1"><span>Ⅰ</span> 1st Year</button>
+      <button type="button" class="nav-item" data-view="2"><span>Ⅱ</span> 2nd Year</button>
+      <button type="button" class="nav-item" data-view="3"><span>Ⅲ</span> 3rd Year</button>
+    </nav>
+    <p class="nav-caption">YOUR READING</p>
+    <nav class="side-nav" aria-label="Reading navigation">
+      <button type="button" class="nav-item" data-view="continue"><span>◷</span> Continue Reading</button>
+      <button type="button" class="nav-item" data-view="bookmarks"><span>♧</span> Bookmarks</button>
+      <a href="index.html#about" class="nav-item"><span>ⓘ</span> About</a>
+    </nav>
+    <div class="sidebar-note">
+      <strong>Learn at your pace.</strong>
+      <p>Your IT learning journey starts with one book.</p>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuToggle" type="button" aria-label="Toggle sidebar" aria-expanded="false">☰</button>
+      <span class="breadcrumb">BYTEBLOOM <span>/</span> <strong>My Library</strong></span>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR DIGITAL BOOKSHELF</p>
+        <h1 id="pageTitle">My Library<span class="title-dot">.</span></h1>
+        <p id="pageDescription">Explore your BSIT learning materials and discover new knowledge, one book at a time.</p>
+      </div>
+      <div class="library-stats">
+        <span class="stats-number" id="bookCount">30</span>
+        <span>BOOKS IN LIBRARY</span>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <label class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input type="search" id="searchInput" placeholder="Search books by title or year level..." autocomplete="off">
+        <kbd>Search</kbd>
+      </label>
+    </div>
+
+    <div class="shelves-container" id="shelvesContainer" aria-live="polite"></div>
+
+    <footer class="footer">
+      © <span id="currentYear"></span> BSIT E-Library · Made for future IT professionals.
+    </footer>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="bookModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close dialog">×</button>
+    <div class="modal-cover" id="modalCover"></div>
+    <div class="modal-content">
+      <p class="eyebrow" id="modalYear"></p>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+
+      <button type="button" class="modal-done" id="modalDone">Read</button>
+
+      <form id="passkeyForm" class="passkey-form" hidden>
+        <label for="bookPasskey">Enter your year-level passkey</label>
+        <input id="bookPasskey" type="password" placeholder="Enter passkey" autocomplete="off" required>
+        <p id="passkeyError" class="passkey-error" role="alert" hidden>
+          Incorrect passkey. Please try again.
+        </p>
+        <button type="submit" class="modal-done">Open Book</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="js/library.js"></script>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>3rd Year Book 05 | CSS Styling, Layouts, Flexbox and Grid | BYTEBLOOM</title>
+<style>
+        :root {
+            --bg: #FDE4F2;
+            --header: #F9CEE7;
+            --sidebar: #F4B8DA;
+            --accent: #EEA1CD;
+            --hover: #E68BBE;
+            --ink: #612C4D
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            min-height: 70px;
+            background: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            gap: 12px;
+            border-bottom: 1px solid var(--accent)
+        }
+
+        header a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        header strong {
+            font-size: 21px
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .theme-toggle,
+        .navbtn,
+        .toc-link,
+        .contents-link {
+            cursor: pointer;
+            font: inherit
+        }
+
+        .theme-toggle {
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            border-radius: 10px;
+            background: #fff5fb;
+            color: var(--ink);
+            font-weight: bold
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 245px minmax(0, 1fr);
+            height: calc(100dvh - 70px)
+        }
+
+        aside {
+            background: var(--sidebar);
+            padding: 20px 12px;
+            overflow: auto;
+            border-right: 1px solid var(--accent)
+        }
+
+        aside h2 {
+            font-size: 18px;
+            margin: 4px 6px 18px
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-radius: 7px;
+            padding: 12px 10px;
+            color: var(--ink);
+            line-height: 1.4;
+            margin-bottom: 4px;
+            font-size: 13px
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: var(--hover)
+        }
+
+        .toc-link small {
+            white-space: nowrap
+        }
+
+        main {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px
+        }
+
+        .viewport {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start
+        }
+
+        .lesson-page {
+            width: min(100%, 850px);
+            min-height: 100%;
+            background: #fffafc;
+            color: #44313d;
+            box-shadow: 0 5px 25px #6b365333;
+            border: 1px solid #edc2d8;
+            border-radius: 8px;
+            padding: clamp(24px, 5vw, 58px);
+            display: flex;
+            flex-direction: column
+        }
+
+        .lesson-page[hidden] {
+            display: none
+        }
+
+        .lesson-content {
+            flex: 1
+        }
+
+        .lesson-page h1 {
+            font-size: clamp(24px, 3vw, 32px);
+            line-height: 1.25;
+            color: #8e336b;
+            margin: 0 0 26px
+        }
+
+        .lesson-page h2 {
+            font-size: 21px;
+            color: #a23b78;
+            margin: 28px 0 12px
+        }
+
+        .lesson-page h3 {
+            font-size: 17px;
+            color: #a23b78;
+            margin: 24px 0 10px
+        }
+
+        .lesson-page p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 12px 0
+        }
+
+        .note {
+            border-left: 4px solid #df84b5;
+            background: #fff0f8;
+            padding: 12px 17px;
+            border-radius: 5px;
+            margin: 17px 0
+        }
+
+        .note strong {
+            color: #943567
+        }
+
+        .note p {
+            margin: 5px 0 0
+        }
+
+        .diagram {
+            margin: 25px 0;
+            background: #fff0f8;
+            border: 1px solid #ecc3d8;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center
+        }
+
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .diagram-flow span {
+            padding: 12px;
+            background: #f4b8da;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: bold
+        }
+
+        .diagram-flow b {
+            color: #a23b78
+        }
+
+        .diagram figcaption {
+            font-size: 12px;
+            color: #725568;
+            margin-top: 12px
+        }
+
+        .page-foot {
+            border-top: 1px solid #e9c7d8;
+            padding-top: 15px;
+            margin-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: #a37a91;
+            font-size: 11px
+        }
+
+        .cover {
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center
+        }
+
+        .cover h1 {
+            font-size: clamp(30px, 4vw, 48px);
+            max-width: 640px
+        }
+
+        .cover p {
+            color: #7e5b71
+        }
+
+        .eyebrow {
+            letter-spacing: 3px;
+            font-size: 12px;
+            color: #b14d89;
+            font-weight: bold;
+            margin-bottom: 24px
+        }
+
+        .cover-rule {
+            width: 90px;
+            height: 4px;
+            background: #eaa1cc;
+            border-radius: 4px;
+            margin: 28px
+        }
+
+        .contents {
+            display: grid;
+            gap: 12px
+        }
+
+        .contents-link {
+            border: 1px solid #edc7db;
+            background: #fff0f8;
+            color: #612C4D;
+            border-radius: 9px;
+            padding: 15px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            gap: 14px
+        }
+
+        .contents-link:hover {
+            background: #f9cee7
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 4px 0 8px
+        }
+
+        .navbtn {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1px solid #d88eb8;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: bold
+        }
+
+        .navbtn:hover {
+            background: var(--hover)
+        }
+
+        .navbtn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        #counter {
+            min-width: 110px;
+            text-align: center;
+            font-weight: bold
+        }
+
+        .reader.dark-mode .lesson-page {
+            background: #25212d;
+            color: #f8eaf5;
+            border-color: #51475d
+        }
+
+        .reader.dark-mode .lesson-page h1,
+        .reader.dark-mode .lesson-page h2,
+        .reader.dark-mode .lesson-page h3 {
+            color: #ffb8dc
+        }
+
+        .reader.dark-mode .note,
+        .reader.dark-mode .diagram,
+        .reader.dark-mode .contents-link {
+            background: #352b3c;
+            border-color: #69526a;
+            color: #f8eaf5
+        }
+
+        .reader.dark-mode .note strong,
+        .reader.dark-mode .diagram figcaption,
+        .reader.dark-mode .cover p,
+        .reader.dark-mode .page-foot {
+            color: #e7bad3
+        }
+
+        .reader.dark-mode .diagram-flow span {
+            background: #62415b;
+            color: #fff
+        }
+
+        .reader.dark-mode .eyebrow {
+            color: #f2a6d0
+        }
+
+        @media(max-width:700px) {
+            header {
+                padding: 9px 12px;
+                flex-wrap: wrap
+            }
+
+            header strong {
+                font-size: 17px
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                height: calc(100dvh - 105px)
+            }
+
+            aside {
+                max-height: 145px;
+                padding: 8px 12px;
+                border-right: 0;
+                border-bottom: 1px solid var(--accent)
+            }
+
+            aside h2 {
+                margin: 4px 6px
+            }
+
+            .toc-link {
+                display: inline-flex;
+                width: auto;
+                padding: 8px
+            }
+
+            main {
+                padding: 10px 6px
+            }
+
+            .pager {
+                gap: 8px
+            }
+
+            .navbtn {
+                padding: 10px 12px
+            }
+
+            .lesson-page {
+                padding: 22px
+            }
+        }
+    
+/* Book 05 code examples and diagrams */
+.lesson-page pre {white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:auto;background:#2d2634;color:#fff1fa;border-radius:9px;padding:18px;font-size:13px;line-height:1.65;}
+.lesson-page code {font-family:Consolas,Monaco,monospace;}
+.lesson-page :not(pre)>code {background:#fce4f1;color:#873d68;padding:2px 5px;border-radius:4px;}
+.lesson-page ul,.lesson-page ol {line-height:1.8;padding-left:25px;}
+.lesson-page figure {max-width:100%;overflow:auto;}
+.lesson-page img,.lesson-page svg {max-width:100%;height:auto;}
+.lesson-page .visual,.lesson-page .demo,.lesson-page .example,.lesson-page .code-box {max-width:100%;overflow:auto;}
+.reader.dark-mode .lesson-page :not(pre)>code {background:#4b3548;color:#ffe1f2;}
+.lesson-page [data-page] {cursor:pointer;}
+</style>
+</head>
+<body>
+<header><a href="library.html">← Back to Library</a><strong>BYTEBLOOM</strong><div class="actions"><span>3rd Year · Book 05</span><button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button></div></header>
+<div class="layout">
+<aside><h2>Table of Contents</h2><button class="toc-link" data-page="0" type="button">Cover<small>p. 1</small></button><button class="toc-link" data-page="1" type="button">Table of Contents<small>p. 2</small></button><button class="toc-link" data-page="2" type="button">Chapter 1 — CSS Foundations<small>p. 3</small></button><button class="toc-link" data-page="7" type="button">Chapter 2 — Flexbox Fundamentals<small>p. 8</small></button><button class="toc-link" data-page="13" type="button">Chapter 3 — CSS Grid Fundamentals<small>p. 14</small></button><button class="toc-link" data-page="19" type="button">Chapter 4 — Combining Layout Systems<small>p. 20</small></button><button class="toc-link" data-page="24" type="button">Chapter 5 — Responsive Web Design<small>p. 25</small></button><button class="toc-link" data-page="29" type="button">Chapter 6 — Practical Website Layouts<small>p. 30</small></button><button class="toc-link" data-page="34" type="button">Chapter 7 — Advanced CSS Layout Practices<small>p. 35</small></button></aside>
+<main class="reader">
+<div class="viewport" id="viewport"><article aria-label="Page 1 of 40" class="lesson-page" data-index="0"><div class="lesson-content"><div class="cover"><div class="eyebrow">BYTEBLOOM • THIRD YEAR BSIT</div><h1>CSS Styling, Layouts, Flexbox and Grid</h1><p>A practical, illustrated learning book for BSIT students</p><div class="cover-rule"></div><p>Seven chapters • CSS examples and visual layout diagrams</p></div></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>1</span></div></article><article aria-label="Page 2 of 40" class="lesson-page" data-index="1" hidden=""><div class="lesson-content"><h1>Table of Contents</h1><div class="contents"><button class="contents-link" data-page="2" type="button"><span>Chapter 1 — CSS Foundations</span><span>Page 3</span></button><button class="contents-link" data-page="7" type="button"><span>Chapter 2 — Flexbox Fundamentals</span><span>Page 8</span></button><button class="contents-link" data-page="13" type="button"><span>Chapter 3 — CSS Grid Fundamentals</span><span>Page 14</span></button><button class="contents-link" data-page="19" type="button"><span>Chapter 4 — Combining Layout Systems</span><span>Page 20</span></button><button class="contents-link" data-page="24" type="button"><span>Chapter 5 — Responsive Web Design</span><span>Page 25</span></button><button class="contents-link" data-page="29" type="button"><span>Chapter 6 — Practical Website Layouts</span><span>Page 30</span></button><button class="contents-link" data-page="34" type="button"><span>Chapter 7 — Advanced CSS Layout Practices</span><span>Page 35</span></button></div></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>2</span></div></article><article aria-label="Page 3 of 40" class="lesson-page" data-index="2" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 1 — CSS Foundations</div><h2>1.1 What CSS Does</h2><p>CSS controls the visual presentation of HTML content. A rule selects elements and assigns declarations, such as color, spacing, and typography. Separating structure from presentation makes a site easier to update and maintain.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>h1 { color: #194c75; font-size: 2rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 1.1 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Start with semantic HTML, then add a stylesheet. Change one declaration at a time and inspect the result in a browser. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>3</span></div></article><article aria-label="Page 4 of 40" class="lesson-page" data-index="3" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 1 — CSS Foundations</div><h2>1.2 Selectors and Specificity</h2><p>Type selectors target elements, class selectors target reusable groups, and ID selectors target unique identifiers. Specificity helps determine which competing declaration wins, but cascade origin, importance, and source order also matter.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.card { padding: 1rem; }
+.card.featured { border: 2px solid navy; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 1.2 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Prefer reusable classes instead of deeply nested selectors. Use developer tools to inspect which declarations are applied. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>4</span></div></article><article aria-label="Page 5 of 40" class="lesson-page" data-index="4" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 1 — CSS Foundations</div><h2>1.3 The Box Model</h2><p>Every element has content, padding, border, and margin. Padding adds space inside the border; margin separates the element from neighbors. The border-box sizing model includes padding and borders within a declared width.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>* { box-sizing: border-box; }
+.panel { width: 320px; padding: 20px; border: 1px solid; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 1.3 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>A width of 320px stays 320px with border-box. Without it, horizontal padding and borders add to the rendered width. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>5</span></div></article><article aria-label="Page 6 of 40" class="lesson-page" data-index="5" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 1 — CSS Foundations</div><h2>1.4 Display and Position</h2><p>Normal flow lays out block and inline content. The display property can create block, inline, flex, or grid formatting contexts. Positioning is useful for overlays, but it should not replace normal layout for an entire page.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.notice { position: sticky; top: 0; }
+.badge { position: absolute; right: 8px; top: 8px; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 1.4 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>A positioned badge needs an appropriate positioned ancestor. Sticky positioning also depends on scroll containers. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>6</span></div></article><article aria-label="Page 7 of 40" class="lesson-page" data-index="6" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 1 — CSS Foundations</div><h2>1.5 Units and Responsive Sizing</h2><p>Pixels provide fixed CSS lengths, rem relates to the root font size, percentages depend on a containing size, and viewport units relate to the viewport. Modern functions such as min(), max(), and clamp() support flexible sizing.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.page { width: min(92%, 1100px); margin: auto; }
+h1 { font-size: clamp(1.6rem, 4vw, 3rem); }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 1.5 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Test large text settings and narrow screens. Flexible sizing should preserve readability rather than force everything to shrink. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>7</span></div></article><article aria-label="Page 8 of 40" class="lesson-page" data-index="7" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 2 — Flexbox Fundamentals</div><h2>2.1 Flex Containers and Items</h2><p>Flexbox is a one-dimensional layout system. A flex container controls the distribution and alignment of its direct children along a main axis and a cross axis. It works especially well for toolbars, navigation, and small card groups.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.toolbar { display: flex; gap: 12px; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 2.1 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Only direct children become flex items. A nested element needs its own display:flex rule if its children should also participate. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>8</span></div></article><article aria-label="Page 9 of 40" class="lesson-page" data-index="8" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 2 — Flexbox Fundamentals</div><h2>2.2 Direction and Axes</h2><p>flex-direction determines the main axis. Row is horizontal in a typical left-to-right writing mode; column is vertical. The cross axis runs perpendicular to the main axis. Axis direction matters when choosing alignment properties.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.stack { display: flex; flex-direction: column; }
+.inline { display: flex; flex-direction: row; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 2.2 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Draw an arrow for the main axis before choosing justify-content or align-items. This prevents common alignment mistakes. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>9</span></div></article><article aria-label="Page 10 of 40" class="lesson-page" data-index="9" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 2 — Flexbox Fundamentals</div><h2>2.3 Justification and Alignment</h2><p>justify-content distributes available space on the main axis. align-items aligns items on the cross axis. align-content distributes flex lines when wrapping creates multiple lines and there is extra cross-axis space.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.nav { display: flex; justify-content: space-between; align-items: center; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 2.3 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>For vertically stacked items, justify-content affects vertical distribution. Use gap for consistent spacing between siblings. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>10</span></div></article><article aria-label="Page 11 of 40" class="lesson-page" data-index="10" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 2 — Flexbox Fundamentals</div><h2>2.4 Wrapping and Gaps</h2><p>Flex items normally share one line. flex-wrap allows additional lines when there is not enough space. Gap creates consistent space between items without requiring margins on each child.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.chips { display: flex; flex-wrap: wrap; gap: .75rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 2.4 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Wrapping does not guarantee aligned columns. Use Grid when consistent two-dimensional tracks are important. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>11</span></div></article><article aria-label="Page 12 of 40" class="lesson-page" data-index="11" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 2 — Flexbox Fundamentals</div><h2>2.5 Grow, Shrink, and Basis</h2><p>flex-grow allocates positive free space, flex-shrink controls contraction, and flex-basis supplies an initial main size. The shorthand flex: 1 is often useful for equal distribution but min-width may prevent expected shrinking.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.sidebar { flex: 0 0 220px; }
+.content { flex: 1 1 0; min-width: 0; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 2.5 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Set min-width:0 on flexible content that contains long URLs or code to avoid unwanted overflow. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>12</span></div></article><article aria-label="Page 13 of 40" class="lesson-page" data-index="12" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 2 — Flexbox Fundamentals</div><h2>2.6 Order and Accessibility</h2><p>The order property changes visual placement, not document order. Keyboard navigation and screen readers generally follow source order. Avoid using order to create a visual sequence that conflicts with the reading sequence.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.item--highlight { order: 2; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 2.6 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Place meaningful content in logical HTML order first. Use visual reordering only when it does not confuse navigation. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>13</span></div></article><article aria-label="Page 14 of 40" class="lesson-page" data-index="13" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 3 — CSS Grid Fundamentals</div><h2>3.1 Grid Containers and Tracks</h2><p>Grid is a two-dimensional layout model that controls rows and columns. A grid container establishes tracks; its direct children become grid items. It is suited to page shells, galleries, and repeated card layouts.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.gallery { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 3.1 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Unlike Flexbox, Grid can align items to shared column and row boundaries. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>14</span></div></article><article aria-label="Page 15 of 40" class="lesson-page" data-index="14" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 3 — CSS Grid Fundamentals</div><h2>3.2 Fractional Units and Repeat</h2><p>The fr unit shares available track space. repeat() reduces repetitive declarations. minmax() sets bounds for tracks and is particularly useful for flexible card grids.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 3.2 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>The minmax(0,1fr) pattern allows columns to shrink even when content has a large intrinsic width. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>15</span></div></article><article aria-label="Page 16 of 40" class="lesson-page" data-index="15" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 3 — CSS Grid Fundamentals</div><h2>3.3 Explicit and Implicit Grids</h2><p>Explicit tracks are defined by grid-template-columns and grid-template-rows. Extra items can create implicit tracks. grid-auto-rows and grid-auto-columns influence those additional tracks.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.gallery { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(140px, auto); }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 3.3 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>A gallery with seven cards and three columns creates an additional row automatically. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>16</span></div></article><article aria-label="Page 17 of 40" class="lesson-page" data-index="16" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 3 — CSS Grid Fundamentals</div><h2>3.4 Placing and Spanning Items</h2><p>Grid lines can place items precisely. grid-column and grid-row accept start and end positions or span counts. Spanning is useful for featured cards, sidebars, and hero sections.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.feature { grid-column: span 2; }
+.tall { grid-row: span 2; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 3.4 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Check small screens carefully: a two-column span needs a layout with at least two columns. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>17</span></div></article><article aria-label="Page 18 of 40" class="lesson-page" data-index="17" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 3 — CSS Grid Fundamentals</div><h2>3.5 Grid Areas</h2><p>Named grid areas make complex page structures easier to read. A template can describe header, sidebar, main content, and footer in a visual arrangement.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.layout { display:grid; grid-template-areas: "head head" "side main" "foot foot"; }
+header { grid-area: head; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 3.5 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Each named area must form a rectangle in the template. Use a dot for intentionally empty cells. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>18</span></div></article><article aria-label="Page 19 of 40" class="lesson-page" data-index="18" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 3 — CSS Grid Fundamentals</div><h2>3.6 Auto-Fit and Auto-Fill</h2><p>repeat(auto-fit, minmax(...)) can create responsive tracks without fixed breakpoints. auto-fit collapses empty repeated tracks, while auto-fill preserves their space. Both can be useful for card collections.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 3.6 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Try both keywords when the container has only one or two cards. Their behavior differs most when extra columns would fit. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>19</span></div></article><article aria-label="Page 20 of 40" class="lesson-page" data-index="19" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 4 — Combining Layout Systems</div><h2>4.1 Choosing Flexbox or Grid</h2><p>Use Flexbox when arranging a row or column of items with content-driven sizes. Use Grid when columns and rows must align across multiple items. These are complementary tools, not competing replacements.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.page { display:grid; grid-template-columns: 240px 1fr; }
+.menu { display:flex; gap:1rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 4.1 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>A typical site uses Grid for the overall page and Flexbox for navigation and button groups. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>20</span></div></article><article aria-label="Page 21 of 40" class="lesson-page" data-index="20" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 4 — Combining Layout Systems</div><h2>4.2 Responsive Navigation</h2><p>A navigation bar may stack on narrow screens and align horizontally when space is available. Semantic nav and list elements provide a useful foundation; layout properties handle presentation.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.links { display:flex; flex-wrap:wrap; gap:1rem; }
+@media (max-width:600px) { .links { flex-direction:column; } }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 4.2 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Keep links accessible by keyboard. Avoid hiding navigation without providing an operable alternative. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>21</span></div></article><article aria-label="Page 22 of 40" class="lesson-page" data-index="21" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 4 — Combining Layout Systems</div><h2>4.3 Cards and Media Objects</h2><p>A card grid can use Grid for consistent columns, while each card uses Flexbox to stack its title, description, and action. This combination keeps actions aligned even when descriptions vary in length.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+.card { display:flex; flex-direction:column; }
+.card a { margin-top:auto; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 4.3 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>The auto top margin pushes the action toward the bottom of a flex column. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>22</span></div></article><article aria-label="Page 23 of 40" class="lesson-page" data-index="22" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 4 — Combining Layout Systems</div><h2>4.4 Sticky Headers and Sidebars</h2><p>Sticky positioning can keep important controls visible as users scroll. It must be applied carefully because a large sticky element can obscure content on small screens.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.sidebar { position:sticky; top:1rem; align-self:start; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 4.4 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Avoid making tall sidebars sticky on short viewports. Test zoom and mobile orientations. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>23</span></div></article><article aria-label="Page 24 of 40" class="lesson-page" data-index="23" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 4 — Combining Layout Systems</div><h2>4.5 Images in Flexible Layouts</h2><p>Responsive images should not overflow their containers. Set max-width:100% and height:auto for intrinsic scaling; object-fit can crop images when a fixed aspect ratio is desired.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>img { max-width:100%; height:auto; }
+.card img { width:100%; aspect-ratio:16/9; object-fit:cover; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 4.5 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Always include meaningful alt text for informative images and empty alt text for purely decorative images. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>24</span></div></article><article aria-label="Page 25 of 40" class="lesson-page" data-index="24" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 5 — Responsive Web Design</div><h2>5.1 Mobile-First Design</h2><p>Mobile-first styling begins with a simple single-column layout and enhances it as available space grows. This helps prioritize content and reduces the number of overrides needed for narrow viewports.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.page { display:block; }
+@media (min-width:800px) { .page { display:grid; grid-template-columns:240px 1fr; } }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 5.1 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Choose breakpoints based on where content becomes cramped rather than assuming exact device categories. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>25</span></div></article><article aria-label="Page 26 of 40" class="lesson-page" data-index="25" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 5 — Responsive Web Design</div><h2>5.2 Media Queries</h2><p>Media queries apply styles conditionally based on viewport or device features. Width queries are common, but orientation, pointer capability, and user preferences can also guide presentation.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>@media (max-width:640px) { .hero { padding:1.5rem; } }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 5.2 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Resize the browser gradually and watch for overflow or uncomfortable line lengths. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>26</span></div></article><article aria-label="Page 27 of 40" class="lesson-page" data-index="26" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 5 — Responsive Web Design</div><h2>5.3 Container Queries</h2><p>Container queries allow a component to respond to its containing element rather than only the viewport. This is useful for reusable cards and widgets that appear in sidebars or main content areas.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.widget-wrap { container-type:inline-size; }
+@container (min-width:420px) { .widget { display:flex; } }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 5.3 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>A component can adapt differently in a narrow sidebar and a wide content column on the same screen. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>27</span></div></article><article aria-label="Page 28 of 40" class="lesson-page" data-index="27" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 5 — Responsive Web Design</div><h2>5.4 Fluid Typography and Spacing</h2><p>Fluid design uses flexible values that remain within readable limits. clamp() can set a minimum, preferred, and maximum size for headings, gaps, and padding.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>h1 { font-size:clamp(1.8rem,3vw,3.4rem); }
+section { padding:clamp(1rem,3vw,3rem); }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 5.4 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Avoid using viewport units alone for body text because text may become too small. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>28</span></div></article><article aria-label="Page 29 of 40" class="lesson-page" data-index="28" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 5 — Responsive Web Design</div><h2>5.5 Overflow and Debugging</h2><p>Horizontal scrolling often comes from fixed widths, long strings, oversized images, or flex items with intrinsic minimum sizes. Browser developer tools reveal the offending element and computed styles.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.content { min-width:0; overflow-wrap:anywhere; }
+img { max-width:100%; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 5.5 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Do not use overflow-x:hidden as the first fix; it can conceal broken layouts instead of solving them. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>29</span></div></article><article aria-label="Page 30 of 40" class="lesson-page" data-index="29" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 6 — Practical Website Layouts</div><h2>6.1 Two-Column Article Page</h2><p>A reading layout often includes a table of contents and a main article. Grid can create a fixed-width sidebar and a flexible article, then collapse to one column on small screens.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.article-layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:2rem; }
+@media(max-width:700px){.article-layout{grid-template-columns:1fr;}}</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 6.1 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Limit paragraph line length with max-width to keep long educational text comfortable to read. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>30</span></div></article><article aria-label="Page 31 of 40" class="lesson-page" data-index="30" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 6 — Practical Website Layouts</div><h2>6.2 Dashboard Layout</h2><p>A dashboard may contain a header, sidebar, summary cards, and data tables. Use Grid for the outer shell and the card region; use Flexbox inside individual cards for labels and values.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 6.2 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Wide tables may need a dedicated horizontal scroll region rather than shrinking all columns until text is unreadable. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>31</span></div></article><article aria-label="Page 32 of 40" class="lesson-page" data-index="31" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 6 — Practical Website Layouts</div><h2>6.3 Photo and Book Gallery</h2><p>A gallery can use repeat(auto-fit,minmax()) for responsive columns. Set consistent image aspect ratios, keep captions readable, and avoid stretching low-resolution cover art.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.books { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1.25rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 6.3 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Store book cover images separately so they can be replaced without changing the page structure. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>32</span></div></article><article aria-label="Page 33 of 40" class="lesson-page" data-index="32" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 6 — Practical Website Layouts</div><h2>6.4 Form Layout</h2><p>Forms need clear labels, predictable spacing, and controls that are large enough to operate. Grid can align fields on wide screens while a single-column layout works well on phones.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+@media(max-width:650px){.form-grid{grid-template-columns:1fr;}}</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 6.4 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Never rely only on placeholder text as a field label. Provide visible labels and clear error messages. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>33</span></div></article><article aria-label="Page 34 of 40" class="lesson-page" data-index="33" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 6 — Practical Website Layouts</div><h2>6.5 Production Checklist</h2><p>Before publishing, inspect layouts at multiple widths, zoom levels, and text sizes. Check keyboard order, focus indicators, image alternatives, overflow, contrast, and reduced-motion preferences.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.button:focus-visible { outline:3px solid #174d79; outline-offset:3px; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 6.5 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Test real content: long titles, empty states, multiple paragraphs, and large data sets expose issues that sample text can hide. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>34</span></div></article><article aria-label="Page 35 of 40" class="lesson-page" data-index="34" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 7 — Advanced CSS Layout Practices</div><h2>7.1 Subgrid</h2><p>Subgrid lets nested grids align selected tracks with a parent grid. It is useful when cards need titles, descriptions, and footers to share consistent row lines across neighboring cards.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.cards { display:grid; grid-template-columns:repeat(3,1fr); }
+.card { display:grid; grid-template-rows:subgrid; grid-row:span 3; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 7.1 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Use subgrid when nested content must share the parent track geometry rather than creating independent rows. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>35</span></div></article><article aria-label="Page 36 of 40" class="lesson-page" data-index="35" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 7 — Advanced CSS Layout Practices</div><h2>7.2 Logical Properties</h2><p>Logical properties describe spacing and dimensions relative to writing direction. They support layouts in both left-to-right and right-to-left languages without hard-coding physical left and right sides.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.panel { padding-inline:1.5rem; margin-block:1rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 7.2 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Prefer margin-inline-start to margin-left when the design should adapt to different writing directions. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>36</span></div></article><article aria-label="Page 37 of 40" class="lesson-page" data-index="36" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 7 — Advanced CSS Layout Practices</div><h2>7.3 Alignment and Intrinsic Sizing</h2><p>Intrinsic sizing keywords such as min-content, max-content, and fit-content let content influence track sizes. Combining them with minmax() gives designers more control over flexible columns.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.shell { display:grid; grid-template-columns:fit-content(260px) minmax(0,1fr); }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 7.3 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Watch for long unbreakable strings, which can still force unexpected widths unless overflow is handled. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>37</span></div></article><article aria-label="Page 38 of 40" class="lesson-page" data-index="37" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 7 — Advanced CSS Layout Practices</div><h2>7.4 Motion and Reduced Motion</h2><p>Transitions can help communicate state changes, but motion should not be necessary to understand a page. Respect reduced-motion preferences for users who find animation uncomfortable.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.card { transition:transform .2s ease; }
+@media(prefers-reduced-motion:reduce){.card{transition:none;}}</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 7.4 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>Keep interactive feedback visible even when animation is disabled. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>38</span></div></article><article aria-label="Page 39 of 40" class="lesson-page" data-index="38" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 7 — Advanced CSS Layout Practices</div><h2>7.5 Maintainable CSS Architecture</h2><p>Organize styles around components and shared design tokens. Use custom properties for consistent spacing, colors, and widths. Avoid overly specific selectors and duplicate declarations.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>:root { --space:1rem; --brand:#205b82; }
+.card { padding:var(--space); border-color:var(--brand); }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 7.5 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>A small, consistent naming system makes future changes easier across multiple pages. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>39</span></div></article><article aria-label="Page 40 of 40" class="lesson-page" data-index="39" hidden=""><div class="lesson-content"><div class="eyebrow">Chapter 7 — Advanced CSS Layout Practices</div><h2>7.6 Flexbox and Grid Review</h2><p>A strong layout starts with meaningful HTML, then chooses Flexbox or Grid according to the relationship among elements. Responsiveness, accessibility, and testing are part of the layout process—not final decorations.</p><h3>Concept in practice</h3><p>A useful way to understand this feature is to begin with a small component, predict how it will appear, and then modify one CSS declaration. Browser developer tools make the effect visible immediately. The following original example demonstrates the main technique for this topic.</p><pre><code>.shell { display:grid; gap:1rem; }
+.actions { display:flex; flex-wrap:wrap; gap:.5rem; }</code></pre><h3>Reading the example</h3><p>The selector identifies the HTML elements to style. Each declaration changes a specific aspect of layout or presentation. Compare the result with the default browser layout, then adjust the values to understand how the browser distributes available space. HTML CONTENT           CSS RULES             BROWSER LAYOUT</p><figure><div class="diagram"><span>HTML CONTENT</span><b>+</b><span>CSS RULES</span><b>→</b><span>BROWSER LAYOUT</span></div><figcaption>Figure 7.6 — Layout learning model. The browser combines document structure and CSS rules to produce the displayed result. This is an original replaceable conceptual figure.</figcaption></figure><h3>Practical guidance</h3><p>For each component, ask whether it needs one-dimensional flow or shared two-dimensional alignment. Try changing the example in a local HTML file and observing the behavior at different browser widths. Check that text remains readable and that controls retain a sensible order when the layout changes.</p></div><div class="page-foot">BYTEBLOOM • CSS Styling, Layouts, Flexbox and Grid <span>40</span></div></article></div>
+<div class="pager"><button class="navbtn" id="prev" type="button">← Previous</button><span id="counter"></span><button class="navbtn" id="next" type="button">Next →</button></div>
+</main>
+</div>
+<script>
+        const pages = [...document.querySelectorAll('.lesson-page')]; let current = 0; const viewport = document.getElementById('viewport');
+        function goToPage(n) { current = Math.max(0, Math.min(pages.length - 1, n)); pages.forEach((p, i) => p.hidden = i !== current); document.getElementById('counter').textContent = `Page ${current + 1} of ${pages.length}`; document.getElementById('prev').disabled = current === 0; document.getElementById('next').disabled = current === pages.length - 1; document.querySelectorAll('[data-page]').forEach(b => b.classList.toggle('active', Number(b.dataset.page) === current)); viewport.scrollTop = 0; }
+        document.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', (event) => { event.preventDefault(); goToPage(Number(b.dataset.page)); })); document.getElementById('prev').addEventListener('click', () => goToPage(current - 1)); document.getElementById('next').addEventListener('click', () => goToPage(current + 1));
+        const reader = document.querySelector('.reader'); const toggle = document.getElementById('themeToggle'); function setTheme(dark) { reader.classList.toggle('dark-mode', dark); toggle.textContent = dark ? '☀️ Light Mode' : '🌙 Dark Mode'; localStorage.setItem('bytebloom-reader-theme', dark ? 'dark' : 'light'); } toggle.addEventListener('click', () => setTheme(!reader.classList.contains('dark-mode'))); setTheme(localStorage.getItem('bytebloom-reader-theme') === 'dark'); goToPage(0);
+    </script>
+</body>
+</html>

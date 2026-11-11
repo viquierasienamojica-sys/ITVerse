@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Year Book 04 | Information Processing Cycle</title>
+  <style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4eee4;color:#342c24}
+header{background:#493526;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+header a{color:white;text-decoration:none}
+header h2{margin:0;font-size:19px;color:white}
+.layout{display:flex;min-height:calc(100vh - 65px)}
+aside{width:295px;flex-shrink:0;background:#e8dcc9;padding:22px 15px;border-right:1px solid #cfbea7;max-height:calc(100vh - 65px);overflow-y:auto;position:sticky;top:0}
+aside h3{margin:0 0 16px}
+#toc button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover{background:#795a3e;color:white}
+main{flex:1;min-width:0;padding:28px}
+.reader{background:#fffaf2;max-width:960px;margin:auto;padding:32px;border:1px solid #dfd1bd;border-radius:12px;box-shadow:0 3px 15px #3b27120d}
+h1,h2,h3{line-height:1.35}
+h1{font-size:28px}
+h2{font-size:23px;color:#6b4c30}
+h3{font-size:19px;color:#6b4c30}
+p,li{line-height:1.75}
+figure{margin:25px auto;text-align:center}
+figure img{display:block;width:100%;max-width:750px;max-height:650px;height:auto;object-fit:contain;margin:auto;border-radius:8px}
+figcaption{font-size:12px;color:#867563;margin-top:7px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px}
+.btn{border:0;background:#6d5038;color:white;padding:12px 19px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.status{text-align:center;color:#756655;font-size:13px}
+.question{background:#f6eee1;border:1px solid #e5d7c4;padding:18px;margin:17px 0;border-radius:9px}
+.question strong{display:block;margin-bottom:12px}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}
+.option:hover{background:#ede1d0}
+.result{margin-top:18px;padding:17px;border-radius:8px;background:#eee3d1}
+.review{border-top:1px solid #d5c5ae;margin-top:12px;padding-top:10px}
+.correct{color:#267347}
+.wrong{color:#a32d2d}
+@media(max-width:850px){.layout{display:block}
+aside{width:auto;max-height:260px;position:static;border-right:0}
+main{padding:12px}
+.reader{padding:20px}
+header{flex-wrap:wrap}
+}
+  
+/* Shared First Year Reader Theme — based on Book 05 */
+html{scroll-behavior:smooth}
+body{margin:0!important;font-family:Arial,sans-serif!important;background:#f4eee4!important;color:#342c24!important;line-height:1.6}
+header{background:#493526!important;color:#fff!important;padding:16px 24px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;border:0!important;min-height:58px}
+header a{color:white!important;text-decoration:none!important}
+header h2{margin:0!important;font-size:19px!important;color:white!important}
+.layout{display:flex!important;min-height:calc(100vh - 65px)!important;align-items:stretch!important}
+aside,.sidebar{width:295px!important;flex:0 0 295px!important;background:#e8dcc9!important;padding:22px 15px!important;border-right:1px solid #cfbea7!important;max-height:calc(100vh - 65px)!important;overflow-y:auto!important;position:sticky!important;top:0!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{margin:0 0 16px!important;font-size:19px!important;color:#6b4c30!important}
+#toc button,#chapterList button,#chapterList [role=button],.sidebar button{display:block;width:100%;text-align:left;border:0;border-radius:7px;background:transparent;color:#463527;padding:11px;cursor:pointer;margin:3px 0;font-size:13px;line-height:1.35}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:#795a3e!important;color:white!important}
+main,.main{flex:1!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:28px!important;background:transparent!important}
+.reader{background:#fffaf2!important;max-width:960px!important;margin:auto!important;padding:32px!important;border:1px solid #dfd1bd!important;border-radius:12px!important;box-shadow:0 3px 15px #3b27120d!important;min-height:540px}
+.reader h1{font-size:28px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h2{font-size:23px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader h3{font-size:19px!important;line-height:1.35!important;color:#6b4c30!important}
+.reader p,.reader li{line-height:1.75!important}
+.reader figure{margin:25px auto!important;text-align:center!important;background:transparent!important;border:0!important;padding:0!important}
+.reader figure img{display:block!important;width:100%!important;max-width:750px!important;max-height:650px!important;height:auto!important;object-fit:contain!important;margin:auto!important;border-radius:8px!important}
+.reader figcaption{font-size:12px!important;color:#867563!important;margin-top:7px!important}
+.nav,.navigation,.controls{display:flex!important;justify-content:space-between!important;gap:12px!important;margin-top:32px!important}
+.btn,button.nav,.submit,.retake{border:0!important;background:#6d5038!important;color:white!important;padding:12px 19px!important;border-radius:8px!important;cursor:pointer!important;font-size:14px!important}
+.btn:disabled,button.nav:disabled{opacity:.4!important;cursor:not-allowed!important}
+.status{text-align:center!important;color:#756655!important;font-size:13px!important}
+.question{background:#f6eee1!important;border:1px solid #e5d7c4!important;padding:18px!important;margin:17px 0!important;border-radius:9px!important}
+.option{display:block;margin:8px 0;padding:8px;border-radius:6px;cursor:pointer}.option:hover{background:#ede1d0!important}
+.result{margin-top:18px!important;padding:17px!important;border-radius:8px!important;background:#eee3d1!important}
+.reader table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.reader th,.reader td{border:1px solid #d9cbb8;padding:10px;text-align:left}.reader th{background:#e8dcc9}
+@media(max-width:850px){.layout{display:block!important}aside,.sidebar{width:100%!important;max-height:260px!important;position:static!important;border-right:0!important;flex:auto!important}main,.main{padding:12px!important}.reader{padding:20px!important}header{flex-wrap:wrap!important}}
+
+
+/* BYTEBLOOM Pastel Pink Reader Theme */
+:root{--bb-p1:#FDE4F2;--bb-p2:#F9CEE7;--bb-p3:#F4B8DA;--bb-p4:#EEA1CD;--bb-p5:#E68BBE;--bb-ink:#612C4D;--bb-muted:#795B70}
+body{background:var(--bb-p1)!important;color:var(--bb-ink)!important}
+header{background:var(--bb-p5)!important;color:#52223F!important;border-bottom:1px solid var(--bb-p4)!important}
+header a,header h2,header span{color:#52223F!important}
+aside,.sidebar{background:var(--bb-p2)!important;border-color:var(--bb-p3)!important}
+aside h2,aside h3,.sidebar h2,.sidebar h3{color:var(--bb-ink)!important}
+#toc button,#chapterList button,.sidebar button{color:var(--bb-ink)!important}
+#toc button.active,#toc button:hover,#chapterList button.active,#chapterList button:hover,.sidebar button.active,.sidebar button:hover{background:var(--bb-p5)!important;color:#52223F!important}
+main,.main{background:transparent!important}
+.reader{background:#FFF8FC!important;border:1px solid var(--bb-p3)!important;box-shadow:0 8px 22px rgba(157,57,112,.08)!important}
+.reader h1,.reader h2,.reader h3,main h1,main h2,main h3{color:var(--bb-ink)!important}
+.reader p,.reader li,main p,main li{color:#57394D}
+.btn,button.nav,.navigation button,.controls button{background:var(--bb-p5)!important;color:#52223F!important;border:0!important}
+.btn:hover,button.nav:hover,.navigation button:hover,.controls button:hover{background:var(--bb-p4)!important}
+.btn:disabled,button.nav:disabled,.navigation button:disabled,.controls button:disabled{opacity:.45!important;cursor:not-allowed!important}
+.status,figcaption,.reader figcaption{color:var(--bb-muted)!important}
+.reader table th,main table th{background:var(--bb-p2)!important}
+.reader table td,.reader table th,main table td,main table th{border-color:var(--bb-p3)!important}
+.reader blockquote,main blockquote,.example{border-left-color:var(--bb-p5)!important;background:#FFF0F8!important}
+.reader figure img,main figure img{max-width:750px;height:auto;object-fit:contain}
+
+
+/* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+.reader {
+    color: #57394D !important;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.reader.dark-mode {
+    background: #25212D !important;
+    color: #F8EAF5 !important;
+    border-color: #51475D !important;
+}
+
+.reader.dark-mode #content,
+.reader.dark-mode #content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, strong, em,
+    small, div, blockquote,
+    figcaption, td, th, code
+),
+.reader.dark-mode .status {
+    color: #F8EAF5 !important;
+}
+
+.reader.dark-mode #content :is(table, td, th) {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content th {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content :is(blockquote, .example) {
+    background: #352B3C !important;
+    border-left-color: #E68BBE !important;
+}
+
+.reader.dark-mode #content hr {
+    border-color: #66556B !important;
+}
+
+.reader.dark-mode #content a {
+    color: #F4B8DA !important;
+}
+
+.reader.dark-mode #content :is(pre, code) {
+    background: #403549 !important;
+}
+
+.reader.dark-mode #content img {
+    background: transparent;
+}
+
+/* THEME BUTTON */
+
+.reader-theme-toggle {
+    background: #FDE4F2;
+    border: 1px solid #B94D8C;
+    color: #612C4D;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font: 600 13px Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reader-theme-toggle:hover {
+    background: #F4B8DA;
+}
+
+.reader-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+    <span>1st Year · Book 04</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside><h3>Table of Contents</h3><div id="toc"></div></aside>
+    <main>
+      <article class="reader">
+        <div id="content"></div>
+        <div class="nav">
+          <button class="btn" id="prev">← Previous</button>
+          <button class="btn" id="next">Next →</button>
+        </div>
+        <p class="status" id="status"></p>
+      </article>
+    </main>
+  </div>
+  <script>
+const LESSON_PAGES = [
+  {
+    "title": "Book Introduction",
+    "html": "<h1>INFORMATION PROCESSING CYCLE</h1><p>A Complete Beginner’s Guide to Input, Processing, Storage, Output, and Communication</p><h2>Book Introduction</h2>\n<p>Every computer, from a smartphone to a large server, handles information through five connected functions: input, processing, storage, output, and communication. This E-Book explains each stage in simple language, using examples from the supplied lesson.</p>\n<h2>Learning Objectives</h2>\n<p>• Identify the five stages of the information processing cycle.</p>\n<p>• Explain how data enters and is processed by a computer.</p>\n<p>• Describe temporary and longer-term storage.</p>\n<p>• Identify common output devices and explain their roles.</p>\n<p>• Describe communication between users, computers, and networks.</p>\n<p>• Trace the five stages through a WhatsApp message example.</p>\n<h2>Table of Contents</h2>\n<h2>Chapter 1: Understanding the Information Processing Cycle</h2>\n<h2>Chapter 2: Input: Entering Data into the Computer</h2>\n<h2>Chapter 3: Processing: Turning Data into Useful Results</h2>\n<h2>Chapter 4: Storage: Keeping Information</h2>\n<h2>Chapter 5: Output: Presenting Information</h2>\n<h2>Chapter 6: Communication: Connecting Users and Computers</h2>\n<h2>Chapter 7: Practical Example: Sending a WhatsApp Message</h2>\n<h2>Practical Learning Activities</h2>\n<p>Final Assessment (20 Questions) Chapter Quiz Answer Keys Final Assessment Answers and Explanations</p>\n<h2>Glossary</h2>\n<h2>References and Conclusion</h2>"
+  },
+  {
+    "title": "Chapter 1: Understanding the Information Processing Cycle",
+    "html": "<h2>CHAPTER 1: UNDERSTANDING THE INFORMATION PROCESSING CYCLE</h2>\n<h3>What Is the Information Processing Cycle?</h3>\n<p>The information processing cycle describes how a computer receives data, works with that data, stores information, presents results, and communicates with users or other computers. The source lesson identifies five main stages: input, processing, storage, output, and communication.</p>\n<h3>Why the Five Stages Matter</h3>\n<p>A smartphone and a powerful server may look different, but both use the same basic ideas. Devices work together to transform raw data into useful information. The stages are connected and may occur very quickly, sometimes almost at the same time.</p>\n<h3>A Simple Example</h3>\n<p>When a student types a letter, the keyboard provides input. The computer processes the keystroke, may hold it temporarily in memory, and displays the letter on the screen. If the document is saved, it is stored for later use. When shared online, communication connects the computer to another device.</p><figure><img src=\"assets/firstyear4-figure-01.png\" alt=\"Information processing cycle showing input, processing, output, communication and storage\" loading=\"lazy\"><figcaption>Figure 1.1: The five connected stages of the information processing cycle (original source diagram).</figcaption></figure>"
+  },
+  {
+    "title": "Chapter 2: Input: Entering Data into the Computer",
+    "html": "<h2>CHAPTER 2: INPUT: ENTERING DATA INTO THE COMPUTER</h2>\n<h3>What Is Input?</h3>\n<p>Input is the stage where data enters a computer. People can type, touch a screen, speak, or use other input devices. The computer represents incoming information digitally, using binary values (1s and 0s).</p>\n<h3>Common Input Devices</h3>\n<p>A keyboard enters letters and numbers. A touchscreen accepts taps and gestures. A microphone captures spoken words or sounds. These examples are specifically discussed in the original lesson.</p>\n<h3>From Actions to Data</h3>\n<p>When a user presses a key, the device sends a signal that the computer interprets. The resulting data can then be processed and displayed. For speech input, a microphone captures sound that software can process.</p>\n<h3>Everyday Example</h3>\n<p>Typing a search term in a web browser is an input action. Speaking a voice message into a smartphone is another input action.</p>"
+  },
+  {
+    "title": "Chapter 3: Processing: Turning Data into Useful Results",
+    "html": "<h2>CHAPTER 3: PROCESSING: TURNING DATA INTO USEFUL RESULTS</h2>\n<h3>What Is Processing?</h3>\n<p>Processing is the stage in which the computer works with the entered data. The central processing unit (CPU) executes instructions and performs calculations needed for computer tasks.</p>\n<h3>The Role of the CPU</h3>\n<p>The CPU works with memory to obtain instructions and manipulate data. For example, after a key is pressed, the computer processes that input so the correct character can appear on the screen.</p>\n<h3>Processing and Display</h3>\n<p>The original lesson describes a visual example where information is represented as pixels and displayed on a screen. This is one way processing produces a useful result; other results may be sound, text, or calculations.</p>\n<h3>Why Processing Is Fast</h3>\n<p>Modern computers can perform many operations in fractions of a second. This makes typing, browsing, and using applications feel almost immediate.</p>"
+  },
+  {
+    "title": "Chapter 4: Storage: Keeping Information",
+    "html": "<h2>CHAPTER 4: STORAGE: KEEPING INFORMATION</h2>\n<h3>What Is Storage?</h3>\n<p>Storage is the stage where a computer keeps data and information. The source explains a common sequence: data is placed in temporary memory (RAM), and when the user saves it, the information is written to a disk drive.</p>\n<h3>Temporary Storage: RAM</h3>\n<p>Random-access memory (RAM) holds working data while a computer is using it. In the lesson, the CPU writes data to RAM before it is saved to longer-term storage.</p>\n<h3>Saving to a Drive</h3>\n<p>When the user gives a save command, a program can write data to a disk drive. The file is stored in a default location or a location selected by the user, so it can be opened later.</p>\n<h3>External Storage</h3>\n<p>The source also mentions USB drives and external hard drives. These devices can hold files outside the computer’s built-in storage.</p>\n<h3>Example</h3>\n<p>A student types a report, saves it in a Documents folder, and later opens the same file. This illustrates the storage stage.</p>"
+  },
+  {
+    "title": "Chapter 5: Output: Presenting Information",
+    "html": "<h2>CHAPTER 5: OUTPUT: PRESENTING INFORMATION</h2>\n<h3>What Is Output?</h3>\n<p>Output is the stage where processed information is presented in a form that a person can use. The source describes visual output, printed output, and audio output.</p>\n<h3>Screens and Visual Output</h3>\n<p>A screen can display letters, pictures, and other visual information. In the original lesson, processed pixel information is displayed so the user can read or view it.</p>\n<h3>Printers and Audio Devices</h3>\n<p>A printer produces information on paper. Audio output devices turn digital information into sounds such as music or speech. Video devices also present visual results.</p>\n<h3>From Data to Information</h3>\n<p>Output makes processed data understandable. For example, letters in a document or the sound of a song are forms of information people can interpret.</p>"
+  },
+  {
+    "title": "Chapter 6: Communication: Connecting Users and Computers",
+    "html": "<h2>CHAPTER 6: COMMUNICATION: CONNECTING USERS AND COMPUTERS</h2>\n<h3>What Is Communication?</h3>\n<p>Communication links the information processing stages and allows information to move between a user and a computer or between computers. The source highlights the near-immediate relationship between input and output.</p>\n<h3>Communication with the User</h3>\n<p>When a person types a letter and sees it appear on the screen, input, processing, and output work together. This fast exchange is one form of interaction between the user and the computer.</p>\n<h3>Communication Across Networks</h3>\n<p>Computers can exchange information across networks. The original lesson describes the internet as a large network of connected computers and mentions company intranets and servers.</p>\n<h3>Web Browsing Example</h3>\n<p>When someone opens a web browser, the computer can communicate with other computers to request and receive information. The result is then presented to the user.</p>\n<h3>Why Communication Matters</h3>\n<p>Communication makes online messages, shared files, websites, and connected services possible.</p>"
+  },
+  {
+    "title": "Chapter 7: Practical Example: Sending a WhatsApp Message",
+    "html": "<h2>CHAPTER 7: PRACTICAL EXAMPLE: SENDING A WHATSAPP MESSAGE</h2>\n<h3>A Real-World Processing Cycle</h3>\n<p>The original source uses sending a WhatsApp message from a smartphone to show how the stages work together. A user opens the app, enters a message using the touch keyboard, and presses Send.</p>\n<h3>Input</h3>\n<p>Typing the message on the touchscreen provides input. The phone captures the characters that the user enters.</p>\n<h3>Processing</h3>\n<p>The smartphone and app process the message and prepare it for delivery. The conversation screen is updated to show the message.</p>\n<h3>Communication</h3>\n<p>The app communicates with servers to transmit the message. The message is delivered through connected systems to the intended recipient.</p>\n<h3>Storage</h3>\n<p>The source explains that conversation records can be stored on the sender’s phone, the recipient’s phone, and WhatsApp servers. Exact storage behavior may vary depending on the service and settings.</p>\n<h3>Output</h3>\n<p>The message appears in the conversation. The user can read it on the screen. This example shows that several stages can happen together.</p>\n<h3>Learning Takeaway</h3>\n<p>The information processing cycle is not limited to desktop computers. Smartphones and online messaging services use the same fundamental principles.</p>"
+  },
+  {
+    "title": "Practical Learning Activities",
+    "html": "<h2>PRACTICAL LEARNING ACTIVITIES</h2>\n<h3>Activity 1: Five-Stage Identification</h3>\n<p>Write the five stages of the information processing cycle. Give a one-sentence definition and one everyday example for each.</p>\n<h3>Activity 2: Input Device Observation</h3>\n<p>Identify three input devices around you. Explain what data each device sends to the computer.</p>\n<h3>Activity 3: Saving a Document</h3>\n<p>Create a short text document. Explain what happens in RAM and what happens when you save it to a drive.</p>\n<h3>Activity 4: Output Devices</h3>\n<p>Compare a monitor, printer, and speaker. Explain what information each presents to users.</p>\n<h3>Activity 5: Network Communication</h3>\n<p>Describe how a web browser communicates with other computers when you open a website.</p>\n<h3>Activity 6: WhatsApp Cycle</h3>\n<p>Trace a WhatsApp message from typing to sending, viewing, and storage. Label each stage of the cycle.</p>\n<h3>Activity 7: Reflection</h3>\n<p>Write five to seven sentences about why the five information processing stages are important in everyday life.</p>"
+  },
+  {
+    "title": "Glossary",
+    "html": "<h1>Glossary</h1><p>Binary code: A way of representing computer information using 0s and 1s. Communication: Exchange of information between a user and computer or across computers. CPU: Central Processing Unit; executes instructions and processes data. Data: Raw facts or values entered into a computer. Disk drive: A device that stores files for later use. Information: Data presented in a meaningful or useful form. Input: Entering data into a computer. Input device: Hardware such as a keyboard, touchscreen, or microphone used to enter data. Internet: A worldwide network of connected computer networks. Output: Presentation of processed information to a user. Pixel: A small element of a digital image on a display. Processing: Computer operations that transform or work with data. RAM: Random-access memory used for temporary working data. Server: A computer or service that provides resources to other computers. Storage: Keeping data and information for use later. USB drive: A removable device used to store files.</p>"
+  },
+  {
+    "title": "References",
+    "html": "<h1>References</h1><h3>Primary source: Information processing cycle, supplied four-page learning material (1stbook4.pdf).</h3>\n<h3>Source reference provided in the original material: Siyavula, Computer Applications Technology,</h3>\n<p>Grade 11, General Concepts of Computing. https://www.siyavula.com/read/za/computer-applications- technology/grade-11/general-concepts-of-computing/01-general-concepts-of-computing</p>"
+  },
+  {
+    "title": "Conclusion",
+    "html": "<h1>Conclusion</h1><p>The five stages of the information processing cycle—input, processing, storage, output, and communication—work together in many everyday computing tasks. Whether typing a document, saving a file, browsing the internet, or sending a message, computers receive data, process it, store it, present useful information, and communicate with connected systems. Understanding these stages provides a foundation for learning about computer hardware, software, and networks.</p>"
+  }
+];
+
+const toc = document.getElementById('toc');
+const content = document.getElementById('content');
+const prev = document.getElementById('prev') || document.getElementById('previous');
+const next = document.getElementById('next');
+const status = document.getElementById('status');
+const heading = document.getElementById('heading');
+let current = 0;
+function render() {
+  const page = LESSON_PAGES[current];
+  content.innerHTML = page.html;
+  if (heading) heading.textContent = page.title;
+  toc.replaceChildren();
+  LESSON_PAGES.forEach((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = item.title;
+    if (i === current) b.classList.add('active');
+    b.addEventListener('click', () => go(i));
+    toc.appendChild(b);
+  });
+  prev.disabled = current === 0;
+  next.disabled = current === LESSON_PAGES.length - 1;
+  if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+}
+function go(i) {
+  if (i < 0 || i >= LESSON_PAGES.length) return;
+  current = i;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.addEventListener('click', () => go(current-1));
+next.addEventListener('click', () => go(current+1));
+render();
+
+/* BYTEBLOOM - LIGHT AND DARK MODE */
+
+(function () {
+    const toggle = document.getElementById("themeToggle");
+    const reader = document.querySelector(".reader");
+
+    if (!toggle || !reader) return;
+
+    const key = "bytebloom-reader-theme";
+
+    function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    let saved = "light";
+
+    try {
+        saved = localStorage.getItem(key) || "light";
+    } catch (_) {}
+
+    setTheme(saved);
+
+    toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
+
+        setTheme(mode);
+
+        try {
+            localStorage.setItem(key, mode);
+        } catch (_) {}
+    });
+})();
+
+</script>
+</body>
+</html>

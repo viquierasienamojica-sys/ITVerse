@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Year Book 06 | Introduction to Operating Systems</title>
+  <style>
+    :root {
+      --brown: #704b34;
+      --brown2: #9a7054;
+      --cream: #f9f3e9;
+      --ink: #352b25;
+      --border: #e4d6c7
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.7
+    }
+
+    header {
+      padding: 18px 26px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px
+    }
+
+    a {
+      color: var(--brown)
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: calc(100vh - 80px)
+    }
+
+    aside {
+      background: #efe4d5;
+      padding: 22px 16px;
+      border-right: 1px solid var(--border)
+    }
+
+    aside h2 {
+      font-size: 17px;
+      margin: 0 0 15px
+    }
+
+    #toc {
+      display: flex;
+      flex-direction: column;
+      gap: 5px
+    }
+
+    #toc button {
+      border: 0;
+      background: transparent;
+      text-align: left;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #543c2e
+    }
+
+    #toc button.active,
+    #toc button:hover {
+      background: #d9c3ad
+    }
+
+    main {
+      width: min(900px, 100%);
+      margin: 0 auto;
+      padding: 36px 34px 80px
+    }
+
+    h1 {
+      font-size: clamp(27px, 4vw, 43px);
+      line-height: 1.2;
+      color: var(--brown)
+    }
+
+    h2,
+    h3 {
+      color: var(--brown)
+    }
+
+    h3 {
+      margin: 24px 0 8px
+    }
+
+    p {
+      margin: 12px 0
+    }
+
+    figure {
+      margin: 20px 0;
+      background: #fff;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border)
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      max-height: 440px;
+      object-fit: contain
+    }
+
+    figcaption {
+      font-size: 13px;
+      color: #736052;
+      text-align: center
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 38px
+    }
+
+    button.nav,
+    .submit,
+    .retake {
+      background: var(--brown);
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 15px
+    }
+
+    button:disabled {
+      opacity: .45;
+      cursor: not-allowed
+    }
+
+    .question {
+      background: #fff;
+      padding: 18px 20px;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px
+    }
+
+    .question strong {
+      display: block;
+      margin-bottom: 9px
+    }
+
+    .option {
+      display: block;
+      margin: 7px 0;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer
+    }
+
+    .option:hover {
+      background: #f7efe6
+    }
+
+    .result {
+      background: #fff4e5;
+      border-left: 5px solid var(--brown);
+      padding: 18px;
+      margin-top: 20px
+    }
+
+    .correct {
+      color: #206b42
+    }
+
+    .wrong {
+      color: #b33434
+    }
+
+    .eyebrow {
+      color: #967358;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: bold
+    }
+
+    @media(max-width:760px) {
+      .layout {
+        grid-template-columns: 1fr
+      }
+
+      aside {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+        max-height: 230px;
+        overflow: auto
+      }
+
+      main {
+        padding: 22px 18px 55px
+      }
+
+      header {
+        flex-wrap: wrap
+      }
+    }
+
+    /* Shared First Year Reader Theme — based on Book 05 */
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0 !important;
+      font-family: Arial, sans-serif !important;
+      background: #f4eee4 !important;
+      color: #342c24 !important;
+      line-height: 1.6
+    }
+
+    header {
+      background: #493526 !important;
+      color: #fff !important;
+      padding: 16px 24px !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 15px !important;
+      border: 0 !important;
+      min-height: 58px
+    }
+
+    header a {
+      color: white !important;
+      text-decoration: none !important
+    }
+
+    header h2 {
+      margin: 0 !important;
+      font-size: 19px !important;
+      color: white !important
+    }
+
+    .layout {
+      display: flex !important;
+      min-height: calc(100vh - 65px) !important;
+      align-items: stretch !important
+    }
+
+    aside,
+    .sidebar {
+      width: 295px !important;
+      flex: 0 0 295px !important;
+      background: #e8dcc9 !important;
+      padding: 22px 15px !important;
+      border-right: 1px solid #cfbea7 !important;
+      max-height: calc(100vh - 65px) !important;
+      overflow-y: auto !important;
+      position: sticky !important;
+      top: 0 !important
+    }
+
+    aside h2,
+    aside h3,
+    .sidebar h2,
+    .sidebar h3 {
+      margin: 0 0 16px !important;
+      font-size: 19px !important;
+      color: #6b4c30 !important
+    }
+
+    #toc button,
+    #chapterList button,
+    #chapterList [role=button],
+    .sidebar button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: #463527;
+      padding: 11px;
+      cursor: pointer;
+      margin: 3px 0;
+      font-size: 13px;
+      line-height: 1.35
+    }
+
+    #toc button.active,
+    #toc button:hover,
+    #chapterList button.active,
+    #chapterList button:hover,
+    .sidebar button.active,
+    .sidebar button:hover {
+      background: #795a3e !important;
+      color: white !important
+    }
+
+    main,
+    .main {
+      flex: 1 !important;
+      width: auto !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      padding: 28px !important;
+      background: transparent !important
+    }
+
+    .reader {
+      background: #fffaf2 !important;
+      max-width: 960px !important;
+      margin: auto !important;
+      padding: 32px !important;
+      border: 1px solid #dfd1bd !important;
+      border-radius: 12px !important;
+      box-shadow: 0 3px 15px #3b27120d !important;
+      min-height: 540px
+    }
+
+    .reader h1 {
+      font-size: 28px !important;
+      line-height: 1.35 !important;
+      color: #6b4c30 !important
+    }
+
+    .reader h2 {
+      font-size: 23px !important;
+      line-height: 1.35 !important;
+      color: #6b4c30 !important
+    }
+
+    .reader h3 {
+      font-size: 19px !important;
+      line-height: 1.35 !important;
+      color: #6b4c30 !important
+    }
+
+    .reader p,
+    .reader li {
+      line-height: 1.75 !important
+    }
+
+    .reader figure {
+      margin: 25px auto !important;
+      text-align: center !important;
+      background: transparent !important;
+      border: 0 !important;
+      padding: 0 !important
+    }
+
+    .reader figure img {
+      display: block !important;
+      width: 100% !important;
+      max-width: 750px !important;
+      max-height: 650px !important;
+      height: auto !important;
+      object-fit: contain !important;
+      margin: auto !important;
+      border-radius: 8px !important
+    }
+
+    .reader figcaption {
+      font-size: 12px !important;
+      color: #867563 !important;
+      margin-top: 7px !important
+    }
+
+    .nav,
+    .navigation,
+    .controls {
+      display: flex !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      margin-top: 32px !important
+    }
+
+    .btn,
+    button.nav,
+    .submit,
+    .retake {
+      border: 0 !important;
+      background: #6d5038 !important;
+      color: white !important;
+      padding: 12px 19px !important;
+      border-radius: 8px !important;
+      cursor: pointer !important;
+      font-size: 14px !important
+    }
+
+    .btn:disabled,
+    button.nav:disabled {
+      opacity: .4 !important;
+      cursor: not-allowed !important
+    }
+
+    .status {
+      text-align: center !important;
+      color: #756655 !important;
+      font-size: 13px !important
+    }
+
+    .question {
+      background: #f6eee1 !important;
+      border: 1px solid #e5d7c4 !important;
+      padding: 18px !important;
+      margin: 17px 0 !important;
+      border-radius: 9px !important
+    }
+
+    .option {
+      display: block;
+      margin: 8px 0;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer
+    }
+
+    .option:hover {
+      background: #ede1d0 !important
+    }
+
+    .result {
+      margin-top: 18px !important;
+      padding: 17px !important;
+      border-radius: 8px !important;
+      background: #eee3d1 !important
+    }
+
+    .reader table {
+      border-collapse: collapse;
+      width: 100%;
+      display: block;
+      overflow-x: auto
+    }
+
+    .reader th,
+    .reader td {
+      border: 1px solid #d9cbb8;
+      padding: 10px;
+      text-align: left
+    }
+
+    .reader th {
+      background: #e8dcc9
+    }
+
+    @media(max-width:850px) {
+      .layout {
+        display: block !important
+      }
+
+      aside,
+      .sidebar {
+        width: 100% !important;
+        max-height: 260px !important;
+        position: static !important;
+        border-right: 0 !important;
+        flex: auto !important
+      }
+
+      main,
+      .main {
+        padding: 12px !important
+      }
+
+      .reader {
+        padding: 20px !important
+      }
+
+      header {
+        flex-wrap: wrap !important
+      }
+    }
+
+
+    /* BYTEBLOOM Pastel Pink Reader Theme */
+    :root {
+      --bb-p1: #FDE4F2;
+      --bb-p2: #F9CEE7;
+      --bb-p3: #F4B8DA;
+      --bb-p4: #EEA1CD;
+      --bb-p5: #E68BBE;
+      --bb-ink: #612C4D;
+      --bb-muted: #795B70
+    }
+
+    body {
+      background: var(--bb-p1) !important;
+      color: var(--bb-ink) !important
+    }
+
+    header {
+      background: var(--bb-p5) !important;
+      color: #52223F !important;
+      border-bottom: 1px solid var(--bb-p4) !important
+    }
+
+    header a,
+    header h2,
+    header span {
+      color: #52223F !important
+    }
+
+    aside,
+    .sidebar {
+      background: var(--bb-p2) !important;
+      border-color: var(--bb-p3) !important
+    }
+
+    aside h2,
+    aside h3,
+    .sidebar h2,
+    .sidebar h3 {
+      color: var(--bb-ink) !important
+    }
+
+    #toc button,
+    #chapterList button,
+    .sidebar button {
+      color: var(--bb-ink) !important
+    }
+
+    #toc button.active,
+    #toc button:hover,
+    #chapterList button.active,
+    #chapterList button:hover,
+    .sidebar button.active,
+    .sidebar button:hover {
+      background: var(--bb-p5) !important;
+      color: #52223F !important
+    }
+
+    main,
+    .main {
+      background: transparent !important
+    }
+
+    .reader {
+      background: #FFF8FC !important;
+      border: 1px solid var(--bb-p3) !important;
+      box-shadow: 0 8px 22px rgba(157, 57, 112, .08) !important
+    }
+
+    .reader h1,
+    .reader h2,
+    .reader h3,
+    main h1,
+    main h2,
+    main h3 {
+      color: var(--bb-ink) !important
+    }
+
+    .reader p,
+    .reader li,
+    main p,
+    main li {
+      color: #57394D
+    }
+
+    .btn,
+    button.nav,
+    .navigation button,
+    .controls button {
+      background: var(--bb-p5) !important;
+      color: #52223F !important;
+      border: 0 !important
+    }
+
+    .btn:hover,
+    button.nav:hover,
+    .navigation button:hover,
+    .controls button:hover {
+      background: var(--bb-p4) !important
+    }
+
+    .btn:disabled,
+    button.nav:disabled,
+    .navigation button:disabled,
+    .controls button:disabled {
+      opacity: .45 !important;
+      cursor: not-allowed !important
+    }
+
+    .status,
+    figcaption,
+    .reader figcaption {
+      color: var(--bb-muted) !important
+    }
+
+    .reader table th,
+    main table th {
+      background: var(--bb-p2) !important
+    }
+
+    .reader table td,
+    .reader table th,
+    main table td,
+    main table th {
+      border-color: var(--bb-p3) !important
+    }
+
+    .reader blockquote,
+    main blockquote,
+    .example {
+      border-left-color: var(--bb-p5) !important;
+      background: #FFF0F8 !important
+    }
+
+    .reader figure img,
+    main figure img {
+      max-width: 750px;
+      height: auto;
+      object-fit: contain
+    }
+
+
+    /* LIGHT AND DARK MODE - LESSON CONTENT ONLY */
+
+    .reader {
+      color: #57394D !important;
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    .reader.dark-mode {
+      background: #25212D !important;
+      color: #F8EAF5 !important;
+      border-color: #51475D !important;
+    }
+
+    .reader.dark-mode #content,
+    .reader.dark-mode #content :is(h1, h2, h3, h4, h5, h6,
+      p, li, span, strong, em,
+      small, div, blockquote,
+      figcaption, td, th, code),
+    .reader.dark-mode .status {
+      color: #F8EAF5 !important;
+    }
+
+    .reader.dark-mode #content :is(table, td, th) {
+      border-color: #66556B !important;
+    }
+
+    .reader.dark-mode #content th {
+      background: #403549 !important;
+    }
+
+    .reader.dark-mode #content :is(blockquote, .example) {
+      background: #352B3C !important;
+      border-left-color: #E68BBE !important;
+    }
+
+    .reader.dark-mode #content hr {
+      border-color: #66556B !important;
+    }
+
+    .reader.dark-mode #content a {
+      color: #F4B8DA !important;
+    }
+
+    .reader.dark-mode #content :is(pre, code) {
+      background: #403549 !important;
+    }
+
+    .reader.dark-mode #content img {
+      background: transparent;
+    }
+
+    /* THEME BUTTON */
+
+    .reader-theme-toggle {
+      background: #FDE4F2;
+      border: 1px solid #B94D8C;
+      color: #612C4D;
+      border-radius: 9px;
+      padding: 9px 13px;
+      font: 600 13px Arial, sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .reader-theme-toggle:hover {
+      background: #F4B8DA;
+    }
+
+    .reader-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .reader-header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header><a href="library.html">← Back to Library</a>
+    <h2>BYTEBLOOM</h2>
+    <div class="reader-header-actions">
+    <span>1st Year · Book 06</span>
+
+    <button type="button" id="themeToggle"
+            class="reader-theme-toggle"
+            aria-pressed="false">
+        🌙 Dark Mode
+    </button>
+</div>
+  </header>
+  <div class="layout">
+    <aside>
+      <h2>Table of Contents</h2>
+      <nav id="toc" aria-label="Book sections"></nav>
+    </aside>
+    <main>
+      <article class="reader">
+        <p class="eyebrow">Introduction to Computing</p>
+        <h1 id="heading">Introduction to Operating Systems</h1>
+        <div id="content"></div>
+        <div class="controls"><button class="nav" id="previous">← Previous</button><button class="nav" id="next">Next
+            →</button></div>
+      </article>
+    </main>
+  </div>
+  <script>
+    const LESSON_PAGES = [
+      {
+        "title": "Introduction",
+        "html": "<figure><img src=\"assets/firstyear6-figure-01.png\" alt=\"User application operating system hardware diagram\"><figcaption>Original diagram from PDF page 1: user, application, operating system, and hardware.</figcaption></figure><p>An operating system makes it possible for people and programs to use computer hardware efficiently. This book expands the supplied eight-page lesson into seven beginner-friendly chapters, with practical examples, short activities, and assessments.</p>\n<h3>Learning Objectives</h3>\n<p></p><ul><li>Explain the role of an operating system and kernel.</li><li>Distinguish hardware, system programs, and applications.</li><li>Compare GUI, CLI, and shell.</li><li>Identify primary and secondary OS goals.</li><li>Describe process, memory, file, device, and security management.</li><li>Recognize common operating systems.</li><li>Compare operating systems using cost, usability, compatibility, and security.</li></ul><p></p>"
+      },
+      {
+        "title": "Chapter 1: Understanding Operating Systems",
+        "html": "<h3>What Is an Operating System?</h3>\n<p>An operating system (OS) is system software that acts as an intermediary between computer hardware and the user or application programs. It provides an environment where programs can run and where hardware can be used in an organized way.</p>\n<h3>How the Layers Work</h3>\n<p>A person uses an application, such as a text editor. The application requests services from the operating system. The OS coordinates with hardware such as the CPU, memory, and storage devices. The results return to the application and then to the user. The Kernel The kernel is the core part of the OS. It stays active while the system is running and manages essential resources and services. For example, it helps decide which process uses the processor and which memory areas are available.</p>\n<h3>Everyday Example</h3>\n<p>When you open a document, the application asks the OS to access the file. The OS works with storage and memory, then the application displays the document.</p>\n<h3>Chapter Summary</h3>\n<p>Key ideas: what is an operating system?, how the layers work, the kernel, everyday example.</p>"
+      },
+      {
+        "title": "Chapter 2: Computer System Components And Programs",
+        "html": "<figure><img src=\"assets/firstyear6-figure-02.png\" alt=\"Computer system layers diagram\"><figcaption>Original diagram from PDF page 5: users, programs, OS, and hardware.</figcaption></figure><p>Original illustration: multiple users, system and application programs, operating system, and hardware.</p>\n<h3>Four Major Parts</h3>\n<p>A general-purpose computer system includes hardware, an operating system, system programs, and application programs. Each has a different responsibility, but all work together.</p>\n<h3>Hardware</h3>\n<p>Hardware includes the CPU, main memory, storage devices, keyboards, monitors, printers, and other input/output devices. Hardware carries out physical operations.</p>\n<h3>System Programs</h3>\n<p>System programs help manage or support computer use. Examples from the source include compilers, assemblers, loaders, editors, utilities, and command interpreters.</p>\n<h3>Application Programs</h3>\n<p>Applications perform tasks for users, such as writing reports, viewing websites, and working with databases. They rely on OS services to use hardware.</p>\n<h3>Example</h3>\n<p>A student types a report in a word processor (application). The OS coordinates keyboard input, memory use, and saving to storage (hardware).</p>\n<h3>Chapter Summary</h3>\n<p>Key ideas: four major parts, hardware, system programs, application programs.</p>"
+      },
+      {
+        "title": "Chapter 3: User Interaction: Gui, Cli, And Shell",
+        "html": "<h3>How Users Interact</h3>\n<p>An operating system provides ways to interact with the computer. Two common interfaces are the graphical user interface (GUI) and command-line interface (CLI).</p>\n<h3>Graphical User Interface</h3>\n<p>A GUI uses windows, icons, menus, and pointers. Examples include the Windows desktop and macOS Finder. Users can click or tap to perform actions.</p>\n<h3>Command-Line Interface</h3>\n<p>A CLI accepts typed commands. Examples include Bash and PowerShell. A command may open a folder, list files, or run a program.</p>\n<h3>Shell and Kernel</h3>\n<p>A shell interprets user commands and invokes appropriate programs or system services. The kernel handles lower-level operations such as managing CPU time, memory, and devices. A shell is not the same as the kernel.</p>\n<h3>Choosing an Interface</h3>\n<p>A GUI may be easier for beginners, while a CLI is useful for automation and precise commands. Many operating systems support both.</p>\n<h3>Chapter Summary</h3>\n<p>Key ideas: how users interact, graphical user interface, command-line interface, shell and kernel.</p>"
+      },
+      {
+        "title": "Chapter 4: Goals Of An Operating System",
+        "html": "<h3>Primary Goals</h3>\n<p>The source describes user convenience, program execution, resource management, and security as primary goals of an OS.</p>\n<h3>Convenience and Execution</h3>\n<p>The OS should make it practical to run programs. It offers interfaces and services so users do not need to control every hardware operation directly.</p>\n<h3>Resource Management</h3>\n<p>CPU time, memory, disk space, and input/output devices are shared resources. The OS allocates them to processes and coordinates their use.</p>\n<h3>Security</h3>\n<p>An OS helps protect files and services using authentication, authorization, access controls, and isolation. Security also depends on updates and responsible user behavior.</p>\n<h3>Secondary Goals</h3>\n<p>Efficient resource utilization and reliability are additional goals. A reliable OS aims to handle errors gracefully and keep the computer stable.</p>\n<h3>Chapter Summary</h3>\n<p>Key ideas: primary goals, convenience and execution, resource management, security.</p>"
+      },
+      {
+        "title": "Chapter 5: Core Os Functions",
+        "html": "<h3>Process and Multitasking Management</h3>\n<p>A process is a running program. The OS schedules processor time among processes so several tasks can make progress. Multitasking does not mean every process always runs on a separate CPU.</p>\n<h3>Memory Management</h3>\n<p>The OS tracks and allocates memory to programs, helping prevent unrelated processes from interfering with one another.</p>\n<h3>File and Storage Management</h3>\n<p>The OS organizes stored information into files and folders, supports saving and opening files, and controls access to storage.</p>\n<h3>Device and I/O Management</h3>\n<p>The OS coordinates keyboards, monitors, printers, storage drives, and other devices. Device drivers help the OS communicate with particular hardware.</p>\n<h3>Security and Isolation</h3>\n<p>The OS uses accounts, permissions, and isolation mechanisms to help keep applications and user data protected.</p>\n<h3>Chapter Summary</h3>\n<p>Key ideas: process and multitasking management, memory management, file and storage management, device and i/o management.</p>"
+      },
+      {
+        "title": "Chapter 6: Common Operating Systems",
+        "html": "<h3>Microsoft Windows</h3>\n<p>Windows is developed by Microsoft and is widely used on personal computers, in businesses, and for gaming.</p>\n<h3>Apple macOS</h3>\n<p>macOS is developed by Apple and used on supported Mac computers, including for everyday work and creative tasks.</p>\n<h3>Linux</h3>\n<p>Linux-based operating systems are developed by many communities and organizations. They are common in servers, development environments, embedded systems, and desktop computers.</p>\n<h3>Unix and Unix-like Systems</h3>\n<p>Unix originated at AT&amp;T Bell Labs. Unix and Unix-like systems are used in research, servers, workstations, and other professional settings.</p>\n<h3>What They Share</h3>\n<p>Although interfaces and supported software differ, these systems provide core OS services such as running applications, managing files, and coordinating hardware.</p>\n<h3>Chapter Summary</h3>\n<p>Key ideas: microsoft windows, apple macos, linux, unix and unix-like systems.</p>"
+      },
+      {
+        "title": "Chapter 7: Choosing The Right Operating System",
+        "html": "<h3>Cost</h3>\n<p>Some Linux distributions can be used without a license fee, while other operating systems or editions may have licensing costs or hardware requirements.</p>\n<h3>Ease of Use</h3>\n<p>Choose an interface that fits the user&#x27;s skills and needs. Familiarity, accessibility, and available learning materials can make an OS easier to use.</p>\n<h3>Compatibility</h3>\n<p>Check that important applications, printers, drivers, and other hardware work with the operating system before choosing it.</p>\n<h3>Security</h3>\n<p>Look for regular security updates, account protection, permissions, and appropriate configuration. No operating system is automatically safe without proper maintenance.</p>\n<h3>Practical Comparison</h3>\n<p>A student may choose an OS that runs required school applications. A developer may prefer one that supports needed programming tools. An organization may prioritize compatibility, support, and security.</p>\n<h3>Decision Checklist</h3>\n<p>Identify your essential applications, hardware, budget, support needs, and security requirements. Compare choices using those criteria rather than choosing by popularity alone.</p>\n<h3>Chapter Summary</h3>\n<p>Key ideas: cost, ease of use, compatibility, security.</p>"
+      },
+      {
+        "title": "Practical Learning Activities",
+        "html": "<p>Activity 1 Draw the four layers: user, application, operating system, and hardware. Describe how a document is opened.</p><p>Activity 2 List five pieces of hardware and five application or system programs. Explain one difference.</p><p>Activity 3 Compare GUI and CLI. Give two tasks you could perform using either interface.</p><p>Activity 4 Describe how an OS can make a computer convenient, secure, and reliable.</p><p>Activity 5 Open a folder and create a text file. Identify the OS functions involved.</p><p>Activity 6 Research the OS on a computer you use. Identify its developer and three typical uses.</p><p>Activity 7 Create a simple comparison table for two operating systems using cost, usability, compatibility, and security.</p>"
+      },
+      {
+        "title": "Glossary",
+        "html": "<p>Application program: Software that performs a task for a user. Authentication: Checking a user&#x27;s identity. CLI: Command-line interface; a way to interact using typed commands. CPU: Central processing unit; executes instructions. Device driver: Software that helps an OS communicate with hardware. File system: A method of organizing and managing stored files. GUI: Graphical user interface; uses visual elements such as icons and windows. Hardware: Physical parts of a computer. Kernel: Core OS component that manages low-level resources. Linux: A family of operating systems built around the Linux kernel. Memory management: Allocating and tracking memory used by programs. Multitasking: Managing multiple tasks so they can make progress. Operating system: System software that manages hardware and provides services to programs. Process: A program that is currently running. Resource management: Coordinating use of CPU, memory, storage, and devices. Security: Measures used to protect computer systems and information. Shell: A program that interprets commands and requests OS services. System program: Software that supports computer operation and program execution. Unix: An influential operating system originally developed at AT&amp;T Bell Labs.</p>"
+      },
+      {
+        "title": "References and Conclusion",
+        "html": "<p>Primary source: Introduction to Operating System (user-supplied 8-page lesson).</p><p>Reference mentioned in the PDF: GeeksforGeeks — Introduction of Operating System, Set 1.</p><h3>Conclusion</h3><p>An operating system connects applications with hardware and manages important resources. Understanding its kernel, user interfaces, goals, functions, and major examples helps beginners choose and use computers more effectively.</p>"
+      }
+    ];
+
+    const toc = document.getElementById('toc');
+    const content = document.getElementById('content');
+    const prev = document.getElementById('prev') || document.getElementById('previous');
+    const next = document.getElementById('next');
+    const status = document.getElementById('status');
+    const heading = document.getElementById('heading');
+    let current = 0;
+    function render() {
+      const page = LESSON_PAGES[current];
+      content.innerHTML = page.html;
+      if (heading) heading.textContent = page.title;
+      toc.replaceChildren();
+      LESSON_PAGES.forEach((item, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = item.title;
+        if (i === current) b.classList.add('active');
+        b.addEventListener('click', () => go(i));
+        toc.appendChild(b);
+      });
+      prev.disabled = current === 0;
+      next.disabled = current === LESSON_PAGES.length - 1;
+      if (status) status.textContent = `Section ${current + 1} of ${LESSON_PAGES.length}`;
+    }
+    function go(i) {
+      if (i < 0 || i >= LESSON_PAGES.length) return;
+      current = i;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    prev.addEventListener('click', () => go(current - 1));
+    next.addEventListener('click', () => go(current + 1));
+    render();
+
+    /* BYTEBLOOM - LIGHT AND DARK MODE */
+
+    (function () {
+      const toggle = document.getElementById("themeToggle");
+      const reader = document.querySelector(".reader");
+
+      if (!toggle || !reader) return;
+
+      const key = "bytebloom-reader-theme";
+
+      function setTheme(mode) {
+        const dark = mode === "dark";
+
+        reader.classList.toggle("dark-mode", dark);
+
+        toggle.textContent = dark
+          ? "☀️ Light Mode"
+          : "🌙 Dark Mode";
+
+        toggle.setAttribute("aria-pressed", String(dark));
+      }
+
+      let saved = "light";
+
+      try {
+        saved = localStorage.getItem(key) || "light";
+      } catch (_) { }
+
+      setTheme(saved);
+
+      toggle.addEventListener("click", function () {
+        const mode = reader.classList.contains("dark-mode")
+          ? "light"
+          : "dark";
+
+        setTheme(mode);
+
+        try {
+          localStorage.setItem(key, mode);
+        } catch (_) { }
+      });
+    })();
+
+  </script>
+</body>
+
+</html>

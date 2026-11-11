@@ -1,0 +1,35 @@
+/* BSIT E-Library | Pastel Pink Theme
+   Add this stylesheet AFTER your existing CSS files. */
+:root {
+  --cream: #FDE4F2;
+  --ink: #612C4D;
+  --orange: #C34F91;
+  --muted: #795B70;
+  --line: #F4B8DA;
+  --pink-1: #FDE4F2;
+  --pink-2: #F9CEE7;
+  --pink-3: #F4B8DA;
+  --pink-4: #EEA1CD;
+  --pink-5: #E68BBE;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--pink-1); color: var(--ink); }
+.header, header.header { background: #F9CEE7; border-bottom: 1px solid var(--pink-3); }
+.brand, .nav a { color: var(--ink); }
+.nav a:hover, .nav a.active { color: #A83375; }
+.hero { background: linear-gradient(125deg, var(--pink-1) 0%, var(--pink-2) 58%, var(--pink-3) 100%); }
+.hero h1, .info-section h2, .project-section h2, .resources-heading h2 { color: var(--ink); }
+.hero h1 em, .section-label, .eyebrow { color: #AD3E80; }
+.button.primary, a.button.primary { background: #C34F91; color: white; border-color: #C34F91; }
+.button.primary:hover, a.button.primary:hover { background: #A83375; border-color: #A83375; }
+.button.secondary, a.button.secondary { background: #FFF3FA; color: var(--ink); border: 1px solid var(--pink-4); }
+.button.secondary:hover, a.button.secondary:hover { background: var(--pink-2); }
+.info-section, .project-section { background: var(--pink-1); }
+.features, .features-section { background: transparent; }
+.feature, .feature-card, .resource-card, .project-grid > div { background: #FFF3FA; border-color: var(--pink-3); box-shadow: 0 8px 24px rgba(157, 57, 112, .09); }
+.feature:hover, .feature-card:hover, .resource-card:hover { border-color: var(--pink-5); }
+.feature-icon.orange, .feature-icon.green, .feature-icon.blue, .feature-icon.pink { background: var(--pink-2); color: #A83375; }
+.resources-section { background: var(--pink-1); }
+.resource-card a, .feature small { color: #A83375; }
+footer { background: #E68BBE; color: #52223F; }
+::selection { background: var(--pink-4); color: #52223F; }
