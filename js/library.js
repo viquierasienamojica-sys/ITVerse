@@ -93,6 +93,36 @@ if (firstYearBook10) {
     firstYearBook10.url = 'book-firstyear10.html';
 }
 
+//second year books
+
+const secondYearBook1 = books.find(book => book.id === 'y2-b1');
+if (secondYearBook1) {
+    secondYearBook1.title = 'COMPUTER SYSTEM PLATFORMS AND ARCHITECTURE';
+    secondYearBook1.available = true;
+    secondYearBook1.url = 'book-secondyear1.html';
+}
+
+const secondYearBook2 = books.find(book => book.id === 'y2-b2');
+if (secondYearBook2) {
+    secondYearBook2.title = 'COMPUTER SYSTEM PLATFORMS AND ARCHITECTURE';
+    secondYearBook2.available = true;
+    secondYearBook2.url = 'book-secondyear2.html';
+}
+
+const secondYearBook3 = books.find(book => book.id === 'y2-b3');
+if (secondYearBook3) {
+    secondYearBook3.title = 'OPERATING SYSTEMCONCEPTS AND FUNCTIONS';
+    secondYearBook3.available = true;
+    secondYearBook3.url = 'book-secondyear3.html';
+}
+
+const secondYearBook4 = books.find(book => book.id === 'y2-b4');
+if (secondYearBook4) {
+    secondYearBook4.title = 'PROCESSES, THREADS,AND PROCESS SCHEDULING';
+    secondYearBook4.available = true;
+    secondYearBook4.url = 'book-secondyear4.html';
+}
+
 // THIRD YEAR BOOKS
 
 const firstBook = books.find(book => book.id === 'y3-b1');
@@ -118,14 +148,14 @@ if (thirdBook) {
 
 const fourthBook = books.find(book => book.id === 'y3-b4');
 if (fourthBook) {
-    fourthBook.title = 'CSS STYLING, LAYOUTS, FLEXBOX AND GRID';
+    fourthBook.title = 'responsive web design';
     fourthBook.available = true;
     fourthBook.url = 'book-thirdyear4.html';
 }
 
 const fifthBook = books.find(book => book.id === 'y3-b5');
 if (fifthBook) {
-    fifthBook.title = 'Resposive Web Design';
+    fifthBook.title = 'CSS Styling, Layouts, Flexbox and Grid';
     fifthBook.available = true;
     fifthBook.url = 'book-thirdyear5.html';
 }

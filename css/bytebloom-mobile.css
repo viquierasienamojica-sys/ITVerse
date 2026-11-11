@@ -1,4 +1,4 @@
-/* BYTEBLOOM responsive fixes — load AFTER style.css and pink-theme.css */
+/* ITVerse responsive fixes — load AFTER style.css and pink-theme.css */
 *, *::before, *::after { box-sizing: border-box; }
 html { max-width: 100%; scroll-padding-top: 90px; }
 body { min-width: 0; max-width: 100%; }

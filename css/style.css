@@ -2309,7 +2309,7 @@ body {
 }
 
 
-/* BYTEBLOOM: THREE HOMEPAGE FEATURE CARDS */
+/* ITVerse: THREE HOMEPAGE FEATURE CARDS */
 .features {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;

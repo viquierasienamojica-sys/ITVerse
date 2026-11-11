@@ -1,4 +1,4 @@
-/* BYTEBLOOM Library responsive overrides. Load AFTER library.css. */
+/* ITVerse Library responsive overrides. Load AFTER library.css. */
 html, body { max-width: 100%; }
 .app-shell, .main-content, .shelves-container, .year-section, .shelf-row { min-width: 0; }
 .book { touch-action: manipulation; }
@@ -50,4 +50,44 @@ html, body { max-width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .book, .sidebar { transition: none; }
+}
+
+/* FIX: MOBILE LIBRARY SIDEBAR */
+
+@media screen and (max-width: 760px) {
+
+    .sidebar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: min(280px, 85vw);
+        height: 100dvh;
+        z-index: 9999 !important;
+
+        display: flex !important;
+        flex-direction: column;
+
+        transform: translateX(-105%);
+        transition: transform 0.3s ease;
+
+        overflow-y: auto;
+        visibility: visible;
+        box-shadow: 8px 0 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar.open {
+        transform: translateX(0) !important;
+    }
+
+    .mobile-menu {
+        display: block !important;
+        position: relative;
+        z-index: 10000;
+        cursor: pointer;
+    }
+
+    .topbar {
+        position: relative;
+        z-index: 10000;
+    }
 }
