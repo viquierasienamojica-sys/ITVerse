@@ -1,0 +1,53 @@
+/* BYTEBLOOM Library responsive overrides. Load AFTER library.css. */
+html, body { max-width: 100%; }
+.app-shell, .main-content, .shelves-container, .year-section, .shelf-row { min-width: 0; }
+.book { touch-action: manipulation; }
+@media (max-width: 1000px) and (min-width: 761px) {
+  .main-content { padding-inline: 22px; }
+  .books-line { gap: 12px; padding-inline: 8px; }
+}
+@media (max-width: 760px) {
+  .app-shell { display: block; }
+  .main-content { width: 100%; max-width: 100%; padding: 0 16px; }
+  .topbar { height: 64px; justify-content: flex-start; gap: 12px; }
+  .mobile-menu { display: inline-grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; border-radius: 10px; background: #fff3fa; border: 1px solid #eea1cd; color: #8e2867; }
+  .breadcrumb { min-width: 0; font-size: 11px; overflow-wrap: anywhere; }
+  .sidebar { width: min(290px, 85vw); height: 100dvh; min-height: 0; overflow-y: auto; z-index: 30; padding: 24px 16px; }
+  .welcome { align-items: flex-start; gap: 12px; padding: 28px 0 22px; }
+  .welcome h1 { font-size: clamp(30px, 8vw, 42px); letter-spacing: -1px; }
+  .welcome p:not(.eyebrow) { font-size: 13px; }
+  .library-stats { min-width: 85px; padding: 12px 8px; text-align: center; }
+  .library-stats span:last-child { font-size: 8px; letter-spacing: .5px; }
+  .toolbar { margin-bottom: 26px; }
+  .search-field { min-width: 0; width: 100%; height: 48px; padding-inline: 12px; }
+  .search-field input { width: 100%; font-size: 16px; }
+  .section-heading { align-items: flex-start; }
+  .section-heading h2 { font-size: 20px; }
+  .book-count { flex-shrink: 0; }
+  .books-line { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; padding: 8px 6px 0; min-height: 0; align-items: end; }
+  .book-slot { width: 100%; align-self: end; }
+  .book { width: min(100%, 150px); padding: 12px 8px; aspect-ratio: .69; }
+  .book .book-title { font-size: clamp(11px, 3vw, 15px); line-height: 1.3; }
+  .book .book-emblem { font-size: 24px; }
+  .book .book-footer { font-size: 8px; letter-spacing: .6px; }
+  .shelf-plank { margin-top: 4px; }
+  .year-section { margin-bottom: 38px; }
+  .modal-backdrop { padding: 12px; overflow-y: auto; }
+  .modal { width: 100%; max-width: 420px; max-height: calc(100dvh - 24px); overflow-y: auto; padding: 24px 18px; gap: 14px; }
+  .modal-cover { width: 100px; min-width: 100px; }
+  .modal-content { width: 100%; }
+  .modal-content h2 { font-size: 21px; overflow-wrap: anywhere; }
+  .passkey-form input { font-size: 16px; }
+  .modal-done { min-height: 44px; }
+  .footer { line-height: 1.6; }
+}
+@media (max-width: 390px) {
+  .main-content { padding-inline: 12px; }
+  .welcome { flex-wrap: wrap; }
+  .library-stats { display: flex; }
+  .books-line { gap: 16px 8px; padding-inline: 2px; }
+  .book .book-title { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book, .sidebar { transition: none; }
+}
