@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>3rd Year Book 02 | Web Browsers, Servers, and HTTP/HTTPS Fundamentals | BYTEBLOOM</title>
+    <title>3rd Year Book 02 | Web Browsers, Servers, and HTTP/HTTPS Fundamentals | ITVerse</title>
     <style>
         :root {
             --bg: #FDE4F2;
@@ -411,11 +411,67 @@
                 padding: 22px
             }
         }
+
+/* NON-CLICKABLE TABLE OF CONTENTS */
+.contents .contents-link {
+    cursor: default;
+}
+
+.contents .contents-link:hover {
+    background: #fff0f8;
+}
+
+.reader.dark-mode .contents .contents-link:hover {
+    background: #352b3c;
+}
+
+/* PLAIN TEXT TABLE OF CONTENTS */
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contents .contents-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 6px 0 !important;
+
+    color: inherit;
+    cursor: default;
+    box-shadow: none !important;
+}
+
+.contents .contents-link:hover {
+    background: transparent !important;
+}
+
+.contents .contents-link span:last-child {
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+/* DARK MODE */
+.reader.dark-mode .contents .contents-link,
+.reader.dark-mode .contents .contents-link:hover {
+    background: transparent !important;
+    border: none !important;
+    color: #f8eaf5;
+}
+
+
     </style>
 </head>
 
 <body>
-    <header><a href="library.html">← Back to Library</a><strong>BYTEBLOOM</strong>
+    <header><a href="library.html">← Back to Library</a><strong>ITVerse</strong>
         <div class="actions"><span>3rd Year · Book 02</span><button type="button" class="theme-toggle"
                 id="themeToggle">🌙 Dark Mode</button></div>
     </header>
@@ -439,35 +495,67 @@
                 <article class="lesson-page" data-index="0" aria-label="Page 1 of 17">
                     <div class="lesson-content">
                         <div class="cover">
-                            <div class="eyebrow">BYTEBLOOM • THIRD YEAR BSIT</div>
+                            <div class="eyebrow">ITVerse • THIRD YEAR BSIT</div>
                             <h1>Web Browsers, Servers, and HTTP/HTTPS Fundamentals</h1>
                             <p>An Educational Book for Information Technology Students</p>
                             <div class="cover-rule"></div>
                             <p>Seven chapters • Concepts, examples, and practical explanations</p>
                         </div>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>1</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>1</span>
                     </div>
                 </article>
-                <article class="lesson-page" data-index="1" aria-label="Page 2 of 17" hidden>
-                    <div class="lesson-content">
-                        <h1>Table of Contents</h1>
-                        <div class="contents"><button class="contents-link" data-page="2"><span>Chapter 1: Introduction
-                                    to Web Technologies</span><span>Page 3</span></button><button class="contents-link"
-                                data-page="4"><span>Chapter 2: Understanding Web Browsers</span><span>Page
-                                    5</span></button><button class="contents-link" data-page="6"><span>Chapter 3: Web
-                                    Servers and Application Servers</span><span>Page 7</span></button><button
-                                class="contents-link" data-page="8"><span>Chapter 4: Hypertext Transfer Protocol
-                                    (HTTP)</span><span>Page 9</span></button><button class="contents-link"
-                                data-page="10"><span>Chapter 5: HTTPS and Secure Web Communication</span><span>Page
-                                    11</span></button><button class="contents-link" data-page="12"><span>Chapter 6: How
-                                    Browsers and Servers Communicate</span><span>Page 13</span></button><button
-                                class="contents-link" data-page="14"><span>Chapter 7: Modern Web
-                                    Technologies</span><span>Page 15</span></button></div>
-                    </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>2</span>
-                    </div>
-                </article>
+               
+<article class="lesson-page" data-index="1" aria-label="Page 2 of 17" hidden>
+    <div class="lesson-content">
+        <h1>Table of Contents</h1>
+
+        <div class="contents">
+
+            <div class="contents-link">
+                <span>Chapter 1: Introduction to Web Technologies</span>
+                <span>Page 3</span>
+            </div>
+
+            <div class="contents-link">
+                <span>Chapter 2: Understanding Web Browsers</span>
+                <span>Page 5</span>
+            </div>
+
+            <div class="contents-link">
+                <span>Chapter 3: Web Servers and Application Servers</span>
+                <span>Page 7</span>
+            </div>
+
+            <div class="contents-link">
+                <span>Chapter 4: Hypertext Transfer Protocol (HTTP)</span>
+                <span>Page 9</span>
+            </div>
+
+            <div class="contents-link">
+                <span>Chapter 5: HTTPS and Secure Web Communication</span>
+                <span>Page 11</span>
+            </div>
+
+            <div class="contents-link">
+                <span>Chapter 6: How Browsers and Servers Communicate</span>
+                <span>Page 13</span>
+            </div>
+
+            <div class="contents-link">
+                <span>Chapter 7: Modern Web Technologies</span>
+                <span>Page 15</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-foot">
+        ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+        <span>2</span>
+    </div>
+</article>
+
                 <article class="lesson-page" data-index="2" aria-label="Page 3 of 17" hidden>
                     <div class="lesson-content">
                         <h1>Chapter 1 — Introduction to Web Technologies</h1>
@@ -524,7 +612,7 @@
                         </p>
                         <p>process, which reads data from a database and constructs the response.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>3</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>3</span>
                     </div>
                 </article>
                 <article class="lesson-page" data-index="3" aria-label="Page 4 of 17" hidden>
@@ -563,7 +651,7 @@
                         </p>
                         <p>which safeguards are required for reliable and secure communication.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>4</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>4</span>
                     </div>
                 </article>
                 <article class="lesson-page" data-index="4" aria-label="Page 5 of 17" hidden>
@@ -621,7 +709,7 @@
                             delay</p>
                         <p>visible content.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>5</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>5</span>
                     </div>
                 </article>
                 <article class="lesson-page" data-index="5" aria-label="Page 6 of 17" hidden>
@@ -675,7 +763,7 @@
                         </p>
                         <p>which safeguards are required for reliable and secure communication.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>6</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>6</span>
                     </div>
                 </article>
                 <article class="lesson-page" data-index="6" aria-label="Page 7 of 17" hidden>
@@ -733,7 +821,7 @@
                         <p>databases. In practice, their roles can overlap, and modern frameworks can handle HTTP
                             directly.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>7</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>7</span>
                     </div>
                 </article>
                 <article class="lesson-page" data-index="7" aria-label="Page 8 of 17" hidden>
@@ -785,7 +873,7 @@
                         </p>
                         <p>which safeguards are required for reliable and secure communication.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>8</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>8</span>
                     </div>
                 </article>
                 <article class="lesson-page" data-index="8" aria-label="Page 9 of 17" hidden>
@@ -845,7 +933,7 @@
                             Location may</p>
                         <p>identify a redirect destination.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>9</span>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals <span>9</span>
                     </div>
                 </article>
                 <article class="lesson-page" data-index="9" aria-label="Page 10 of 17" hidden>
@@ -899,8 +987,9 @@
                         </p>
                         <p>which safeguards are required for reliable and secure communication.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>10</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>10</span>
+                    </div>
                 </article>
                 <article class="lesson-page" data-index="10" aria-label="Page 11 of 17" hidden>
                     <div class="lesson-content">
@@ -956,8 +1045,9 @@
                         <p>communicating with the intended server, assuming the certificate trust system is working
                             correctly.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>11</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>11</span>
+                    </div>
                 </article>
                 <article class="lesson-page" data-index="11" aria-label="Page 12 of 17" hidden>
                     <div class="lesson-content">
@@ -1012,8 +1102,9 @@
                         </p>
                         <p>which safeguards are required for reliable and secure communication.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>12</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>12</span>
+                    </div>
                 </article>
                 <article class="lesson-page" data-index="12" aria-label="Page 13 of 17" hidden>
                     <div class="lesson-content">
@@ -1068,8 +1159,9 @@
                         </p>
                         <p>returns headers and content. Additional resources may trigger further requests.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>13</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>13</span>
+                    </div>
                 </article>
                 <article class="lesson-page" data-index="13" aria-label="Page 14 of 17" hidden>
                     <div class="lesson-content">
@@ -1124,8 +1216,9 @@
                         </p>
                         <p>which safeguards are required for reliable and secure communication.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>14</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>14</span>
+                    </div>
                 </article>
                 <article class="lesson-page" data-index="14" aria-label="Page 15 of 17" hidden>
                     <div class="lesson-content">
@@ -1182,8 +1275,9 @@
                         </p>
                         <p>Cache invalidation must be planned when content changes.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>15</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>15</span>
+                    </div>
                 </article>
                 <article class="lesson-page" data-index="15" aria-label="Page 16 of 17" hidden>
                     <div class="lesson-content">
@@ -1246,8 +1340,9 @@
                         </div>
                         <p>workflow, rather than as an isolated definition.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>16</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>16</span>
+                    </div>
                 </article>
                 <article class="lesson-page" data-index="16" aria-label="Page 17 of 17" hidden>
                     <div class="lesson-content">
@@ -1258,8 +1353,9 @@
                         </p>
                         <p>which safeguards are required for reliable and secure communication.</p>
                     </div>
-                    <div class="page-foot">BYTEBLOOM • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
-                        <span>17</span></div>
+                    <div class="page-foot">ITVerse • Web Browsers, Servers, and HTTP/HTTPS Fundamentals
+                        <span>17</span>
+                    </div>
                 </article>
             </div>
             <div class="pager"><button type="button" class="navbtn" id="prev">← Previous</button><span
@@ -1270,7 +1366,7 @@
         const pages = [...document.querySelectorAll('.lesson-page')]; let current = 0; const viewport = document.getElementById('viewport');
         function goToPage(n) { current = Math.max(0, Math.min(pages.length - 1, n)); pages.forEach((p, i) => p.hidden = i !== current); document.getElementById('counter').textContent = `Page ${current + 1} of ${pages.length}`; document.getElementById('prev').disabled = current === 0; document.getElementById('next').disabled = current === pages.length - 1; document.querySelectorAll('[data-page]').forEach(b => b.classList.toggle('active', Number(b.dataset.page) === current)); viewport.scrollTop = 0; }
         document.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => goToPage(Number(b.dataset.page)))); document.getElementById('prev').addEventListener('click', () => goToPage(current - 1)); document.getElementById('next').addEventListener('click', () => goToPage(current + 1));
-        const reader = document.querySelector('.reader'); const toggle = document.getElementById('themeToggle'); function setTheme(dark) { reader.classList.toggle('dark-mode', dark); toggle.textContent = dark ? '☀️ Light Mode' : '🌙 Dark Mode'; localStorage.setItem('bytebloom-reader-theme', dark ? 'dark' : 'light'); } toggle.addEventListener('click', () => setTheme(!reader.classList.contains('dark-mode'))); setTheme(localStorage.getItem('bytebloom-reader-theme') === 'dark'); goToPage(0);
+        const reader = document.querySelector('.reader'); const toggle = document.getElementById('themeToggle'); function setTheme(dark) { reader.classList.toggle('dark-mode', dark); toggle.textContent = dark ? '☀️ Light Mode' : '🌙 Dark Mode'; localStorage.setItem('ITVerse-reader-theme', dark ? 'dark' : 'light'); } toggle.addEventListener('click', () => setTheme(!reader.classList.contains('dark-mode'))); setTheme(localStorage.getItem('ITVerse-reader-theme') === 'dark'); goToPage(0);
     </script>
 </body>
 

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3rd Year Book 06 | Advanced HTML Forms and Form Validation | BYTEBLOOM</title>
+<title>3rd Year Book 06 | Advanced HTML Forms and Form Validation | ITVerse</title>
 
 <style>
 :root {
@@ -464,32 +464,64 @@ main {
         padding: 22px;
     }
 }
+
+/* ITVerse BOOK 02 STANDARD */
+.contents {display:block;}
+.contents-link {display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 0;border:0;border-radius:0;border-bottom:1px dotted #dcb6ca;background:transparent;color:inherit;cursor:default;text-align:left;}
+.contents-link:hover {background:transparent;}
+.contents-link span:last-child {white-space:nowrap;text-align:right;font-weight:600;}
+.reader.dark-mode .contents-link {background:transparent;border-color:#69526a;color:#f8eaf5;}
+.sidebar-toggle {display:none;border:1px solid var(--ink);border-radius:8px;background:#fff5fb;color:var(--ink);padding:9px 12px;font-size:19px;cursor:pointer;}
+@media(max-width:700px) {
+ header {min-height:70px;flex-wrap:nowrap;gap:8px;}
+ header > div:first-child {min-width:0;font-size:12px;}
+ header strong {font-size:15px;}
+ .actions {gap:7px;flex-shrink:0;}
+ .actions > a {display:none;}
+ .theme-toggle {font-size:12px;padding:9px 8px;}
+ .sidebar-toggle {display:inline-flex;}
+ .layout {display:block;height:calc(100dvh - 70px);}
+ aside {position:fixed;top:70px;left:0;bottom:0;width:min(82vw,300px);max-height:none;overflow-y:auto;z-index:50;transform:translateX(-105%);transition:transform .22s ease;box-shadow:3px 0 18px #0002;border-right:1px solid var(--accent);border-bottom:0;padding:18px 12px;}
+ aside.open {transform:translateX(0);}
+ aside .toc-link {display:flex;width:100%;padding:12px 10px;}
+ main {height:100%;padding:10px 6px;}
+}
+
+/* Matching Book 02 / Book 04 header layout */
+.book-header {display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:70px;gap:12px;padding:12px 24px;}
+.book-header .back-library {justify-self:start;font-weight:600;white-space:nowrap;}
+.book-header .book-brand {justify-self:center;font-size:22px;letter-spacing:.3px;}
+.book-header .actions {justify-self:end;display:flex;align-items:center;gap:12px;}
+.book-header .book-label {white-space:nowrap;font-size:14px;}
+.book-header .sidebar-toggle {display:none;}
+@media(max-width:700px) {
+ .book-header {display:grid;grid-template-columns:1fr auto;gap:7px;padding:10px 12px;min-height:70px;}
+ .book-header .back-library {font-size:12px;}
+ .book-header .book-brand {display:none;}
+ .book-header .actions {gap:6px;}
+ .book-header .book-label {display:none;}
+ .book-header .theme-toggle {padding:8px;font-size:12px;}
+ .book-header .sidebar-toggle {display:inline-flex;padding:7px 10px;}
+}
 </style>
 </head>
 
 <body class="reader">
 
-<header>
-    <div>
-        <a href="library.html">
-            <strong>🌸 BYTEBLOOM</strong>
-        </a>
-        <span> | 3rd Year BSIT — Book 06</span>
-    </div>
-
+<header class="book-header">
+    <a class="back-library" href="library.html">← Back to Library</a>
+    <strong class="book-brand">ITVerse</strong>
     <div class="actions">
-        <button class="theme-toggle" id="themeToggle"
-                type="button">
-            🌙 Dark Mode
-        </button>
-        <a href="library.html">← Back to Library</a>
+        <span class="book-label">3rd Year · Book 06</span>
+        <button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button>
+        <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open table of contents" aria-expanded="false">☰</button>
     </div>
 </header>
 
 <div class="layout">
 
     <!-- SIDEBAR TABLE OF CONTENTS -->
-    <aside>
+    <aside id="bookSidebar">
         <h2>Table of Contents</h2>
 
         <button class="toc-link" data-page="0">
@@ -539,7 +571,7 @@ main {
             <article class="lesson-page" data-title="Cover">
                 <div class="lesson-content cover">
                     <div class="eyebrow">
-                        BYTEBLOOM DIGITAL LIBRARY
+                        ITVerse DIGITAL LIBRARY
                     </div>
 
                     <h1>
@@ -566,7 +598,7 @@ main {
                 </div>
 
                 <div class="page-foot">
-                    <span>BYTEBLOOM DIGITAL LIBRARY</span>
+                    <span>ITVerse DIGITAL LIBRARY</span>
                     <span>Book 06</span>
                 </div>
             </article>
@@ -583,53 +615,53 @@ main {
 
                     <div class="contents">
 
-                        <button class="contents-link" data-page="2">
+                        <div class="contents-link">
                             <span>
                                 Chapter 1: Understanding Web Forms
                             </span>
                             <span>03</span>
-                        </button>
+                        </div>
 
-                        <button class="contents-link" data-page="7">
+                        <div class="contents-link">
                             <span>
                                 Chapter 2: HTML Input Types
                             </span>
                             <span>08</span>
-                        </button>
+                        </div>
 
-                        <button class="contents-link" data-page="12">
+                        <div class="contents-link">
                             <span>
                                 Chapter 3: Built-In HTML Validation
                             </span>
                             <span>13</span>
-                        </button>
+                        </div>
 
-                        <button class="contents-link" data-page="17">
+                        <div class="contents-link">
                             <span>
                                 Chapter 4: Styling and Accessible Feedback
                             </span>
                             <span>18</span>
-                        </button>
+                        </div>
 
-                        <button class="contents-link" data-page="22">
+                        <div class="contents-link">
                             <span>
                                 Chapter 5: JavaScript Form Validation
                             </span>
                             <span>23</span>
-                        </button>
+                        </div>
 
-                        <button class="contents-link" data-page="27">
+                        <div class="contents-link">
                             <span>
                                 Chapter 6: Practical Form Projects
                             </span>
                             <span>28</span>
-                        </button>
+                        </div>
 
                     </div>
                 </div>
 
                 <div class="page-foot">
-                    <span>BYTEBLOOM DIGITAL LIBRARY</span>
+                    <span>ITVerse DIGITAL LIBRARY</span>
                     <span>Table of Contents</span>
                 </div>
             </article>
@@ -3972,7 +4004,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     const contentsLinks = Array.from(
-        document.querySelectorAll(".contents-link")
+        document.querySelectorAll(".contents-link[data-page]")
     );
 
     // GET DARK MODE BUTTON
@@ -4136,6 +4168,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+    });
+
+
+    // Mobile chapter navigation
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const bookSidebar = document.getElementById('bookSidebar');
+    function closeSidebar() {
+        bookSidebar.classList.remove('open');
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+    }
+    sidebarToggle.addEventListener('click', function () {
+        const open = bookSidebar.classList.toggle('open');
+        sidebarToggle.setAttribute('aria-expanded', String(open));
+    });
+    tocLinks.forEach(function (link) { link.addEventListener('click', closeSidebar); });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeSidebar(); });
+    document.addEventListener('click', function (event) {
+        if (!bookSidebar.contains(event.target) && !sidebarToggle.contains(event.target)) closeSidebar();
     });
 
     // INITIALIZE FIRST PAGE
