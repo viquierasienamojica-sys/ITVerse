@@ -247,16 +247,55 @@
                 padding: 10px
             }
         }
+
+        /* Responsive e-book reader: preserves desktop layout */
+        .reader-menu-toggle { display: none; }
+        .reader-sidebar-backdrop[hidden] { display: none !important; }
+        .reader img, .reader video, .reader iframe, .reader svg { max-width: 100%; }
+        .reader table { display: block; max-width: 100%; overflow-x: auto; }
+        .reader pre { max-width: 100%; overflow-x: auto; }
+        .reader { overflow-wrap: break-word; }
+        @media (max-width: 760px) {
+            .header { min-height: 62px; height: auto; padding: 9px 12px; gap: 8px; flex-wrap: wrap; }
+            .header > a { font-size: 12px; white-space: nowrap; }
+            .header strong { font-size: 16px; }
+            .header .right { gap: 7px; margin-left: auto; }
+            .header .right span { font-size: 11px; }
+            .theme { padding: 8px 9px; font-size: 12px; }
+            .reader-menu-toggle { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 38px; height: 38px; border: 1px solid #d88cb6; border-radius: 8px; background: #fff7fc; color: #612c4d; font-size: 23px; cursor: pointer; }
+            .layout { display: block; }
+            #readerSidebar { position: fixed; top: 0; left: 0; z-index: 1002; width: min(300px, 85vw); height: 100dvh; max-height: none; overflow-y: auto; overscroll-behavior: contain; transform: translateX(-105%); transition: transform .25s ease; box-shadow: 10px 0 30px #612c4d33; padding: 24px 14px; }
+            #readerSidebar.open { transform: translateX(0); }
+            .reader-sidebar-backdrop:not([hidden]) { position: fixed; inset: 0; display: block; background: rgba(30, 14, 27, .45); z-index: 1001; }
+            .main { width: 100%; padding: 12px 10px 24px; }
+            .reader { width: 100%; min-height: 65vh; padding: 25px 18px; }
+            .page h1 { font-size: clamp(21px, 6vw, 27px); }
+            .page h2 { font-size: 19px; line-height: 1.4; }
+            .page p, .page li { font-size: 15px; line-height: 1.7; }
+            .cover-title { margin-top: 40px !important; font-size: clamp(24px, 7vw, 32px) !important; }
+            .page figure { max-width: 100%; margin: 18px auto; }
+            .page figure img { max-width: 100%; height: auto; }
+            .controls { width: 100%; gap: 8px; justify-content: space-between; }
+            .controls button { min-height: 42px; padding: 9px 12px; font-size: 13px; }
+            .controls #count { text-align: center; font-size: 12px; }
+        }
+        @media (max-width: 380px) {
+            .header .right { width: 100%; justify-content: flex-end; }
+            .reader { padding: 22px 14px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #readerSidebar { transition: none; }
+        }
     </style>
 </head>
 
 <body>
-    <header class="header"><a href="library.html">← Back to Library</a><strong>BYTEBLOOM</strong>
+    <header class="header"><button type="button" id="readerMenuToggle" class="reader-menu-toggle" aria-label="Open table of contents" aria-controls="readerSidebar" aria-expanded="false">☰</button><a href="library.html">← Back to Library</a><strong>BYTEBLOOM</strong>
         <div class="right"><span>3rd Year · Book 01</span><button id="themeToggle" class="theme">☾ Dark Mode</button>
         </div>
     </header>
     <div class="layout">
-        <aside>
+        <aside id="readerSidebar" aria-label="Table of Contents">
             <h3>Table of Contents</h3><button class="toc-item" data-go="0">Cover</button><button class="toc-item"
                 data-go="1">Book Introduction & Contents</button><button class="toc-item" data-go="4">Chapter 1 –
                 Introduction to the Internet Chapter Overview<small>p. 5</small></button><button class="toc-item"
@@ -269,6 +308,7 @@
                 Use Chapter Overview<small>p. 45</small></button><button class="toc-item" data-go="52">Chapter 7 –
                 Modern Internet Technologies Chapter Overview<small>p. 53</small></button>
         </aside>
+        <div class="reader-sidebar-backdrop" id="readerSidebarBackdrop" hidden></div>
         <main class="main">
             <article class="reader" id="reader">
                 <section class="page" data-page="0">
@@ -1750,6 +1790,41 @@
         </main>
     </div>
     <script>const pages = [...document.querySelectorAll('.page')], toc = [...document.querySelectorAll('.toc-item')]; let current = 0; function show(n) { current = Math.max(0, Math.min(pages.length - 1, n)); pages.forEach((p, i) => p.classList.toggle('active', i === current)); document.getElementById('count').textContent = `Page ${current + 1} of ${pages.length}`; document.getElementById('prev').disabled = current === 0; document.getElementById('next').disabled = current === pages.length - 1; toc.forEach((b, i) => b.classList.toggle('active', Number(b.dataset.go) <= current && (i === toc.length - 1 || Number(toc[i + 1].dataset.go) > current))); window.scrollTo({ top: 0, behavior: 'instant' }); } document.getElementById('prev').onclick = () => show(current - 1); document.getElementById('next').onclick = () => show(current + 1); toc.forEach(b => b.onclick = () => show(Number(b.dataset.go))); const reader = document.getElementById('reader'), toggle = document.getElementById('themeToggle'); function theme(dark) { reader.classList.toggle('dark-mode', dark); toggle.textContent = dark ? '☀ Light Mode' : '☾ Dark Mode'; localStorage.setItem('bytebloom-reader-theme', dark ? 'dark' : 'light') } toggle.onclick = () => theme(!reader.classList.contains('dark-mode')); theme(localStorage.getItem('bytebloom-reader-theme') === 'dark'); show(0);</script>
+
+    <script>
+    (() => {
+        const menuButton = document.getElementById('readerMenuToggle');
+        const sidebar = document.getElementById('readerSidebar');
+        const backdrop = document.getElementById('readerSidebarBackdrop');
+        if (!menuButton || !sidebar || !backdrop) return;
+        const closeMenu = () => {
+            sidebar.classList.remove('open');
+            backdrop.hidden = true;
+            menuButton.textContent = '☰';
+            menuButton.setAttribute('aria-expanded', 'false');
+            menuButton.setAttribute('aria-label', 'Open table of contents');
+        };
+        menuButton.addEventListener('click', () => {
+            const opening = !sidebar.classList.contains('open');
+            sidebar.classList.toggle('open', opening);
+            backdrop.hidden = !opening;
+            menuButton.textContent = opening ? '✕' : '☰';
+            menuButton.setAttribute('aria-expanded', String(opening));
+            menuButton.setAttribute('aria-label', opening ? 'Close table of contents' : 'Open table of contents');
+        });
+        backdrop.addEventListener('click', closeMenu);
+        sidebar.querySelectorAll('.toc-item').forEach(button => button.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+                closeMenu();
+                menuButton.focus();
+            }
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 760) closeMenu();
+        });
+    })();
+    </script>
 </body>
 
 </html>
