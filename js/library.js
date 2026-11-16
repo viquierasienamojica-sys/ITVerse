@@ -11,12 +11,53 @@ const palettes = [
     ['#885b73','#487d80','#b57b43','#6a7ba4','#a5634c','#708b57','#a47a61','#5d7494','#ac6b73','#497c6f']
 ];
 
+// BOOK COVER IMAGES — palitan ang blankong value ng image path.
+// Example: 'y1-b1': 'images/covers/computer-generations.png',
+// Ilagay ang actual images sa ITVerse/images/covers/ folder.
+// Kapag blanko, mananatili ang original colored book design.
+const bookCoverImages = {
+    // 1st Year
+    'y1-b1': 'images/1yrbook1.png',
+    'y1-b2': 'images/1yrbook2.png',
+    'y1-b3': 'images/1yrbook3.png',
+    'y1-b4': 'images/1yrbook4.png',
+    'y1-b5': 'images/1yrbook5.png',
+    'y1-b6': 'images/1yrbook6.png',
+    'y1-b7': 'images/1yrbook7.png',
+    'y1-b8': 'images/1yrbook8.png',
+    'y1-b9': 'images/1yrbook9.png',
+    'y1-b10': 'images/1yrbook10.png',
+    // 2nd Year
+    'y2-b1': '',
+    'y2-b2': '',
+    'y2-b3': '',
+    'y2-b4': '',
+    'y2-b5': '',
+    'y2-b6': '',
+    'y2-b7': '',
+    'y2-b8': '',
+    'y2-b9': '',
+    'y2-b10': '',
+    // 3rd Year
+    'y3-b1': '',
+    'y3-b2': '',
+    'y3-b3': '',
+    'y3-b4': '',
+    'y3-b5': '',
+    'y3-b6': '',
+    'y3-b7': '',
+    'y3-b8': '',
+    'y3-b9': '',
+    'y3-b10': '',
+};
+
 const books = Array.from({ length: 3 }, (_, yearIndex) =>
     Array.from({ length: 10 }, (_, index) => ({
         id: `y${yearIndex + 1}-b${index + 1}`,
         year: yearIndex + 1,
         title: `Book ${String(index + 1).padStart(2, '0')}`,
         color: palettes[yearIndex][index],
+        cover: bookCoverImages[`y${yearIndex + 1}-b${index + 1}`] || '', 
         available: false
     }))
 ).flat();
@@ -223,6 +264,17 @@ function escapeHTML(value) {
     }[c]));
 }
 
+// Image covers: keep the original book shape and bookshelf layout.
+const itverseCoverStyle = document.createElement('style');
+itverseCoverStyle.textContent = `
+.book.book-has-cover { position: relative; overflow: hidden; padding: 0; }
+.book .itverse-book-cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; }
+.book.book-has-cover .book-emblem,
+.book.book-has-cover .book-title,
+.book.book-has-cover .book-footer { visibility: hidden; }
+`;
+document.head.appendChild(itverseCoverStyle);
+
 // RENDER BOOK
 
 function renderBook(book) {
@@ -230,11 +282,12 @@ function renderBook(book) {
         <div class="book-slot">
             <button
                 type="button"
-                class="book"
+                class="book${book.cover ? ' book-has-cover' : ''}"
                 style="--cover:${book.color}"
                 data-book-id="${book.id}"
                 aria-label="${escapeHTML(book.title)}, ${yearNames[book.year]}">
 
+                ${book.cover ? `<img class="itverse-book-cover-img" src="${escapeHTML(book.cover)}" alt="${escapeHTML(book.title)} cover" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.remove('book-has-cover')">` : ''}
                 <span class="book-emblem" aria-hidden="true">✧</span>
 
                 <span class="book-title">
@@ -360,7 +413,17 @@ function openBook(book) {
 
     const cover = document.getElementById('modalCover');
     cover.style.background = book.color;
-    cover.textContent = book.title;
+    cover.textContent = '';
+    if (book.cover) {
+        const coverImg = document.createElement('img');
+        coverImg.src = book.cover;
+        coverImg.alt = book.title + ' cover';
+        coverImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+        coverImg.onerror = () => { coverImg.remove(); cover.textContent = book.title; };
+        cover.appendChild(coverImg);
+    } else {
+        cover.textContent = book.title;
+    }
 
     document.getElementById('modalDone').hidden = false;
     document.getElementById('passkeyForm').hidden = true;

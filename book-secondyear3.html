@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <script src="js/itverse-auth-guard.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>2nd Year Book 03 | PROCESSES, THREADS, AND PROCESS SCHEDULING | ITVerse</title>
+<style>
+        :root {
+            --bg: #FDE4F2;
+            --header: #F9CEE7;
+            --sidebar: #F4B8DA;
+            --accent: #EEA1CD;
+            --hover: #E68BBE;
+            --ink: #612C4D
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            height: 70px;
+            background: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 12px;
+            border-bottom: 1px solid var(--accent)
+        }
+
+        header a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        header strong {
+            font-size: 21px
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .theme-toggle,
+        .navbtn,
+        .toc-link,
+        .toc-entry {
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .theme-toggle {
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            border-radius: 10px;
+            background: #fff5fb;
+            color: var(--ink);
+            font-weight: bold
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            height: calc(100dvh - 70px)
+        }
+
+        aside {
+            background: var(--sidebar);
+            padding: 20px 12px;
+            overflow: auto;
+            border-right: 1px solid var(--accent)
+        }
+
+        aside h2 {
+            font-size: 19px;
+            margin: 4px 6px 18px
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-radius: 7px;
+            padding: 13px 12px;
+            color: var(--ink);
+            line-height: 1.35;
+            margin-bottom: 5px
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: var(--hover)
+        }
+
+        .toc-link small {
+            white-space: nowrap
+        }
+
+        main {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px
+        }
+
+        .viewport {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start
+        }
+
+        .reader {
+            background: #fffafc;
+            color: #44283c;
+            width: min(100%, 900px);
+            min-height: 100%;
+            padding: 46px 58px;
+            border: 1px solid #edc2d8;
+            box-shadow: 0 5px 25px #6b365333;
+            border-radius: 4px
+        }
+
+        .reader h1 {
+            font-size: 29px;
+            color: #8d3769;
+            line-height: 1.25;
+            margin: 12px 0 22px
+        }
+
+        .reader h2 {
+            font-size: 18px;
+            color: #a33d79;
+            margin: 28px 0 12px
+        }
+
+        .reader p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 10px 0 18px
+        }
+
+        .reader .eyebrow {
+            color: #a24d7d;
+            font-weight: bold;
+            letter-spacing: .12em;
+            font-size: 12px
+        }
+
+        .reader pre {
+            background: #f7e8f1;
+            border: 1px solid #e8c3d7;
+            border-left: 4px solid #C34F91;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.6;
+            font-size: 14px;
+            color: #542c48
+        }
+
+        .reader .note {
+            background: #fff0f8;
+            border-left: 4px solid #EEA1CD;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 25px
+        }
+
+        .reader .note h2 {
+            margin: 6px 0
+        }
+
+        .reader .note p {
+            margin-bottom: 8px
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 4px 0 8px
+        }
+
+        .navbtn {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1px solid #d88eb8;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: bold
+        }
+
+        .navbtn:hover {
+            background: var(--hover)
+        }
+
+        .navbtn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        #counter {
+            min-width: 115px;
+            text-align: center;
+            font-weight: bold
+        }
+
+        .cover {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 570px;
+            gap: 24px
+        }
+
+        .cover-mark {
+            font-size: 13px;
+            letter-spacing: .18em;
+            font-weight: bold;
+            color: #b45b8c
+        }
+
+        .cover-icon {
+            font-size: 64px;
+            color: #c34f91
+        }
+
+        .cover h1 {
+            font-size: 44px;
+            margin: 0
+        }
+
+        .cover p {
+            font-size: 19px
+        }
+
+        .cover-bottom {
+            margin-top: 80px;
+            font-size: 14px;
+            color: #9b5b7f
+        }
+
+        .chapter-list h1 {
+            margin-bottom: 28px
+        }
+
+        .chapter-list h2 {
+            border-bottom: 1px solid #f0c8df;
+            padding-bottom: 8px
+        }
+
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            padding: 10px;
+            color: inherit;
+            font-size: 15px
+        }
+
+        .toc-entry:hover {
+            background: #f7e1ee;
+            border-radius: 6px
+        }
+
+        .reader.dark-mode {
+            background: #25212D;
+            color: #F8EAF5;
+            border-color: #51475D
+        }
+
+        .reader.dark-mode h1,
+        .reader.dark-mode h2 {
+            color: #ffc3e2
+        }
+
+        .reader.dark-mode .eyebrow {
+            color: #f5a9d1
+        }
+
+        .reader.dark-mode pre {
+            background: #342a3b;
+            color: #ffe5f4;
+            border-color: #76546d
+        }
+
+        .reader.dark-mode .note {
+            background: #382b3c;
+            border-color: #c777a4
+        }
+
+        .reader.dark-mode .toc-entry:hover {
+            background: #46334a
+        }
+
+        .theme-toggle.active {
+            background: #352b3c;
+            color: #f8eaf5
+        }
+
+        @media(max-width:700px) {
+            header {
+                height: auto;
+                min-height: 70px;
+                padding: 10px;
+                flex-wrap: wrap
+            }
+
+            header strong {
+                font-size: 17px
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                height: calc(100dvh - 100px)
+            }
+
+            aside {
+                max-height: 130px;
+                padding: 8px 12px;
+                border-right: 0;
+                border-bottom: 1px solid var(--accent)
+            }
+
+            aside h2 {
+                margin: 4px 6px
+            }
+
+            .toc-link {
+                display: inline-flex;
+                width: auto;
+                padding: 8px
+            }
+
+            main {
+                padding: 10px 6px
+            }
+
+            .reader {
+                padding: 24px 18px
+            }
+
+            .reader h1 {
+                font-size: 24px
+            }
+
+            .cover h1 {
+                font-size: 30px
+            }
+
+            .pager {
+                gap: 8px
+            }
+
+            .navbtn {
+                padding: 10px 12px
+            }
+        }
+    </style>
+<link href="css/itverse-reader-features.css" rel="stylesheet"/><style>.lesson img{max-width:100%;height:auto}.lesson p{line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.lesson table{font-size:.94rem}.book-page .lesson{min-height:0!important}.chapter-list .toc-entry{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left}.chapter-list .toc-entry span:last-child{flex-shrink:0}</style></head>
+<body>
+<header><a href="library.html">← Back to Library</a><strong>ITVerse</strong>
+<div class="actions"><span>2nd Year · Book 03</span><button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button></div>
+</header>
+<div class="layout">
+<aside><h2>Table of Contents</h2><button class="toc-link" data-go="0">Cover<small>p. 1</small></button><button class="toc-link" data-go="1">Table of Contents<small>p. 2</small></button><button class="toc-link" data-go="9">CHAPTER 1 — Introduction to Process Management<small>p. 10</small></button><button class="toc-link" data-go="10">CHAPTER 2 — Understanding Processes<small>p. 11</small></button><button class="toc-link" data-go="11">CHAPTER 3 — Process States<small>p. 12</small></button><button class="toc-link" data-go="11">CHAPTER 4 — Process Control Block (PCB)<small>p. 12</small></button><button class="toc-link" data-go="11">CHAPTER 5 — Process Creation and Termination<small>p. 12</small></button><button class="toc-link" data-go="13">CHAPTER 6 — Understanding Threads<small>p. 14</small></button><button class="toc-link" data-go="15">CHAPTER 7 — Thread Synchronization<small>p. 16</small></button><button class="toc-link" data-go="15">CHAPTER 8 — Interprocess Communication (IPC)<small>p. 16</small></button><button class="toc-link" data-go="16">CHAPTER 9 — Introduction to Process Scheduling<small>p. 17</small></button><button class="toc-link" data-go="17">CHAPTER 10 — CPU Scheduling Criteria<small>p. 18</small></button><button class="toc-link" data-go="17">CHAPTER 11 — First-Come, First-Served (FCFS)<small>p. 18</small></button><button class="toc-link" data-go="19">CHAPTER 12 — Round Robin Scheduling<small>p. 20</small></button><button class="toc-link" data-go="21">CHAPTER 13 — Deadlocks and Resource Management<small>p. 22</small></button></aside>
+<main>
+<div class="viewport" id="viewport">
+<div class="reader" id="reader"><section aria-label="Reading page" class="book-page" hidden=""><div class="cover"><div class="cover-mark">ITVerse • 2ND YEAR BOOK 03</div><h1>PROCESSES, THREADS, AND PROCESS SCHEDULING</h1><p>BSIT Digital Learning Material</p></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="9"><span>PROCESSES, THREADS, AND PROCESS SCHEDULING</span><span>10</span></button><button class="toc-entry" data-go="9"><span>PROCESSES, THREADS, AND PROCESS SCHEDULING</span><span>10</span></button><button class="toc-entry" data-go="9"><span>Understanding How Operating Systems Manage and Execute Programs</span><span>10</span></button><button class="toc-entry" data-go="9"><span>Welcome to Process Management!</span><span>10</span></button><button class="toc-entry" data-go="9"><span>FUNDAMENTALS OF PROCESS MANAGEMENT</span><span>10</span></button><button class="toc-entry" data-go="9"><span>Introduction to Process Management</span><span>10</span></button><button class="toc-entry" data-go="10"><span>What is process management?</span><span>11</span></button><button class="toc-entry" data-go="10"><span>Why is it important?</span><span>11</span></button><button class="toc-entry" data-go="10"><span>Understanding Processes</span><span>11</span></button><button class="toc-entry" data-go="10"><span>Main components of a process</span><span>11</span></button><button class="toc-entry" data-go="11"><span>Process States</span><span>12</span></button><button class="toc-entry" data-go="11"><span>1. New</span><span>12</span></button><button class="toc-entry" data-go="11"><span>2. Ready</span><span>12</span></button><button class="toc-entry" data-go="11"><span>3. Running</span><span>12</span></button><button class="toc-entry" data-go="11"><span>4. Waiting or Blocked</span><span>12</span></button><button class="toc-entry" data-go="11"><span>5. Terminated</span><span>12</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="11"><span>Process state transitions</span><span>12</span></button><button class="toc-entry" data-go="11"><span>Process Control Block (PCB)</span><span>12</span></button><button class="toc-entry" data-go="11"><span>Information contained in a PCB</span><span>12</span></button><button class="toc-entry" data-go="11"><span>Importance of the PCB</span><span>12</span></button><button class="toc-entry" data-go="11"><span>Process Creation and Termination</span><span>12</span></button><button class="toc-entry" data-go="12"><span>Process creation</span><span>13</span></button><button class="toc-entry" data-go="12"><span>Process termination</span><span>13</span></button><button class="toc-entry" data-go="12"><span>Process Hierarchies and Relationships</span><span>13</span></button><button class="toc-entry" data-go="12"><span>Process hierarchy concepts</span><span>13</span></button><button class="toc-entry" data-go="12"><span>Practical importance</span><span>13</span></button><button class="toc-entry" data-go="13"><span>THREADS AND MULTITHREADING</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Understanding Threads</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Main components of a thread</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Example</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Process vs. Thread</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Example</span><span>14</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="13"><span>Why distinguish them?</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Multithreading</span><span>14</span></button><button class="toc-entry" data-go="14"><span>Benefits of multithreading</span><span>15</span></button><button class="toc-entry" data-go="14"><span>Example: Online shopping application</span><span>15</span></button><button class="toc-entry" data-go="14"><span>Types of Threads</span><span>15</span></button><button class="toc-entry" data-go="14"><span>User-level threads</span><span>15</span></button><button class="toc-entry" data-go="14"><span>Kernel-level threads</span><span>15</span></button><button class="toc-entry" data-go="14"><span>Thread Models</span><span>15</span></button><button class="toc-entry" data-go="14"><span>Many-to-One</span><span>15</span></button><button class="toc-entry" data-go="15"><span>One-to-One</span><span>16</span></button><button class="toc-entry" data-go="15"><span>Many-to-Many</span><span>16</span></button><button class="toc-entry" data-go="15"><span>Thread Synchronization</span><span>16</span></button><button class="toc-entry" data-go="15"><span>Why synchronization is necessary</span><span>16</span></button><button class="toc-entry" data-go="15"><span>Common synchronization tools</span><span>16</span></button><button class="toc-entry" data-go="15"><span>Interprocess Communication (IPC)</span><span>16</span></button><button class="toc-entry" data-go="15"><span>Common IPC methods</span><span>16</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="16"><span>Example</span><span>17</span></button><button class="toc-entry" data-go="16"><span>PROCESS SCHEDULING</span><span>17</span></button><button class="toc-entry" data-go="16"><span>Introduction to Process Scheduling</span><span>17</span></button><button class="toc-entry" data-go="16"><span>Main objectives</span><span>17</span></button><button class="toc-entry" data-go="16"><span>Types of schedulers</span><span>17</span></button><button class="toc-entry" data-go="16"><span>Scheduling Queues</span><span>17</span></button><button class="toc-entry" data-go="16"><span>Types of scheduling queues</span><span>17</span></button><button class="toc-entry" data-go="16"><span>How queues operate</span><span>17</span></button><button class="toc-entry" data-go="17"><span>CPU Scheduling Criteria</span><span>18</span></button><button class="toc-entry" data-go="17"><span>1. CPU utilization</span><span>18</span></button><button class="toc-entry" data-go="17"><span>2. Throughput</span><span>18</span></button><button class="toc-entry" data-go="17"><span>3. Turnaround time</span><span>18</span></button><button class="toc-entry" data-go="17"><span>4. Waiting time</span><span>18</span></button><button class="toc-entry" data-go="17"><span>5. Response time</span><span>18</span></button><button class="toc-entry" data-go="17"><span>Why these measurements matter</span><span>18</span></button><button class="toc-entry" data-go="17"><span>First-Come, First-Served (FCFS)</span><span>18</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="17"><span>Characteristics</span><span>18</span></button><button class="toc-entry" data-go="17"><span>Example</span><span>18</span></button><button class="toc-entry" data-go="18"><span>Advantages</span><span>19</span></button><button class="toc-entry" data-go="18"><span>Disadvantages</span><span>19</span></button><button class="toc-entry" data-go="18"><span>Shortest Job First (SJF)</span><span>19</span></button><button class="toc-entry" data-go="18"><span>Example</span><span>19</span></button><button class="toc-entry" data-go="18"><span>Advantages</span><span>19</span></button><button class="toc-entry" data-go="18"><span>Disadvantages</span><span>19</span></button><button class="toc-entry" data-go="18"><span>Priority Scheduling</span><span>19</span></button><button class="toc-entry" data-go="18"><span>Example</span><span>19</span></button><button class="toc-entry" data-go="19"><span>Starvation</span><span>20</span></button><button class="toc-entry" data-go="19"><span>Aging</span><span>20</span></button><button class="toc-entry" data-go="19"><span>Round Robin Scheduling</span><span>20</span></button><button class="toc-entry" data-go="19"><span>Example</span><span>20</span></button><button class="toc-entry" data-go="19"><span>Advantages</span><span>20</span></button><button class="toc-entry" data-go="19"><span>Disadvantages</span><span>20</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="19"><span>Multilevel Queue Scheduling</span><span>20</span></button><button class="toc-entry" data-go="19"><span>Example queue categories</span><span>20</span></button><button class="toc-entry" data-go="20"><span>Characteristics</span><span>21</span></button><button class="toc-entry" data-go="20"><span>Limitation</span><span>21</span></button><button class="toc-entry" data-go="20"><span>Multilevel Feedback Queue Scheduling</span><span>21</span></button><button class="toc-entry" data-go="20"><span>How it works</span><span>21</span></button><button class="toc-entry" data-go="20"><span>Example</span><span>21</span></button><button class="toc-entry" data-go="20"><span>Benefits</span><span>21</span></button><button class="toc-entry" data-go="20"><span>Limitations</span><span>21</span></button><button class="toc-entry" data-go="20"><span>Context Switching</span><span>21</span></button><button class="toc-entry" data-go="20"><span>Basic steps</span><span>21</span></button><button class="toc-entry" data-go="21"><span>Why context switching matters</span><span>22</span></button><button class="toc-entry" data-go="21"><span>Concurrency and Race Conditions</span><span>22</span></button><button class="toc-entry" data-go="21"><span>Race condition</span><span>22</span></button><button class="toc-entry" data-go="21"><span>Critical section</span><span>22</span></button><button class="toc-entry" data-go="21"><span>Prevention techniques</span><span>22</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="21"><span>Deadlocks and Resource Management</span><span>22</span></button><button class="toc-entry" data-go="21"><span>Four necessary conditions</span><span>22</span></button><button class="toc-entry" data-go="22"><span>Example</span><span>23</span></button><button class="toc-entry" data-go="22"><span>Deadlock handling strategies</span><span>23</span></button><button class="toc-entry" data-go="22"><span>Scheduling in Modern Operating Systems</span><span>23</span></button><button class="toc-entry" data-go="22"><span>Windows</span><span>23</span></button><button class="toc-entry" data-go="22"><span>Linux</span><span>23</span></button><button class="toc-entry" data-go="22"><span>macOS</span><span>23</span></button><button class="toc-entry" data-go="22"><span>Mobile operating systems</span><span>23</span></button><button class="toc-entry" data-go="22"><span>Modern scheduling challenges</span><span>23</span></button><button class="toc-entry" data-go="22"><span>Practical Laboratory Activities</span><span>23</span></button><button class="toc-entry" data-go="23"><span>Case Study 1: The Slow Computer Laboratory</span><span>24</span></button><button class="toc-entry" data-go="23"><span>Case Study 2: Online Banking Application</span><span>24</span></button><button class="toc-entry" data-go="23"><span>Case Study 3: Video Rendering Software</span><span>24</span></button><button class="toc-entry" data-go="23"><span>Written Exercises and Analytical Questions</span><span>24</span></button><button class="toc-entry" data-go="23"><span>Part A: Identification</span><span>24</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="24"><span>Part B: Essay Questions</span><span>25</span></button><button class="toc-entry" data-go="24"><span>Part C: Performance Task</span><span>25</span></button><button class="toc-entry" data-go="24"><span>Grading rubric</span><span>25</span></button><button class="toc-entry" data-go="24"><span>LEARNING RESOURCES</span><span>25</span></button><button class="toc-entry" data-go="24"><span>Educational Resources and Online Learning Materials</span><span>25</span></button><button class="toc-entry" data-go="25"><span>Recommended Study and Review Materials</span><span>26</span></button><button class="toc-entry" data-go="25"><span>Suggested study routine</span><span>26</span></button><button class="toc-entry" data-go="25"><span>GLOSSARY AND REFERENCES</span><span>26</span></button><button class="toc-entry" data-go="25"><span>Glossary of Terms</span><span>26</span></button><button class="toc-entry" data-go="25"><span>References and Further Reading</span><span>26</span></button><button class="toc-entry" data-go="26"><span>Final Review and Reflection</span><span>27</span></button><button class="toc-entry" data-go="26"><span>Summary of the entire lesson</span><span>27</span></button><button class="toc-entry" data-go="26"><span>Final reflection questions</span><span>27</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><h2>PROCESSES, THREADS, AND PROCESS SCHEDULING</h2><h2>PROCESSES, THREADS, AND PROCESS SCHEDULING</h2><h2>Understanding How Operating Systems Manage and Execute Programs</h2><p>STUDENT LEARNING EDITION | 2026</p><p>Subject: Operating Systems Topic: Processes, Threads, and Process Scheduling Material type: Educational textbook and learning resource Intended audience: Senior High School, College, and introductory Computer Science and Information Technology students</p><h2>Welcome to Process Management!</h2><p>Every time a computer runs an application, opens a document, plays a video, or downloads a file, the operating system manages multiple activities behind the scenes.</p><p>These activities are organized through processes and threads.</p><p>A process represents a program in execution. A thread represents an individual sequence of execution within a process. Process scheduling determines which tasks receive processor time and when they are allowed to execute.</p><p>These concepts are essential to understanding how modern operating systems support multitasking, responsiveness, resource management, and efficient computing.</p><p>This e-book explores the principles of process creation, thread management, scheduling algorithms, synchronization, and practical operating system operations.</p><p>Learning objectives</p><p>After completing this e-book, learners should be able to:</p><p>Define processes and threads.</p><p>Explain the different states of a process.</p><p>Identify the components of a Process Control Block.</p><p>Differentiate processes from threads.</p><p>Describe how operating systems schedule tasks.</p><p>Compare common scheduling algorithms.</p><p>Explain process synchronization and communication.</p><p>Analyze scheduling problems using practical examples.</p><p>Recognize common process-management challenges.</p><h2>FUNDAMENTALS OF PROCESS MANAGEMENT</h2><h2>Introduction to Process Management</h2><p>Process management is one of the most important responsibilities of an operating system.</p><p>A computer may run several applications at the same time. For example, a user might listen to music, browse the Internet, edit a document, and download files simultaneously.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Although the processor may execute only a limited number of instructions at a given instant, the operating system coordinates these activities so that they appear to run together.</p><p>This is achieved through process management.</p><h2>What is process management?</h2><p>Process management is the operating system function responsible for creating, scheduling, executing, synchronizing, and terminating processes.</p><p>Its main responsibilities include:</p><p>Creating and deleting processes.</p><p>Allocating processor time.</p><p>Managing process states.</p><p>Coordinating communication between processes.</p><p>Supporting synchronization.</p><p>Handling process interruptions.</p><p>Managing shared resources.</p><h2>Why is it important?</h2><p>Without process management, applications would compete uncontrollably for system resources. A computer could become unresponsive, applications could interfere with each other, and important tasks might not receive enough processing time.</p><p>Process management provides an organized environment for executing programs.</p><h2>Understanding Processes</h2><p>A process is a program that is currently being executed by the computer.</p><p>A program is a passive collection of instructions stored in a file, while a process is an active instance of those instructions.</p><p>For example, a web browser installed on a computer is a program. When the user opens it, the operating system creates one or more processes to execute its functions.</p><h2>Main components of a process</h2><p>Program code: Contains the instructions to be executed.</p><p>Data section: Holds global and static variables.</p><p>Heap: Provides memory for dynamically allocated information.</p><p>Stack: Stores function calls, local variables, and execution-related information.</p><p>Program counter: Identifies the next instruction to execute.</p><p>Processor registers: Hold temporary values required during execution.</p><p>A process also has operating system information, such as its identifier, state, permissions, and allocated resources.</p><p>Processes allow operating systems to organize the execution of multiple applications.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><h2>Process States</h2><p>During execution, a process moves through several states.</p><h2>1. New</h2><p>The process is being created. The operating system prepares the necessary resources and establishes its initial information.</p><h2>2. Ready</h2><p>The process is prepared to execute but is waiting for processor time.</p><h2>3. Running</h2><p>The process is currently executing instructions on a processor core.</p><h2>4. Waiting or Blocked</h2><p>The process cannot continue until a particular event occurs, such as the completion of an input/output operation.</p><h2>5. Terminated</h2><p>The process has completed its execution or has been stopped by the operating system.</p><h2>Process state transitions</h2><p>A process can move from ready to running when the scheduler selects it.</p><p>It may move from running to waiting when it requests an input/output operation. Once that operation finishes, the process returns to the ready state.</p><p>When execution is complete, the process enters the terminated state.</p><p>Understanding these states helps explain how an operating system manages applications efficiently.</p><h2>Process Control Block (PCB)</h2><p>The Process Control Block is a data structure maintained by the operating system to store information about a process.</p><p>Each process has associated management information that allows the operating system to monitor and control its execution.</p><h2>Information contained in a PCB</h2><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Component</td><td style="border:1px solid #d9aac7;padding:7px;">Function</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Process ID</td><td style="border:1px solid #d9aac7;padding:7px;">Uniquely identifies a process</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Process State</td><td style="border:1px solid #d9aac7;padding:7px;">Indicates the current execution state</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Program Counter</td><td style="border:1px solid #d9aac7;padding:7px;">Records the next instruction</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">CPU Registers</td><td style="border:1px solid #d9aac7;padding:7px;">Stores processor-related information</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Scheduling Information</td><td style="border:1px solid #d9aac7;padding:7px;">Contains priority and scheduling details</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Memory Information</td><td style="border:1px solid #d9aac7;padding:7px;">Describes allocated memory</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Accounting Information</td><td style="border:1px solid #d9aac7;padding:7px;">Records resource usage</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">I/O Information</td><td style="border:1px solid #d9aac7;padding:7px;">Tracks assigned devices and operations</td></tr></table><h2>Importance of the PCB</h2><p>When the processor switches from one process to another, the operating system saves the current process information and restores the information belonging to the next process.</p><p>This allows processes to pause and resume without losing their execution context.</p><p>The PCB is therefore essential to multitasking and context switching.</p><h2>Process Creation and Termination</h2></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Processes are created when users launch applications, when operating systems start background services, or when existing processes create additional processes.</p><h2>Process creation</h2><p>A typical process creation sequence involves:</p><p>Receiving a request to start a program.</p><p>Assigning a process identifier.</p><p>Allocating required memory and resources.</p><p>Initializing process information.</p><p>Creating the PCB.</p><p>Placing the process in the appropriate scheduling queue.</p><h2>Process termination</h2><p>A process may terminate because:</p><p>It completes its assigned task.</p><p>The user closes the application.</p><p>An unrecoverable error occurs.</p><p>The operating system stops it.</p><p>A required resource becomes unavailable.</p><p>When termination occurs, the operating system releases the process's allocated resources and updates its management records.</p><p>Proper termination is important because abandoned resources can reduce system efficiency.</p><h2>Process Hierarchies and Relationships</h2><p>Some operating systems allow processes to create other processes.</p><p>This creates a parent-child relationship.</p><p>The original process is called the parent process, while the newly created process is called the child process.</p><p>For example, a terminal application may start a command interpreter, which then launches another program.</p><h2>Process hierarchy concepts</h2><p>Parent process: Creates another process.</p><p>Child process: Created by an existing process.</p><p>Process tree: Represents relationships between parent and child processes.</p><p>Process identifier: Distinguishes one process from another.</p><p>On Unix-like systems, process creation commonly uses mechanisms such as fork() and exec().</p><p>The fork() operation creates a new process, while exec() replaces the current process image with a different program.</p><h2>Practical importance</h2></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Process hierarchies allow applications to divide work into separate execution units. They also help operating systems organize background services, shells, and system utilities.</p><h2>THREADS AND MULTITHREADING</h2><h2>Understanding Threads</h2><p>A thread is the smallest unit of execution that an operating system schedules within a process, depending on its scheduling model.</p><p>A single process may contain one thread or multiple threads.</p><p>Threads belonging to the same process usually share the process's code, data, and open resources, but each thread maintains its own execution state.</p><h2>Main components of a thread</h2><p>Thread identifier.</p><p>Program counter.</p><p>Register values.</p><p>Stack.</p><p>Scheduling information.</p><p>Execution state.</p><h2>Example</h2><p>Consider a video editing application.</p><p>It may use separate threads for:</p><p>Displaying the user interface.</p><p>Processing video frames.</p><p>Loading media files.</p><p>Encoding audio.</p><p>Saving project changes.</p><p>Because these activities are divided into threads, the application can remain responsive while performing demanding operations.</p><p>Threads make it possible to organize related tasks within a single application.</p><h2>Process vs. Thread</h2><p>Processes and threads are closely related, but they are not identical.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Feature</td><td style="border:1px solid #d9aac7;padding:7px;">Process</td><td style="border:1px solid #d9aac7;padding:7px;">Thread</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Definition</td><td style="border:1px solid #d9aac7;padding:7px;">Program in execution</td><td style="border:1px solid #d9aac7;padding:7px;">Execution sequence within a process</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Memory</td><td style="border:1px solid #d9aac7;padding:7px;">Has its own process address space</td><td style="border:1px solid #d9aac7;padding:7px;">Shares process memory</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Resources</td><td style="border:1px solid #d9aac7;padding:7px;">Owns or manages process resources</td><td style="border:1px solid #d9aac7;padding:7px;">Uses process resources</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Creation</td><td style="border:1px solid #d9aac7;padding:7px;">Generally more resource-intensive</td><td style="border:1px solid #d9aac7;padding:7px;">Generally lighter</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Communication</td><td style="border:1px solid #d9aac7;padding:7px;">Often requires IPC mechanisms</td><td style="border:1px solid #d9aac7;padding:7px;">Can communicate through shared memory</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Isolation</td><td style="border:1px solid #d9aac7;padding:7px;">Stronger separation</td><td style="border:1px solid #d9aac7;padding:7px;">Less isolation within the same process</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Failure impact</td><td style="border:1px solid #d9aac7;padding:7px;">Often contained within the process</td><td style="border:1px solid #d9aac7;padding:7px;">A thread failure may affect its process</td></tr></table><h2>Example</h2><p>A word-processing application is a process.</p><p>Within that process, different threads may handle typing, spelling checks, automatic saving, and interface updates.</p><h2>Why distinguish them?</h2><p>Processes provide isolation and resource management. Threads provide more lightweight execution within an application.</p><p>Choosing between processes and threads depends on the application's design, safety requirements, and performance goals.</p><h2>Multithreading</h2><p>Multithreading is the ability of a process to execute multiple threads.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>It allows applications to divide work into smaller tasks that can progress independently.</p><h2>Benefits of multithreading</h2><p>Responsiveness: A program can continue responding to user actions while performing background operations.</p><p>Resource sharing: Threads within the same process can access shared data and resources.</p><p>Economy: Creating and switching between threads can be less expensive than managing separate processes, depending on the system.</p><p>Scalability: Multithreaded applications can take advantage of multiple processor cores.</p><h2>Example: Online shopping application</h2><p>A shopping application may use threads to handle user interaction, retrieve product information, process images, and update shopping cart information.</p><p>These tasks can progress independently, improving the user experience.</p><p>However, multithreading introduces challenges involving synchronization, shared data, and coordination.</p><h2>Types of Threads</h2><p>There are two major categories of threads based on how they are managed.</p><h2>User-level threads</h2><p>User-level threads are managed by a thread library or runtime without requiring the operating system kernel to manage every thread individually.</p><p>Advantages include:</p><p>Fast thread management in suitable implementations.</p><p>Flexible scheduling by the application runtime.</p><p>Reduced need for certain kernel operations.</p><p>Limitations depend on the implementation. In some many-to-one models, a blocking system call can prevent other user threads from running.</p><h2>Kernel-level threads</h2><p>Kernel-level threads are managed directly by the operating system.</p><p>Advantages include:</p><p>The operating system can schedule threads independently.</p><p>Multiple threads can execute simultaneously on different processor cores.</p><p>Blocking one thread does not necessarily block all others.</p><p>Kernel-level management may involve additional overhead.</p><p>Modern systems commonly use kernel-supported threading.</p><h2>Thread Models</h2><p>Thread models describe the relationship between user-level threads and kernel-level threads.</p><h2>Many-to-One</h2></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Multiple user threads are mapped to one kernel thread.</p><p>This model is simple but does not provide true parallel execution of those user threads across multiple cores.</p><h2>One-to-One</h2><p>Each user thread is mapped to a separate kernel thread.</p><p>This model supports parallel execution but can involve greater resource overhead.</p><h2>Many-to-Many</h2><p>Multiple user threads are mapped across a smaller or equal number of kernel threads.</p><p>This arrangement offers flexibility in managing execution resources.</p><p>Thread models influence performance, scalability, and the way applications use processor resources.</p><h2>Thread Synchronization</h2><p>Synchronization is the coordination of multiple threads or processes that access shared resources.</p><p>It prevents inconsistent results when multiple execution units attempt to modify the same information.</p><h2>Why synchronization is necessary</h2><p>Suppose two threads update the same bank account balance.</p><p>The original balance is ₱5,000. Both threads read the value before either writes an updated balance.</p><p>One thread withdraws ₱500, while another deposits ₱1,000.</p><p>Without proper coordination, one update may overwrite the other.</p><p>The final result could become incorrect.</p><h2>Common synchronization tools</h2><p>Mutex locks.</p><p>Semaphores.</p><p>Monitors.</p><p>Condition variables.</p><p>Atomic operations.</p><p>These mechanisms control access to shared resources and help maintain correct program behavior.</p><h2>Interprocess Communication (IPC)</h2><p>Interprocess Communication refers to methods that allow separate processes to exchange information and coordinate activities.</p><p>Processes generally operate in separate address spaces, so they need communication mechanisms to share information.</p><h2>Common IPC methods</h2><p>Shared memory: Multiple processes access a designated memory region.</p><p>Message passing: Processes exchange information through messages.</p><p>Pipes: Provide a communication channel between processes.</p><p>Sockets: Allow processes to communicate locally or across a network.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Signals: Notify a process that a particular event has occurred.</p><h2>Example</h2><p>A web browser may communicate with a separate helper process to handle a particular service.</p><p>The processes exchange information through controlled communication mechanisms.</p><p>IPC allows applications to be divided into independent components while still cooperating.</p><h2>PROCESS SCHEDULING</h2><h2>Introduction to Process Scheduling</h2><p>Process scheduling is the operating system activity of selecting which ready process or thread should receive processor time.</p><p>Because multiple programs may request processor resources simultaneously, the operating system needs a scheduling mechanism to determine execution order.</p><h2>Main objectives</h2><p>Maximize processor utilization.</p><p>Increase the number of completed tasks.</p><p>Minimize waiting time.</p><p>Reduce response time.</p><p>Provide fairness.</p><p>Support system responsiveness.</p><h2>Types of schedulers</h2><p>Long-term scheduler: Determines which processes are admitted into the system for execution.</p><p>Short-term scheduler: Selects a process from the ready queue to execute on the CPU.</p><p>Medium-term scheduler: Temporarily removes processes from memory and later restores them, when supported by the operating system.</p><p>The short-term scheduler is particularly important because it makes frequent decisions about processor allocation.</p><h2>Scheduling Queues</h2><p>A scheduling queue is a collection of processes or threads waiting for a particular system resource or event.</p><h2>Types of scheduling queues</h2><p>Job queue: Contains processes that have entered the system.</p><p>Ready queue: Contains processes prepared to use the processor.</p><p>Waiting queue: Contains processes waiting for an event or resource.</p><h2>How queues operate</h2><p>When a process is created, it may enter a job queue. Once admitted into memory, it can join the ready queue.</p><p>The CPU scheduler selects one of the ready processes for execution.</p><p>If the selected process requests input/output, it moves to a waiting queue. After the operation finishes, it returns to the ready queue.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>This continuous movement allows the operating system to manage competing activities.</p><h2>CPU Scheduling Criteria</h2><p>Scheduling algorithms are evaluated using several performance measurements.</p><h2>1. CPU utilization</h2><p>The percentage of time the processor is actively performing work.</p><p>Higher utilization generally indicates effective resource use, although maximum utilization is not always the only goal.</p><h2>2. Throughput</h2><p>The number of processes completed during a particular period.</p><h2>3. Turnaround time</h2><p>The total time between process arrival and completion.</p><p>Turnaround Time=Completion Time−Arrival TimeTurnaround\ Time = Completion\ Time - Arrival\ Time</p><h2>4. Waiting time</h2><p>The total time a process spends waiting in the ready queue.</p><h2>5. Response time</h2><p>The time between a process's arrival and its first allocation of processor time.</p><p>Response Time=First Start Time−Arrival TimeResponse\ Time = First\ Start\ Time - Arrival\ Time</p><h2>Why these measurements matter</h2><p>An interactive computer system should provide quick responses. A batch-processing system may place greater emphasis on throughput and overall completion time.</p><p>Scheduling decisions depend on the purpose of the operating system.</p><h2>First-Come, First-Served (FCFS)</h2><p>First-Come, First-Served is a scheduling algorithm that executes processes in the order they arrive in the ready queue.</p><p>It follows a simple queue-based approach.</p><h2>Characteristics</h2><p>Non-preemptive scheduling.</p><p>Processes are served in arrival order.</p><p>Easy to implement.</p><p>Does not require estimated burst times.</p><h2>Example</h2><p>Assume three processes arrive at time zero.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Process</td><td style="border:1px solid #d9aac7;padding:7px;">Burst time</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P1</td><td style="border:1px solid #d9aac7;padding:7px;">5 ms</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P2</td><td style="border:1px solid #d9aac7;padding:7px;">3 ms</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P3</td><td style="border:1px solid #d9aac7;padding:7px;">2 ms</td></tr></table><p>Gantt chart:</p><p>P1</p><p>P2</p><p>P3</p><p>0 ms</p><p>5 ms</p><p>8 ms</p><p>10 ms</p><p>Waiting times:</p><p>P1 = 0 ms</p><p>P2 = 5 ms</p><p>P3 = 8 ms</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Average waiting time:</p><p>0+5+83=4.33 ms\frac{0+5+8}{3}=4.33\text{ ms}</p><h2>Advantages</h2><p>FCFS is simple and predictable.</p><h2>Disadvantages</h2><p>Long processes can delay shorter ones. This problem is commonly called the convoy effect.</p><h2>Shortest Job First (SJF)</h2><p>Shortest Job First selects the process with the smallest expected CPU burst time.</p><p>It can be implemented in non-preemptive or preemptive form.</p><h2>Example</h2><p>Consider the following processes, all arriving at time zero.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Process</td><td style="border:1px solid #d9aac7;padding:7px;">Burst time</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P1</td><td style="border:1px solid #d9aac7;padding:7px;">6 ms</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P2</td><td style="border:1px solid #d9aac7;padding:7px;">2 ms</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P3</td><td style="border:1px solid #d9aac7;padding:7px;">4 ms</td></tr></table><p>The execution order is P2, P3, then P1.</p><p>P2</p><p>P3</p><p>P1</p><p>0 ms</p><p>2 ms</p><p>6 ms</p><p>12 ms</p><p>Waiting times:</p><p>P1 = 6 ms</p><p>P2 = 0 ms</p><p>P3 = 2 ms</p><p>Average waiting time:</p><p>6+0+23=2.67 ms\frac{6+0+2}{3}=2.67\text{ ms}</p><h2>Advantages</h2><p>SJF can minimize average waiting time when burst estimates are accurate and the relevant assumptions are satisfied.</p><h2>Disadvantages</h2><p>CPU burst lengths are difficult to predict precisely.</p><p>Long processes may experience starvation.</p><p>The algorithm requires information about expected execution time.</p><h2>Priority Scheduling</h2><p>Priority Scheduling selects processes according to assigned priority values.</p><p>A higher-priority process is selected before a lower-priority process, subject to the operating system's priority convention.</p><p>Some systems use smaller numerical values to represent higher priority.</p><h2>Example</h2><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Process</td><td style="border:1px solid #d9aac7;padding:7px;">Burst time</td><td style="border:1px solid #d9aac7;padding:7px;">Priority</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P1</td><td style="border:1px solid #d9aac7;padding:7px;">4 ms</td><td style="border:1px solid #d9aac7;padding:7px;">3</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P2</td><td style="border:1px solid #d9aac7;padding:7px;">3 ms</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P3</td><td style="border:1px solid #d9aac7;padding:7px;">2 ms</td><td style="border:1px solid #d9aac7;padding:7px;">2</td></tr></table><p>Assume that a smaller priority number means higher priority.</p><p>Execution order:</p><p>P2 → P3 → P1</p><p>P2</p><p>P3</p><p>P1</p><p>0 ms</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>3 ms</p><p>5 ms</p><p>9 ms</p><h2>Starvation</h2><p>Starvation happens when a process waits indefinitely because other processes continually receive higher priority.</p><h2>Aging</h2><p>Aging is a technique that gradually increases the priority of waiting processes.</p><p>It helps prevent indefinite postponement and promotes fairness.</p><h2>Round Robin Scheduling</h2><p>Round Robin is a preemptive scheduling algorithm commonly associated with time-sharing systems.</p><p>Each process receives a fixed amount of processor time called a time quantum.</p><p>If the process does not finish within its allocated quantum, it is interrupted and returned to the end of the ready queue.</p><h2>Example</h2><p>Assume three processes arrive at time zero and have the following burst times:</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Process</td><td style="border:1px solid #d9aac7;padding:7px;">Burst time</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P1</td><td style="border:1px solid #d9aac7;padding:7px;">5 ms</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P2</td><td style="border:1px solid #d9aac7;padding:7px;">3 ms</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">P3</td><td style="border:1px solid #d9aac7;padding:7px;">2 ms</td></tr></table><p>Time quantum = 2 ms.</p><p>Execution sequence:</p><p>P1 → P2 → P3 → P1 → P2 → P1</p><p>P1</p><p>P2</p><p>P3</p><p>P1</p><p>P2</p><p>P1</p><p>0</p><p>2</p><p>4</p><p>6</p><p>8</p><p>9</p><p>10</p><p>Completion times:</p><p>P1 = 10 ms</p><p>P2 = 9 ms</p><p>P3 = 6 ms</p><p>Waiting times:</p><p>P1 = 5 ms</p><p>P2 = 6 ms</p><p>P3 = 4 ms</p><p>Average waiting time:</p><p>5+6+43=5 ms\frac{5+6+4}{3}=5\text{ ms}</p><h2>Advantages</h2><p>Provides regular opportunities for processes to execute.</p><p>Suitable for interactive systems.</p><p>Reduces the chance that one process monopolizes the CPU.</p><h2>Disadvantages</h2><p>Very small time quanta increase context-switching overhead.</p><p>Very large time quanta make the algorithm resemble FCFS.</p><h2>Multilevel Queue Scheduling</h2><p>Multilevel Queue Scheduling divides the ready queue into separate queues according to process categories.</p><p>Each queue may use a different scheduling algorithm.</p><h2>Example queue categories</h2><p>System processes.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Interactive processes.</p><p>Interactive editing applications.</p><p>Batch-processing tasks.</p><p>Background services.</p><p>The operating system may assign different priorities to these queues.</p><p>For example, interactive processes may receive preference because users expect fast responses.</p><p>Batch processes may receive processor time when interactive workloads are less demanding.</p><h2>Characteristics</h2><p>Processes are assigned to a particular queue.</p><p>Different queues may use different scheduling methods.</p><p>Scheduling can occur between queues through fixed priority or time allocation.</p><h2>Limitation</h2><p>A lower-priority queue may experience starvation if higher-priority queues continuously receive processor time.</p><h2>Multilevel Feedback Queue Scheduling</h2><p>Multilevel Feedback Queue Scheduling is a more flexible scheduling approach.</p><p>Unlike ordinary multilevel queue scheduling, processes can move between queues based on their execution behavior and scheduling rules.</p><h2>How it works</h2><p>A process may initially enter a high-priority queue.</p><p>If it repeatedly uses its entire time quantum, the scheduler may move it to a lower-priority queue.</p><p>Processes that wait too long may receive priority boosts.</p><h2>Example</h2><p>A simplified arrangement:</p><p>Queue 1: Highest priority, shortest time quantum.</p><p>Queue 2: Medium priority, longer time quantum.</p><p>Queue 3: Lowest priority, background execution.</p><h2>Benefits</h2><p>Supports different kinds of workloads.</p><p>Can favor short interactive tasks.</p><p>Provides mechanisms to reduce starvation.</p><p>Adapts to process behavior.</p><h2>Limitations</h2><p>The algorithm is more complicated to configure and implement. Its effectiveness depends on queue priorities, time quanta, and movement rules.</p><h2>Context Switching</h2><p>Context switching is the process of saving the execution state of one process or thread and restoring the state of another.</p><p>The operating system performs context switching when the processor changes from one execution context to another.</p><h2>Basic steps</h2><p>An interrupt or scheduling event occurs.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>The current execution state is saved.</p><p>The scheduler chooses another process or thread.</p><p>The selected execution state is restored.</p><p>The processor resumes execution.</p><h2>Why context switching matters</h2><p>It allows multiple applications to share processor resources.</p><p>However, context switching also creates overhead because time is spent saving and restoring execution information instead of performing application work.</p><p>Excessive switching may reduce overall system efficiency.</p><p>The operating system must balance responsiveness with the cost of switching between tasks.</p><h2>Concurrency and Race Conditions</h2><p>Concurrency occurs when multiple processes or threads make progress during overlapping periods.</p><p>On a single processor, tasks may take turns executing. On a multicore processor, some tasks may execute simultaneously.</p><h2>Race condition</h2><p>A race condition occurs when the result of an operation depends on the timing or order of concurrent execution.</p><p>For example, two threads may attempt to update the same inventory quantity at the same time.</p><p>If both read the old quantity before either update is completed, one update may be lost.</p><h2>Critical section</h2><p>A critical section is a part of a program that accesses shared resources and must be protected against unsafe simultaneous access.</p><h2>Prevention techniques</h2><p>Mutual exclusion.</p><p>Locks and mutexes.</p><p>Semaphores.</p><p>Atomic instructions.</p><p>Proper synchronization design.</p><p>Correct concurrency management is important in databases, banking systems, online applications, and other software that handles shared information.</p><h2>Deadlocks and Resource Management</h2><p>A deadlock is a situation in which two or more processes wait indefinitely for resources held by one another.</p><h2>Four necessary conditions</h2><p>Mutual exclusion: At least one resource cannot be shared simultaneously.</p><p>Hold and wait: A process holds one resource while waiting for another.</p><p>No preemption: Resources cannot be forcibly taken away under the relevant conditions.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Circular wait: Processes form a circular chain of resource dependencies.</p><h2>Example</h2><p>Process A holds Resource 1 and waits for Resource 2.</p><p>Process B holds Resource 2 and waits for Resource 1.</p><p>Neither can continue until the other releases its resource.</p><h2>Deadlock handling strategies</h2><p>Prevention: Design the system so at least one necessary condition cannot occur.</p><p>Avoidance: Grant resource requests only when the system remains in a safe state.</p><p>Detection: Identify deadlocks after they occur.</p><p>Recovery: Terminate processes or reclaim resources to restore progress.</p><p>Deadlock management is essential in systems that handle multiple processes and shared resources.</p><h2>Scheduling in Modern Operating Systems</h2><p>Modern operating systems use sophisticated scheduling mechanisms that consider processor topology, task priority, system responsiveness, and power consumption.</p><h2>Windows</h2><p>Windows uses a priority-based, preemptive scheduling approach. It manages threads and assigns processor time according to scheduling priorities and system conditions.</p><h2>Linux</h2><p>Linux uses the Completely Fair Scheduler (CFS) for many ordinary scheduling workloads in traditional configurations. Newer Linux versions also include the EEVDF scheduling approach for fair scheduling.</p><h2>macOS</h2><p>macOS uses priority-based scheduling and system policies designed to support responsiveness, energy efficiency, and different application workloads.</p><h2>Mobile operating systems</h2><p>Mobile platforms consider battery consumption, application activity, background execution, and responsiveness.</p><h2>Modern scheduling challenges</h2><p>Multicore processor coordination.</p><p>Energy-efficient execution.</p><p>Real-time deadlines.</p><p>Interactive application performance.</p><p>Background task management.</p><p>Processor and memory locality.</p><p>Modern scheduling is not simply about selecting the shortest process. It involves balancing many system-wide goals.</p><p>PRACTICAL LEARNING AND APPLICATIONS</p><h2>Practical Laboratory Activities</h2></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>These exercises allow students to observe process and thread management through real computer systems.</p><h2>Case Study 1: The Slow Computer Laboratory</h2><p>A school computer laboratory has 30 computers. Students report that computers become slow when several applications are opened simultaneously.</p><p>The laboratory technician discovers that many applications are running in the background and that memory usage is frequently high.</p><p>Tasks:</p><p>Explain how multiple processes affect system performance.</p><p>Describe the role of the CPU scheduler.</p><p>Explain why insufficient RAM can cause performance problems.</p><p>Identify which background applications may be unnecessary.</p><p>Recommend ways to improve the computers' responsiveness.</p><h2>Case Study 2: Online Banking Application</h2><p>A banking application processes deposits, withdrawals, and balance inquiries from many users.</p><p>Two transactions may attempt to modify the same account balance at nearly the same time.</p><p>Tasks:</p><p>Explain why concurrent execution is useful.</p><p>Describe the possible race condition.</p><p>Explain how mutexes or other synchronization mechanisms can help.</p><p>Discuss why data integrity is important.</p><p>Recommend an appropriate approach to protect shared account information.</p><h2>Case Study 3: Video Rendering Software</h2><p>A video editing application needs to process multiple video frames, encode audio, and display a responsive interface.</p><p>Tasks:</p><p>Explain how multithreading could improve the application.</p><p>Identify which activities could run independently.</p><p>Discuss the importance of multiple processor cores.</p><p>Explain why synchronization may be necessary.</p><p>Identify possible problems if one thread stops responding.</p><h2>Written Exercises and Analytical Questions</h2><h2>Part A: Identification</h2><p>Write the correct technical term.</p><p>The data structure that stores information about a process.</p><p>The time a process spends waiting in the ready queue.</p><p>The total time from arrival to completion.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>A process that has been created by another process.</p><p>A scheduling method that assigns equal time slices.</p><p>The condition where processes wait indefinitely for one another.</p><p>The part of a program that accesses shared resources.</p><p>The operating system component that selects the next process.</p><p>The technique of coordinating concurrent execution.</p><p>The memory space shared by multiple threads within the same process.</p><h2>Part B: Essay Questions</h2><p>Answer each question in approximately 100–150 words.</p><p>Explain why process management is important in modern operating systems.</p><p>Compare the advantages and limitations of processes and threads.</p><p>Discuss how CPU scheduling affects system responsiveness.</p><p>Explain the importance of synchronization in multithreaded applications.</p><p>Describe how deadlocks can affect a computer system and how they can be managed.</p><h2>Part C: Performance Task</h2><p>Title: Design a Process Scheduling Simulation</p><p>Create a simple scheduling simulation using a flowchart, spreadsheet, or programming language.</p><p>Your simulation must demonstrate:</p><p>At least four processes.</p><p>Different CPU burst times.</p><p>At least two scheduling algorithms.</p><p>A Gantt chart for each algorithm.</p><p>Waiting-time calculations.</p><p>Turnaround-time calculations.</p><p>A short comparison of the results.</p><p>Submission: A three- to five-page project report.</p><h2>Grading rubric</h2><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Criteria</td><td style="border:1px solid #d9aac7;padding:7px;">Points</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Technical correctness</td><td style="border:1px solid #d9aac7;padding:7px;">30</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Scheduling calculations</td><td style="border:1px solid #d9aac7;padding:7px;">25</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Gantt chart accuracy</td><td style="border:1px solid #d9aac7;padding:7px;">20</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Analysis and comparison</td><td style="border:1px solid #d9aac7;padding:7px;">15</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Organization and presentation</td><td style="border:1px solid #d9aac7;padding:7px;">10</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Total</td><td style="border:1px solid #d9aac7;padding:7px;">100</td></tr></table><h2>LEARNING RESOURCES</h2><h2>Educational Resources and Online Learning Materials</h2><p>The following websites provide additional lessons, technical explanations, demonstrations, and documentation.</p><p>1. Operating System Concepts</p><p>A comprehensive resource covering processes, threads, scheduling, synchronization, and deadlocks.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Source: Universidad de Costa Rica https://share.google/GrJZKoom72F0iokbP</p><p>2. Microsoft Learn</p><p>Official documentation about Windows processes, threads, and system programming.</p><p>https://learn.microsoft.com/en-us/windows/win32/procthread/processes-and-threads</p><p>3. Linux Kernel Documentation</p><p>Technical information about Linux kernel scheduling and task management.</p><p> https://docs.kernel.org/scheduler/</p><p>4. GeeksforGeeks — Operating Systems</p><p>Supplementary tutorials, scheduling examples, practice questions, and programming explanations.</p><p>https://www.geeksforgeeks.org/operating-systems/operating-systems/</p><h2>Recommended Study and Review Materials</h2><p>To develop a deeper understanding of the subject, students should explore the following areas:</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Study topic</td><td style="border:1px solid #d9aac7;padding:7px;">Recommended learning activity</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Process states</td><td style="border:1px solid #d9aac7;padding:7px;">Draw and explain a process-state diagram</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Process Control Block</td><td style="border:1px solid #d9aac7;padding:7px;">Identify PCB information fields</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Threads</td><td style="border:1px solid #d9aac7;padding:7px;">Compare single-threaded and multithreaded applications</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Synchronization</td><td style="border:1px solid #d9aac7;padding:7px;">Study mutexes and semaphores</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">FCFS</td><td style="border:1px solid #d9aac7;padding:7px;">Solve scheduling problems</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">SJF</td><td style="border:1px solid #d9aac7;padding:7px;">Compare waiting times</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Priority</td><td style="border:1px solid #d9aac7;padding:7px;">Practice priority-based scheduling</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Round Robin</td><td style="border:1px solid #d9aac7;padding:7px;">Experiment with different time quanta</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Deadlocks</td><td style="border:1px solid #d9aac7;padding:7px;">Create resource-allocation diagrams</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Modern scheduling</td><td style="border:1px solid #d9aac7;padding:7px;">Explore operating system documentation</td></tr></table><h2>Suggested study routine</h2><h2>GLOSSARY AND REFERENCES</h2><h2>Glossary of Terms</h2><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Term</td><td style="border:1px solid #d9aac7;padding:7px;">Definition</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Aging</td><td style="border:1px solid #d9aac7;padding:7px;">A scheduling technique that increases the priority of waiting processes.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Arrival Time</td><td style="border:1px solid #d9aac7;padding:7px;">The time a process enters the scheduling system.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">CPU Burst</td><td style="border:1px solid #d9aac7;padding:7px;">The period during which a process executes on the CPU before waiting or being preempted.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">CPU Scheduler</td><td style="border:1px solid #d9aac7;padding:7px;">The operating system component that selects a ready process or thread.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Concurrency</td><td style="border:1px solid #d9aac7;padding:7px;">Overlapping progress of multiple execution activities.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Context Switch</td><td style="border:1px solid #d9aac7;padding:7px;">Saving one execution context and restoring another.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Critical Section</td><td style="border:1px solid #d9aac7;padding:7px;">A program section that accesses shared resources.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Deadlock</td><td style="border:1px solid #d9aac7;padding:7px;">A condition in which processes wait indefinitely for resources held by one another.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Dispatcher</td><td style="border:1px solid #d9aac7;padding:7px;">The operating system component that transfers CPU control to a selected process.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">FCFS</td><td style="border:1px solid #d9aac7;padding:7px;">First-Come, First-Served scheduling algorithm.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">IPC</td><td style="border:1px solid #d9aac7;padding:7px;">Interprocess Communication.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Kernel</td><td style="border:1px solid #d9aac7;padding:7px;">The central component of an operating system.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Kernel Thread</td><td style="border:1px solid #d9aac7;padding:7px;">A thread managed by the operating system kernel.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Mutex</td><td style="border:1px solid #d9aac7;padding:7px;">A synchronization mechanism that provides mutual exclusion.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Multicore</td><td style="border:1px solid #d9aac7;padding:7px;">A processor containing multiple execution cores.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Multithreading</td><td style="border:1px solid #d9aac7;padding:7px;">The use of multiple threads within a process.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">PCB</td><td style="border:1px solid #d9aac7;padding:7px;">Process Control Block.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Preemption</td><td style="border:1px solid #d9aac7;padding:7px;">Interrupting a running task to allow another task to execute.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Priority Scheduling</td><td style="border:1px solid #d9aac7;padding:7px;">A method that selects processes according to priority.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Process</td><td style="border:1px solid #d9aac7;padding:7px;">A program currently being executed.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Process State</td><td style="border:1px solid #d9aac7;padding:7px;">The current condition of a process during its lifecycle.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Ready Queue</td><td style="border:1px solid #d9aac7;padding:7px;">A collection of processes waiting for CPU allocation.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Round Robin</td><td style="border:1px solid #d9aac7;padding:7px;">A scheduling algorithm that allocates fixed time slices.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Scheduler</td><td style="border:1px solid #d9aac7;padding:7px;">A system component that determines execution order.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Semaphore</td><td style="border:1px solid #d9aac7;padding:7px;">A synchronization mechanism used to coordinate access to resources.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">SJF</td><td style="border:1px solid #d9aac7;padding:7px;">Shortest Job First scheduling algorithm.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Starvation</td><td style="border:1px solid #d9aac7;padding:7px;">Indefinite postponement of a process.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Thread</td><td style="border:1px solid #d9aac7;padding:7px;">An execution sequence within a process.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Throughput</td><td style="border:1px solid #d9aac7;padding:7px;">The number of completed processes within a specified period.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Time Quantum</td><td style="border:1px solid #d9aac7;padding:7px;">A fixed amount of CPU time assigned in Round Robin scheduling.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Turnaround Time</td><td style="border:1px solid #d9aac7;padding:7px;">The time between process arrival and completion.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Waiting Time</td><td style="border:1px solid #d9aac7;padding:7px;">The total time spent waiting in the ready queue.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Race Condition</td><td style="border:1px solid #d9aac7;padding:7px;">An execution problem where results depend on timing between concurrent operations.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Parallelism</td><td style="border:1px solid #d9aac7;padding:7px;">Simultaneous execution of multiple tasks.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Synchronization</td><td style="border:1px solid #d9aac7;padding:7px;">Coordination of processes or threads accessing shared resources.</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Hyperthreading</td><td style="border:1px solid #d9aac7;padding:7px;">Intel's implementation of simultaneous multithreading technology.</td></tr></table><h2>References and Further Reading</h2><p>The following academic references provide foundational and advanced discussions of operating system design.</p><p>1. Silberschatz, A., Galvin, P. B., and Gagne, G. Operating System Concepts. Wiley. Topics include process management, threads, CPU scheduling, synchronization, and deadlocks.</p><p>2. Tanenbaum, A. S., and Bos, H. Modern Operating Systems. Pearson. Discusses process management, concurrency, scheduling, and operating system implementation.</p><p>3. Stallings, W. Operating Systems: Internals and Design Principles. Pearson. Covers process management, processor scheduling, synchronization, and resource management.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>4. Love, R. Linux Kernel Development. Addison-Wesley. Provides technical explanations of Linux process management, kernel scheduling, and system implementation.</p><p>5. Microsoft. Processes and Threads. Microsoft Learn. https://learn.microsoft.com/en-us/windows/win32/procthread/processes-and-threads</p><p>6. Linux Kernel Documentation. Scheduler Documentation.https://docs.kernel.org/scheduler/</p><h2>Final Review and Reflection</h2><h2>Summary of the entire lesson</h2><p>Processes, threads, and process scheduling are fundamental concepts in operating system design.</p><p>A process represents an executing program and contains its own execution environment and allocated resources. Threads provide individual execution paths within a process, allowing applications to perform several activities efficiently.</p><p>Process scheduling determines how processor time is distributed among competing tasks. Algorithms such as FCFS, SJF, Priority Scheduling, and Round Robin provide different approaches to selecting the next task.</p><p>Synchronization protects shared information from inconsistent modifications. Interprocess communication allows separate processes to cooperate, while deadlock management addresses situations where processes become permanently blocked by resource dependencies.</p><p>These concepts are essential to understanding multitasking, application responsiveness, and efficient computer resource utilization.</p><h2>Final reflection questions</h2><p>Why does an operating system need process management?</p><p>What makes threads useful in modern applications?</p><p>Which scheduling algorithm would you recommend for an interactive computer system?</p><p>How can synchronization prevent data inconsistency?</p><p>Why is context switching necessary?</p><p>How can operating systems prevent starvation?</p><p>What challenges might arise when multiple processes share resources?</p><p>Conclusion</p><p>Every application running on a computer depends on the operating system's ability to manage execution.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Understanding processes explains how programs become active tasks. Understanding threads reveals how applications divide their work. Understanding scheduling demonstrates how the processor is shared efficiently.</p><p>These principles provide an important foundation for further studies in operating systems, software development, computer science, and information technology.</p></article></section></div>
+</div>
+<div class="pager"><button class="navbtn" id="prev">← Previous</button><span id="counter">Page 1 of
+                    33</span><button class="navbtn" id="next">Next →</button></div>
+</main>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.book-page')], tocLinks=[...document.querySelectorAll('.toc-link')];
+const viewport=document.getElementById('viewport'),counter=document.getElementById('counter'),prev=document.getElementById('prev'),next=document.getElementById('next'),reader=document.getElementById('reader'),theme=document.getElementById('themeToggle');let current=0;
+function go(i){current=Math.max(0,Math.min(pages.length-1,Number(i)||0));pages.forEach((p,n)=>p.hidden=n!==current);counter.textContent=`Page ${current+1} of ${pages.length}`;prev.disabled=current===0;next.disabled=current===pages.length-1;tocLinks.forEach((b,j)=>{const start=+b.dataset.go,end=j+1<tocLinks.length?+tocLinks[j+1].dataset.go:pages.length;b.classList.toggle('active',current>=start&&current<end)});viewport.scrollTop=0;}
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.go)));prev.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));
+const saved=localStorage.getItem('ITVerse-reader-theme');function setTheme(dark){reader.classList.toggle('dark-mode',dark);theme.classList.toggle('active',dark);theme.textContent=dark?'☀️ Light Mode':'🌙 Dark Mode';localStorage.setItem('ITVerse-reader-theme',dark?'dark':'light')};setTheme(saved==='dark');theme.addEventListener('click',()=>setTheme(!reader.classList.contains('dark-mode')));go(0);
+</script>
+<script src="js/itverse-reader-features.js"></script></body>
+</html>
