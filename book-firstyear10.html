@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>1st Year Book 10 | Artificial intelligence (AI) | ITVerse</title>
+<style>
+        :root {
+            --bg: #FDE4F2;
+            --header: #F9CEE7;
+            --sidebar: #F4B8DA;
+            --accent: #EEA1CD;
+            --hover: #E68BBE;
+            --ink: #612C4D
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            height: 70px;
+            background: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 12px;
+            border-bottom: 1px solid var(--accent)
+        }
+
+        header a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        header strong {
+            font-size: 21px
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .theme-toggle,
+        .navbtn,
+        .toc-link,
+        .toc-entry {
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .theme-toggle {
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            border-radius: 10px;
+            background: #fff5fb;
+            color: var(--ink);
+            font-weight: bold
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            height: calc(100dvh - 70px)
+        }
+
+        aside {
+            background: var(--sidebar);
+            padding: 20px 12px;
+            overflow: auto;
+            border-right: 1px solid var(--accent)
+        }
+
+        aside h2 {
+            font-size: 19px;
+            margin: 4px 6px 18px
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-radius: 7px;
+            padding: 13px 12px;
+            color: var(--ink);
+            line-height: 1.35;
+            margin-bottom: 5px
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: var(--hover)
+        }
+
+        .toc-link small {
+            white-space: nowrap
+        }
+
+        main {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px
+        }
+
+        .viewport {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start
+        }
+
+        .reader {
+            background: #fffafc;
+            color: #44283c;
+            width: min(100%, 900px);
+            min-height: 100%;
+            padding: 46px 58px;
+            border: 1px solid #edc2d8;
+            box-shadow: 0 5px 25px #6b365333;
+            border-radius: 4px
+        }
+
+        .reader h1 {
+            font-size: 29px;
+            color: #8d3769;
+            line-height: 1.25;
+            margin: 12px 0 22px
+        }
+
+        .reader h2 {
+            font-size: 18px;
+            color: #a33d79;
+            margin: 28px 0 12px
+        }
+
+        .reader p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 10px 0 18px
+        }
+
+        .reader .eyebrow {
+            color: #a24d7d;
+            font-weight: bold;
+            letter-spacing: .12em;
+            font-size: 12px
+        }
+
+        .reader pre {
+            background: #f7e8f1;
+            border: 1px solid #e8c3d7;
+            border-left: 4px solid #C34F91;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.6;
+            font-size: 14px;
+            color: #542c48
+        }
+
+        .reader .note {
+            background: #fff0f8;
+            border-left: 4px solid #EEA1CD;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 25px
+        }
+
+        .reader .note h2 {
+            margin: 6px 0
+        }
+
+        .reader .note p {
+            margin-bottom: 8px
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 4px 0 8px
+        }
+
+        .navbtn {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1px solid #d88eb8;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: bold
+        }
+
+        .navbtn:hover {
+            background: var(--hover)
+        }
+
+        .navbtn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        #counter {
+            min-width: 115px;
+            text-align: center;
+            font-weight: bold
+        }
+
+        .cover {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 570px;
+            gap: 24px
+        }
+
+        .cover-mark {
+            font-size: 13px;
+            letter-spacing: .18em;
+            font-weight: bold;
+            color: #b45b8c
+        }
+
+        .cover-icon {
+            font-size: 64px;
+            color: #c34f91
+        }
+
+        .cover h1 {
+            font-size: 44px;
+            margin: 0
+        }
+
+        .cover p {
+            font-size: 19px
+        }
+
+        .cover-bottom {
+            margin-top: 80px;
+            font-size: 14px;
+            color: #9b5b7f
+        }
+
+        .chapter-list h1 {
+            margin-bottom: 28px
+        }
+
+        .chapter-list h2 {
+            border-bottom: 1px solid #f0c8df;
+            padding-bottom: 8px
+        }
+
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            padding: 10px;
+            color: inherit;
+            font-size: 15px
+        }
+
+        .toc-entry:hover {
+            background: #f7e1ee;
+            border-radius: 6px
+        }
+
+        .reader.dark-mode {
+            background: #25212D;
+            color: #F8EAF5;
+            border-color: #51475D
+        }
+
+        .reader.dark-mode h1,
+        .reader.dark-mode h2 {
+            color: #ffc3e2
+        }
+
+        .reader.dark-mode .eyebrow {
+            color: #f5a9d1
+        }
+
+        .reader.dark-mode pre {
+            background: #342a3b;
+            color: #ffe5f4;
+            border-color: #76546d
+        }
+
+        .reader.dark-mode .note {
+            background: #382b3c;
+            border-color: #c777a4
+        }
+
+        .reader.dark-mode .toc-entry:hover {
+            background: #46334a
+        }
+
+        .theme-toggle.active {
+            background: #352b3c;
+            color: #f8eaf5
+        }
+
+        @media(max-width:700px) {
+            header {
+                height: auto;
+                min-height: 70px;
+                padding: 10px;
+                flex-wrap: wrap
+            }
+
+            header strong {
+                font-size: 17px
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                height: calc(100dvh - 100px)
+            }
+
+            aside {
+                max-height: 130px;
+                padding: 8px 12px;
+                border-right: 0;
+                border-bottom: 1px solid var(--accent)
+            }
+
+            aside h2 {
+                margin: 4px 6px
+            }
+
+            .toc-link {
+                display: inline-flex;
+                width: auto;
+                padding: 8px
+            }
+
+            main {
+                padding: 10px 6px
+            }
+
+            .reader {
+                padding: 24px 18px
+            }
+
+            .reader h1 {
+                font-size: 24px
+            }
+
+            .cover h1 {
+                font-size: 30px
+            }
+
+            .pager {
+                gap: 8px
+            }
+
+            .navbtn {
+                padding: 10px 12px
+            }
+        }
+    </style>
+<link href="css/itverse-reader-features.css" rel="stylesheet"/><style>.lesson img{max-width:100%;height:auto}.lesson p{line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.lesson table{font-size:.94rem}.book-page .lesson{min-height:0!important}.chapter-list .toc-entry{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left}.chapter-list .toc-entry span:last-child{flex-shrink:0}</style></head>
+<body>
+<header><a href="library.html">← Back to Library</a><strong>ITVerse</strong>
+<div class="actions"><span>1st Year · Book 10</span><button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button></div>
+</header>
+<div class="layout">
+<aside><h2>Table of Contents</h2><button class="toc-link" data-go="0">Cover<small>p. 1</small></button><button class="toc-link" data-go="1">Table of Contents<small>p. 2</small></button><button class="toc-link" data-go="3">CHAPTER 1 — Artificial intelligence (AI)<small>p. 4</small></button><button class="toc-link" data-go="4">CHAPTER 2 — Machine Learning<small>p. 5</small></button><button class="toc-link" data-go="6">CHAPTER 3 — Deep Learning:<small>p. 7</small></button><button class="toc-link" data-go="6">CHAPTER 4 — What are neural networks?<small>p. 7</small></button><button class="toc-link" data-go="7">CHAPTER 5 — Artificial Intelligence – The Technology Landscape<small>p. 8</small></button><button class="toc-link" data-go="11">CHAPTER 6 — Applications of emerging technology<small>p. 12</small></button></aside>
+<main>
+<div class="viewport" id="viewport">
+<div class="reader" id="reader"><section aria-label="Reading page" class="book-page" hidden=""><div class="cover"><div class="cover-mark">ITVerse • 1ST YEAR BOOK 10</div><h1>Artificial intelligence (AI)</h1><p>BSIT Digital Learning Material</p></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="3"><span>Artificial intelligence (AI)</span><span>4</span></button><button class="toc-entry" data-go="4"><span>Machine Learning Methods:</span><span>5</span></button><button class="toc-entry" data-go="5"><span>Who uses Machine Learning?</span><span>6</span></button><button class="toc-entry" data-go="6"><span>Deep Learning:</span><span>7</span></button><button class="toc-entry" data-go="6"><span>What are neural networks?</span><span>7</span></button><button class="toc-entry" data-go="7"><span>Artificial Intelligence – The Technology Landscape</span><span>8</span></button><button class="toc-entry" data-go="8"><span>AI in Business how is AI being used by businesses?</span><span>9</span></button><button class="toc-entry" data-go="9"><span>Robots in Healthcare can Conduct More Varied Tasks</span><span>10</span></button><button class="toc-entry" data-go="9"><span>Wearable Tech has More to Offer than Just Counting Steps</span><span>10</span></button><button class="toc-entry" data-go="10"><span>AI-Enabled Genomic can Determine Personalised Treatments</span><span>11</span></button><button class="toc-entry" data-go="10"><span>3D Printing helps Doctors Replicate Patient-Specific Organs</span><span>11</span></button><button class="toc-entry" data-go="10"><span>Digital Twins Determine Possibility for Successful Outcomes</span><span>11</span></button><button class="toc-entry" data-go="10"><span>5G can Support Organization in Transmission of Files</span><span>11</span></button><button class="toc-entry" data-go="10"><span>AI Neural Network can Improve Healthcare Biometrics</span><span>11</span></button><button class="toc-entry" data-go="11"><span>1. Artificial Intelligence in Healthcare</span><span>12</span></button><button class="toc-entry" data-go="11"><span>2. Artificial Intelligence in Business</span><span>12</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="11"><span>3. Artificial Intelligence in Education</span><span>12</span></button><button class="toc-entry" data-go="12"><span>4. Artificial Intelligence in Autonomous Vehicles</span><span>13</span></button><button class="toc-entry" data-go="12"><span>5. Artificial Intelligence in Social Media</span><span>13</span></button><button class="toc-entry" data-go="12"><span>6. Artificial Intelligence for a Better World</span><span>13</span></button><button class="toc-entry" data-go="13"><span>7. Artificial Intelligence in Tourism</span><span>14</span></button><button class="toc-entry" data-go="13"><span>2. DATABASE MANAGEMENT FOR DATA SCIENCE, BIG DATA ANALYTICS</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Introduction to Data</span><span>14</span></button><button class="toc-entry" data-go="13"><span>Definition of Database</span><span>14</span></button><button class="toc-entry" data-go="14"><span>Advantages of data base management:</span><span>15</span></button><button class="toc-entry" data-go="14"><span>Overview of Big Data Analytics</span><span>15</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><h2>Artificial intelligence (AI)</h2><p>Introduction: AI is touching us in all aspects of our daily lives, most of the times unknowingly. Whenever we shop online, use our mobiles, drive to work daily, check our mail box or exercise, AI is coming into play and helping us, prodding us or controlling us. Since AI is already such an integral part of our lives, it makes sense to get more knowledge of this emerging technology.</p><p>From chess-playing computers to self-driving vehicles, Artificial Intelligence (AI) is progressing rapidly and touching every aspect of our lives. In this module, you will learn how machines can be made to learn from data and carry out human tasks.</p><p>Meaning:</p><p>AI is techniques that help machines and computers mimic human behaviour. Or in simple words, AI is intelligence demonstrated by machines, as opposed to the natural intelligence displayed by humans or animals.</p><p>Examples of AI:</p><p>1. Typing using software: While typing reports using any word-processor, wrong spellings or incorrect grammar is highlighted. We are also exposed to auto-complete options of previously used words, or auto-suggest of commonly used words while typing an e-mail, a SMS message or a social-media post.</p><p>2. Shopping online: All of us are now used to shopping online. We are either ordering clothes or gadgets online, or using a streaming service (watching movies/shows online). Depending on the user profile, the system shows ads, products or suggests programs to watch. So, what a 65 year old male is shown is different from what a 16 year old girl will be shown, even though they may be using the same service/portal.</p><p>Here too, AI is in play. The software is constantly monitoring what we are watching or searching online. Previous history of browsing is also looked at. Shopping preferences are noted. Then, appropriate suggestions are displayed. All this is happening invisibly or unknown to us.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>3. Chat bots: Chat bots are used universally today on many websites to interact with the human users that arrive on the specific sites. They try to provide them effective communication and explain to the users how the company or industry works while providing detailed instructions and guides with spontaneous replies.</p><p>Chat bots are usually used for quick responses to most commonly asked questions on a particular website. They save time as well as reduce human labor and expenditure.</p><p>Machine Learning</p><p>Machine learning is simply a way of achieving AI. Machine learning is a way of “training” an algorithm so that it can learn how. “Training” involves feeding huge amounts of data to the algorithm and allowing the algorithm to adjust itself and improve.</p><p>To understand this, let’s look at the ability of a machine to recognize an object in an image or video).</p><p>You gather hundreds of thousands or even millions of pictures and then have humans tag them.</p><p>For example, the humans might tag pictures that have a cat in them versus those that do not. Then, the algorithm tries to build a model that can accurately tag a picture as containing a cat or not as well as a human. Once the accuracy level is high enough, the machine has now “learned” what a cat looks like.</p><h2>Machine Learning Methods:</h2><p>Supervised Learning:</p><p>Supervised learning is commonly used in applications where historical data predicts likely future events. For example, it can anticipate when credit card transactions are likely to be fraudulent or which insurance customer is likely to file a claim.</p><p>The most common fields of use for supervised learning are price prediction and trend forecasting in sales, retail commerce, and stock trading. In both cases, an algorithm uses incoming data to assess the possibility and calculate possible outcomes.</p><p>Unsupervised Learning:</p><p>Unsupervised learning works well on transactional data. For example, it can identify segments of customers with similar attributes who can then be treated similarly in marketing campaigns. Or it can find the main attributes that separate customer segments from each other.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Digital marketing and ad tech are the fields where unsupervised learning is used to its maximum effect. In addition to that, this algorithm is often applied to explore customer information and adjust the service accordingly.</p><p>Semi-supervised Learning:</p><p>Semi-supervised learning is useful when the cost is too high to allow for a fully supervised process. Examples of this include identifying a person's face on a web cam.</p><p>Legal and Healthcare industries, among others, manage web content classification, image, and speech analysis with the help of semi-supervised learning.</p><p>Reinforcement Learning:</p><p>This is often used for robotics, gaming and navigation. With reinforcement learning, the system discovers through trial and error which actions yield the greatest rewards.</p><p>Modern NPCs (non-playing characters) and other video games use this type of machine learning model a lot. Reinforcement Learning provides flexibility to the AI reactions to the player's action.</p><h2>Who uses Machine Learning?</h2><p>Financial Services:</p><p>Banks and other businesses in the financial industry use machine learning technology for two key purposes: to identify important insights in data, and prevent fraud. The insights can identify investment opportunities, or help investors know when to trade. Data mining can also identify clients with high-risk profiles, or use cyber-surveillance to pinpoint warning signs of fraud.</p><p>Government Agencies:</p><p>Government agencies such as public safety and utilities have a particular need for machine learning since they have multiple sources of data that can be mined for insights. Analyzing sensor data, for example, identifies ways to increase efficiency and save money. Machine learning can also help detect fraud and minimize identity theft.</p><p>Healthcare:</p><p>Machine learning is a fast-growing trend in the health care industry, thanks to the advent of wearable devices and sensors that can use data to assess a patient's health in real time. The technology can also help medical experts analyze data to identify trends or red flags that may lead to improved diagnoses and treatment.</p><p>Retail: </p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Websites recommending items you might like based on previous purchases are using machine learning to analyze your buying history. Retailers rely on machine learning to capture data, analyze it and use it to personalize a shopping experience, implement a marketing campaign, price optimization, merchandise supply planning, and for customer insights. </p><p>Oil and Gas:</p><p>Finding new energy sources. Analyzing minerals in the ground. Predicting refinery sensor failure. Streamlining oil distribution to make it more efficient and cost-effective. The number of machine learning use cases for this industry is vast – and still expanding.</p><h2>Deep Learning:</h2><p>Deep learning is one of the approaches to Machine Learning.</p><p>Deep learning was inspired by the structure and function of the brain, namely the interconnecting of many neurons. Artificial Neural Networks (ANNs) are algorithms that mimic the biological structure of the brain.</p><p>In ANNs, there are “neurons” which have discrete layers and connections to other “neurons”. Each layer picks out a specific feature to learn, such as curves/edges in image recognition. It’s</p><p>This layering that gives deep learning its name, depth is created by using multiple layers as opposed to a single layer.</p><h2>What are neural networks?</h2><p>Neural Networks is the old name for Deep Learning.</p><p>Neural networks are a means of doing machine learning, in which a computer learns to perform some task by analyzing training examples. Usually, the examples have been hand-labeled in advance. An object recognition system, for instance, might be fed thousands of labeled images of cars, houses, coffee cups, and so on, and it would find visual patterns in the images that consistently correlate with particular labels.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Modelled loosely on the human brain, a neural net consists of thousands of simple processing nodes that are densely interconnected. Most of today’s neural nets are organized into layers of nodes, and they’re “feed-forward,” meaning that data moves through them in only one direction. An individual node might be connected to several nodes in the layer beneath it, from which it receives data, and several nodes in the layer above it, to which it sends data.</p><h2>Artificial Intelligence – The Technology Landscape</h2><p>This part helps us to understand the various application areas that come under AI.</p><p>Robotics: Today, most of the industrial world is using robots to automate repetitive tasks. We see robots used to assemble cars, pack food items, paint vehicles and to even serve as your personal assistants/servants in homes. Robots are being used to clean homes, perform day to day tasks like controlling ACs, microwave ovens, washing machines.</p><p>Artificial Intelligence or AI gives robots a computer vision to navigate, sense and calculate their reaction accordingly. Robots learn to perform their tasks from humans through machine learning which again is a part of computer programming and AI.</p><p>Real Time Translation:</p><p> Most of us use Google translate to get text translated from one language to another. It is a boon in a country like India, where we have a number of local languages. It makes understanding each other a lot easier.</p><p>Machine translation is the process of using artificial intelligence (AI) to automatically translate content from one language (the source) to another (the target) without any human input.</p><p>Digital Assistants (Virtual Companions) like Alexa and Siri are being used in homes to converse and perform simple tasks. In certain countries, virtual pets and companions are becoming popular.</p><p>Digital assistants use advanced artificial intelligence (AI), natural language processing, natural language understanding, and machine learning to learn as they go and provide a personalized, conversational experience. </p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Autonomous vehicles, autonomous robots, autonomous warehouse and factory systems and autonomous drones are some examples of autonomous systems. We use autonomous systems for commuting and navigation every day by using Google Maps. Commercial pilots use AI autopilot. On farms, Smart water pump-sets can be switched on/off using sensing or monitoring devices.</p><p>Autonomous systems are defined as systems that are able to accomplish a task, achieve a goal, or interact with its surroundings with minimal to no human involvement. It is also essential that these systems be able to predict, plan, and be aware of the world around them.</p><p>Gaming and Simulation is fast changing the ways in which we have been traditionally doing things. Especially in the fields of training, marketing and entertainment, Augmented Reality (AR) and Virtual Reality (VR) are two technologies that are forging a revolution. Driving lessons, flight training, shopping without actually visiting a physical store, special effects in movies &amp; shows, architectural walkthroughs, prototyping and school classes are some of the areas of application of this technology.</p><h2>AI in Business how is AI being used by businesses?</h2><p>Today, businesses are using AI in various ways to help in decision making, across all levels of management. The following are the key areas –</p><p>For reasoning: Reasoning is the ability to solve problems through logical deduction. For eg., AI is used to financial asset management, legal assessment, financial application processing, autonomous weapons systems and games.</p><p>To present knowledge: AI can help in presenting knowledge about the world. For eg., financial market trading, purchase prediction, fraud prevention, drug creation, medical diagnosis and media recommendation.</p><p>In planning: AI helps in helping to set and achieve goals. For eg., inventory management, demand forecasting, predictive maintenance, physical and digital network optimization, navigation, scheduling and logistics.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>To facilitate communication: AI uses translation to make business processes easier to conduct, regardless of the geographical location. AI uses its ability to understand spoken and written languages to do this. Some applications of this aspect of AI is being used to facilitate real-time</p><p>Here are the top 10 technology trends that will transform Healthcare in the future: AI and Machine Learning Offer Better way to Spot Diseases</p><p>With the growing population, AI and ML are also growing to offer new and innovative ways to identify disease, diagnose conditions, crowd-source and develop treatment plans, monitor health epidemics, create efficiencies in medical research and clinical trials, and make operations more efficient to handle increasing demand. Artificial intelligence along with machine learning can help solve many clinical problems.</p><h2>Robots in Healthcare can Conduct More Varied Tasks</h2><p>The potential for robots in healthcare has reached beyond surgical uses. They will be able to help doctors examine and treat patients in rural areas through telepresence, transporting medical supplies, disinfecting hospital rooms, helping patients with rehabilitation or with prosthetics, and automating labs and packaging medical devices.</p><p>Computer and Machine Vision Can Help Give Appropriate Care </p><p>There are various ways computers and machine vision are being used in medicine for diagnostics, viewing scans and medical images, surgery, and more. It is helping doctors to know exactly how much blood a woman loses while delivering in order to provide immediate care to reduce the mortality of mothers from post-partum haemorrhaging. The technology provides accurate intelligence eliminating the guessing game in the healthcare sector. </p><h2>Wearable Tech has More to Offer than Just Counting Steps</h2><p>Wearable fitness technology is not only limited to tell people how many steps they walk each day. It possesses rather more opportunities for healthcare by monitoring heart rhythms, detecting atrial fibrillation and send reports to doctor, monitoring blood pressure and many more. Wearable devices will further help consumers proactively get health support if there are irregularities in their trackers.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><h2>AI-Enabled Genomic can Determine Personalised Treatments</h2><p>Artificial intelligence and machine learning help analyse a person’s genomic information to determine personalized treatment plans and clinical care. In pharmacology, oncology, infectious diseases, and more, genomic medicine is marking a great impact. Such information helps the medical community better understand how diseases occur and better way to treat the condition or possibly eradicate it.</p><h2>3D Printing helps Doctors Replicate Patient-Specific Organs</h2><p>Just like other industries, 3D printing technology enables prototyping, customization, research, and manufacturing for healthcare. Surgeons can replicate patient-specific organs using the advancements of 3D printing. It helps them prepare for procedures. Several medical devices and surgical tools can also be 3D printed. The technology makes it economic and effective to develop comfortable prosthetic limbs for patients and print tissues and organs for transplant.</p><h2>Digital Twins Determine Possibility for Successful Outcomes</h2><p>In healthcare, digital twin is a near real-time replica of life-long data record of an individual. It can help doctors in determining the possibilities for a successful outcome of a procedure. It also assists them in making better therapy decisions, and manage chronic diseases. Overall, the technology can help improve patient experience through effective, patient-centric care.</p><h2>5G can Support Organization in Transmission of Files</h2><p>As the healthcare centers are extending their reach in remote or under-served areas through telemedicine, 5G technology will potentially increase the quality and speed of the network and prove to be a necessity for positive outcomes. The technology can better support healthcare organizations in transmission of large imaging files so specialists can review and advice on care. It also enhances doctor’s ability to deliver treatments through AR, VR and mixed reality while enabling remote and reliable monitoring of patients.</p><h2>AI Neural Network can Improve Healthcare Biometrics</h2></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Scientists are capable of analyzing the atypical risk factors that were too complicated to quantify, using AI neural networks. It helps develop the industry in various ways such as by enabling retinal scans, examining and recording skin colour changes, and many more. Its proficiency in finding patterns will enable the unlocking of new diagnostic methods and discover unknown risk factors.</p><p>Applications of emerging technology </p><h2>1. Artificial Intelligence in Healthcare</h2><p>Health is wealth, and the rate at which humans are compromising on it is really shocking.</p><p>With AI, natural language is a boon. It helps to respond to the questions that are asked for. It enables workflow assistants who screen the patients, getting preliminary information. This in turn helps the doctors to free up their schedules and also reduce the time and cost by streamlining processes. AI-powered technology helps pathologists in analyzing samples of tissue and help in accurate diagnosis.</p><p>Thus, these are the following advantages of using AI in healthcare:</p><p>It helps to support decision making and research.</p><p>Help to integrate activities in medical, software and cognitive sciences.</p><p>Help to offer a content-rich discipline for the future scientific medical communities.</p><h2>2. Artificial Intelligence in Business</h2><p>A business relies on real-time reporting, accuracy, and processing of large volumes of quantitative data to make crucial decisions. The adaptive intelligence, chatbots and automation helps to smoothen out the business process. Let’s take an example of the Help Desk. AI is used in online help centers. If you’ve visited a website, you must have seen that the chat window pops up. You can then ask questions there directly and they revert to you in the problem or query in no time.</p><h2>3. Artificial Intelligence in Education</h2></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>It must be very tedious for a teacher to evaluate homework and tests for large lecture courses. A significant amount of time is consumed to interact with students, to prepare for class, or work on professional development. But, with AI in education, this will not be the case anymore. Though it can never replace human work, it is pretty close to it. So, with the automated grading system checking multiple-choice questions, fill-in-the-blank testing, grading of students can be done in no time.</p><h2>4. Artificial Intelligence in Autonomous Vehicles</h2><p>Long-range radar, cameras, and LIDAR, a lot of advancement has been made in the autonomous vehicle segment. These technologies are used in different capacities and each of them collects different pieces of information. The information is of no use unless it is processed and any form of insights can’t be derived. This is where artificial intelligence is used and where it can be compared to the human brain. Some of its usage in autonomous vehicles are:</p><p>Directing the car to the fuel station or recharge station when it is running low on fuel.</p><p>Adjust the trip’s directions based on known traffic conditions to find the quickest route.</p><p>Incorporate speech recognition for advanced communication with passengers.</p><p>Natural language interfaces and virtual assistance technologies.</p><h2>5. Artificial Intelligence in Social Media</h2><p>Instagram, Snapchat, Facebook, Twitter, the world today is changing and everyone is using these social media apps to stay connected with the virtual world. But, are you aware of the fact that a majority of your decisions are being influenced by artificial intelligence?</p><p>Starting from notifications, to upgradations, everything is managed by AI. It considers all the past web searches, behaviours, interactions, and much more. So, while you visit these websites, your data is being stored and analyzed and thus you are served with a personalized experience.</p><h2>6. Artificial Intelligence for a Better World</h2><p>Many people say that technology is snatching away their jobs and with the machine, there is no need for humans. But, do you know that it is these machines that are making the world a better place to live in.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><h2>7. Artificial Intelligence in Tourism</h2><p>Competition in the travel and tourism industry is very high. You must have seen that prices keep on fluctuating and change often.</p><p>You might have also booked a flight ticket in advance or have waited just before the departure date to find cheaper tickets. Everyone does that, but the struggle is minimized with AI. With predictive analytics driven by artificial intelligence, the price can be predicted. The application is able to predict price patterns and alert travellers when to buy the tickets. So, the cheapest rate can be known before you book the flights to your destination. The price trend is analyzed on the basis of the recorded data on each route. So, you get notifications of when to book your flight. Book it at the right time and at the right price and say thanks to artificial intelligence. </p><h2>2. DATABASE MANAGEMENT FOR DATA SCIENCE, BIG DATA ANALYTICS</h2><p>Instagram, the social networking app for sharing photos and videos, launched in 2010. Today, it boasts 800 million monthly active users and is owned by Facebook. There are 70 million photos uploaded to Instagram every day. People interact with each of those posts by sharing their love with a heart, commenting and using hashtags. What all of this activity does is create an enormous amount of data. Once analyzed, by humans as well as increasingly through artificial intelligence algorithms, it can provide incredible business intel and insights. Through the support of tags and trending information, the users can find photos and posts on particular topics or activities, events, and also for exploring experiences, trending restaurants, and places around the globe.</p><h2>Introduction to Data</h2><p>Data are individual facts, statistics, or items of information, often numeric, that are collected through observation. In a more technical sense, data are a set of values of qualitative or quantitative variables about one or more persons or objects, while a datum is a single value of a single variable.</p><h2>Definition of Database</h2><p>A database is defined as a structured set of data held in a computer’s memory or on the cloud that is accessible in various ways.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Database Management Systems (DBMS) refer to the technology solution used to optimize and manage the storage and retrieval of data from databases.</p><h2>Advantages of data base management:</h2><p>Manages large amounts of data</p><p>Accurate</p><p>Easy to update data</p><p>Security of data</p><p>Data Integrity</p><p>Easy to research data</p><h2>Overview of Big Data Analytics</h2><p>Private companies and research institutions capture terabytes of data about their users’ interactions, business, social media, and also sensors from devices such as mobile phones and automobiles. The challenge of this era is to make sense of this sea of data. This is where big data analytics comes into picture. Big data analytics uses efficient analytic techniques to discover hidden patterns, correlations, and other insights from big data. It brings significant cost advantages, enhances the performance of decision making, and creates new products to meet customers’ needs. This method has various applications in plants, bioinformatics, healthcare, etc.</p><p>https://www.jsscacs.edu.in/sites/default/files/Department%20Files/digital%20fluency.pdf</p></article></section></div>
+</div>
+<div class="pager"><button class="navbtn" id="prev">← Previous</button><span id="counter">Page 1 of
+                    33</span><button class="navbtn" id="next">Next →</button></div>
+</main>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.book-page')], tocLinks=[...document.querySelectorAll('.toc-link')];
+const viewport=document.getElementById('viewport'),counter=document.getElementById('counter'),prev=document.getElementById('prev'),next=document.getElementById('next'),reader=document.getElementById('reader'),theme=document.getElementById('themeToggle');let current=0;
+function go(i){current=Math.max(0,Math.min(pages.length-1,Number(i)||0));pages.forEach((p,n)=>p.hidden=n!==current);counter.textContent=`Page ${current+1} of ${pages.length}`;prev.disabled=current===0;next.disabled=current===pages.length-1;tocLinks.forEach((b,j)=>{const start=+b.dataset.go,end=j+1<tocLinks.length?+tocLinks[j+1].dataset.go:pages.length;b.classList.toggle('active',current>=start&&current<end)});viewport.scrollTop=0;}
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.go)));prev.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));
+const saved=localStorage.getItem('ITVerse-reader-theme');function setTheme(dark){reader.classList.toggle('dark-mode',dark);theme.classList.toggle('active',dark);theme.textContent=dark?'☀️ Light Mode':'🌙 Dark Mode';localStorage.setItem('ITVerse-reader-theme',dark?'dark':'light')};setTheme(saved==='dark');theme.addEventListener('click',()=>setTheme(!reader.classList.contains('dark-mode')));go(0);
+</script>
+<script src="js/itverse-reader-features.js"></script></body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>1st Year Book 05 | Binary information in digital computers is stored in memory or procesrso registers. Registers contain either data or control information. Control info | ITVerse</title>
+<style>
+        :root {
+            --bg: #FDE4F2;
+            --header: #F9CEE7;
+            --sidebar: #F4B8DA;
+            --accent: #EEA1CD;
+            --hover: #E68BBE;
+            --ink: #612C4D
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            height: 70px;
+            background: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 12px;
+            border-bottom: 1px solid var(--accent)
+        }
+
+        header a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        header strong {
+            font-size: 21px
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .theme-toggle,
+        .navbtn,
+        .toc-link,
+        .toc-entry {
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .theme-toggle {
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            border-radius: 10px;
+            background: #fff5fb;
+            color: var(--ink);
+            font-weight: bold
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            height: calc(100dvh - 70px)
+        }
+
+        aside {
+            background: var(--sidebar);
+            padding: 20px 12px;
+            overflow: auto;
+            border-right: 1px solid var(--accent)
+        }
+
+        aside h2 {
+            font-size: 19px;
+            margin: 4px 6px 18px
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-radius: 7px;
+            padding: 13px 12px;
+            color: var(--ink);
+            line-height: 1.35;
+            margin-bottom: 5px
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: var(--hover)
+        }
+
+        .toc-link small {
+            white-space: nowrap
+        }
+
+        main {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px
+        }
+
+        .viewport {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start
+        }
+
+        .reader {
+            background: #fffafc;
+            color: #44283c;
+            width: min(100%, 900px);
+            min-height: 100%;
+            padding: 46px 58px;
+            border: 1px solid #edc2d8;
+            box-shadow: 0 5px 25px #6b365333;
+            border-radius: 4px
+        }
+
+        .reader h1 {
+            font-size: 29px;
+            color: #8d3769;
+            line-height: 1.25;
+            margin: 12px 0 22px
+        }
+
+        .reader h2 {
+            font-size: 18px;
+            color: #a33d79;
+            margin: 28px 0 12px
+        }
+
+        .reader p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 10px 0 18px
+        }
+
+        .reader .eyebrow {
+            color: #a24d7d;
+            font-weight: bold;
+            letter-spacing: .12em;
+            font-size: 12px
+        }
+
+        .reader pre {
+            background: #f7e8f1;
+            border: 1px solid #e8c3d7;
+            border-left: 4px solid #C34F91;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.6;
+            font-size: 14px;
+            color: #542c48
+        }
+
+        .reader .note {
+            background: #fff0f8;
+            border-left: 4px solid #EEA1CD;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 25px
+        }
+
+        .reader .note h2 {
+            margin: 6px 0
+        }
+
+        .reader .note p {
+            margin-bottom: 8px
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 4px 0 8px
+        }
+
+        .navbtn {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1px solid #d88eb8;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: bold
+        }
+
+        .navbtn:hover {
+            background: var(--hover)
+        }
+
+        .navbtn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        #counter {
+            min-width: 115px;
+            text-align: center;
+            font-weight: bold
+        }
+
+        .cover {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 570px;
+            gap: 24px
+        }
+
+        .cover-mark {
+            font-size: 13px;
+            letter-spacing: .18em;
+            font-weight: bold;
+            color: #b45b8c
+        }
+
+        .cover-icon {
+            font-size: 64px;
+            color: #c34f91
+        }
+
+        .cover h1 {
+            font-size: 44px;
+            margin: 0
+        }
+
+        .cover p {
+            font-size: 19px
+        }
+
+        .cover-bottom {
+            margin-top: 80px;
+            font-size: 14px;
+            color: #9b5b7f
+        }
+
+        .chapter-list h1 {
+            margin-bottom: 28px
+        }
+
+        .chapter-list h2 {
+            border-bottom: 1px solid #f0c8df;
+            padding-bottom: 8px
+        }
+
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            padding: 10px;
+            color: inherit;
+            font-size: 15px
+        }
+
+        .toc-entry:hover {
+            background: #f7e1ee;
+            border-radius: 6px
+        }
+
+        .reader.dark-mode {
+            background: #25212D;
+            color: #F8EAF5;
+            border-color: #51475D
+        }
+
+        .reader.dark-mode h1,
+        .reader.dark-mode h2 {
+            color: #ffc3e2
+        }
+
+        .reader.dark-mode .eyebrow {
+            color: #f5a9d1
+        }
+
+        .reader.dark-mode pre {
+            background: #342a3b;
+            color: #ffe5f4;
+            border-color: #76546d
+        }
+
+        .reader.dark-mode .note {
+            background: #382b3c;
+            border-color: #c777a4
+        }
+
+        .reader.dark-mode .toc-entry:hover {
+            background: #46334a
+        }
+
+        .theme-toggle.active {
+            background: #352b3c;
+            color: #f8eaf5
+        }
+
+        @media(max-width:700px) {
+            header {
+                height: auto;
+                min-height: 70px;
+                padding: 10px;
+                flex-wrap: wrap
+            }
+
+            header strong {
+                font-size: 17px
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                height: calc(100dvh - 100px)
+            }
+
+            aside {
+                max-height: 130px;
+                padding: 8px 12px;
+                border-right: 0;
+                border-bottom: 1px solid var(--accent)
+            }
+
+            aside h2 {
+                margin: 4px 6px
+            }
+
+            .toc-link {
+                display: inline-flex;
+                width: auto;
+                padding: 8px
+            }
+
+            main {
+                padding: 10px 6px
+            }
+
+            .reader {
+                padding: 24px 18px
+            }
+
+            .reader h1 {
+                font-size: 24px
+            }
+
+            .cover h1 {
+                font-size: 30px
+            }
+
+            .pager {
+                gap: 8px
+            }
+
+            .navbtn {
+                padding: 10px 12px
+            }
+        }
+    </style>
+<link href="css/itverse-reader-features.css" rel="stylesheet"/><style>.lesson img{max-width:100%;height:auto}.lesson p{line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.lesson table{font-size:.94rem}.book-page .lesson{min-height:0!important}.chapter-list .toc-entry{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left}.chapter-list .toc-entry span:last-child{flex-shrink:0}</style></head>
+<body>
+<header><a href="library.html">← Back to Library</a><strong>ITVerse</strong>
+<div class="actions"><span>1st Year · Book 05</span><button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button></div>
+</header>
+<div class="layout">
+<aside><h2>Table of Contents</h2><button class="toc-link" data-go="0">Cover<small>p. 1</small></button><button class="toc-link" data-go="1">Table of Contents<small>p. 2</small></button><button class="toc-link" data-go="3">CHAPTER 1 — NUMBER SYSTEMS<small>p. 4</small></button><button class="toc-link" data-go="4">CHAPTER 2 — BINARY SYSTEM:<small>p. 5</small></button><button class="toc-link" data-go="4">CHAPTER 3 — DECIMAL SYSTEM:<small>p. 5</small></button><button class="toc-link" data-go="4">CHAPTER 4 — OCTAL SYSTEM:<small>p. 5</small></button><button class="toc-link" data-go="4">CHAPTER 5 — HEXADECIMAL SYSTEM:<small>p. 5</small></button></aside>
+<main>
+<div class="viewport" id="viewport">
+<div class="reader" id="reader"><section aria-label="Reading page" class="book-page" hidden=""><div class="cover"><div class="cover-mark">ITVerse • 1ST YEAR BOOK 05</div><h1>Binary information in digital computers is stored in memory or procesrso registers. Registers contain either data or control information. Control info</h1><p>BSIT Digital Learning Material</p></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="8"><span>ADDITIONAL LESSON: NUMBER SYSTEMS AND DATA REPRESENTATION</span><span>9</span></button><button class="toc-entry" data-go="8"><span>IMPORTANCE OF NUMBER SYSTEMS IN COMPUTING</span><span>9</span></button><button class="toc-entry" data-go="9"><span>BITS, NIBBLES, BYTES, AND WORDS</span><span>10</span></button><button class="toc-entry" data-go="10"><span>PLACE VALUE AND POSITIONAL NUMBER SYSTEMS</span><span>11</span></button><button class="toc-entry" data-go="10"><span>CONVERTING DECIMAL FRACTIONS TO BINARY</span><span>11</span></button><button class="toc-entry" data-go="11"><span>0.5 × 2 = 1.0</span><span>12</span></button><button class="toc-entry" data-go="11"><span>CONVERTING BINARY FRACTIONS TO DECIMAL</span><span>12</span></button><button class="toc-entry" data-go="12"><span>SIGNED AND UNSIGNED BINARY NUMBERS</span><span>13</span></button><button class="toc-entry" data-go="12"><span>UNDERSTANDING TWO'S COMPLEMENT</span><span>13</span></button><button class="toc-entry" data-go="13"><span>BINARY OVERFLOW AND CARRY</span><span>14</span></button><button class="toc-entry" data-go="14"><span>MORE ABOUT BINARY ARITHMETIC</span><span>15</span></button><button class="toc-entry" data-go="15"><span>BINARY CODES AND CHARACTER REPRESENTATION</span><span>16</span></button><button class="toc-entry" data-go="16"><span>REPRESENTATION OF IMAGES, AUDIO, AND VIDEO</span><span>17</span></button><button class="toc-entry" data-go="17"><span>PAGE 12 – DATA COMPRESSION AND FILE FORMATS</span><span>18</span></button><button class="toc-entry" data-go="18"><span>LOGIC GATES AND BINARY OPERATIONS</span><span>19</span></button><button class="toc-entry" data-go="19"><span>PRACTICAL APPLICATIONS OF NUMBER SYSTEMS</span><span>20</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><button class="toc-entry" data-go="20"><span>FINAL SUMMARY</span><span>21</span></button></div></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Binary information in digital computers is stored in memory or procesrso registers. Registers contain either data or control information. Control information Is a bit or a group of bits used to specify the sequence of command signals needed for manipulation of the data in other registers. Data are numbers and other binary-coded information that are operated on to achieve required computational results.</p><p>Everything in a computer is 0 and 1. Even pictures, music, and videos are stored as binary.</p><p>REGISTERS </p><p>Register = Very small, very fast storage inside the CPU.</p><p>Holds data temporarily while CPU is working</p><p>Example: Accumulator, Program Counter, Instruction Register</p><p>Made of flip-flops</p><p>DATA vs CONTROL INFORMATION</p><p>Data: What is processed. Example: Numbers, Letters</p><p>Control Information: How to process it. Example: Instruction to ADD, MOVE, STORE</p><p>Analogy: Data = Ingredients, Control = Recipe</p><p>The data types found in the registers of digital computers may be classified as being one of the following categories:{1) numbers used in arithmetic computations,(2) letters of the alphabet used in data processing. and(3) {3} other discrete symbols used for specific purposes.</p><p>3 Categories: Numbers, Letters, Symbols. All are stored as binary.</p><p>All types of data, except binary numbers, are represented in computer registers in binary coded form. This is because registers are made up of flip-flops and flip-flops are two-state devires that can store only 1's and O's. The binary number system is the most natural system to use in a digital computer. But sometimes it is convenient to employ different number systems, espedally the decimal number system, since it is used by people to perform arithmetic computations.</p><p>Flip-flop = ON (1) or OFF (0). Like a light switch. Computer has billions of switches.</p><p>NUMBER SYSTEMS</p><p>There are four common number systems that is used today. These are:</p><p>Binary</p><p>Decimal</p><p>Octal</p><p>Hexadecimal</p><p>Base = How many digits are used.</p><p>Binary = Base 2</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Decimal = Base 10</p><p>Octal = Base 8</p><p>Hexadecimal = Base 16</p><p>BINARY SYSTEM:</p><p>The binary system is a base-2 system.</p><p>There are 2 distinct digits (0 and 1) to represent any quantity.</p><p>For an n-digit number, the value of a digit in each column depends on its position.</p><p>The weights are based on powers of 2.</p><p>Powers of 2: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024</p><p>Example: 101 = 4 + 0 + 1 = 5</p><p>DECIMAL SYSTEM:</p><p>The decimal system is a base-10 system.</p><p>There are 10 distinct digits (0 to 9) to represent any quantity.</p><p>For an n-digit number, the value that each digit represents depends on its weight or position.</p><p>The weights are based on powers of 10.</p><p>Powers of 10: 1, 10, 100, 1000</p><p>Example: 345 = 300 + 40 + 5. This is what humans use daily.</p><p>OCTAL SYSTEM:</p><p>Octal and hexadecimal systems provide a shorthand way to deal with the long strings of 1"s and 0"s in binary.</p><p>Octal is base-8 system using the digits 0 to 7.</p><p>Why Octal? Because 8 = 2³. So 3 binary digits = 1 octal digit. Shorter to write.</p><p>HEXADECIMAL SYSTEM:</p><p>Hexadecimal is a base-16 system.</p><p>It contains the digits 0 to 9 and the letters A to F (16 digit values).</p><p>The letters A to F represent the unit values 10 to 15.</p><p>This system is often used in programming as a condensed form for binary numbers</p><p>Why Hex? Because 16 = 2⁴. So 4 binary digits = 1 hex digit. Used for colors, memory addresses.</p><p>Example: #FF0000 = Red in HTML. FF = 255.</p><p>HEX TABLE </p><p>| Decimal | Binary | Hex |</p><p>| 0 | 0000 | 0 |</p><p>| 1 | 0001 | 1 |</p><p>| 2 | 0010 | 2 |</p><p>| 3 | 0011 | 3 |</p><p>| 4 | 0100 | 4 |</p><p>| 5 | 0101 | 5 |</p><p>| 6 | 0110 | 6 |</p><p>| 7 | 0111 | 7 |</p><p>| 8 | 1000 | 8 |</p><p>| 9 | 1001 | 9 |</p><p>| 10 | 1010 | A |</p><p>| 11 | 1011 | B |</p><p>| 12 | 1100 | C |</p><p>| 13 | 1101 | D |</p><p>| 14 | 1110 | E |</p><p>| 15 | 1111 | F |</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>PLACE VALUE COMPARISON </p><p>Binary: ... 32, 16, 8, 4, 2, 1</p><p>Decimal: ... 1000, 100, 10, 1</p><p>Octal: ... 512, 64, 8, 1</p><p>Hexadecimal: ... 4096, 256, 16, 1</p><p>Place value = Base ^ Position. Position starts at 0 from right.</p><p>CONVERSION OVERVIEW </p><p>All conversions go through Binary as bridge:</p><p>Decimal → Binary → Octal / Hex</p><p>Octal / Hex → Binary → Decimal</p><p>Trick: Never convert Decimal directly to Octal/Hex. Convert to Binary first.</p><p>CONVERSION FROM ONE SYSTEM TO ANOTHER:</p><p>BINARY TO DECIMAL:</p><p>Another way to convert binary to decimal is we used the power of two ( 1,2,4,8,16,32,64, &amp; etc. ) as thier exponents, then we add the exponents we put in 1's.</p><p>Method: Write powers of 2 under each bit. Add only where bit is 1. Ignore where bit is 0.</p><p>BINARY TO DECIMAL PRACTICE </p><p>1010₂ = 8 + 2 = 10₁₀</p><p>1111₂ = 8+4+2+1 = 15₁₀</p><p>10000₂ = 16₁₀</p><p>10101₂ = 16+4+1 = 21₁₀</p><p>11111111₂ = 255₁₀ (Important for IP Address, Colors)</p><p>BINARY TO OCTAL:</p><p>In converting binary to octal, we first group the binary numbers into three then replace the group of three binary digits into their corresponding octal digit:</p><p>| BINARY | OCTAL |</p><p>| --- | --- |</p><p>| 000 | 0 |</p><p>| 001 | 1 |</p><p>| 010 | 2 |</p><p>| 011 | 3 |</p><p>| 100 | 4 |</p><p>| 101 | 5 |</p><p>| 110 | 6 |</p><p>| 111 | 7 |</p><p>An easy way to know the corresponding octal digit of a group of three binary digit is to still use the power of two's. For example:</p><p>For the conversion of binary to octal:</p><p>1. </p><p>2. </p><p>Group from RIGHT to LEFT. If last group is incomplete, add 0 on left.</p><p>BINARY TO OCTAL PRACTICE [ADDED]</p><p>101010₂ = 101 / 010 = 52₈</p><p>111111₂ = 111 / 111 = 77₈</p><p>1001₂ = 001 / 001 = 11₈ (Add 0 to complete group)</p><p>1101100₂ = 001 / 101 / 100 = 154₈</p><p>BINARY TO HEXADECIMAL:</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>In converting binary to hexadecimal, we first group the binary numbers into four then replace the group of four binary digits into their corresponding hexadecimal digit:</p><p>Group into FOUR from right. Use Hex Table: 1010 = A, 1101 = D, 1111 = F</p><p>Example: 10111010100₂ = 0101 / 1101 / 0100 = 5D4₁₆</p><p>BINARY TO HEX PRACTICE </p><p>1111₂ = F₁₆</p><p>1010₂ = A₁₆</p><p>11111111₂ = 1111 / 1111 = FF₁₆</p><p>10101010₂ = 1010 / 1010 = AA₁₆</p><p>11001100₂ = 1100 / 1100 = CC₁₆</p><p>OCTAL TO BINARY </p><p>Reverse: Each octal digit = 3 binary digits.</p><p>Example: 52₈ = 101 / 010 = 101010₂</p><p>Example: 777₈ = 111 / 111 / 111 = 111111111₂</p><p>Trick: Always make 3 digits. 1₈ = 001₂, not 1₂.</p><p>HEX TO BINARY </p><p>Each hex digit = 4 binary digits.</p><p>Example: A₅₁₆ = 1010 / 0101 = 10100101₂</p><p>Example: FF₁₆ = 1111 / 1111 = 11111111₂</p><p>Example: 1A₁₆ = 0001 / 1010 = 11010₂ (Remove leading zeros at start)</p><p>DECIMAL TO BINARY: In converting decimal to binary,divide the decimal number into 2. Read the quotient upward.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;"></td><td style="border:1px solid #d9aac7;padding:7px;">Quotient</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1492</td><td style="border:1px solid #d9aac7;padding:7px;"></td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">746</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">373</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">186</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">93</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">46</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">23</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">11</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">5</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">2</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr></table><p>Method: Divide by 2, get remainder. Continue until quotient is 0. Read remainders BOTTOM to TOP.</p><p>DECIMAL TO BINARY PRACTICE </p><p>10₁₀ = 1010₂</p><p>15₁₀ = 1111₂</p><p>25₁₀ = 11001₂</p><p>100₁₀ = 1100100₂</p><p>255₁₀ = 11111111₂</p><p>Tip: If decimal is even, last bit is 0. If odd, last bit is 1.</p><p>DECIMAL TO OCTAL &amp; DECIMAL TO HEXADECIMAL: In converting decimal to octal or hexadecimal, convert the decimal first into binary then convert it to octal/hexadecimal.</p><p>Example: To Octal:</p><p>To Hexadecimal:</p><p>Steps: Decimal → Binary → Group (3 for Octal, 4 for Hex)</p><p> DECIMAL TO OCTAL PRACTICE</p><p>8₁₀ = 1000₂ = 010 / 000 = 10₈</p><p>64₁₀ = 1000000₂ = 001 / 000 / 000 = 100₈</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>100₁₀ = 1100100₂ = 001 / 100 / 100 = 144₈</p><p>255₁₀ = 11111111₂ = 011 / 111 / 111 = 377₈</p><p>DECIMAL TO HEX PRACTICE </p><p>10₁₀ = 1010₂ = A₁₆</p><p>255₁₀ = 11111111₂ = 1111 / 1111 = FF₁₆</p><p>100₁₀ = 1100100₂ = 0110 / 0100 = 64₁₆</p><p>1000₁₀ = 1111101000₂ = 0011 / 1110 / 1000 = 3E8₁₆</p><p>OCTAL TO DECIMAL</p><p>Use powers of 8: 1, 8, 64, 512</p><p>Example: 52₈ = 5x8 + 2x1 = 40+2 = 42₁₀</p><p>Example: 777₈ = 7x64 + 7x8 + 7x1 = 448+56+7 = 511₁₀</p><p> HEX TO DECIMAL </p><p>Use powers of 16: 1, 16, 256</p><p>Example: A₅₁₆ = 10x16 + 5x1 = 165₁₀</p><p>Example: FF₁₆ = 15x16 + 15x1 = 255₁₀</p><p>Example: 1A₁₆ = 1x16 + 10x1 = 26₁₀</p><p>BINARY ADDITION </p><p>Rules:</p><p>0+0 = 0</p><p>0+1 = 1</p><p>1+0 = 1</p><p>1+1 = 10 (0 carry 1)</p><p>Example: 101 + 011 = 1000 (5+3=8)</p><p>Practice: 1010 + 0101 = 1111</p><p>  BINARY SUBTRACTION </p><p>Rules:</p><p>0-0 = 0</p><p>1-0 = 1</p><p>1-1 = 0</p><p>0-1 = 1 borrow 1</p><p>Example: 101 - 011 = 010 (5-3=2)</p><p>Borrowing is same as decimal, but borrow 2.</p><p> BINARY MULTIPLICATION]</p><p>Same as decimal, but only 0 and 1.</p><p>0 x 0 = 0</p><p>0 x 1 = 0</p><p>1 x 1 = 1</p><p>Example: 101 x 10 = 1010 (5 x 2 = 10)</p><p>1'S AND 2'S COMPLEMENT</p><p>Used for negative numbers.</p><p>1's Complement: Flip all bits. 1010 → 0101</p><p>2's Complement: Flip + Add 1. 1010 → 0101 + 1 = 0110</p><p>This is how computer stores -5, -10, etc.</p><p>ASCII CODE </p><p>ASCII = American Standard Code for Information Interchange</p><p>7-bit or 8-bit code for letters and symbols</p><p>A = 65₁₀ = 1000001₂</p><p>a = 97₁₀ = 1100001₂</p><p>0 = 48₁₀ = 0110000₂</p><p>Space = 32₁₀</p><p>Computer uses ASCII to store letters as binary.</p><p> UNICODE </p><p>ASCII is limited to English. Unicode supports all languages: Filipino, Chinese, Japanese, Emoji.</p><p>Example: 😀 = U+1F600</p><p>UTF-8 is most common encoding on internet.</p><p>- BCD CODE</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>BCD = Binary Coded Decimal. Each decimal digit is stored as 4 bits.</p><p>Example: 25₁₀ = 0010 / 0101 in BCD (2 = 0010, 5 = 0101)</p><p>Used in digital clocks, calculators.</p><p>GRAY CODE </p><p>Only 1 bit changes at a time. Used in sensors, robotics, to avoid errors.</p><p>Example: Decimal 0-3 in Gray: 00, 01, 11, 10</p><p>APPLICATIONS IN REAL LIFE </p><p>Colors: #FF0000 = Red, #00FF00 = Green, #0000FF = Blue. Each FF = 255.</p><p>IP Address: 192.168.1.1 = 11000000.10101000.00000001.00000001 in binary. Each part is 8 bits.</p><p>Memory Address: 0x1A2B is Hex address in RAM.</p><p>File Size: 1 KB = 1024 bytes = 2¹⁰</p><p>COMMON MISTAKES </p><p>Forgetting to group from RIGHT, not left.</p><p>Forgetting to add leading 0 to complete group.</p><p>Confusing Octal (0-7) with Decimal (0-9). Octal has NO 8 and 9.</p><p>Confusing Hex A-F. A=10, B=11, C=12, D=13, E=14, F=15.</p><p>Reading Decimal to Binary remainders top to bottom instead of bottom to top.</p><h2>ADDITIONAL LESSON: NUMBER SYSTEMS AND DATA REPRESENTATION</h2><h2>IMPORTANCE OF NUMBER SYSTEMS IN COMPUTING</h2><p>Number systems are essential in computer science because they provide a way to represent, store, and process information. Computers use electronic circuits that recognize two basic states: ON and OFF. These states are represented by the binary digits 1 and 0.</p><p>Although people commonly use the decimal system, computers use binary internally. Other number systems, such as octal and hexadecimal, make binary information easier for people to read and understand.</p><p>Why are number systems important?</p><p>Data Storage – Computers store numbers, letters, pictures, and other information using binary codes.</p><p>Data Processing – The CPU performs calculations and logical operations using binary values.</p><p>Programming – Programmers use binary and hexadecimal when working with memory, machine instructions, and debugging.</p><p>Networking – Binary values are used in IP addresses and other network-related information.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Digital Electronics – Circuits use binary states to represent information and perform operations.</p><p>Example:</p><p>When a user types the number 5 on a keyboard, the computer does not simply store it as the written symbol. It converts the character into a code represented by binary bits.</p><p>The same principle applies to letters, symbols, pictures, and other digital information.</p><p>Remember: Humans commonly communicate using decimal numbers, while digital computers process information using binary.</p><h2>BITS, NIBBLES, BYTES, AND WORDS</h2><p>A computer represents information using bits. A bit is the smallest unit of digital data and can have only one of two values: 0 or 1.</p><p>Several bits can be combined to represent larger amounts of information.</p><p>1. Bit</p><p>The smallest unit of computer data.</p><p>Can contain either 0 or 1.</p><p>Example: 1</p><p>2. Nibble</p><p>A group of 4 bits.</p><p>One hexadecimal digit can represent one nibble.</p><p>Example: 1010</p><p>3. Byte</p><p>A group of 8 bits.</p><p>Commonly used as a basic unit of digital storage.</p><p>Example: 01000001</p><p>4. Word</p><p>A group of bits processed together by a computer's processor.</p><p>Word size depends on the computer architecture.</p><p>Common examples include 16-bit, 32-bit, and 64-bit systems.</p><p>Comparison Table</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Unit</td><td style="border:1px solid #d9aac7;padding:7px;">Number of Bits</td><td style="border:1px solid #d9aac7;padding:7px;">Example</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Bit</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Nibble</td><td style="border:1px solid #d9aac7;padding:7px;">4</td><td style="border:1px solid #d9aac7;padding:7px;">1010</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Byte</td><td style="border:1px solid #d9aac7;padding:7px;">8</td><td style="border:1px solid #d9aac7;padding:7px;">01000001</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">16-bit word</td><td style="border:1px solid #d9aac7;padding:7px;">16</td><td style="border:1px solid #d9aac7;padding:7px;">0000000000000001</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">32-bit word</td><td style="border:1px solid #d9aac7;padding:7px;">32</td><td style="border:1px solid #d9aac7;padding:7px;">32 binary positions</td></tr></table><p>Important Storage Units</p><p>1 byte = 8 bits</p><p>1 kilobyte (KB) = 1,024 bytes</p><p>1 megabyte (MB) = 1,024 KB</p><p>1 gigabyte (GB) = 1,024 MB</p><p>1 terabyte (TB) = 1,024 GB</p><p>These traditional binary-based measurements are commonly taught in introductory computing. Some storage manufacturers use decimal measurements, where 1 KB is 1,000 bytes.</p><p>Example:</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>A text file with a size of 2 KB contains approximately 2,048 bytes when measured using the traditional binary-based definition.</p><h2>PLACE VALUE AND POSITIONAL NUMBER SYSTEMS</h2><p>A positional number system is a system in which the value of a digit depends on its position in a number.</p><p>The four number systems discussed in this lesson are positional systems.</p><p>The general formula is:</p><p>Value = Digit × Base raised to the position</p><p>The rightmost position starts at position 0.</p><p>Example 1: Decimal Number 345</p><p>The decimal system has a base of 10.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Digit</td><td style="border:1px solid #d9aac7;padding:7px;">Position</td><td style="border:1px solid #d9aac7;padding:7px;">Calculation</td><td style="border:1px solid #d9aac7;padding:7px;">Value</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">3</td><td style="border:1px solid #d9aac7;padding:7px;">2</td><td style="border:1px solid #d9aac7;padding:7px;">3 × 10²</td><td style="border:1px solid #d9aac7;padding:7px;">300</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">4</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">4 × 10¹</td><td style="border:1px solid #d9aac7;padding:7px;">40</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">5</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">5 × 10⁰</td><td style="border:1px solid #d9aac7;padding:7px;">5</td></tr></table><p>Therefore:</p><p>345₁₀ = 300 + 40 + 5</p><p>Example 2: Binary Number 1011</p><p>The binary system has a base of 2.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Digit</td><td style="border:1px solid #d9aac7;padding:7px;">Position</td><td style="border:1px solid #d9aac7;padding:7px;">Calculation</td><td style="border:1px solid #d9aac7;padding:7px;">Value</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">3</td><td style="border:1px solid #d9aac7;padding:7px;">1 × 2³</td><td style="border:1px solid #d9aac7;padding:7px;">8</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">2</td><td style="border:1px solid #d9aac7;padding:7px;">0 × 2²</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1 × 2¹</td><td style="border:1px solid #d9aac7;padding:7px;">2</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1 × 2⁰</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr></table><p>Therefore:</p><p>1011₂ = 8 + 0 + 2 + 1 = 11₁₀</p><p>Why does position matter?</p><p>Consider the decimal number 222. Although all digits are 2, their values are different because they occupy different positions:</p><p>First 2 = 200</p><p>Second 2 = 20</p><p>Third 2 = 2</p><p>The same idea applies to binary, octal, and hexadecimal numbers.</p><h2>CONVERTING DECIMAL FRACTIONS TO BINARY</h2><p>So far, most examples have used whole numbers. However, computers also represent values that contain fractional parts.</p><p>A decimal fraction is a number with digits after the decimal point.</p><p>To convert a decimal fraction into binary, repeatedly multiply the fractional part by 2. Record the whole-number result of each multiplication. Continue until the fraction becomes zero or until the desired number of binary digits has been produced.</p><p>Steps:</p><p>Separate the whole-number part from the fractional part.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Multiply the fractional part by 2.</p><p>Record the whole-number result.</p><p>Use the remaining fractional part for the next multiplication.</p><p>Read the recorded whole-number results from top to bottom.</p><p>Example: Convert 0.625₁₀ to binary.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Step</td><td style="border:1px solid #d9aac7;padding:7px;">Multiplication</td><td style="border:1px solid #d9aac7;padding:7px;">Result</td><td style="border:1px solid #d9aac7;padding:7px;">Recorded Bit</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0.625 × 2</td><td style="border:1px solid #d9aac7;padding:7px;">1.25</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">2</td><td style="border:1px solid #d9aac7;padding:7px;">0.25 × 2</td><td style="border:1px solid #d9aac7;padding:7px;">0.50</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">3</td><td style="border:1px solid #d9aac7;padding:7px;">0.50 × 2</td><td style="border:1px solid #d9aac7;padding:7px;">1.00</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr></table><p>Read the recorded bits from top to bottom:</p><p>0.625₁₀ = 0.101₂</p><p>Verification:</p><p>0.101₂ = (1 × 2⁻¹) + (0 × 2⁻²) + (1 × 2⁻³)</p><p>= 0.5 + 0 + 0.125</p><p>= 0.625₁₀</p><p>Another Example: Convert 0.5₁₀ to binary.</p><h2>0.5 × 2 = 1.0</h2><p>The recorded bit is 1.</p><p>Therefore:</p><p>0.5₁₀ = 0.1₂</p><p>Important Note:</p><p>Some decimal fractions cannot be represented exactly using a finite number of binary digits. In these situations, the computer stores an approximation using a limited number of bits.</p><h2>CONVERTING BINARY FRACTIONS TO DECIMAL</h2><p>Binary fractions can be converted into decimal by using negative powers of 2.</p><p>The positions to the right of the binary point represent:</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Position</td><td style="border:1px solid #d9aac7;padding:7px;">Place Value</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">First</td><td style="border:1px solid #d9aac7;padding:7px;">2⁻¹ = 0.5</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Second</td><td style="border:1px solid #d9aac7;padding:7px;">2⁻² = 0.25</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Third</td><td style="border:1px solid #d9aac7;padding:7px;">2⁻³ = 0.125</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Fourth</td><td style="border:1px solid #d9aac7;padding:7px;">2⁻⁴ = 0.0625</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Fifth</td><td style="border:1px solid #d9aac7;padding:7px;">2⁻⁵ = 0.03125</td></tr></table><p>Example 1: Convert 0.101₂ to decimal.</p><p>Step 1: Write the place values.</p><p>0.101₂ = (1 × 2⁻¹) + (0 × 2⁻²) + (1 × 2⁻³)</p><p>Step 2: Calculate each value.</p><p>= 0.5 + 0 + 0.125</p><p>Step 3: Add the results.</p><p>= 0.625₁₀</p><p>Example 2: Convert 0.11₂ to decimal.</p><p>0.11₂ = (1 × 2⁻¹) + (1 × 2⁻²)</p><p>= 0.5 + 0.25</p><p>= 0.75₁₀</p><p>Example 3: Convert 10.101₂ to decimal.</p><p>Separate the whole-number and fractional parts.</p><p>Whole-number part:</p><p>10₂ = 2₁₀</p><p>Fractional part:</p><p>0.101₂ = 0.625₁₀</p><p>Add the two values:</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>2 + 0.625 = 2.625₁₀</p><p>Therefore:</p><p>10.101₂ = 2.625₁₀</p><p>Practice Examples</p><p>0.1₂ = 0.5₁₀</p><p>0.01₂ = 0.25₁₀</p><p>0.11₂ = 0.75₁₀</p><p>1.1₂ = 1.5₁₀</p><p>10.01₂ = 2.25₁₀</p><h2>SIGNED AND UNSIGNED BINARY NUMBERS</h2><p>Binary numbers can represent positive numbers and, depending on the representation method, negative numbers.</p><p>Two common categories are unsigned and signed numbers.</p><p>1. Unsigned Binary Numbers</p><p>Unsigned binary numbers represent only zero and positive values.</p><p>For example, using 8 bits:</p><p>00000000 = 0</p><p>00000001 = 1</p><p>00000101 = 5</p><p>00001010 = 10</p><p>11111111 = 255</p><p>An 8-bit unsigned number can represent values from 0 to 255.</p><p>2. Signed Binary Numbers</p><p>Signed binary numbers can represent both positive and negative values.</p><p>One commonly used representation is two's complement.</p><p>In an 8-bit two's complement system:</p><p>00000000 = 0</p><p>00000001 = +1</p><p>00000101 = +5</p><p>11111111 = -1</p><p>11111110 = -2</p><p>11111011 = -5</p><p>An 8-bit two's complement number can represent values from -128 to +127.</p><p>Difference Between Signed and Unsigned</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Feature</td><td style="border:1px solid #d9aac7;padding:7px;">Unsigned</td><td style="border:1px solid #d9aac7;padding:7px;">Signed (Two's Complement)</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Represents</td><td style="border:1px solid #d9aac7;padding:7px;">Zero and positive values</td><td style="border:1px solid #d9aac7;padding:7px;">Positive and negative values</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">8-bit minimum</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">-128</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">8-bit maximum</td><td style="border:1px solid #d9aac7;padding:7px;">255</td><td style="border:1px solid #d9aac7;padding:7px;">127</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Negative values</td><td style="border:1px solid #d9aac7;padding:7px;">No</td><td style="border:1px solid #d9aac7;padding:7px;">Yes</td></tr></table><p>Why is this important?</p><p>Computers must know whether a group of bits represents an ordinary positive quantity or a signed value. The interpretation affects the result of calculations.</p><p>For example, the same bit pattern can represent different values depending on whether it is treated as signed or unsigned.</p><h2>UNDERSTANDING TWO'S COMPLEMENT</h2><p>Two's complement is a method used by computers to represent signed integers.</p><p>It allows a computer to perform addition and subtraction using binary arithmetic circuits.</p><p>How to Find the Two's Complement</p><p>Write the binary number.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Change every 0 to 1 and every 1 to 0. This is called finding the one's complement.</p><p>Add 1 to the result.</p><p>Example: Find the two's complement of 00000101.</p><p>Original number:</p><p>00000101</p><p>Step 1: Invert every bit.</p><p>11111010</p><p>Step 2: Add 1.</p><p>11111010
++00000001
+=11111011</p><p>Therefore, the 8-bit two's complement representation of -5 is:</p><p>11111011</p><p>Understanding the Result</p><p>In an 8-bit signed two's complement system, 11111011 represents -5.</p><p>The leftmost bit is called the sign bit in this representation:</p><p>0 generally indicates a nonnegative value.</p><p>1 indicates a negative value.</p><p>Example: Represent -10 using 8 bits.</p><p>Positive 10:</p><p>00001010</p><p>Invert the bits:</p><p>11110101</p><p>Add 1:</p><p>11110101
++00000001
+=11110110</p><p>Therefore:</p><p>-10 = 11110110 in 8-bit two's complement.</p><p>Important Reminder:</p><p>The number of bits matters. Always use the required bit width when finding the two's complement representation.</p><h2>BINARY OVERFLOW AND CARRY</h2><p>Overflow happens when the result of an arithmetic operation is too large or too small to be represented using the available number of bits.</p><p>The available bit width determines the range of values a computer can store.</p><p>Unsigned Overflow Example</p><p>Suppose an 8-bit unsigned system performs:</p><p>255 + 1</p><p>The binary representation of 255 is:</p><p>11111111</p><p>Adding 1 gives a result that requires 9 bits:</p><p>11111111
++00000001
+=100000000</p><p>However, the system can store only 8 bits. The extra carry bit cannot fit in the 8-bit result.</p><p>If only the lower 8 bits are kept, the result becomes:</p><p>00000000</p><p>This is an example of unsigned overflow.</p><p>Signed Overflow Example</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>In an 8-bit signed two's complement system, the maximum positive value is 127.</p><p>Consider:</p><p>127 + 1</p><p>Binary representation:</p><p>01111111
++00000001
+=10000000</p><p>The result is outside the valid positive range of the 8-bit signed system. This is signed overflow.</p><p>Carry vs. Overflow</p><p>These terms are related but do not mean exactly the same thing.</p><p>Carry is a bit produced when an addition exceeds the value of a single binary position.</p><p>Overflow occurs when the mathematical result cannot be represented within the allowed range of the number format.</p><p>Why should programmers understand overflow?</p><p>Understanding overflow helps prevent incorrect calculations in software, especially when working with limited storage sizes, counters, measurements, and numerical data.</p><h2>MORE ABOUT BINARY ARITHMETIC</h2><p>Binary arithmetic follows rules similar to decimal arithmetic, but it uses only two digits: 0 and 1.</p><p>A. Binary Addition</p><p>Basic rules:</p><p>0 + 0 = 0</p><p>0 + 1 = 1</p><p>1 + 0 = 1</p><p>1 + 1 = 10</p><p>When the result is 10, write 0 and carry 1 to the next position.</p><p>Example:</p><p>   1011</p><p> + 0110</p><p> -------</p><p>  10001</p><p>Verification:</p><p>1011₂ = 11₁₀</p><p>0110₂ = 6₁₀</p><p>11 + 6 = 17</p><p>10001₂ = 17₁₀</p><p>B. Binary Subtraction</p><p>Basic rules:</p><p>0 - 0 = 0</p><p>1 - 0 = 1</p><p>1 - 1 = 0</p><p>0 - 1 requires borrowing.</p><p>When borrowing from the next position, a binary 0 becomes 10₂ in the current position.</p><p>Example:</p><p>   1101</p><p> - 0101</p><p> -------</p><p>   1000</p><p>Verification:</p><p>1101₂ = 13₁₀</p><p>0101₂ = 5₁₀</p><p>13 - 5 = 8</p><p>1000₂ = 8₁₀</p><p>C. Binary Multiplication</p><p>Basic rules:</p><p>0 × 0 = 0</p><p>0 × 1 = 0</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>1 × 0 = 0</p><p>1 × 1 = 1</p><p>Example:</p><p>     101</p><p>   ×  11</p><p>   -----</p><p>     101</p><p>    1010</p><p>   -----</p><p>    1111</p><p>Verification:</p><p>101₂ = 5₁₀</p><p>11₂ = 3₁₀</p><p>5 × 3 = 15</p><p>1111₂ = 15₁₀</p><p>D. Binary Division</p><p>Binary division follows the same general process as decimal long division. However, the digits used are only 0 and 1.</p><p>Example:</p><p>1100₂ ÷ 10₂ = 110₂</p><p>Verification:</p><p>1100₂ = 12₁₀</p><p>10₂ = 2₁₀</p><p>12 ÷ 2 = 6</p><p>110₂ = 6₁₀</p><h2>BINARY CODES AND CHARACTER REPRESENTATION</h2><p>Computers do not understand letters and symbols in the same way humans do. They use numerical codes to represent characters.</p><p>A character encoding system assigns numerical values to letters, digits, punctuation marks, and other symbols.</p><p>1. ASCII</p><p>ASCII stands for American Standard Code for Information Interchange.</p><p>It is a character encoding standard originally designed for English letters, digits, punctuation, and control characters.</p><p>Examples:</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Character</td><td style="border:1px solid #d9aac7;padding:7px;">Decimal Code</td><td style="border:1px solid #d9aac7;padding:7px;">Binary Code</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">A</td><td style="border:1px solid #d9aac7;padding:7px;">65</td><td style="border:1px solid #d9aac7;padding:7px;">01000001</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">B</td><td style="border:1px solid #d9aac7;padding:7px;">66</td><td style="border:1px solid #d9aac7;padding:7px;">01000010</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">C</td><td style="border:1px solid #d9aac7;padding:7px;">67</td><td style="border:1px solid #d9aac7;padding:7px;">01000011</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">a</td><td style="border:1px solid #d9aac7;padding:7px;">97</td><td style="border:1px solid #d9aac7;padding:7px;">01100001</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">b</td><td style="border:1px solid #d9aac7;padding:7px;">98</td><td style="border:1px solid #d9aac7;padding:7px;">01100010</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">48</td><td style="border:1px solid #d9aac7;padding:7px;">00110000</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">49</td><td style="border:1px solid #d9aac7;padding:7px;">00110001</td></tr></table><p>2. Unicode</p><p>Unicode is a standard designed to represent characters from many writing systems around the world.</p><p>It supports:</p><p>English letters</p><p>Filipino characters</p><p>Chinese characters</p><p>Japanese characters</p><p>Arabic characters</p><p>Mathematical symbols</p><p>Emojis</p><p>Each Unicode character has a code point.</p><p>For example:</p><p>A = U+0041</p><p>Ñ = U+00D1</p><p>€ = U+20AC</p><p>😀 = U+1F600</p><p>3. UTF-8</p><p>UTF-8 is a widely used Unicode encoding format.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>It uses a variable number of bytes to represent characters. Common English characters use one byte, while many other characters require multiple bytes.</p><p>Why are character codes important?</p><p>Character encoding allows different computers and applications to store, display, and exchange text consistently.</p><p>Without agreed encoding standards, text might appear incorrectly when transferred between different systems.</p><h2>REPRESENTATION OF IMAGES, AUDIO, AND VIDEO</h2><p>Computers can store more than numbers and text. They can also represent pictures, sounds, and videos using binary information.</p><p>1. Digital Images</p><p>A digital image is commonly made up of tiny units called pixels.</p><p>Each pixel represents a small part of an image.</p><p>The color of a pixel can be represented using numerical values.</p><p>In an RGB color model, the three main color channels are:</p><p>Red</p><p>Green</p><p>Blue</p><p>Each channel commonly uses 8 bits, allowing values from 0 to 255.</p><p>Examples:</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Color</td><td style="border:1px solid #d9aac7;padding:7px;">Red</td><td style="border:1px solid #d9aac7;padding:7px;">Green</td><td style="border:1px solid #d9aac7;padding:7px;">Blue</td><td style="border:1px solid #d9aac7;padding:7px;">Hexadecimal</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Red</td><td style="border:1px solid #d9aac7;padding:7px;">255</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">#FF0000</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Green</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">255</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">#00FF00</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Blue</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">255</td><td style="border:1px solid #d9aac7;padding:7px;">#0000FF</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">White</td><td style="border:1px solid #d9aac7;padding:7px;">255</td><td style="border:1px solid #d9aac7;padding:7px;">255</td><td style="border:1px solid #d9aac7;padding:7px;">255</td><td style="border:1px solid #d9aac7;padding:7px;">#FFFFFF</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Black</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">#000000</td></tr></table><p>2. Digital Audio</p><p>Digital audio represents sound through samples.</p><p>A microphone captures sound waves, and an audio system converts them into digital information.</p><p>Two important concepts are:</p><p>Sample Rate – The number of audio samples taken per second.</p><p>Bit Depth – The number of bits used to represent each audio sample.</p><p>A higher sample rate or bit depth can increase the amount of data required to store audio.</p><p>3. Digital Video</p><p>Digital video consists of a sequence of images called frames.</p><p>When frames are displayed rapidly, they create the appearance of movement.</p><p>Important video concepts include:</p><p>Resolution – The number of pixels used in each frame.</p><p>Frame Rate – The number of frames displayed per second.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Color Depth – The number of bits used to represent color information.</p><p>Compression – A method used to reduce file size.</p><p>Example:</p><p>A video recorded at 1920 × 1080 resolution contains 1,920 pixels across and 1,080 pixels vertically in each frame.</p><p>Digital images, audio, and videos all depend on binary representation.</p><h2>PAGE 12 – DATA COMPRESSION AND FILE FORMATS</h2><p>Digital files can become very large, especially when they contain high-quality images, audio, and videos.</p><p>Data compression reduces the amount of storage space required by a file.</p><p>There are two main types of compression.</p><p>1. Lossless Compression</p><p>Lossless compression reduces file size without permanently removing original information.</p><p>The original data can be reconstructed exactly after decompression.</p><p>Examples include:</p><p>ZIP</p><p>PNG</p><p>FLAC</p><p>Advantages:</p><p>Preserves original information.</p><p>Useful for documents and files that must remain exact.</p><p>Allows the original data to be recovered.</p><p>2. Lossy Compression</p><p>Lossy compression reduces file size by removing some information that may be less noticeable to users.</p><p>Examples include:</p><p>JPEG</p><p>MP3</p><p>Some video compression formats</p><p>Advantages:</p><p>Can produce much smaller files.</p><p>Useful for online images, music, and videos.</p><p>Helps reduce storage and transmission requirements.</p><p>Disadvantages:</p><p>Some original information is permanently lost.</p><p>Repeated compression may reduce quality further.</p><p>Comparison Table</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Feature</td><td style="border:1px solid #d9aac7;padding:7px;">Lossless</td><td style="border:1px solid #d9aac7;padding:7px;">Lossy</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Original information</td><td style="border:1px solid #d9aac7;padding:7px;">Preserved</td><td style="border:1px solid #d9aac7;padding:7px;">Some information removed</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">File size reduction</td><td style="border:1px solid #d9aac7;padding:7px;">Usually moderate</td><td style="border:1px solid #d9aac7;padding:7px;">Often greater</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Exact restoration</td><td style="border:1px solid #d9aac7;padding:7px;">Yes</td><td style="border:1px solid #d9aac7;padding:7px;">No</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">Common uses</td><td style="border:1px solid #d9aac7;padding:7px;">Documents, archives</td><td style="border:1px solid #d9aac7;padding:7px;">Photos, music, videos</td></tr></table><p>Common File Extensions</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Extension</td><td style="border:1px solid #d9aac7;padding:7px;">File Type</td><td style="border:1px solid #d9aac7;padding:7px;">Common Use</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.txt</td><td style="border:1px solid #d9aac7;padding:7px;">Text</td><td style="border:1px solid #d9aac7;padding:7px;">Plain text</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.docx</td><td style="border:1px solid #d9aac7;padding:7px;">Document</td><td style="border:1px solid #d9aac7;padding:7px;">Word processing</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.pdf</td><td style="border:1px solid #d9aac7;padding:7px;">Document</td><td style="border:1px solid #d9aac7;padding:7px;">Sharing and printing</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.jpg</td><td style="border:1px solid #d9aac7;padding:7px;">Image</td><td style="border:1px solid #d9aac7;padding:7px;">Digital photographs</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.png</td><td style="border:1px solid #d9aac7;padding:7px;">Image</td><td style="border:1px solid #d9aac7;padding:7px;">Graphics and transparency</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.mp3</td><td style="border:1px solid #d9aac7;padding:7px;">Audio</td><td style="border:1px solid #d9aac7;padding:7px;">Compressed music</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.wav</td><td style="border:1px solid #d9aac7;padding:7px;">Audio</td><td style="border:1px solid #d9aac7;padding:7px;">Audio recording</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.mp4</td><td style="border:1px solid #d9aac7;padding:7px;">Video container</td><td style="border:1px solid #d9aac7;padding:7px;">Digital video</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">.zip</td><td style="border:1px solid #d9aac7;padding:7px;">Archive</td><td style="border:1px solid #d9aac7;padding:7px;">Compressed files</td></tr></table><p>A file extension helps identify the file format, although the extension alone does not guarantee the file's actual contents.</p><h2>LOGIC GATES AND BINARY OPERATIONS</h2><p>Digital computers use electronic circuits to process binary information. One important part of these circuits is the logic gate.</p><p>A logic gate performs a basic operation on one or more binary inputs and produces a binary output.</p><p>1. AND Gate</p><p>The AND gate produces 1 only when both inputs are 1.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">A</td><td style="border:1px solid #d9aac7;padding:7px;">B</td><td style="border:1px solid #d9aac7;padding:7px;">Output</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr></table><p>2. OR Gate</p><p>The OR gate produces 1 when at least one input is 1.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">A</td><td style="border:1px solid #d9aac7;padding:7px;">B</td><td style="border:1px solid #d9aac7;padding:7px;">Output</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr></table><p>3. NOT Gate</p><p>The NOT gate reverses the input.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">Input</td><td style="border:1px solid #d9aac7;padding:7px;">Output</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr></table><p>4. XOR Gate</p><p>The XOR gate produces 1 when the two inputs are different.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">A</td><td style="border:1px solid #d9aac7;padding:7px;">B</td><td style="border:1px solid #d9aac7;padding:7px;">Output</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr></table><p>5. NAND Gate</p><p>The NAND gate is the opposite of the AND gate.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">A</td><td style="border:1px solid #d9aac7;padding:7px;">B</td><td style="border:1px solid #d9aac7;padding:7px;">Output</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr></table><p>6. NOR Gate</p><p>The NOR gate is the opposite of the OR gate.</p><table style="width:100%;border-collapse:collapse;margin:12px 0;"><tr><td style="border:1px solid #d9aac7;padding:7px;">A</td><td style="border:1px solid #d9aac7;padding:7px;">B</td><td style="border:1px solid #d9aac7;padding:7px;">Output</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr><tr><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">1</td><td style="border:1px solid #d9aac7;padding:7px;">0</td></tr></table><p>Importance of Logic Gates</p><p>Logic gates are building blocks of digital circuits. They are used in processors, memory devices, calculators, and many other electronic systems.</p><p>They allow computers to perform logical decisions and arithmetic operations using binary values.</p><h2>PRACTICAL APPLICATIONS OF NUMBER SYSTEMS</h2><p>Number systems are used in many areas of modern technology.</p><p>1. Computer Programming</p><p>Programmers may use hexadecimal values to represent data, memory addresses, and machine-related information.</p><p>Example:</p><p>0x1A represents a hexadecimal value.</p><p>2. Web Design</p><p>Web designers use hexadecimal color codes to specify colors in websites.</p><p>Examples:</p><p>#FFFFFF – White</p><p>#000000 – Black</p><p>#FF0000 – Red</p><p>#0000FF – Blue</p><p>3. Networking</p><p>IP addresses are represented in decimal for easier reading, but computers process their binary values.</p><p>Example:</p><p>192.168.1.1</p><p>Each decimal section represents 8 bits in an IPv4 address.</p><p>4. Digital Electronics</p><p>Electronic circuits use binary states to represent information.</p><p>A circuit can interpret a low voltage as 0 and a high voltage as 1, depending on its design.</p><p>5. Digital Clocks and Calculators</p><p>Some digital devices use BCD to represent decimal digits.</p><p>BCD makes it possible to display decimal numbers using electronic circuits.</p><p>6. Computer Memory</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Memory addresses are often written in hexadecimal because it is shorter and easier to read than long binary sequences.</p><p>7. Data Communication</p><p>Computers exchange information through networks using binary data. Text, images, audio, and other files are encoded before transmission.</p><p>8. Robotics and Automation</p><p>Digital systems use binary signals to receive sensor information and control motors, lights, and other devices.</p><p>Real-Life Situation: Sending a Message</p><p>When a person sends a message through a messaging application:</p><p>The user types letters and numbers.</p><p>The device converts the characters into encoded data.</p><p>The information is represented using binary.</p><p>The network transfers the digital information.</p><p>The receiving device interprets the data.</p><p>The message appears on the recipient's screen.</p><p>This example shows how number systems and data representation support everyday communication.</p><h2>FINAL SUMMARY</h2><p>Number systems and data representation are fundamental topics in computer science. They explain how computers represent, store, and process different kinds of information.</p><p>The binary system is the primary number system used by digital computers because electronic circuits can represent two basic states. Decimal, octal, and hexadecimal systems provide other ways to express numerical values.</p><p>Bits, nibbles, bytes, and words describe different groups of digital information. Binary arithmetic allows computers to perform calculations, while signed number representations such as two's complement allow them to work with negative integers.</p><p>Character encoding systems such as ASCII and Unicode allow computers to represent letters, numbers, and symbols. Images, audio, and videos are also represented digitally through binary information.</p><p>Logic gates provide the basic operations used in digital circuits. Data compression helps reduce file sizes, and different file formats are designed for different purposes.</p></article></section><section aria-label="Reading page" class="book-page" hidden=""><article class="lesson"><p>Understanding these concepts helps students develop a strong foundation in programming, computer hardware, networking, digital electronics, and information technology.</p><p>Key Takeaway: Every digital activity—from typing a message and browsing a website to watching videos and playing games—depends on the representation and processing of digital information.</p><p>https://www.scribd.com/document/489551482/LESSON-2-NUMBER-SYSTEMS-AND-DATA-REPRESENTATION</p></article></section></div>
+</div>
+<div class="pager"><button class="navbtn" id="prev">← Previous</button><span id="counter">Page 1 of
+                    33</span><button class="navbtn" id="next">Next →</button></div>
+</main>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.book-page')], tocLinks=[...document.querySelectorAll('.toc-link')];
+const viewport=document.getElementById('viewport'),counter=document.getElementById('counter'),prev=document.getElementById('prev'),next=document.getElementById('next'),reader=document.getElementById('reader'),theme=document.getElementById('themeToggle');let current=0;
+function go(i){current=Math.max(0,Math.min(pages.length-1,Number(i)||0));pages.forEach((p,n)=>p.hidden=n!==current);counter.textContent=`Page ${current+1} of ${pages.length}`;prev.disabled=current===0;next.disabled=current===pages.length-1;tocLinks.forEach((b,j)=>{const start=+b.dataset.go,end=j+1<tocLinks.length?+tocLinks[j+1].dataset.go:pages.length;b.classList.toggle('active',current>=start&&current<end)});viewport.scrollTop=0;}
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.go)));prev.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));
+const saved=localStorage.getItem('ITVerse-reader-theme');function setTheme(dark){reader.classList.toggle('dark-mode',dark);theme.classList.toggle('active',dark);theme.textContent=dark?'☀️ Light Mode':'🌙 Dark Mode';localStorage.setItem('ITVerse-reader-theme',dark?'dark':'light')};setTheme(saved==='dark');theme.addEventListener('click',()=>setTheme(!reader.classList.contains('dark-mode')));go(0);
+</script>
+<script src="js/itverse-reader-features.js"></script></body>
+</html>
