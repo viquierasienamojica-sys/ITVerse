@@ -1,0 +1,21 @@
+ITVerse e-book standardization
+Base: 3rd Year Book 03
+
+firstyear Book 01: DONE; reader pages=26; embedded pictures=14
+firstyear Book 02: DONE; reader pages=17; embedded pictures=20
+firstyear Book 03: DONE; reader pages=50; embedded pictures=14
+firstyear Book 04: DONE; reader pages=37; embedded pictures=7
+firstyear Book 05: DONE; reader pages=22; embedded pictures=0
+firstyear Book 06: DONE; reader pages=32; embedded pictures=2
+firstyear Book 07: DONE; reader pages=44; embedded pictures=9
+firstyear Book 08: DONE; reader pages=34; embedded pictures=0
+firstyear Book 09: DONE; reader pages=16; embedded pictures=1
+firstyear Book 10: DONE; reader pages=15; embedded pictures=0
+secondyear Book 01: DONE; reader pages=74; embedded pictures=10
+secondyear Book 02: DONE; reader pages=39; embedded pictures=4
+secondyear Book 03: DONE; reader pages=28; embedded pictures=0
+secondyear Book 04: SKIPPED: source DOCX has no readable lesson text; reader pages=0; embedded pictures=0
+
+IMPORTANT: 2nd Year Book 04 DOCX has no readable lesson content; original HTML is unchanged.
+2nd Year quiz/review/activity sections excluded with heading-based detection; please review each converted book for boundary cases.
+All original source DOCX files are unchanged. Existing 3rd Year books, quizzes, login and website files remain in the ZIP.

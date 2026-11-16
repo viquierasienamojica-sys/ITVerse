@@ -1,0 +1,1 @@
+Updated 13 book sidebars using chapter titles from supplied With Chapters DOCX files. Page links are matched to existing reader pages; review manually for chapters not present in original HTML. 2nd Year Book 04 unchanged because no updated chapter DOCX was provided.

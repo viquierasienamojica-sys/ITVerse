@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Dashboard | ITVerse</title>
+    <link rel="stylesheet" href="css/student-auth.css">
+</head>
+
+<body data-page="dashboard">
+    <header class="topbar">
+        <h1>🌸 ITVerse</h1><button id="logout" class="logout">Logout</button>
+    </header>
+    <main class="container">
+        <h2 class="welcome">Welcome, <span id="studentName"></span>!</h2>
+        <p class="muted">Student Number: <span id="studentNumber"></span></p>
+        <div class="cards">
+            <article class="card">
+                <h2>📚 E-Book Library</h2>
+                <p>Explore learning materials for BSIT students.</p><a class="btn" href="library.html">Open Library</a>
+            </article>
+            <article class="card">
+                <h2>📝 Activities & Quizzes</h2>
+                <p>Practice what you have learned through quizzes.</p><a class="btn" href="activities.html">Open
+                    Quizzes</a>
+            </article>
+            <article class="card">
+                <h2>📊 My Scores</h2>
+                <p>Quiz score saving will be connected in the next step.</p>
+            </article>
+        </div>
+    </main>
+    <script src="js/student-auth.js"></script>
+</body>
+
+</html>

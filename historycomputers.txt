@@ -1,0 +1,162 @@
+This topic provides detailed information about the history and evolution of computers. It begins with ancient tools like the abacus and Pascaline, which laid the foundation of computing. In the 19th century, Charles Babbage's Analytical Engine paved the way for modern computers. The 20th century saw the era of electronic computers such as ENIAC and UNIVAC, which were based on vacuum tubes. The invention of transistors and integrated circuits made computers smaller, faster, and more powerful. The 1970s and 1980s witnessed the emergence of personal computers (PCs), led by companies like Apple and IBM. The internet revolution of the 1990s transformed the world. Today, new developments like quantum computing, artificial intelligence (AI), and cloud technology are reshaping the future of computing.
+
+
+
+
+
+## The History of Computers
+
+By completing this module, you will be able to understand and learn the following:
+
+- The history of Computers
+- Generations of Computing
+- Types of Computers
+- Analog, Digital & Hybrid Computers
+
+The invention process of the computer started around 3000 years ago. The computer started out as an “Abacus”. An ‘Abacus’ is a rack made of wood with two wires running parallel to each other. On the wires there are beads. By moving the beads anyone can solve simple math problems. Next, there was the ‘Astrolabe’, used for navigating.
+
+The first digital computer was invented in 1642 by Blaise Pascal. It consisted of numbers entered in dials but, it could only add. However in 1671, a computer was invented that was eventually built in 1694. The man to credit for this invention is Gottfried Wilhelm von Leibniz. Unlike Pascal’s computer, Leibniz’s could add and multiply.
+
+> A computer is a machine that manipulates data according to a set of instructions.
+
+## Timeline of the history of computers
+
+- 3000 B.C.: Abacus was invented in Babylon.
+- 1800 B.C.: Babylonians invented algorithms for number problems.500 B.C. : Egyptians made bead and wire abacus
+- 200 B.C. : Japanese started using computing trays
+- 1617 : John Napier, a Scottish inventor, had shown how to divide by subtraction and how to multiply by addition
+- 1624 : Wilhelm Schickard invented the first four function calculator-clock at Heidelberg University
+- 1642 : Blaise Pascal invented the first numerical calculating machines that were built in Paris
+- 1780 : Benjamin Franklin discovered electricity
+- 1876 : Alexander Graham Bell invented telephone
+- 1886 : William Burroughs developed the first commercial mechanical adding machine
+- 1896 : Hollerith constructed a sorting machine
+- 1925 : Vannevar Bush builds the large scale analog calculator, the differential analyzer at MIT
+- 1927 : The first public radio-telephone became operational between London and New York
+- 1931 : Konard Zuse built the Z1 or the first calculator in Germany
+- 1936 : Alan M. Turning made a machine defined to be capable of computing any calculatable function
+- 1937 : George Stibitz built the first binary calculator at Bell Telephone Laboratories
+- 1938 : Hewlett-Packard Company made electric equipments
+- 1948 : IBM introduced the 604 electronic calculator
+- 1953 : Remington-Rand developed the first high-speed printer
+- 1958 : NEC, Japan developed the first electronic computer
+- 1960 : Removable disks appear for the first time
+- 1972 : Intel introduced an 8 bit microprocessor
+- 1976 : Perkin-Elmer and Gould SEL introduced super mini computers
+- 1977 : Apple II personal computer was introduced 
+
+
+
+## Father of Computing - Charles Babbage
+
+Charles Babbage was an English inventor and mathematician who, in the 1800's, believed he could build a computing machine. In 1827, after convincing the British government to finance his project, he worked for years on his Difference Engine, a device intended for the production of tables. While he produced prototypes of portions of the Difference Engine, eventually he gave up. In 1854, he decided to build an Analytical Engine, which was also left unfinished. However, his proposals for mechanical computers predated the modern reinvention of computers by almost a century. Because of this accomplishment, Charles Babbage has earned his place in history as the "Father of Computing."
+
+## Generations of computing
+
+The history of computer development is often referred to in reference to the different generations of computing devices. Each generation of computer is characterized by a major technological development that fundamentally changed the way computers operate, resulting in increasingly smaller, cheaper, more powerful, efficient and reliable devices.
+
+Read about each generation and the developments that led to the current devices...
+
+### First Generation - 1940-1956: Vacuum Tubes
+
+The first computers used vacuum tubes for circuitry and magnetic drums for memory. They were often huge (occupying entire rooms), very expensive to operate, using a great deal of electricity and generated a lot of heat (which was often the cause of malfunctions). First generation computers relied on machine language to perform operations, and they could only solve one problem at a time. Input was based on punched cards and paper tape, and output was displayed on printouts.
+
+**Vacuum tube circuit**
+
+
+
+**Examples of first generation computers:**
+
+**&#xA0;UNIVAC** (Universal Automatic Computer), **ENIAC** (Electronic Numerical Integrator and Computer). The UNIVAC was the first commercial computer delivered to a business client, the U.S. Census Bureau in 1951.
+
+## Second Generation - 1956-1963: Transistors
+
+Transistors replaced vacuum tubes and ushered in the second generation of computers.
+
+The transistor was invented in 1947 but did not see widespread use in computers until the late 50s. The transistor was far superior to the vacuum tube, allowing computers to become smaller, faster, cheaper, more energy-efficient and more reliable than their first-generation predecessors.
+
+Though the transistor still generated a great deal of heat that subjected the computer to damage, it was a vast improvement over the vacuum tubes. Second-generation computers still relied on punched cards for input and printouts for output.
+
+Second-generation computers moved from cryptic binary machine language to symbolic, or assembly, languages, which allowed programmers to specify instructions in words. High-level programming languages were also being developed at this time, such as early versions of COBOL and FORTRAN. These were also the first computers that stored their instructions in their memory, which moved from a magnetic drum to magnetic core technology.
+
+The first computers of this generation were developed for the atomic energy industry.
+
+
+
+**Transistor Based Circuits&#xA0;**
+
+
+
+**Third Generation - 1964-1971: Integrated Circuits**
+
+The development of the integrated circuit was the hallmark of the third generation of computers. Transistors were miniaturized and placed on silicon chips, called semiconductors, which drastically increased the speed and efficiency of computers.
+
+Instead of punched cards and printouts, users interacted with third-generation computers through keyboards and monitors and interfaced with an operating system, which allowed the device to run many different applications at one time with a central program that monitored the memory. Computers for the first time became accessible to a mass audience because they were smaller and cheaper than their predecessors.
+
+**Integrated Circuit Chip&#xA0;**
+
+
+
+## Fourth Generation - 1971-Present: Microprocessors
+
+The microprocessor brought the fourth generation of computers, as thousands of integrated circuits were built onto a single silicon chip. What in the first generation filled an entire room could now fit in the palm of the hand. The Intel 4004 chip, developed in 1971, located all the components of the computer - from the central processing unit and memory to input/output controls - on a single chip.
+
+In 1981, IBM introduced its first computer for the home user, and in 1984 Apple introduced the Macintosh. Microprocessors also moved into many areas of life as more and more everyday products began to use microprocessors.
+
+As these small computers became more powerful, they could be linked together to form networks, which eventually led to the development of the Internet. Fourth generation computers also saw the development of GUIs, the mouse and handheld devices.
+
+**Image caption: Microprocessor**
+
+
+
+## Fifth Generation - Present and Beyond: Artificial Intelligence
+
+Fifth generation computing devices, based on artificial intelligence, are still in development, though there are some applications, such as voice recognition, that are being used today. The use of parallel processing and superconductors is helping to make artificial intelligence a reality. Quantum computation and molecular and nanotechnology will radically change the face of computers in years to come. The goal of fifth-generation computing is to develop devices that respond to natural language input and are capable of learning and self-organization. 
+
+
+
+# Types of Computers
+
+## Personal Computers (PC)
+
+## Mainframe:
+
+Computers with large Hard Drives, lots of Memory (RAM), multiple CPU’s running together, does lots of computing depending upon the speed of processors used and memory used.
+
+## Super Computer:
+
+A computer with lots of processors, ALUs (Arithmetic logic unit), Memory (RAM), etc. Usually in scientific research work. Capability of 14,000 micro computers.
+
+**Laptop:**
+
+ Compact, portable version of a PC. Usually in a notebook shape.
+
+**Micro Computer:**
+
+ A very small computer, usually used in cameras. A **microcomputer&#x20;**(sometimes shortened to **micro**) is a computer with a microprocessor as its central processing unit. Another general characteristic of these computers is that they occupy physically small amounts of space when compared to mainframe and minicomputers.
+
+**PDA: Personal Digital Assistant or Palmtop**
+
+A **Personal Digital Assistant (PDA)** is a handheld computer, but has become much more versatile over the years. PDAs are also known as **small computers or palmtop computers**. PDAs have many uses: calculation, use as a clock and calendar, accessing the Internet, sending and receiving E-mails, video recording, typewriting and word processing, used as an address book, making and writing on spreadsheets, scanning bar codes, use as a radio or stereo, playing computer games, recording survey responses, and Global Positioning System (GPS). Newer PDAs also have both color screens and audio capabilities, enabling them to be used as mobile phones (smart phones), web browsers, or portable media players. Many PDAs can access the Internet, intranets or extranets via Wi-Fi, or Wireless Wide-Area Networks (WWANs). Many PDAs employ touch screen technology.
+
+## Analog, Digital & Hybrid Computers
+
+**Analog:** They calculate physical quantities. eg. Ammeter, voltage meter, etc. They are old, out dated computers. An analog computer is a device that performs computations using continuous physical variables which are analogs of the actual items being computed. Analog computers might, for example, use the continuous rotation of gears or the angular movements of mechanical or electromechanical parts to perform computations.
+
+
+
+**Digital:** That uses binary digits for processing. eg. Personal Computers. A computer that stores data in terms of digits (numbers) and processes in discrete steps from one state to the next. The states of a digital computer typically involve binary digits which may take the form of the presence or absence of magnetic markers in a storage medium on-off switches or relays. In digital computers, even letters, words and whole texts are represented digitally. Unlike analog computers, digital computers can only approximate a continuum by assigning large numbers of digit to a state description and by proceeding in arbitrarily small steps.
+
+**Hybrid:** They comprise the best of capabilities of digital and analog computers. Hybrid computers are computers that comprise features of analog computers and digital computers. The digital component normally serves as the controller and provides logical operations, while the analog component normally serves as a solver of differential equations.
+
+
+
+Word - The History of Computers for web.doc 
+
+
+
+
+
+
+
+

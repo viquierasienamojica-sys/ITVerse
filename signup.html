@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Sign Up | ITVerse</title>
+    <link rel="stylesheet" href="css/student-auth.css">
+</head>
+
+<body data-page="signup">
+    <main class="auth-wrap">
+        <section class="panel">
+            <h1 class="brand">🌸 ITVerse</h1>
+            <p class="subtitle">Create Student Account</p>
+            <form id="signupForm"><label for="fullName">Full Name</label><input id="fullName" type="text"
+                    autocomplete="name" required><label for="studentNumber">Student Number</label><input
+                    id="studentNumber" type="text" required><label for="email">Email Address</label><input id="email"
+                    type="email" autocomplete="email" required><label for="password">Password</label><input
+                    id="password" type="password" autocomplete="new-password" minlength="6" required><label
+                    for="confirmPassword">Confirm Password</label><input id="confirmPassword" type="password"
+                    autocomplete="new-password" minlength="6" required><button class="wide" type="submit">Create
+                    Account</button>
+                <p id="message" class="message" role="status"></p>
+            </form>
+            <p class="foot">Already registered? <a href="login.html">Login</a></p>
+        </section>
+    </main>
+    <script src="js/student-auth.js"></script>
+</body>
+
+</html>

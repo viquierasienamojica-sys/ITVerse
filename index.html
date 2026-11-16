@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITVerse | Home</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pink-theme.css">
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pink-theme.css">
+<link rel="stylesheet" href="css/ITVerse-mobile.css">
+<link rel="stylesheet" href="css/itverse-home-profile.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <a class="brand" href="index.html">
+    <img src="images/logo.png" alt="ITVerse Logo" class="header-logo">
+    <span>ITVerse</span>
+</a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false">☰</button>
+
+    <nav class="nav" id="mainNav">
+      <a class="active" href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="library.html">Library</a>
+      <a href="resources.html">Resources</a>
+      <a href="#project">Project Info</a>
+    </nav>
+
+    <!-- Student profile: top-right header menu -->
+    <div class="it-profile" id="itProfile">
+      <button class="it-profile-trigger" id="itProfileTrigger" type="button" aria-label="Open student profile" aria-expanded="false" aria-controls="itProfileMenu">
+        <svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0z"/></svg>
+        <span class="it-profile-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="it-profile-menu" id="itProfileMenu" hidden>
+        <div class="it-profile-account"><span class="it-profile-avatar" aria-hidden="true">●</span><div><strong id="itProfileName">Student Account</strong><small id="itProfileSubtitle">ITVerse Student</small></div></div>
+        <div class="it-profile-separator"></div>
+        <button type="button" data-profile-action="profile"><span aria-hidden="true">♙</span> My Profile</button>
+        <button type="button" data-profile-action="bookmarks"><span aria-hidden="true">☆</span> Bookmarks</button>
+        <button type="button" data-profile-action="notes"><span aria-hidden="true">✎</span> My Notes</button>
+        <button type="button" data-profile-action="history"><span aria-hidden="true">◷</span> Reading History</button>
+        <div class="it-profile-separator"></div>
+        <button class="it-profile-logout" type="button" data-profile-action="logout"><span aria-hidden="true">⇥</span> Logout</button>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- HOMEPAGE -->
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+        <p class="eyebrow">
+          <span></span>
+          LEARN · CODE · EXPLORE
+        </p>
+
+        <h1>IT <em>Verse </em></h1>
+
+        <p class="hero-description">
+         Explore the Universe of IT Learning
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="library.html">
+    Explore E-Books <span>→</span></a>
+
+          <a class="button secondary" href="#about">
+            About This Project
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img src="images/Removal-510.png"
+             alt="Illustrated colorful bookshelf">
+      </div>
+
+    </section>
+
+    <!-- HOMEPAGE FEATURE CARDS -->
+    <section class="features" aria-label="Explore ITVerse features">
+      <a class="feature" href="resources.html">
+        <span class="feature-icon green" aria-hidden="true">📚</span>
+        <span class="feature-content">
+          <h2>Learning Resources</h2>
+          <p>Explore tutorials, coding websites, and video lessons.</p>
+          <small>Explore Resources →</small>
+        </span>
+      </a>
+      <a class="feature" href="activities.html">
+        <span class="feature-icon blue" aria-hidden="true">📝</span>
+        <span class="feature-content">
+          <h2>Activities &amp; Quizzes</h2>
+          <p>Answer chapter quizzes and final assessments.</p>
+          <small>Take a Quiz →</small>
+        </span>
+      </a>
+      <a class="feature" href="glossary.html">
+        <span class="feature-icon pink" aria-hidden="true">📖</span>
+        <span class="feature-content">
+          <h2>Glossary &amp; References</h2>
+          <p>Find useful IT terms, definitions, and references.</p>
+          <small>View Glossary →</small>
+        </span>
+      </a>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="info-section" id="about">
+      <p class="section-label">ABOUT THE WEBSITE</p>
+
+      <h2>Built for Future IT Professionals</h2>
+
+      <p>
+        ITVerse is a digital learning resource designed
+        for Bachelor of Science in Information Technology
+        students. It provides organized computing lessons,
+        practical examples, activities, and references to
+        support students in understanding important IT concepts.
+      </p>
+    </section>
+
+
+
+    <!-- PROJECT INFORMATION -->
+    <section class="project-section" id="project">
+
+      <p class="section-label">SCHOOL PROJECT</p>
+      <h2>Project Information</h2>
+
+      <div class="project-grid">
+
+        <div>
+          <strong>Project Title</strong>
+          <span>ITVerse: Digital Learning Website</span>
+        </div>
+
+        <div>
+          <strong>Subject</strong>
+          <span>Combinations of</span>
+          <span> Web Systems and Technologies 1</span>
+        </div>
+
+        <div>
+          <strong>Year Level</strong>
+          <span>3rd Year</span>
+          <span>2nd Year</span>
+          <span>1st Year</span>
+        </div>
+
+        <div>
+          <strong>Group Members</strong>
+          <span>Viquiera, Siena  </span>
+          <span>Baldava, Jochelle Jian </span>
+          <span>Barredo, Angel Mae  </span>
+        </div>
+
+      </div>
+
+      <h3>Learning Objectives</h3>
+
+      <p>
+        This website aims to help BSIT students understand
+        essential computing concepts, develop technical
+        knowledge, practice through interactive assessments,
+        and access organized learning materials that support
+        their academic studies.
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> BSIT ITVerse E-Library |
+    Educational Project
+  </footer>
+
+  <div class="it-profile-overlay" id="itProfileOverlay" hidden>
+    <section class="it-profile-dialog" role="dialog" aria-modal="true" aria-labelledby="itProfileDialogTitle">
+      <div class="it-profile-dialog-head"><h2 id="itProfileDialogTitle">My Profile</h2><button type="button" id="itProfileClose" aria-label="Close">×</button></div>
+      <div class="it-profile-dialog-content" id="itProfileDialogContent"></div>
+    </section>
+  </div>
+  <script src="js/script.js"></script>
+  <script defer src="js/itverse-home-profile.js"></script>
+</body>
+</html>
