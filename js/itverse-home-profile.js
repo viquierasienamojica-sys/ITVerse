@@ -3,6 +3,15 @@ const SESSION='ITVerse_demo_session_v1';
 const $=id=>document.getElementById(id),root=$('itProfile');if(!root)return;
 const trigger=$('itProfileTrigger'),menu=$('itProfileMenu'),overlay=$('itProfileOverlay'),content=$('itProfileDialogContent'),title=$('itProfileDialogTitle'),close=$('itProfileClose');
 let student=null;try{student=JSON.parse(sessionStorage.getItem(SESSION)||'null')}catch{}
+// The homepage is public; profile actions require a valid demo session.
+let registered=[];try{registered=JSON.parse(localStorage.getItem('ITVerse_demo_students_v1')||'[]')}catch{}
+if(!student || !Array.isArray(registered) || !registered.some(u=>u.email===student.email&&u.number===student.number)) student=null;
+const guest=!student;
+const loginAction=menu.querySelector('[data-profile-action="logout"]');
+if(guest){
+ menu.querySelectorAll('[data-profile-action]').forEach(b=>{if(b!==loginAction)b.hidden=true});
+ if(loginAction){loginAction.innerHTML='<span aria-hidden="true">⇥</span> Login / Sign Up';loginAction.dataset.profileAction='login';}
+}
 const user=student?.email||'guest';
 const read=(name,fallback)=>{try{return JSON.parse(localStorage.getItem('itverse_'+name+'_'+user)||'null')??fallback}catch{return fallback}};
 $('itProfileName').textContent=student?.name||'Guest Student';
@@ -20,7 +29,9 @@ const validFile=f=>/^book-[a-z0-9-]+\.html$/i.test(f||'');
 const bookLink=(file,page,label)=>{if(!validFile(file))return null;const a=el('a',label);a.href=file+(Number.isInteger(page)&&page>=0?'#page-'+(page+1):'');a.addEventListener('click',()=>{sessionStorage.setItem('itverse_profile_jump',JSON.stringify({file,page}));});return a};
 const record=(heading,desc,file,page)=>{const box=el('div',undefined,'it-profile-record');box.append(el('strong',heading),el('small',desc));const a=bookLink(file,page,'Open Book');if(a)box.append(a);content.append(box)};
 function show(action){
- if(action==='logout'){sessionStorage.removeItem(SESSION);location.href='login.html';return}
+ if(action==='login'){location.href='login.html';return}
+ if(action==='logout'){sessionStorage.removeItem(SESSION);location.href='index.html';return}
+ if(guest){location.href='login.html';return}
  const headings={profile:'My Profile',bookmarks:'Bookmarks',notes:'My Notes',history:'Reading History'};open(headings[action]||'Student Account');
  if(action==='profile'){
   if(!student){empty('No student is currently logged in.');const a=el('a','Go to Login');a.href='login.html';content.append(a);return}

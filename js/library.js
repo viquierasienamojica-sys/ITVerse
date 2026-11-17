@@ -399,8 +399,9 @@ function render() {
 
 function openBook(book) {
     selectedBook = book;
+    pdfRequested = false;
     const pdfLink = document.getElementById('it-library-pdf');
-    if(pdfLink){pdfLink.hidden = !book.available || !book.url || !(window.ITVERSE_PDF_BOOKS||[]).includes(book.url.replace(/\.html$/i,'')); if(book.url)pdfLink.href='pdf-books/'+book.url.replace(/\.html$/i,'.pdf');}
+    if(pdfLink){pdfLink.hidden = !book.available || !book.url || !(window.ITVERSE_PDF_BOOKS||[]).includes(book.url.replace(/\.html$/i,'')); if(book.url)pdfLink.href='pdf-books/'+book.url.replace(/\.html$/i,'.pdf'); pdfLink.dataset.locked='true';}
 
 
     document.getElementById('modalTitle').textContent = book.title;
@@ -439,6 +440,7 @@ function openBook(book) {
 function closeModal() {
     modal.hidden = true;
     selectedBook = null;
+    pdfRequested = false;
 }
 
 // BOOK CLICK
@@ -484,6 +486,8 @@ document.getElementById('modalDone')
     .addEventListener('click', () => {
         if (!selectedBook) return;
 
+        pdfRequested = false;
+        document.getElementById('passkeySubmit').textContent = 'Open Book';
         document.getElementById('modalDone').hidden = true;
         document.getElementById('passkeyForm').hidden = false;
         document.getElementById('bookPasskey').focus();
@@ -509,6 +513,15 @@ document.getElementById('passkeyForm')
         document.getElementById('passkeyError').hidden = true;
 
         if (selectedBook.available && selectedBook.url) {
+            if (pdfRequested) {
+                const pdf = document.getElementById('it-library-pdf');
+                if (pdf && !pdf.hidden) {
+                    const link = document.createElement('a');
+                    link.href = pdf.href; link.download = '';
+                    document.body.appendChild(link); link.click(); link.remove();
+                }
+                closeModal(); return;
+            }
             window.location.href = selectedBook.url;
         } else {
             document.getElementById('modalText').textContent =
@@ -519,6 +532,18 @@ document.getElementById('passkeyForm')
         }
     });
 
+// PDF action uses the same passkey form as Read.
+const pdfButton = document.getElementById('it-library-pdf');
+let pdfRequested = false;
+if (pdfButton) pdfButton.addEventListener('click', event => {
+    if (!selectedBook) return;
+    event.preventDefault();
+    pdfRequested = true;
+    document.getElementById('modalDone').hidden = true;
+    document.getElementById('passkeyForm').hidden = false;
+    document.getElementById('passkeySubmit').textContent = 'Verify & Download PDF';
+    document.getElementById('bookPasskey').focus();
+});
 // CLOSE MODAL WHEN CLICKING BACKDROP
 
 modal.addEventListener('click', event => {

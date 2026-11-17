@@ -1,0 +1,491 @@
+/* ==========================================================
+   ITVerse homepage polish
+   Place in: css/itverse-home-polish.css
+   Load it LAST in index.html. Everything is scoped to
+   main.hv / .hv-footer so the header, profile menu and the
+   other pages are not affected.
+   ========================================================== */
+
+main.hv,
+footer.hv-footer {
+  /* ITVerse palette (same values as pink-theme.css) */
+  --pink-100: #FDE4F2;
+  --pink-200: #F9CEE7;
+  --pink-300: #F4B8DA;
+  --pink-400: #EEA1CD;
+  --pink-500: #E68BBE;
+
+  --bg: #FDE4F2;           /* page background */
+  --card: #FFF3FA;         /* card surfaces, as in library and activities */
+  --ink: #612C4D;          /* headings and body text */
+  --ink-soft: #795B70;     /* secondary text */
+  --accent: #A83375;       /* buttons and links (white text passes contrast) */
+  --accent-dark: #8E2867;
+
+  /* Same fonts the rest of the site already loads in style.css */
+  --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --max: 1120px;
+}
+
+/* ---------- base for the homepage content ---------- */
+main.hv {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+main.hv *,
+main.hv *::before,
+main.hv *::after { box-sizing: border-box; }
+
+main.hv h1,
+main.hv h2,
+main.hv h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0;
+}
+
+main.hv p { margin: 0; color: var(--ink-soft); }
+
+main.hv a { text-decoration: none; }
+
+main.hv .hv-wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: clamp(20px, 4vw, 40px);
+  padding-right: clamp(20px, 4vw, 40px);
+}
+
+main.hv .hv-section-head { margin-bottom: 32px; }
+main.hv .hv-section-head h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.15; }
+main.hv .hv-section-head p { margin-top: 8px; max-width: 52ch; }
+
+/* visible keyboard focus everywhere on the homepage */
+main.hv a:focus-visible,
+footer.hv-footer a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- hero ---------- */
+main.hv .hv-hero {
+  margin: 0;
+  padding: clamp(40px, 7vw, 88px) 0 clamp(56px, 8vw, 104px);
+  background:
+    radial-gradient(900px 420px at 85% 0%, var(--pink-300) 0%, transparent 70%),
+    linear-gradient(180deg, var(--pink-200) 0%, var(--pink-100) 100%);
+}
+
+main.hv .hv-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+
+main.hv .hv-kicker {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--pink-400);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+main.hv .hv-hero h1 {
+  font-size: clamp(2.4rem, 5.6vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.04;
+  max-width: 14ch;
+}
+
+main.hv .hv-lead {
+  margin-top: 20px;
+  max-width: 46ch;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+}
+
+main.hv .hv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+main.hv .hv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+main.hv .hv-btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+}
+main.hv .hv-btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); }
+
+main.hv .hv-btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--accent);
+}
+main.hv .hv-btn-ghost:hover { background: var(--pink-300); }
+
+main.hv .hv-hero-note {
+  margin-top: 28px;
+  font-size: 0.95rem;
+}
+
+/* The arch: a niche in a bookshelf, holding the illustration */
+main.hv .hv-hero-art { display: flex; justify-content: center; }
+
+main.hv .hv-niche {
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 28px 24px 0;
+  border-radius: 999px 999px 24px 24px;
+  background: linear-gradient(180deg, var(--pink-400) 0%, var(--pink-200) 100%);
+  border-bottom: 14px solid var(--pink-500);
+  box-shadow: 0 24px 48px -28px rgba(157, 57, 112, .45);
+}
+
+main.hv .hv-niche img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+/* ---------- feature strip ---------- */
+main.hv .hv-features-wrap { padding-top: 8px; }
+
+main.hv .hv-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--card);
+  border: 1px solid var(--pink-300);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+main.hv .hv-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 28px;
+  color: inherit;
+  transition: background-color .2s ease;
+}
+main.hv .hv-feature + .hv-feature { border-left: 1px solid var(--pink-300); }
+main.hv .hv-feature:hover { background: var(--pink-100); }
+
+main.hv .hv-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 6px;
+  border-radius: 14px;
+  background: var(--pink-200);
+  color: var(--accent);
+}
+main.hv .hv-feature-icon svg { width: 24px; height: 24px; }
+
+main.hv .hv-feature h2 { font-size: 1.2rem; line-height: 1.25; }
+main.hv .hv-feature p { font-size: 0.98rem; }
+
+main.hv .hv-feature-link {
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.98rem;
+  border-bottom: 2px solid transparent;
+}
+main.hv .hv-feature:hover .hv-feature-link { border-bottom-color: var(--accent); }
+
+/* ---------- year-level shelf ---------- */
+main.hv .hv-shelf-section { padding-top: clamp(64px, 9vw, 112px); }
+
+main.hv .hv-shelf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  gap: clamp(12px, 2vw, 24px);
+  padding: 0 clamp(8px, 2vw, 24px);
+}
+
+main.hv .hv-book {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 28px 24px 24px;
+  border-radius: 20px 20px 4px 4px;
+  color: var(--ink);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+main.hv .hv-book:hover { transform: translateY(-8px); box-shadow: 0 18px 30px -20px rgba(157, 57, 112, .6); }
+
+/* books of slightly different heights, like real spines */
+main.hv .hv-book-1 { background: var(--pink-300); min-height: 300px; }
+main.hv .hv-book-2 { background: var(--pink-400); min-height: 340px; }
+main.hv .hv-book-3 { background: var(--pink-500); min-height: 320px; }
+
+main.hv .hv-book-year {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+main.hv .hv-book-label { font-weight: 600; font-size: 1.05rem; }
+
+main.hv .hv-book-desc {
+  margin-top: 14px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+main.hv .hv-book-cta {
+  margin-top: auto;
+  padding-top: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+main.hv .hv-plank {
+  height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #F9CEE7 0%, #F4B8DA 23%, #EEA1CD 67%, #E68BBE 100%);
+  box-shadow: 0 6px 9px #B94D8C30;
+}
+
+/* ---------- how to start ---------- */
+main.hv .hv-steps-section { padding-top: clamp(64px, 9vw, 112px); }
+
+main.hv .hv-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+}
+
+main.hv .hv-steps li { position: relative; padding-top: 4px; }
+
+main.hv .hv-step-num {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+main.hv .hv-steps h3 { font-size: 1.2rem; margin-bottom: 6px; }
+main.hv .hv-steps p { max-width: 34ch; font-size: 0.98rem; }
+
+/* ---------- about ---------- */
+main.hv .hv-about {
+  margin: clamp(64px, 9vw, 112px) 0 0;
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--pink-200);
+  border-top: 1px solid var(--pink-300);
+  border-bottom: 1px solid var(--pink-300);
+}
+
+main.hv .hv-about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+main.hv .hv-about h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.15; margin-bottom: 16px; }
+main.hv .hv-about p { max-width: 56ch; }
+
+main.hv .hv-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 24px 26px;
+  display: grid;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--pink-300);
+  border-radius: 20px;
+}
+
+main.hv .hv-checklist li {
+  position: relative;
+  padding-left: 34px;
+  color: var(--ink);
+  font-weight: 500;
+}
+main.hv .hv-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pink-300);
+}
+main.hv .hv-checklist li::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: calc(0.2em + 5px);
+  width: 8px;
+  height: 5px;
+  border-left: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: rotate(-45deg);
+}
+
+/* ---------- project info ---------- */
+main.hv .hv-project {
+  padding-top: clamp(64px, 9vw, 112px);
+  padding-bottom: clamp(64px, 9vw, 112px);
+}
+
+main.hv .hv-project-grid {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+main.hv .hv-project-item {
+  padding: 22px 24px;
+  background: var(--card);
+  border: 1px solid var(--pink-300);
+  border-left: 6px solid var(--pink-500);
+  border-radius: 14px;
+}
+
+main.hv .hv-project-item dt {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+main.hv .hv-project-item dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+main.hv .hv-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+main.hv .hv-chips span {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--pink-200);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+main.hv .hv-members {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.02rem;
+}
+
+main.hv .hv-objectives {
+  margin-top: 32px;
+  padding: 28px 30px;
+  border-radius: 20px;
+  background: var(--pink-200);
+}
+main.hv .hv-objectives h3 { font-size: 1.3rem; margin-bottom: 8px; }
+main.hv .hv-objectives p { max-width: 70ch; color: var(--ink); }
+
+/* ---------- footer ---------- */
+footer.hv-footer {
+  padding: 30px 20px;
+  background: var(--pink-500);
+  border-top: 1px solid var(--pink-300);
+  color: #52223F;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ---------- tablet ---------- */
+@media (max-width: 900px) {
+  main.hv .hv-hero-grid { grid-template-columns: 1fr; }
+  main.hv .hv-hero-art { order: -1; }
+  main.hv .hv-niche { width: min(100%, 320px); }
+  main.hv .hv-about-grid { grid-template-columns: 1fr; }
+  main.hv .hv-features { grid-template-columns: 1fr; }
+  main.hv .hv-feature + .hv-feature { border-left: 0; border-top: 1px solid var(--pink-300); }
+  main.hv .hv-steps { grid-template-columns: 1fr; }
+}
+
+/* ---------- phone ---------- */
+@media (max-width: 640px) {
+  main.hv .hv-shelf { grid-template-columns: 1fr; padding: 0; }
+  main.hv .hv-book-1,
+  main.hv .hv-book-2,
+  main.hv .hv-book-3 { min-height: 0; border-radius: 16px; }
+  main.hv .hv-plank { display: none; }
+  main.hv .hv-project-grid { grid-template-columns: 1fr; }
+  main.hv .hv-actions .hv-btn { flex: 1 1 100%; }
+}
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  main.hv .hv-btn,
+  main.hv .hv-book,
+  main.hv .hv-feature { transition: none; }
+  main.hv .hv-btn-primary:hover,
+  main.hv .hv-book:hover { transform: none; }
+}

@@ -10,6 +10,18 @@ const panel=document.createElement('section');panel.className='it-panel';panel.h
 const header=document.querySelector('header');if(header)header.insertAdjacentElement('afterend',toolbar);else document.body.prepend(toolbar);document.body.append(panel);document.body.classList.add('itverse-reader');
 const $=id=>document.getElementById(id), body=$('it-panel-body');
 const download=$('it-download');download.href='pdf-books/'+bookKey+'.pdf';
+const passkeys={1:'firstyearbsit',2:'secondyearbsit',3:'thirdyearbsit'};
+const yr=bookKey.includes('firstyear')?1:bookKey.includes('secondyear')?2:bookKey.includes('thirdyear')?3:0;
+download.addEventListener('click',e=>{e.preventDefault();
+ if(!yr){alert('PDF download is not configured for this book.');return}
+ const overlay=document.createElement('div');overlay.style.cssText='position:fixed;inset:0;z-index:99999;background:#0009;display:grid;place-items:center;padding:16px';
+ const form=document.createElement('form');form.style.cssText='background:white;color:#473044;padding:24px;border-radius:16px;max-width:380px;width:100%;box-shadow:0 10px 35px #0003';
+ form.innerHTML='<h3 style="margin-top:0">Enter Book Passkey</h3><label for="it-pdf-passkey">Year-level passkey</label><div style="position:relative"><input id="it-pdf-passkey" type="password" required style="width:100%;padding:12px 48px 12px 12px;border:1px solid #d6a2bc;border-radius:8px"><button type="button" id="it-pdf-eye" aria-label="Show passkey" style="position:absolute;right:5px;top:3px;background:transparent;border:0;padding:8px;cursor:pointer">👁</button></div><p id="it-pdf-error" style="color:#b42352" role="alert"></p><button type="submit" style="padding:10px;background:#c52e7e;color:white;border:0;border-radius:8px">Verify & Download</button> <button type="button" id="it-pdf-cancel" style="padding:10px">Cancel</button>';
+ overlay.append(form);document.body.append(overlay);
+ const input=form.querySelector('#it-pdf-passkey');form.querySelector('#it-pdf-eye').onclick=()=>{input.type=input.type==='password'?'text':'password'};
+ form.querySelector('#it-pdf-cancel').onclick=()=>overlay.remove();overlay.addEventListener('click',ev=>{if(ev.target===overlay)overlay.remove()});
+ form.onsubmit=ev=>{ev.preventDefault();if(input.value!==passkeys[yr]){form.querySelector('#it-pdf-error').textContent='Incorrect passkey.';return}overlay.remove();const a=document.createElement('a');a.href=download.href;a.download='';document.body.append(a);a.click();a.remove()};input.focus();
+});
 const open=(title)=>{panel.hidden=false;$('it-panel-title').textContent=title;body.replaceChildren()};
 $('it-close').onclick=()=>panel.hidden=true;
 const currentIndex=()=>{const i=pages.findIndex(p=>!p.hidden && getComputedStyle(p).display!=='none');return i<0?0:i};
