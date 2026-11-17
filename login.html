@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="css/itverse-password-toggle.css">
   <link rel="stylesheet" href="css/itverse-animated-login.css">
 </head>
+
 <body data-page="login">
   <main class="auth-wrap itverse-login-layout">
     <section class="itverse-art-panel" aria-label="ITVerse animated book illustration">
@@ -28,7 +30,11 @@
           <div class="magic-binding"></div>
         </div>
       </div>
-      <div class="art-copy"><p class="art-eyebrow">LEARN · CODE · EXPLORE</p><h2>Explore the universe<br>of IT learning.</h2><p>Your books, lessons, and discoveries — all in one place.</p></div>
+      <div class="art-copy">
+        <p class="art-eyebrow">LEARN · CODE · EXPLORE</p>
+        <h2>Explore the universe<br>of IT learning.</h2>
+        <p>Your books, lessons, and discoveries — all in one place.</p>
+      </div>
     </section>
     <section class="itverse-form-side">
       <a class="back-home" href="index.html">← Back to Home</a>
@@ -38,9 +44,12 @@
         <p class="subtitle">Sign in to continue your learning journey.</p>
         <form id="loginForm">
           <label for="email">Email Address</label>
-          <input id="email" type="email" pattern="[^@\s]+@[^@\s.]+(\.[^@\s.]+)+" title="Enter a valid email address, e.g. student@gmail.com or student@mcb.edu.ph" autocomplete="username" placeholder="Enter your email" required>
+          <input id="email" type="email" pattern="[^@\s]+@[^@\s.]+(\.[^@\s.]+)+"
+            title="Enter a valid email address, e.g. student@gmail.com or student@mcb.edu.ph" autocomplete="username"
+            placeholder="Enter your email" required>
           <label for="password">Password</label>
-          <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password"
+            required>
           <button class="wide" type="submit">Login</button>
           <p id="message" class="message" role="status"></p>
         </form>
@@ -48,7 +57,10 @@
       </div>
     </section>
   </main>
-  <script src="js/student-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/itverse-supabase.js"></script>
+<script src="js/student-auth.js"></script>
   <script src="js/itverse-password-toggle.js"></script>
 </body>
+
 </html>
