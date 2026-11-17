@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +10,7 @@
   <link rel="stylesheet" href="css/itverse-animated-login.css">
   <link rel="stylesheet" href="css/itverse-animated-signup.css">
 </head>
+
 <body data-page="signup">
   <main class="auth-wrap itverse-login-layout">
     <section class="itverse-art-panel" aria-label="ITVerse animated book illustration">
@@ -29,7 +31,11 @@
           <div class="magic-binding"></div>
         </div>
       </div>
-      <div class="art-copy"><p class="art-eyebrow">LEARN · CODE · EXPLORE</p><h2>Explore the universe<br>of IT learning.</h2><p>Your books, lessons, and discoveries — all in one place.</p></div>
+      <div class="art-copy">
+        <p class="art-eyebrow">LEARN · CODE · EXPLORE</p>
+        <h2>Explore the universe<br>of IT learning.</h2>
+        <p>Your books, lessons, and discoveries — all in one place.</p>
+      </div>
     </section>
     <section class="itverse-form-side">
       <a class="back-home" href="index.html">← Back to Home</a>
@@ -37,20 +43,25 @@
         <h1 class="brand"> ITVerse</h1>
         <p class="subtitle">Create your student account to start learning.</p>
         <form id="signupForm"><label for="fullName">Full Name</label><input id="fullName" type="text"
-                    autocomplete="name" required><label for="studentNumber">Student Number</label><input
-                    id="studentNumber" type="text" inputmode="numeric" pattern="[0-9]+" title="Numbers only" required><label for="email">Email Address</label><input id="email"
-                    type="email" pattern="[^@\s]+@[^@\s.]+(\.[^@\s.]+)+" title="Enter a valid email address, e.g. student@gmail.com or student@mcb.edu.ph" autocomplete="email" required><label for="password">Password</label><input
-                    id="password" type="password" autocomplete="new-password" minlength="8" required><label
-                    for="confirmPassword">Confirm Password</label><input id="confirmPassword" type="password"
-                    autocomplete="new-password" minlength="8" required><button class="wide" type="submit">Create
-                    Account</button>
-                <p id="message" class="message" role="status"></p>
-            </form>
+            autocomplete="name" required><label for="studentNumber">Student Number</label><input id="studentNumber"
+            type="text" inputmode="numeric" pattern="[0-9]+" title="Numbers only" required><label for="email">Email
+            Address</label><input id="email" type="email" pattern="[^@\s]+@[^@\s.]+(\.[^@\s.]+)+"
+            title="Enter a valid email address, e.g. student@gmail.com or student@mcb.edu.ph" autocomplete="email"
+            required><label for="password">Password</label><input id="password" type="password"
+            autocomplete="new-password" minlength="8" required><label for="confirmPassword">Confirm
+            Password</label><input id="confirmPassword" type="password" autocomplete="new-password" minlength="8"
+            required><button class="wide" type="submit">Create
+            Account</button>
+          <p id="message" class="message" role="status"></p>
+        </form>
         <p class="foot">Already registered? <a href="login.html">Login</a></p>
       </div>
     </section>
   </main>
-  <script src="js/student-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/itverse-supabase.js"></script>
+<script src="js/student-auth.js"></script>
   <script src="js/itverse-password-toggle.js"></script>
 </body>
+
 </html>

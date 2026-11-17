@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My Profile | ITVerse</title>
+    <link rel="stylesheet" href="css/itverse-profile-update.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/itverse-supabase.js"></script>
+<script defer src="js/itverse-profile-page.js"></script>
+</head>
+
+<body class="itv-profile-page">
+    <header class="itv-topbar"><a class="itv-brand" href="index.html">🌸 ITVerse</a><a class="itv-back"
+            href="index.html">← Back to Home</a></header>
+    <main class="itv-profile-container">
+        <div class="itv-page-heading"><span class="itv-kicker">STUDENT ACCOUNT</span>
+            <h1>My Profile</h1>
+            <p>Manage your profile picture and keep your account secure.</p>
+        </div>
+        <section class="itv-profile-card itv-identity">
+            <div class="itv-photo-wrap"><img id="profilePhoto" alt="Student profile picture" hidden><span
+                    id="profileInitial" aria-hidden="true">S</span></div>
+            <div class="itv-identity-text">
+                <h2 id="profileName">Student</h2>
+                <p id="profileNumber">Student No. —</p>
+                <div class="itv-photo-actions"><label for="photoUpload" class="itv-pink-button">Upload / Change
+                        Photo</label><input id="photoUpload" type="file" accept="image/png,image/jpeg,image/webp"
+                        hidden><button id="removePhoto" type="button" class="itv-outline-button">Remove Photo</button>
+                </div><small>JPG, PNG or WebP. Maximum 2 MB.</small>
+                <p id="photoMessage" class="itv-message" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+        <section class="itv-profile-card">
+            <h2>Student Information</h2>
+            <p class="itv-section-desc">These details cannot be edited here.</p>
+            <div class="itv-info-grid">
+                <div class="itv-info-field"><span>Full Name</span><strong id="infoName">—</strong></div>
+                <div class="itv-info-field"><span>Student Number</span><strong id="infoNumber">—</strong></div>
+                <div class="itv-info-field"><span>Email Address</span><strong id="infoEmail">—</strong></div>
+                <div class="itv-info-field"><span>Account Type</span><strong>Student Account</strong></div>
+            </div>
+        </section>
+        <section class="itv-profile-card">
+            <h2>Change Password</h2>
+            <p class="itv-section-desc">Enter your current password to confirm it's you.</p>
+            <form id="changePasswordForm" novalidate>
+                <div class="itv-field"><label for="currentPassword">Current Password</label>
+                    <div class="itv-password-wrap"><input id="currentPassword" type="password"
+                            autocomplete="current-password" required placeholder="Enter current password"><button
+                            type="button" class="itv-eye" aria-label="Show current password"
+                            aria-pressed="false"></button></div>
+                </div>
+                <div class="itv-field"><label for="newPassword">New Password</label>
+                    <div class="itv-password-wrap"><input id="newPassword" type="password" autocomplete="new-password"
+                            required placeholder="Enter new password"><button type="button" class="itv-eye"
+                            aria-label="Show new password" aria-pressed="false"></button></div>
+                </div>
+                <div class="itv-field"><label for="confirmPassword">Confirm New Password</label>
+                    <div class="itv-password-wrap"><input id="confirmPassword" type="password"
+                            autocomplete="new-password" required placeholder="Confirm new password"><button
+                            type="button" class="itv-eye" aria-label="Show confirm new password"
+                            aria-pressed="false"></button></div>
+                </div>
+                <p class="itv-password-help">Minimum 8 characters, including uppercase, lowercase, a number and a
+                    special character.</p>
+                <p id="passwordMessage" class="itv-message" role="status" aria-live="polite"></p><button
+                    class="itv-pink-button itv-save" id="savePassword" type="submit">Save New Password</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
