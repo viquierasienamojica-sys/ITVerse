@@ -13,15 +13,20 @@
     <section class="itverse-art-panel" aria-label="ITVerse animated book illustration">
       <div class="art-header"><span class="art-mark">✿</span><span>ITVerse</span></div>
       <div class="art-scene" aria-hidden="true">
-        <span class="sparkle sparkle-a">✦</span><span class="sparkle sparkle-b">✧</span><span class="sparkle sparkle-c">✿</span><span class="sparkle sparkle-d">✧</span>
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="book-stack">
-          <div class="book book-top"><span class="book-spine"></span><span class="book-cover"><span class="cover-flower">✿</span></span><span class="book-pages"></span></div>
-          <div class="book book-middle"><span class="book-spine"></span><span class="book-cover"><span class="cover-star">✧</span></span><span class="book-pages"></span></div>
-          <div class="book book-bottom"><span class="book-spine"></span><span class="book-cover"><span class="cover-flower">✿</span></span><span class="book-pages"></span></div>
-          <div class="book-open"><div class="page left-page"></div><div class="page right-page"></div><div class="turning-page"></div></div>
+        <span class="code-symbol code-one">&lt;/&gt;</span>
+        <span class="code-symbol code-two">{ CSS }</span>
+        <span class="code-symbol code-three">console.log()</span>
+        <span class="code-symbol code-four">01 10</span>
+        <span class="code-symbol code-five">&lt;html&gt;</span>
+        <span class="code-symbol code-six">function()</span>
+        <div class="magic-glow"></div>
+        <div class="magic-book">
+          <div class="magic-cover"></div>
+          <div class="magic-page magic-left"><span class="page-code">&lt;h1&gt;</span><i></i><i></i><i></i></div>
+          <div class="magic-page magic-right"><span class="page-code">{ JS }</span><i></i><i></i><i></i></div>
+          <div class="magic-turn"></div>
+          <div class="magic-binding"></div>
         </div>
-        <span class="scene-flower flower-left">✿</span><span class="scene-flower flower-right">✿</span>
       </div>
       <div class="art-copy"><p class="art-eyebrow">LEARN · CODE · EXPLORE</p><h2>Explore the universe<br>of IT learning.</h2><p>Your books, lessons, and discoveries — all in one place.</p></div>
     </section>
@@ -33,7 +38,7 @@
         <p class="subtitle">Sign in to continue your learning journey.</p>
         <form id="loginForm">
           <label for="email">Email Address</label>
-          <input id="email" type="email" autocomplete="username" placeholder="Enter your email" required>
+          <input id="email" type="email" pattern="[^@\s]+@[^@\s.]+(\.[^@\s.]+)+" title="Enter a valid email address, e.g. student@gmail.com or student@mcb.edu.ph" autocomplete="username" placeholder="Enter your email" required>
           <label for="password">Password</label>
           <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
           <button class="wide" type="submit">Login</button>
