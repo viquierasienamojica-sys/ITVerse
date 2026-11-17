@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Student Login | ITVerse</title>
-    <link rel="stylesheet" href="css/student-auth.css">
-<link rel="stylesheet" href="css/itverse-password-toggle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Login | ITVerse</title>
+  <link rel="stylesheet" href="css/student-auth.css">
+  <link rel="stylesheet" href="css/itverse-password-toggle.css">
+  <link rel="stylesheet" href="css/itverse-animated-login.css">
 </head>
-
 <body data-page="login">
-    <main class="auth-wrap">
-        <section class="panel">
-            <h1 class="brand"> ITVerse</h1>
-            <p class="subtitle">Student Login</p>
-            <form id="loginForm"><label for="email">Email Address</label><input id="email" type="email"
-                    autocomplete="username" required><label for="password">Password</label><input id="password"
-                    type="password" autocomplete="current-password" required><button class="wide"
-                    type="submit">Login</button>
-                <p id="message" class="message" role="status"></p>
-            </form>
-            <p class="foot">No account yet? <a href="signup.html">Sign Up</a></p>
-        </section>
-    </main>
-    <script src="js/student-auth.js"></script>
-<script src="js/itverse-password-toggle.js"></script>
+  <main class="auth-wrap itverse-login-layout">
+    <section class="itverse-art-panel" aria-label="ITVerse animated book illustration">
+      <div class="art-header"><span class="art-mark">✿</span><span>ITVerse</span></div>
+      <div class="art-scene" aria-hidden="true">
+        <span class="sparkle sparkle-a">✦</span><span class="sparkle sparkle-b">✧</span><span class="sparkle sparkle-c">✿</span><span class="sparkle sparkle-d">✧</span>
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="book-stack">
+          <div class="book book-top"><span class="book-spine"></span><span class="book-cover"><span class="cover-flower">✿</span></span><span class="book-pages"></span></div>
+          <div class="book book-middle"><span class="book-spine"></span><span class="book-cover"><span class="cover-star">✧</span></span><span class="book-pages"></span></div>
+          <div class="book book-bottom"><span class="book-spine"></span><span class="book-cover"><span class="cover-flower">✿</span></span><span class="book-pages"></span></div>
+          <div class="book-open"><div class="page left-page"></div><div class="page right-page"></div><div class="turning-page"></div></div>
+        </div>
+        <span class="scene-flower flower-left">✿</span><span class="scene-flower flower-right">✿</span>
+      </div>
+      <div class="art-copy"><p class="art-eyebrow">LEARN · CODE · EXPLORE</p><h2>Explore the universe<br>of IT learning.</h2><p>Your books, lessons, and discoveries — all in one place.</p></div>
+    </section>
+    <section class="itverse-form-side">
+      <a class="back-home" href="index.html">← Back to Home</a>
+      <div class="panel">
+        <h1 class="brand">✿ ITVerse</h1>
+        <p class="welcome-title">Welcome Back!</p>
+        <p class="subtitle">Sign in to continue your learning journey.</p>
+        <form id="loginForm">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" autocomplete="username" placeholder="Enter your email" required>
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+          <button class="wide" type="submit">Login</button>
+          <p id="message" class="message" role="status"></p>
+        </form>
+        <p class="foot">No account yet? <a href="signup.html">Sign Up</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="js/student-auth.js"></script>
+  <script src="js/itverse-password-toggle.js"></script>
 </body>
-
 </html>
