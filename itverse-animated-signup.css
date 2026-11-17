@@ -1,0 +1,12 @@
+/* Signup-only adjustments; shared animated book is loaded from itverse-animated-login.css */
+body[data-page="signup"]{background:#fff6fa;color:var(--it-ink)}
+body[data-page="signup"] .itverse-login-layout{min-height:100vh}
+body[data-page="signup"] .itverse-form-side{padding-top:76px;padding-bottom:48px}
+body[data-page="signup"] .panel{width:min(100%,460px);padding:30px 34px}
+body[data-page="signup"] .panel label{margin:10px 0 5px}
+body[data-page="signup"] .panel input{padding:11px 13px}
+body[data-page="signup"] .panel .wide{margin-top:17px}
+body[data-page="signup"] .panel .subtitle{margin-bottom:15px}
+body[data-page="signup"] .panel .foot{margin-top:15px}
+@media(min-width:851px){body[data-page="signup"] .itverse-art-panel{position:sticky;top:0;height:100vh}}
+@media(max-width:850px){body[data-page="signup"] .itverse-form-side{padding:72px 20px 38px}body[data-page="signup"] .panel{padding:26px 22px}}
