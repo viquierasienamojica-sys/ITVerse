@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ITVerse | Admin Dashboard Preview</title>
+    <link rel="stylesheet" href="css/itverse-admin.css">
+</head>
+
+<body>
+    <div class="shell">
+        <aside class="sidebar"><a class="brand" href="index.html">✿ ITVerse <small>ADMIN</small></a>
+            <p class="sidebar-label">MANAGEMENT</p>
+            <nav id="nav" aria-label="Admin sections"><button data-tab="dashboard" class="active">▦
+                    <span>Dashboard</span></button><button data-tab="students">♙ <span>Students</span></button><button
+                    data-tab="books">▤ <span>E-Books</span></button><button data-tab="quizzes">☷
+                    <span>Quizzes</span></button><button data-tab="results">▥ <span>Quiz Results</span></button><button
+                    data-tab="settings">⚙ <span>Settings</span></button></nav>
+            <div class="sidebar-foot"><a href="index.html">← Back to ITVerse</a>
+                <p>UI preview • no live admin access</p>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="top">
+                <div><span class="eyebrow">ITVERSE ADMINISTRATION</span>
+                    <h1 id="heading">Dashboard Overview</h1>
+                    <p id="subheading">A central place to manage your e-library.</p>
+                </div>
+                <div class="admin-avatar" title="Admin preview">A</div>
+            </header>
+            <div class="preview">DESIGN PREVIEW — This page does not authenticate administrators or change student
+                accounts, books, or quizzes.</div>
+            <section id="dashboard" class="tab active">
+                <div class="stats">
+                    <article><span>Registered Students</span><strong>—</strong><small>Connect database to view</small>
+                    </article>
+                    <article><span>E-Books</span><strong>—</strong><small>Connect book catalog</small></article>
+                    <article><span>Quizzes</span><strong>—</strong><small>Connect quiz catalog</small></article>
+                    <article><span>Quiz Submissions</span><strong>—</strong><small>Connect results storage</small>
+                    </article>
+                </div>
+                <div class="two">
+                    <article class="panel">
+                        <h2>Quick Management</h2>
+                        <p>Access your most-used admin sections.</p>
+                        <div class="quick"><button data-go="students">Student Management</button><button
+                                data-go="books">E-Book Management</button><button data-go="quizzes">Quiz
+                                Management</button></div>
+                    </article>
+                    <article class="panel">
+                        <h2>Recent Activity</h2>
+                        <div class="empty">Student registrations and quiz submissions will appear here after connecting
+                            a database.</div>
+                    </article>
+                </div>
+            </section>
+            <section id="students" class="tab">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2>Student Management</h2>
+                            <p>Search and view registered student accounts.</p>
+                        </div><span class="tag">Backend required</span>
+                    </div><input class="search" placeholder="Search students (available after database setup)" disabled>
+                    <div class="tablewrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Student Number</th>
+                                    <th>Email Address</th>
+                                    <th>Account</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="empty">No shared student database connected. Browser-local
+                                        accounts cannot be listed across devices.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section id="books" class="tab">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2>E-Book Management</h2>
+                            <p>Add, edit, or remove books once content storage is connected.</p>
+                        </div><button class="primary" disabled>+ Add E-Book</button>
+                    </div>
+                    <div class="empty">Your current books are static HTML files. An editable online catalog and
+                        publishing workflow are needed for admin changes.</div>
+                </div>
+            </section>
+            <section id="quizzes" class="tab">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2>Quiz Management</h2>
+                            <p>Create questions, answers, and quizzes.</p>
+                        </div><button class="primary" disabled>+ Create Quiz</button>
+                    </div>
+                    <div class="empty">Quiz editing will be enabled after connecting the website quiz data to shared
+                        storage.</div>
+                </div>
+            </section>
+            <section id="results" class="tab">
+                <div class="panel">
+                    <h2>Student Quiz Results</h2>
+                    <p>View scores, completed quizzes, and submission dates.</p>
+                    <div class="tablewrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Quiz</th>
+                                    <th>Score</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="empty">No shared quiz results are connected yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section id="settings" class="tab">
+                <div class="panel">
+                    <h2>Admin Settings</h2>
+                    <p>Admin account details and current-password verification will be implemented with secure
+                        authentication.</p>
+                    <div class="settings-note">Admin registration is not public. Do not store an admin password in
+                        website HTML, JavaScript, or localStorage.</div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/itverse-supabase.js"></script>
+<script src="js/itverse-admin.js"></script>
+</body>
+
+</html>
