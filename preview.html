@@ -1,0 +1,3242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ITVerse is a digital e-library for BSIT students: organized lessons, quizzes, a glossary and references.">
+  <title>ITVerse | Home</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAB80lEQVR4Xu3dsW0CQRBAUbDcEYU4skQjhI4c0giSIxdCTVgXINmykHZmZ0+3n/8amL35e5cQsNtJkiRJkiRJM9ivdcjL4XRba9Ysjtfz8P0PHWDUdqNiDwls2Lzq0KWBDVunKvRL1ZGMW6tqnyWBqw6jvyr22h244hB6rHe/XYF7h6tNz57TgXuGKi6771Tg7DD1yew9FVjzCAfO3CLVie4/HFhzCQWO3h6NEekQCqz5GBiuOXDks6DxWns0B9acDAxnYDgDwxkYzsBwBoZ73erzvX9/bPVoD329fW7uzL7BcAaGMzCcgeEMDGdgOAPDGRjOwHAGhjMwnIHhDAxnYDgDwxkYzsBwBoYzMJyB4QwMZ2A4A8MZGM7AcAaGMzCcgeEMDGdgOAPDGRjOwHAGhjMwnIHhDAxnYDgDwxkYzsBwBoYzMJyB4QwMZ2A4A8MZGM7AcAaGMzCcgeE2+6ccW/yDixn5BsMZGM7AcAaGMzCcgeEMDNcc+Hg97+G7mEprj+bAmpOB4UKBWz8LGivSIRRY8wkHjtwe1YvuPxxYc0kFjt4i1cjsPRV4kRmmvOy+04GNvJ5s3EVXYCOP1xO3JLCRx+mNWxbYyPUq4i6G/IBwOZxu9Y/8HKrC3g0JfGfodtVhVwn8m7H/GxVVkiRJkiQJ6QfyH2lFF9GBgwAAAABJRU5ErkJggg==">
+
+
+          <!-- Keep this LAST so it can refine the homepage content -->
+  <style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+
+
+:root {
+
+  --cream: #fffaf1;
+
+  --ink: #123d35;
+
+  --orange: #cb591d;
+
+  --muted: #696b68;
+
+  --line: #eedfcb;
+
+}
+
+
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+
+
+body {
+
+  margin: 0;
+
+  background: var(--cream);
+
+  color: var(--ink);
+
+  font-family: 'DM Sans', Arial, sans-serif;
+
+}
+
+
+
+a {
+
+  text-decoration: none;
+
+  color: inherit;
+
+}
+
+
+
+/* HEADER */
+
+
+
+.header {
+
+  height: 98px;
+
+  max-width: 1440px;
+
+  margin: auto;
+
+  padding: 0 6%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 40px;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+
+.brand {
+
+  font-family: Outfit, sans-serif;
+
+  font-size: 28px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+}
+
+
+
+.brand-icon {
+
+  font-size: 35px;
+
+  color: var(--orange);
+
+  vertical-align: middle;
+
+}
+
+
+
+.nav {
+
+  display: flex;
+
+  gap: 10px;
+
+  align-items: center;
+
+  margin: auto;
+
+}
+
+
+
+.nav a {
+
+  padding: 12px 19px;
+
+  border-radius: 30px;
+
+  font-weight: 600;
+
+  color: #26332e;
+
+  font-size: 14px;
+
+}
+
+
+
+.nav a:hover,
+
+.nav a.active {
+
+  background: #fff0df;
+
+  color: var(--orange);
+
+}
+
+
+
+.nav-button,
+
+.button.primary {
+
+  background: var(--orange);
+
+  color: white;
+
+  border-radius: 17px;
+
+  font-weight: 700;
+
+}
+
+
+
+.nav-button {
+
+  padding: 15px 24px;
+
+  white-space: nowrap;
+
+}
+
+
+
+.menu-toggle {
+
+  display: none;
+
+}
+
+
+
+/* HERO */
+
+
+
+.hero {
+
+  min-height: 530px;
+
+  max-width: 1440px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 51% 49%;
+
+  align-items: center;
+
+  overflow: hidden;
+
+}
+
+
+
+.hero-content {
+
+  padding: 55px 0 60px 12%;
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+
+.eyebrow {
+
+  letter-spacing: 4px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #8b7e72;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+}
+
+
+
+.eyebrow span {
+
+  width: 40px;
+
+  height: 3px;
+
+  background: var(--orange);
+
+}
+
+
+
+h1, h2, h3 {
+
+  font-family: Outfit, sans-serif;
+
+}
+
+
+
+h1 {
+
+  font-size: clamp(58px, 6vw, 94px);
+
+  line-height: 1.08;
+
+  letter-spacing: -3px;
+
+  margin: 25px 0;
+
+}
+
+
+
+h1 em {
+
+  font-style: normal;
+
+  color: var(--orange);
+
+}
+
+
+
+.hero-description {
+
+  font-size: 20px;
+
+  line-height: 1.65;
+
+  color: var(--muted);
+
+  max-width: 520px;
+
+}
+
+
+
+.hero-actions {
+
+  display: flex;
+
+  gap: 16px;
+
+  margin-top: 36px;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 19px 28px;
+
+  border-radius: 17px;
+
+  font-weight: 700;
+
+}
+
+
+
+.button.primary span {
+
+  font-size: 24px;
+
+}
+
+
+
+.button.secondary {
+
+  border: 1px solid var(--orange);
+
+  color: #8d3913;
+
+}
+
+
+
+.button:hover,
+
+.nav-button:hover {
+
+  transform: translateY(-2px);
+
+  transition: transform .2s;
+
+}
+
+
+
+/* BOOKSHELF */
+
+
+
+
+
+.hero-art img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  display: block;
+
+}
+
+
+
+/* FEATURE CARDS */
+
+
+
+.features {
+
+  max-width: 1350px;
+
+  margin: -5px auto 60px;
+
+  padding: 0 4%;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 18px;
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+
+.feature {
+
+  background: #fff;
+
+  border-radius: 20px;
+
+  padding: 25px 18px;
+
+  display: flex;
+
+  gap: 15px;
+
+  box-shadow: 0 8px 35px #b9906020;
+
+  min-height: 155px;
+
+}
+
+
+
+.feature-icon {
+
+  display: grid;
+
+  place-items: center;
+
+  width: 58px;
+
+  height: 58px;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+
+  font-size: 30px;
+
+}
+
+
+
+.orange {
+
+  background: #ffeddf;
+
+  color: #c75a22;
+
+}
+
+
+
+.green {
+
+  background: #e3f4ea;
+
+  color: #16735b;
+
+}
+
+
+
+.blue {
+
+  background: #e5f0ff;
+
+  color: #2a639d;
+
+}
+
+
+
+.pink {
+
+  background: #ffe8e5;
+
+  color: #ac4c4b;
+
+}
+
+
+
+.feature h2 {
+
+  font-size: 17px;
+
+  margin: 5px 0 9px;
+
+}
+
+
+
+.feature p {
+
+  font-size: 13px;
+
+  color: var(--muted);
+
+  line-height: 1.6;
+
+  margin: 0;
+
+}
+
+
+
+.feature small {
+
+  display: inline-block;
+
+  color: #b05a29;
+
+  margin-top: 12px;
+
+  font-size: 11px;
+
+}
+
+
+
+/* ABOUT AND PROJECT INFO */
+
+
+
+.info-section,
+
+.project-section {
+
+  max-width: 1100px;
+
+  margin: 0 auto 50px;
+
+  padding: 45px 6%;
+
+}
+
+
+
+.info-section {
+
+  background: #f8efdf;
+
+  border-radius: 24px;
+
+}
+
+
+
+.section-label {
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  font-weight: 800;
+
+  color: var(--orange);
+
+}
+
+
+
+.info-section h2,
+
+.project-section h2 {
+
+  font-size: 36px;
+
+  margin: 10px 0;
+
+}
+
+
+
+.info-section > p:last-child,
+
+.project-section > p:last-child {
+
+  color: var(--muted);
+
+  line-height: 1.8;
+
+  max-width: 750px;
+
+}
+
+
+
+.project-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 15px;
+
+  margin: 25px 0;
+
+}
+
+
+
+.project-grid > div {
+
+  padding: 22px;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: 14px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+}
+
+
+
+.project-grid strong {
+
+  font-size: 13px;
+
+}
+
+
+
+.project-grid span {
+
+  color: var(--muted);
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+
+
+
+/* =========================================
+
+   LEARNING RESOURCES SECTION
+
+   ========================================= */
+
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+
+.resources-section {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 60px auto;
+
+    padding: 40px 30px;
+
+    box-sizing: border-box;
+
+    scroll-margin-top: 100px;
+
+}
+
+
+
+.resources-heading {
+
+    margin-bottom: 30px;
+
+}
+
+
+
+.resources-heading h2 {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    color: #073b35;
+
+    margin: 12px 0 15px;
+
+}
+
+
+
+.resources-heading > p:last-child {
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: #777;
+
+    max-width: 750px;
+
+}
+
+
+
+/* RESOURCE CARDS */
+
+
+
+.resources-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+}
+
+
+
+.resource-card {
+
+    background: #ffffff;
+
+    border: 1px solid #f0dfcd;
+
+    border-radius: 18px;
+
+    padding: 28px 24px;
+
+    box-sizing: border-box;
+
+    transition: transform 0.25s ease,
+
+                box-shadow 0.25s ease;
+
+}
+
+
+
+.resource-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+.resource-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 55px;
+
+    height: 55px;
+
+    background: #fff0e3;
+
+    border-radius: 14px;
+
+    font-size: 26px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.resource-card h3 {
+
+    font-size: 19px;
+
+    color: #073b35;
+
+    margin: 0 0 12px;
+
+}
+
+
+
+.resource-card p {
+
+    font-size: 14px;
+
+    color: #777;
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+
+}
+
+
+
+.resource-card a {
+
+    display: inline-block;
+
+    color: #cf551a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+}
+
+
+
+.resource-card a:hover {
+
+    color: #a63f0e;
+
+    text-decoration: underline;
+
+}
+
+
+
+/* RESPONSIVE */
+
+
+
+@media (max-width: 900px) {
+
+    .resources-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .resources-section {
+
+        padding: 30px 20px;
+
+    }
+
+
+
+    .resources-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+
+
+
+#resources {
+
+    scroll-margin-top: 100px;
+
+}
+
+
+
+
+
+/* =========================================
+
+   LEARNING RESOURCES SECTION
+
+   ========================================= */
+
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+
+.resources-section {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 60px auto;
+
+    padding: 40px 30px;
+
+    box-sizing: border-box;
+
+    scroll-margin-top: 100px;
+
+}
+
+
+
+.resources-heading {
+
+    margin-bottom: 30px;
+
+}
+
+
+
+.resources-heading h2 {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    color: #073b35;
+
+    margin: 12px 0 15px;
+
+}
+
+
+
+.resources-heading > p:last-child {
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: #777;
+
+    max-width: 750px;
+
+}
+
+
+
+/* RESOURCE CARDS */
+
+
+
+.resources-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+}
+
+
+
+.resource-card {
+
+    background: #ffffff;
+
+    border: 1px solid #f0dfcd;
+
+    border-radius: 18px;
+
+    padding: 28px 24px;
+
+    box-sizing: border-box;
+
+    transition: transform 0.25s ease,
+
+                box-shadow 0.25s ease;
+
+}
+
+
+
+.resource-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+.resource-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 55px;
+
+    height: 55px;
+
+    background: #fff0e3;
+
+    border-radius: 14px;
+
+    font-size: 26px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.resource-card h3 {
+
+    font-size: 19px;
+
+    color: #073b35;
+
+    margin: 0 0 12px;
+
+}
+
+
+
+.resource-card p {
+
+    font-size: 14px;
+
+    color: #777;
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+
+}
+
+
+
+.resource-card a {
+
+    display: inline-block;
+
+    color: #cf551a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+}
+
+
+
+.resource-card a:hover {
+
+    color: #a63f0e;
+
+    text-decoration: underline;
+
+}
+
+
+
+/* RESPONSIVE */
+
+
+
+@media (max-width: 900px) {
+
+    .resources-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .resources-section {
+
+        padding: 30px 20px;
+
+    }
+
+
+
+    .resources-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+
+
+
+
+
+/* =====================================
+
+   VIDEO TUTORIALS - FIXED LAYOUT
+
+   ===================================== */
+
+
+
+.video-tutorials {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 65px;
+
+    clear: both;
+
+}
+
+
+
+.video-tutorials > .section-label,
+
+.video-tutorials > h2,
+
+.video-tutorials > .video-description {
+
+    display: block;
+
+    width: 100%;
+
+}
+
+
+
+.video-tutorials h2 {
+
+    font-size: 30px;
+
+    color: #073b35;
+
+    margin: 12px 0;
+
+}
+
+
+
+.video-description {
+
+    color: #777;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+/* THREE EQUAL VIDEO CARDS */
+
+
+
+.video-tutorials .video-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+
+    width: 100%;
+
+    align-items: stretch;
+
+}
+
+
+
+.video-tutorials .video-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #f0dfcd;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: transform 0.25s ease,
+
+                box-shadow 0.25s ease;
+
+}
+
+
+
+.video-tutorials .video-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+}
+
+
+
+/* VIDEO PLAYER */
+
+
+
+.video-tutorials .video-frame {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    flex-shrink: 0;
+
+    background: #152b2b;
+
+    overflow: hidden;
+
+}
+
+
+
+.video-tutorials .video-frame iframe {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+}
+
+
+
+/* VIDEO INFORMATION */
+
+
+
+.video-tutorials .video-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 22px;
+
+}
+
+
+
+.video-tutorials .video-info span {
+
+    color: #cf551a;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+
+.video-tutorials .video-info h3 {
+
+    color: #073b35;
+
+    font-size: 19px;
+
+    line-height: 1.4;
+
+    margin: 12px 0;
+
+    overflow-wrap: break-word;
+
+}
+
+
+
+.video-tutorials .video-info p {
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin: 0 0 20px;
+
+}
+
+
+
+.video-tutorials .video-info a {
+
+    display: inline-block;
+
+    align-self: flex-start;
+
+    margin-top: auto;
+
+    color: #cf551a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+}
+
+
+
+.video-tutorials .video-info a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+
+/* RESPONSIVE */
+
+
+
+@media (max-width: 900px) {
+
+    .video-tutorials .video-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .video-tutorials .video-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+
+
+
+/* FOUR VIDEO CARDS PER ROW */
+
+
+
+.video-tutorials .video-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    width: 100%;
+
+    align-items: stretch;
+
+}
+
+
+
+.video-tutorials .video-card {
+
+    min-width: 0;
+
+    height: 100%;
+
+}
+
+
+
+.video-tutorials .video-info {
+
+    padding: 18px;
+
+}
+
+
+
+.video-tutorials .video-info h3 {
+
+    font-size: 17px;
+
+    line-height: 1.4;
+
+}
+
+
+
+.video-tutorials .video-info p {
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+
+    .video-tutorials .video-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .video-tutorials .video-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+
+/* FIX VIDEO TUTORIALS LAYOUT */
+
+
+
+.resources-section .video-tutorials {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-top: 65px;
+
+    box-sizing: border-box;
+
+}
+
+
+
+.resources-section .video-tutorials .video-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+}
+
+
+
+.resources-section .video-tutorials .video-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: none;
+
+    box-sizing: border-box;
+
+}
+
+
+
+.resources-section .video-tutorials .video-frame {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+}
+
+
+
+.resources-section .video-tutorials .video-frame iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+
+.resources-section .video-tutorials .video-info {
+
+    min-width: 0;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+}
+
+
+
+.resources-section .video-tutorials .video-info h3 {
+
+    overflow-wrap: normal;
+
+    word-break: normal;
+
+}
+
+
+
+@media (max-width: 1000px) {
+
+    .resources-section .video-tutorials .video-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .resources-section .video-tutorials .video-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+
+
+
+
+
+footer {
+
+  text-align: center;
+
+  padding: 30px;
+
+  color: #887d70;
+
+  border-top: 1px solid var(--line);
+
+}
+
+
+
+/* RESPONSIVE */
+
+
+
+@media (max-width: 1050px) {
+
+  .header {
+
+    gap: 12px;
+
+    padding: 0 4%;
+
+  }
+
+
+
+  .nav a {
+
+    padding: 10px;
+
+  }
+
+
+
+  .hero-content {
+
+    padding-left: 8%;
+
+  }
+
+
+
+  .features {
+
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+
+
+
+  h1 {
+
+    font-size: 65px;
+
+  }
+
+}
+
+
+
+@media (max-width: 700px) {
+
+  .header {
+
+    height: 78px;
+
+    justify-content: space-between;
+
+  }
+
+
+
+  .brand {
+
+    font-size: 24px;
+
+  }
+
+
+
+  .menu-toggle {
+
+    display: block;
+
+    background: transparent;
+
+    border: 0;
+
+    font-size: 26px;
+
+    color: var(--ink);
+
+    cursor: pointer;
+
+  }
+
+
+
+  .nav {
+
+    display: none;
+
+    position: absolute;
+
+    top: 75px;
+
+    left: 4%;
+
+    right: 4%;
+
+    background: #fff;
+
+    padding: 15px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 12px 30px #0002;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+  }
+
+
+
+  .nav.open {
+
+    display: flex;
+
+  }
+
+
+
+  .nav-button {
+
+    display: none;
+
+  }
+
+
+
+  .hero {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+
+  .hero-content {
+
+    padding: 45px 7%;
+
+  }
+
+
+
+  .hero-art {
+
+    height: 330px;
+
+    margin-left: 7%;
+
+    border-radius: 100px 0 0 100px;
+
+  }
+
+
+
+  .hero-description {
+
+    font-size: 17px;
+
+  }
+
+
+
+  h1 {
+
+    font-size: clamp(48px, 11vw, 70px);
+
+  }
+
+
+
+  .features {
+
+    grid-template-columns: 1fr;
+
+    padding: 0 6%;
+
+    margin-top: 30px;
+
+  }
+
+
+
+  .project-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+
+  .info-section,
+
+  .project-section {
+
+    margin-left: 5%;
+
+    margin-right: 5%;
+
+  }
+
+}
+
+
+
+/* HEADER LOGO */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+}
+
+
+
+.header-logo {
+
+    width: 60px;
+
+    height: 60px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+
+    background: transparent;
+
+    border: none;
+
+    padding: 0;
+
+}
+
+
+
+.brand span {
+
+    white-space: nowrap;
+
+}
+
+
+
+/* BSIT E-Library | Pastel Pink Theme
+
+   Add this stylesheet AFTER your existing CSS files. */
+
+:root {
+
+  --cream: #FDE4F2;
+
+  --ink: #612C4D;
+
+  --orange: #C34F91;
+
+  --muted: #795B70;
+
+  --line: #F4B8DA;
+
+  --pink-1: #FDE4F2;
+
+  --pink-2: #F9CEE7;
+
+  --pink-3: #F4B8DA;
+
+  --pink-4: #EEA1CD;
+
+  --pink-5: #E68BBE;
+
+}
+
+html { scroll-behavior: smooth; }
+
+body { background: var(--pink-1); color: var(--ink); }
+
+.header, header.header { background: #F9CEE7; border-bottom: 1px solid var(--pink-3); }
+
+.brand, .nav a { color: var(--ink); }
+
+.nav a:hover, .nav a.active { color: #A83375; }
+
+.hero { background: linear-gradient(125deg, var(--pink-1) 0%, var(--pink-2) 58%, var(--pink-3) 100%); }
+
+.hero h1, .info-section h2, .project-section h2, .resources-heading h2 { color: var(--ink); }
+
+.hero h1 em, .section-label, .eyebrow { color: #AD3E80; }
+
+.button.primary, a.button.primary { background: #C34F91; color: white; border-color: #C34F91; }
+
+.button.primary:hover, a.button.primary:hover { background: #A83375; border-color: #A83375; }
+
+.button.secondary, a.button.secondary { background: #FFF3FA; color: var(--ink); border: 1px solid var(--pink-4); }
+
+.button.secondary:hover, a.button.secondary:hover { background: var(--pink-2); }
+
+.info-section, .project-section { background: var(--pink-1); }
+
+.features, .features-section { background: transparent; }
+
+.feature, .feature-card, .resource-card, .project-grid > div { background: #FFF3FA; border-color: var(--pink-3); box-shadow: 0 8px 24px rgba(157, 57, 112, .09); }
+
+.feature:hover, .feature-card:hover, .resource-card:hover { border-color: var(--pink-5); }
+
+.feature-icon.orange, .feature-icon.green, .feature-icon.blue, .feature-icon.pink { background: var(--pink-2); color: #A83375; }
+
+.resources-section { background: var(--pink-1); }
+
+.resource-card a, .feature small { color: #A83375; }
+
+footer { background: #E68BBE; color: #52223F; }
+
+::selection { background: var(--pink-4); color: #52223F; }
+
+/* ====================================
+
+   PINK PASTEL HOVER EFFECTS
+
+==================================== */
+
+
+
+/* NAVIGATION LINKS */
+
+.nav a {
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.nav a:hover,
+
+.nav a.active {
+
+    background-color: #EEA1CD;
+
+    color: #652447;
+
+    border-radius: 8px;
+
+}
+
+
+
+/* HEADER LOGO AND TITLE */
+
+.brand:hover {
+
+    color: #B94D8C;
+
+}
+
+
+
+/* PRIMARY BUTTON */
+
+.button.primary:hover {
+
+    background-color: #D875AC;
+
+    color: #ffffff;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(216, 117, 172, 0.25);
+
+}
+
+
+
+/* SECONDARY BUTTON */
+
+.button.secondary:hover {
+
+    background-color: #F4B8DA;
+
+    color: #652447;
+
+    border-color: #E68BBE;
+
+    transform: translateY(-3px);
+
+}
+
+
+
+/* FEATURE CARDS */
+
+.feature {
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.feature:hover {
+
+    background-color: #FDE4F2;
+
+    border-color: #E68BBE;
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 28px rgba(230, 139, 190, 0.25);
+
+}
+
+
+
+.feature:hover h2 {
+
+    color: #B94D8C;
+
+}
+
+
+
+/* RESOURCE CARDS */
+
+.resource-card {
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.resource-card:hover {
+
+    background-color: #FDE4F2;
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(230, 139, 190, 0.25);
+
+}
+
+
+
+.resource-card a:hover {
+
+    color: #B94D8C;
+
+}
+
+
+
+/* VIDEO CARDS */
+
+.video-card {
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.video-card:hover {
+
+    background-color: #F9CEE7;
+
+    transform: translateY(-4px);
+
+}
+
+
+
+/* GENERAL LINKS */
+
+a {
+
+    transition: color 0.3s ease;
+
+}
+
+
+
+a:hover {
+
+    color: #B94D8C;
+
+}
+
+
+
+/* MOBILE MENU BUTTON */
+
+.menu-toggle:hover {
+
+    background-color: #F4B8DA;
+
+    color: #652447;
+
+}
+
+.header-logo {
+
+    width: 50px;
+
+    height: 50px;
+
+    object-fit: contain;
+
+    background: transparent;
+
+    padding: 0;
+
+    border: none;
+
+    box-shadow: none;
+
+}
+
+
+
+/* =====================================
+
+   FULL WIDTH WEBSITE LAYOUT
+
+===================================== */
+
+
+
+html,
+
+body {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    overflow-x: hidden;
+
+}
+
+
+
+/* HEADER */
+
+.header {
+
+    width: 100%;
+
+    max-width: none;
+
+    margin: 0;
+
+    padding: 0 5%;
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* HERO SECTION */
+
+.hero {
+
+    width: 100%;
+
+    max-width: none;
+
+    margin: 0;
+
+    grid-template-columns: 50% 50%;
+
+}
+
+
+
+/* HERO TEXT */
+
+.hero-content {
+
+    padding: 55px 5% 60px 10%;
+
+}
+
+
+
+/* BOOKSHELF IMAGE */
+
+.hero-art {
+
+    width: 100%;
+
+    margin: 0;
+
+}
+
+
+
+/* FEATURE CARDS */
+
+.features {
+
+    width: 100%;
+
+    max-width: none;
+
+    padding: 0 5%;
+
+}
+
+
+
+/* ABOUT AND PROJECT INFORMATION */
+
+.info-section,
+
+.project-section {
+
+    width: 90%;
+
+    max-width: none;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+}
+
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .hero {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .hero-content {
+
+        padding: 45px 7%;
+
+    }
+
+
+
+    .hero-art {
+
+        width: 93%;
+
+        margin-left: 7%;
+
+    }
+
+}
+
+
+/* ITVerse: THREE HOMEPAGE FEATURE CARDS */
+.features {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 12px;
+  margin-bottom: 65px;
+}
+.features .feature {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--pink-3, #f4b8da);
+  cursor: pointer;
+}
+.features .feature-content { min-width: 0; }
+.features .feature h2 { line-height: 1.35; }
+.features .feature:hover,
+.features .feature:focus-visible {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(157,57,112,.18);
+  outline-offset: 3px;
+}
+.features .feature:focus-visible { outline: 3px solid #a83375; }
+@media (max-width: 950px) {
+  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .features { grid-template-columns: 1fr; }
+}
+
+
+/* BSIT E-Library | Pastel Pink Theme
+   Add this stylesheet AFTER your existing CSS files. */
+:root {
+  --cream: #FDE4F2;
+  --ink: #612C4D;
+  --orange: #C34F91;
+  --muted: #795B70;
+  --line: #F4B8DA;
+  --pink-1: #FDE4F2;
+  --pink-2: #F9CEE7;
+  --pink-3: #F4B8DA;
+  --pink-4: #EEA1CD;
+  --pink-5: #E68BBE;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--pink-1); color: var(--ink); }
+.header, header.header { background: #F9CEE7; border-bottom: 1px solid var(--pink-3); }
+.brand, .nav a { color: var(--ink); }
+.nav a:hover, .nav a.active { color: #A83375; }
+.hero { background: linear-gradient(125deg, var(--pink-1) 0%, var(--pink-2) 58%, var(--pink-3) 100%); }
+.hero h1, .info-section h2, .project-section h2, .resources-heading h2 { color: var(--ink); }
+.hero h1 em, .section-label, .eyebrow { color: #AD3E80; }
+.button.primary, a.button.primary { background: #C34F91; color: white; border-color: #C34F91; }
+.button.primary:hover, a.button.primary:hover { background: #A83375; border-color: #A83375; }
+.button.secondary, a.button.secondary { background: #FFF3FA; color: var(--ink); border: 1px solid var(--pink-4); }
+.button.secondary:hover, a.button.secondary:hover { background: var(--pink-2); }
+.info-section, .project-section { background: var(--pink-1); }
+.features, .features-section { background: transparent; }
+.feature, .feature-card, .resource-card, .project-grid > div { background: #FFF3FA; border-color: var(--pink-3); box-shadow: 0 8px 24px rgba(157, 57, 112, .09); }
+.feature:hover, .feature-card:hover, .resource-card:hover { border-color: var(--pink-5); }
+.feature-icon.orange, .feature-icon.green, .feature-icon.blue, .feature-icon.pink { background: var(--pink-2); color: #A83375; }
+.resources-section { background: var(--pink-1); }
+.resource-card a, .feature small { color: #A83375; }
+footer { background: #E68BBE; color: #52223F; }
+::selection { background: var(--pink-4); color: #52223F; }
+
+/* ITVerse responsive fixes — load AFTER style.css and pink-theme.css */
+*, *::before, *::after { box-sizing: border-box; }
+html { max-width: 100%; scroll-padding-top: 90px; }
+body { min-width: 0; max-width: 100%; }
+img, video, iframe { max-width: 100%; }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 18px; width: 100%; max-width: 100%; min-height: 82px; height: auto; padding: 12px clamp(16px, 5vw, 64px); }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-width: 0; flex-shrink: 0; }
+.header-logo { width: 50px; height: 50px; object-fit: contain; }
+.nav { display: flex; gap: 5px; align-items: center; margin: 0 0 0 auto; }
+.nav a { white-space: nowrap; padding: 10px 13px; }
+.hero { width: 100%; max-width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); overflow: hidden; }
+.hero-content { min-width: 0; padding: 52px 5% 52px 10%; }
+.hero-art { min-width: 0; width: 100%; }
+.hero-art img { width: 100%; height: auto; max-height: 550px; object-fit: contain; }
+.hero h1 { overflow-wrap: normal; }
+.features { width: 100%; max-width: 1350px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.feature, .feature-content { min-width: 0; }
+.feature h2, .feature p { overflow-wrap: anywhere; }
+.info-section, .project-section { max-width: 1100px; }
+.project-grid > div { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 1050px) {
+  .header { gap: 12px; }
+  .nav a { padding: 9px 10px; font-size: 13px; }
+  .hero h1 { font-size: clamp(42px, 6.2vw, 70px); letter-spacing: -1.5px; }
+  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .header { min-height: 72px; padding: 10px 5%; position: relative; z-index: 20; }
+  .brand { font-size: 22px; }
+  .header-logo { width: 42px; height: 42px; }
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; margin-left: auto; border: 1px solid #e68bbe; border-radius: 12px; background: #fff3fa; color: #612c4d; font-size: 25px; cursor: pointer; }
+  .menu-toggle:focus-visible, .nav a:focus-visible { outline: 3px solid #a83375; outline-offset: 3px; }
+  .nav { display: none; position: absolute; top: calc(100% - 1px); left: 5%; right: 5%; width: auto; margin: 0; padding: 12px; background: #fff3fa; border: 1px solid #f4b8da; border-radius: 0 0 16px 16px; box-shadow: 0 15px 30px rgba(97,44,77,.16); flex-direction: column; align-items: stretch; gap: 4px; z-index: 30; }
+  .nav.open { display: flex; }
+  .nav a { display: block; padding: 13px 16px; font-size: 15px; border-radius: 10px; }
+  .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .hero-content { padding: 45px 6% 24px; text-align: center; }
+  .eyebrow { justify-content: center; letter-spacing: 2px; }
+  .hero h1 { font-size: clamp(43px, 9vw, 66px); line-height: 1.1; margin: 18px 0; letter-spacing: -1px; }
+  .hero-description { max-width: 550px; margin: 0 auto; font-size: 17px; }
+  .hero-actions { justify-content: center; margin-top: 25px; }
+  .hero-art { width: 100%; height: auto; margin: 0; padding: 0 5% 20px; border-radius: 0; }
+  .hero-art img { width: 100%; max-height: 340px; object-fit: contain; }
+  .features { margin: 20px auto 45px; padding: 0 5%; }
+  .info-section, .project-section { width: 90%; margin: 0 auto 30px; padding: 30px 5%; }
+  .info-section h2, .project-section h2 { font-size: clamp(25px, 5vw, 34px); }
+}
+@media (max-width: 600px) {
+  .brand { font-size: 20px; gap: 7px; }
+  .header-logo { width: 38px; height: 38px; }
+  .hero-content { padding: 34px 6% 18px; }
+  .hero h1 { font-size: clamp(38px, 10vw, 54px); }
+  .eyebrow { font-size: 10px; letter-spacing: 1.6px; gap: 9px; }
+  .eyebrow span { width: 24px; }
+  .hero-description { font-size: 15px; line-height: 1.55; }
+  .hero-actions { display: grid; grid-template-columns: 1fr; gap: 11px; max-width: 330px; margin: 23px auto 0; }
+  .hero-actions .button { justify-content: center; width: 100%; padding: 14px 16px; font-size: 14px; }
+  .hero-art { padding: 0 4% 14px; }
+  .hero-art img { max-height: 260px; }
+  .features { grid-template-columns: minmax(0, 1fr); padding: 0 5%; gap: 13px; }
+  .feature { padding: 18px; min-height: 0; border-radius: 15px; }
+  .feature-icon { width: 48px; height: 48px; font-size: 24px; }
+  .feature h2 { font-size: 16px; }
+  .info-section, .project-section { width: 90%; padding: 26px 5%; border-radius: 18px; }
+  .project-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .project-grid > div { padding: 17px; }
+  .section-label { font-size: 10px; letter-spacing: 2px; }
+  footer { padding: 22px 6%; font-size: 13px; line-height: 1.6; }
+}
+@media (max-width: 360px) {
+  .brand { font-size: 17px; }
+  .header-logo { width: 34px; height: 34px; }
+  .hero h1 { font-size: 37px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ITVerse homepage profile menu — isolated from existing homepage styling */
+.header .it-profile{position:relative;margin-left:auto;flex:0 0 auto;font-family:'DM Sans',Arial,sans-serif;z-index:30}
+.it-profile-trigger{display:flex;align-items:center;gap:8px;background:transparent;border:0;cursor:pointer;color:#ac2d75;padding:7px;border-radius:40px}
+.it-profile-trigger svg{width:44px;height:44px;padding:9px;border-radius:50%;background:#bf418e;color:#fff}
+.it-profile-trigger:hover,.it-profile-trigger:focus-visible{background:#f9b8dd;outline-offset:3px}
+.it-profile-chevron{font-size:23px;line-height:1;color:#762c57}
+.it-profile-menu{position:absolute;top:calc(100% + 8px);right:0;width:270px;max-width:calc(100vw - 24px);background:#fff9fd;border:1px solid #f1c6e0;box-shadow:0 14px 36px #612c4d33;border-radius:15px;padding:12px;z-index:200;color:#582343}
+.it-profile-menu[hidden],.it-profile-overlay[hidden]{display:none!important}
+.it-profile-account{display:flex;align-items:center;gap:12px;padding:8px 6px 12px}
+.it-profile-avatar{background:#c44892;color:#fff;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:25px}
+.it-profile-account strong{display:block;font-size:14px;overflow-wrap:anywhere}.it-profile-account small{display:block;color:#8d6d81;margin-top:3px;font-size:12px}
+.it-profile-separator{height:1px;background:#f0d6e5;margin:5px 4px}
+.it-profile-menu button:not(.it-profile-trigger){display:flex;align-items:center;gap:12px;text-align:left;width:100%;padding:11px 10px;border:0;border-radius:9px;background:transparent;color:#57223e;cursor:pointer;font:500 14px 'DM Sans',Arial,sans-serif}
+.it-profile-menu button:hover,.it-profile-menu button:focus-visible{background:#fce0f0}
+.it-profile-menu button span{font-size:21px;width:25px;text-align:center}
+.it-profile-menu button.it-profile-logout{color:#c92e4a}
+.it-profile-overlay{position:fixed;inset:0;background:#3013268c;display:flex;align-items:center;justify-content:center;padding:18px;z-index:1000}
+.it-profile-dialog{width:min(580px,100%);max-height:min(80vh,700px);overflow:hidden;display:flex;flex-direction:column;background:#fffafd;border:1px solid #f4c3df;border-radius:18px;box-shadow:0 25px 65px #260d1b50;color:#57243f}
+.it-profile-dialog-head{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:#f9d0e8;border-bottom:1px solid #efb6d6}
+.it-profile-dialog-head h2{font-size:22px;margin:0;color:#8e2d65}
+.it-profile-dialog-head button{border:0;background:#fff5fa;border-radius:9px;padding:4px 12px;font-size:28px;cursor:pointer;color:#7b2b56}
+.it-profile-dialog-content{padding:22px 24px;overflow:auto}
+.it-profile-dialog-content p{line-height:1.55;margin:8px 0}
+.it-profile-record{background:#fff1f8;border:1px solid #f4d1e6;border-radius:12px;padding:13px 15px;margin:10px 0}
+.it-profile-record strong{display:block;margin-bottom:6px;overflow-wrap:anywhere}
+.it-profile-record small{color:#89657d}
+.it-profile-record a,.it-profile-record button{display:inline-block;margin-top:10px;padding:8px 12px;border:0;border-radius:8px;background:#c44d95;color:white;cursor:pointer;text-decoration:none;font-size:13px}
+.it-profile-empty{color:#826b79}
+@media(max-width:700px){.header .it-profile{margin-left:auto}.it-profile-trigger svg{width:38px;height:38px}.it-profile-menu{right:0}.it-profile-dialog-content{padding:16px}.it-profile-dialog-head{padding:14px}}
+
+/* ==========================================================
+   ITVerse homepage polish
+   Place in: css/itverse-home-polish.css
+   Load it LAST in index.html. Everything is scoped to
+   main.hv / .hv-footer so the header, profile menu and the
+   other pages are not affected.
+   ========================================================== */
+
+main.hv,
+footer.hv-footer {
+  /* ITVerse palette (same values as pink-theme.css) */
+  --pink-100: #FDE4F2;
+  --pink-200: #F9CEE7;
+  --pink-300: #F4B8DA;
+  --pink-400: #EEA1CD;
+  --pink-500: #E68BBE;
+
+  --bg: #FDE4F2;           /* page background */
+  --card: #FFF3FA;         /* card surfaces, as in library and activities */
+  --ink: #612C4D;          /* headings and body text */
+  --ink-soft: #795B70;     /* secondary text */
+  --accent: #A83375;       /* buttons and links (white text passes contrast) */
+  --accent-dark: #8E2867;
+
+  /* Same fonts the rest of the site already loads in style.css */
+  --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --max: 1120px;
+}
+
+/* ---------- base for the homepage content ---------- */
+main.hv {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+main.hv *,
+main.hv *::before,
+main.hv *::after { box-sizing: border-box; }
+
+main.hv h1,
+main.hv h2,
+main.hv h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0;
+}
+
+main.hv p { margin: 0; color: var(--ink-soft); }
+
+main.hv a { text-decoration: none; }
+
+main.hv .hv-wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: clamp(20px, 4vw, 40px);
+  padding-right: clamp(20px, 4vw, 40px);
+}
+
+main.hv .hv-section-head { margin-bottom: 32px; }
+main.hv .hv-section-head h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.15; }
+main.hv .hv-section-head p { margin-top: 8px; max-width: 52ch; }
+
+/* visible keyboard focus everywhere on the homepage */
+main.hv a:focus-visible,
+footer.hv-footer a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- hero ---------- */
+main.hv .hv-hero {
+  margin: 0;
+  padding: clamp(40px, 7vw, 88px) 0 clamp(56px, 8vw, 104px);
+  background:
+    radial-gradient(900px 420px at 85% 0%, var(--pink-300) 0%, transparent 70%),
+    linear-gradient(180deg, var(--pink-200) 0%, var(--pink-100) 100%);
+}
+
+main.hv .hv-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+
+main.hv .hv-kicker {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--pink-400);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+main.hv .hv-hero h1 {
+  font-size: clamp(2.4rem, 5.6vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.04;
+  max-width: 14ch;
+}
+
+main.hv .hv-lead {
+  margin-top: 20px;
+  max-width: 46ch;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+}
+
+main.hv .hv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+main.hv .hv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+main.hv .hv-btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+}
+main.hv .hv-btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); }
+
+main.hv .hv-btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--accent);
+}
+main.hv .hv-btn-ghost:hover { background: var(--pink-300); }
+
+main.hv .hv-hero-note {
+  margin-top: 28px;
+  font-size: 0.95rem;
+}
+
+/* The arch: a niche in a bookshelf, holding the illustration */
+main.hv .hv-hero-art { display: flex; justify-content: center; }
+
+main.hv .hv-niche {
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 28px 24px 0;
+  border-radius: 999px 999px 24px 24px;
+  background: linear-gradient(180deg, var(--pink-400) 0%, var(--pink-200) 100%);
+  border-bottom: 14px solid var(--pink-500);
+  box-shadow: 0 24px 48px -28px rgba(157, 57, 112, .45);
+}
+
+main.hv .hv-niche img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+/* ---------- feature strip ---------- */
+main.hv .hv-features-wrap { padding-top: 8px; }
+
+main.hv .hv-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--card);
+  border: 1px solid var(--pink-300);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+main.hv .hv-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 28px;
+  color: inherit;
+  transition: background-color .2s ease;
+}
+main.hv .hv-feature + .hv-feature { border-left: 1px solid var(--pink-300); }
+main.hv .hv-feature:hover { background: var(--pink-100); }
+
+main.hv .hv-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 6px;
+  border-radius: 14px;
+  background: var(--pink-200);
+  color: var(--accent);
+}
+main.hv .hv-feature-icon svg { width: 24px; height: 24px; }
+
+main.hv .hv-feature h2 { font-size: 1.2rem; line-height: 1.25; }
+main.hv .hv-feature p { font-size: 0.98rem; }
+
+main.hv .hv-feature-link {
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.98rem;
+  border-bottom: 2px solid transparent;
+}
+main.hv .hv-feature:hover .hv-feature-link { border-bottom-color: var(--accent); }
+
+/* ---------- year-level shelf ---------- */
+main.hv .hv-shelf-section { padding-top: clamp(64px, 9vw, 112px); }
+
+main.hv .hv-shelf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  gap: clamp(12px, 2vw, 24px);
+  padding: 0 clamp(8px, 2vw, 24px);
+}
+
+main.hv .hv-book {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 28px 24px 24px;
+  border-radius: 20px 20px 4px 4px;
+  color: var(--ink);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+main.hv .hv-book:hover { transform: translateY(-8px); box-shadow: 0 18px 30px -20px rgba(157, 57, 112, .6); }
+
+/* books of slightly different heights, like real spines */
+main.hv .hv-book-1 { background: var(--pink-300); min-height: 300px; }
+main.hv .hv-book-2 { background: var(--pink-400); min-height: 340px; }
+main.hv .hv-book-3 { background: var(--pink-500); min-height: 320px; }
+
+main.hv .hv-book-year {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+main.hv .hv-book-label { font-weight: 600; font-size: 1.05rem; }
+
+main.hv .hv-book-desc {
+  margin-top: 14px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+main.hv .hv-book-cta {
+  margin-top: auto;
+  padding-top: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+main.hv .hv-plank {
+  height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #F9CEE7 0%, #F4B8DA 23%, #EEA1CD 67%, #E68BBE 100%);
+  box-shadow: 0 6px 9px #B94D8C30;
+}
+
+/* ---------- how to start ---------- */
+main.hv .hv-steps-section { padding-top: clamp(64px, 9vw, 112px); }
+
+main.hv .hv-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+}
+
+main.hv .hv-steps li { position: relative; padding-top: 4px; }
+
+main.hv .hv-step-num {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+main.hv .hv-steps h3 { font-size: 1.2rem; margin-bottom: 6px; }
+main.hv .hv-steps p { max-width: 34ch; font-size: 0.98rem; }
+
+/* ---------- about ---------- */
+main.hv .hv-about {
+  margin: clamp(64px, 9vw, 112px) 0 0;
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--pink-200);
+  border-top: 1px solid var(--pink-300);
+  border-bottom: 1px solid var(--pink-300);
+}
+
+main.hv .hv-about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+main.hv .hv-about h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.15; margin-bottom: 16px; }
+main.hv .hv-about p { max-width: 56ch; }
+
+main.hv .hv-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 24px 26px;
+  display: grid;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--pink-300);
+  border-radius: 20px;
+}
+
+main.hv .hv-checklist li {
+  position: relative;
+  padding-left: 34px;
+  color: var(--ink);
+  font-weight: 500;
+}
+main.hv .hv-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pink-300);
+}
+main.hv .hv-checklist li::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: calc(0.2em + 5px);
+  width: 8px;
+  height: 5px;
+  border-left: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: rotate(-45deg);
+}
+
+/* ---------- project info ---------- */
+main.hv .hv-project {
+  padding-top: clamp(64px, 9vw, 112px);
+  padding-bottom: clamp(64px, 9vw, 112px);
+}
+
+main.hv .hv-project-grid {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+main.hv .hv-project-item {
+  padding: 22px 24px;
+  background: var(--card);
+  border: 1px solid var(--pink-300);
+  border-left: 6px solid var(--pink-500);
+  border-radius: 14px;
+}
+
+main.hv .hv-project-item dt {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+main.hv .hv-project-item dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+main.hv .hv-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+main.hv .hv-chips span {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--pink-200);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+main.hv .hv-members {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.02rem;
+}
+
+main.hv .hv-objectives {
+  margin-top: 32px;
+  padding: 28px 30px;
+  border-radius: 20px;
+  background: var(--pink-200);
+}
+main.hv .hv-objectives h3 { font-size: 1.3rem; margin-bottom: 8px; }
+main.hv .hv-objectives p { max-width: 70ch; color: var(--ink); }
+
+/* ---------- footer ---------- */
+footer.hv-footer {
+  padding: 30px 20px;
+  background: var(--pink-500);
+  border-top: 1px solid var(--pink-300);
+  color: #52223F;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ---------- tablet ---------- */
+@media (max-width: 900px) {
+  main.hv .hv-hero-grid { grid-template-columns: 1fr; }
+  main.hv .hv-hero-art { order: -1; }
+  main.hv .hv-niche { width: min(100%, 320px); }
+  main.hv .hv-about-grid { grid-template-columns: 1fr; }
+  main.hv .hv-features { grid-template-columns: 1fr; }
+  main.hv .hv-feature + .hv-feature { border-left: 0; border-top: 1px solid var(--pink-300); }
+  main.hv .hv-steps { grid-template-columns: 1fr; }
+}
+
+/* ---------- phone ---------- */
+@media (max-width: 640px) {
+  main.hv .hv-shelf { grid-template-columns: 1fr; padding: 0; }
+  main.hv .hv-book-1,
+  main.hv .hv-book-2,
+  main.hv .hv-book-3 { min-height: 0; border-radius: 16px; }
+  main.hv .hv-plank { display: none; }
+  main.hv .hv-project-grid { grid-template-columns: 1fr; }
+  main.hv .hv-actions .hv-btn { flex: 1 1 100%; }
+}
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  main.hv .hv-btn,
+  main.hv .hv-book,
+  main.hv .hv-feature { transition: none; }
+  main.hv .hv-btn-primary:hover,
+  main.hv .hv-book:hover { transform: none; }
+}
+
+</style></head>
+<body>
+
+  <header class="header">
+    <a class="brand" href="index.html">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAB80lEQVR4Xu3dsW0CQRBAUbDcEYU4skQjhI4c0giSIxdCTVgXINmykHZmZ0+3n/8amL35e5cQsNtJkiRJkiRJM9ivdcjL4XRba9Ysjtfz8P0PHWDUdqNiDwls2Lzq0KWBDVunKvRL1ZGMW6tqnyWBqw6jvyr22h244hB6rHe/XYF7h6tNz57TgXuGKi6771Tg7DD1yew9FVjzCAfO3CLVie4/HFhzCQWO3h6NEekQCqz5GBiuOXDks6DxWns0B9acDAxnYDgDwxkYzsBwBoZ73erzvX9/bPVoD329fW7uzL7BcAaGMzCcgeEMDGdgOAPDGRjOwHAGhjMwnIHhDAxnYDgDwxkYzsBwBoYzMJyB4QwMZ2A4A8MZGM7AcAaGMzCcgeEMDGdgOAPDGRjOwHAGhjMwnIHhDAxnYDgDwxkYzsBwBoYzMJyB4QwMZ2A4A8MZGM7AcAaGMzCcgeE2+6ccW/yDixn5BsMZGM7AcAaGMzCcgeEMDNcc+Hg97+G7mEprj+bAmpOB4UKBWz8LGivSIRRY8wkHjtwe1YvuPxxYc0kFjt4i1cjsPRV4kRmmvOy+04GNvJ5s3EVXYCOP1xO3JLCRx+mNWxbYyPUq4i6G/IBwOZxu9Y/8HKrC3g0JfGfodtVhVwn8m7H/GxVVkiRJkiQJ6QfyH2lFF9GBgwAAAABJRU5ErkJggg==" alt="ITVerse Logo" class="header-logo">
+    <span>ITVerse</span>
+</a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false">☰</button>
+
+    <nav class="nav" id="mainNav">
+      <a class="active" href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="library.html">Library</a>
+      <a href="resources.html">Resources</a>
+      <a href="#project">Project Info</a>
+    </nav>
+
+    <!-- Student profile: top-right header menu -->
+    <div class="it-profile" id="itProfile">
+      <button class="it-profile-trigger" id="itProfileTrigger" type="button" aria-label="Open student profile" aria-expanded="false" aria-controls="itProfileMenu">
+        <svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0z"/></svg>
+        <span class="it-profile-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="it-profile-menu" id="itProfileMenu" hidden>
+        <div class="it-profile-account"><span class="it-profile-avatar" aria-hidden="true">●</span><div><strong id="itProfileName">Student Account</strong><small id="itProfileSubtitle">ITVerse Student</small></div></div>
+        <div class="it-profile-separator"></div>
+        <button type="button" data-profile-action="profile"><span aria-hidden="true">♙</span> My Profile</button>
+        <button type="button" data-profile-action="bookmarks"><span aria-hidden="true">☆</span> Bookmarks</button>
+        <button type="button" data-profile-action="notes"><span aria-hidden="true">✎</span> My Notes</button>
+        <button type="button" data-profile-action="history"><span aria-hidden="true">◷</span> Reading History</button>
+        <div class="it-profile-separator"></div>
+        <button class="it-profile-logout" type="button" data-profile-action="logout"><span aria-hidden="true">⇥</span> Logout</button>
+      </div>
+    </div>
+
+  </header>
+
+  <main class="hv">
+
+    <!-- HERO -->
+    <section class="hv-hero" id="home">
+      <div class="hv-wrap hv-hero-grid">
+
+        <div class="hv-hero-text">
+          <p class="hv-kicker">The BSIT e-library</p>
+          <h1>Explore the universe of IT learning</h1>
+          <p class="hv-lead">
+            Read organized lessons, practice with quizzes, and look up
+            terms, all in one place for 1st, 2nd and 3rd year BSIT students.
+          </p>
+
+          <div class="hv-actions">
+            <a class="hv-btn hv-btn-primary" href="library.html">Browse e-books</a>
+            <a class="hv-btn hv-btn-ghost" href="#about">About this project</a>
+          </div>
+
+          <p class="hv-hero-note">30 e-books across 3 year levels, with quizzes and a glossary.</p>
+        </div>
+
+        <div class="hv-hero-art">
+          <div class="hv-niche">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAOECAYAAABZ/VWQAAATy0lEQVR4Xu3dIY9c5xWA4d3GMAoItIKjgjLjEKOQKjQsKiqMFMm/YqVKhUFRWWkUUmQSbBYQFVeGBVVptdW23dZd7/reO5777sz3PQ+2vHtOJvZ578zKFxcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR3Z55N8PAIB3+M2vfn0924K+++kHNyf/5cXAO/3x2Yth/5D88tWV1z8AmRnD4y4hwg0HGPcaOTzuEiIA7E18/I8IQYDwlpni45YIYTR//cOrYd+9PJaPv3rm78DAj1/8fojX4mfff33w60V8vE2EzO3g/5kY04zxIUIYifDYTojsY5TwuGtriIiPh4mQef1i3tG5a+b4uDH7/Jw/8XEYezu+UePjxsizQUWAAAzAEf1+7O94ZjjQ187o3Y93s595CRD+xdN/e+B8OZ6Pwx7f39rDfAQzzQrHJkAAAICMAAE4Y57aH5d9Hm7GdwRmnBmOQYAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGSeZF8JAAb1j7/87Xqk0T745KPLkeYBTosAAYADjRYet27nEiLAHnwECwAOMGp8vGmGGYGeAAGAjWY6zGeaFWgIEADYYMaDfMaZgf0IEAAAICNAAGClmd8JmHl24LgECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAAAZAQIAAGQECAAAkBEgAABARoAAAACZJ9lXAgCA9/T66uX1e/4WJ+3pi+eXJ/0NHoEAAQDg5I0eHrdu5xw5RHwECwCAkzZLfLxp5JkFCAAAJ2vkQ3zJqLMLEAAATtKoB/gWI+5AgAAAABkBAgDAyRnxyf+hRtuFAAEAADICBAAAyAgQAAAgI0AAAICMfwn9P0b64Z6R/+VMAADO2/QBMlJ43I0pIQIAwKmZ+iNYI8bHm0afDwCA8zNtgMxynM8yJwAA52HKAJntKJ9tXgAATteUAQIAADyO6QJk1ncDZp0bAIDTMl2AAAAAj0eAAAAAGQECAABkBAgAAJARIAAAQEaAAAAAGQECAABkBAgAAJARIAAAQEaAAAAAGQECAABkBAgAAJARIAAAQEaAAAAAGQECAABkBAgAAJARIAAAQEaAAAAAGQECAABkBAgAAJARIAAAQEaAAAAAGQECAABkBAgAAJARIAAAQEaAAAAAmSfZV4KB/f1Pf74eeLxFH37+6eXiLwIAuLgQIPA+Zg+PW7d7ECIAwBIfwYIDiY+32QkAsESAwAEc2g+zGwDgXQQIbOTAXmZHAMBDBAgAAJARILCBJ/vr2RUAcB8BAgAAZAQIAACQESAAAEBGgAAAABkBAgAAZAQIAACQESAAAEBGgAAAABkBAgAAZAQIAACQESAAAEBGgAAAABkBAgAAZAQIAACQESAAAEBGgAAAABkBAgAAZAQIAACQESAAAEBGgAAAAJkn2VcCWOF3v/zt9YpfNqRvfv72csjBAOANAgQ4CTOHx63bHQgRAEbmI1jAoxMf/88+ABiZAAEelWP7fvYCwKgECPBoHNnvZj8AjEiAAAAAGQECPApP99exJwBGI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADLTBcjTF88vs+2ekKW5v3x1NeVe7lraw4eff2pPKy3t6pufv7XLFZb29PFXz+zxiJb2+cEnH02776XZP/v+6+l2szTzdz/9MN1Otljaz9LtMpPRdjFdgAAAAI9nygAZrSKXrJ136en/6NbOv/Rkn4vVO1p6uj+7tftZemrPOmv3uPROwIjWzrz0jsBI1s669JR/Vmv3svaGGdmIO5gyQG6M+B/zPlvnXHuEj2br3CLkYVt3s/bIns3Wvaw9nrnf1v2tPchHsHXWtYf5Ods649pjexZb97H1lhnJqLNPGyAzRMihL9qtx/i5O3TerYf2DA7dydZje3SH7mPrEc2/Hbq3rYf5OTp0xq0H+jk5dLatR/eoDt3DoTfNORt55uyHo15fvbw+5xcBAACMrgif3QNEeAAAwHnZM0R2/QiW+AAAgPOz5x2/W4Ds+U0DAAD72uue3yVA9vpmAQCAzh53/S4BAgAAcJ+jB8gelQQAADyOY9/3Rw8QAACAhwgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgI0AAAICMAAEAADICBAAAyAgQAAAgc/QAefri+WX23QMAALs69n1/9AABAAB4yC4BcuxKAgAAenvc9bsEyI09vlkAAKCx1z2/W4CIEAAAOE97xceN7AfGX1+9vD7P9QMAwBz2DA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYGL/BIzNqI2TcMHhAAAAAElFTkSuQmCC" alt="Illustrated colorful bookshelf">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WHAT YOU CAN DO -->
+    <section class="hv-wrap hv-features-wrap" aria-label="Explore ITVerse features">
+      <div class="hv-features">
+
+        <a class="hv-feature" href="resources.html">
+          <span class="hv-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19V5.5"/></svg>
+          </span>
+          <h2>Learning resources</h2>
+          <p>Tutorials, coding websites and video lessons picked for BSIT topics.</p>
+          <span class="hv-feature-link">Explore resources</span>
+        </a>
+
+        <a class="hv-feature" href="activities.html">
+          <span class="hv-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="m9 14 2 2 4-4"/></svg>
+          </span>
+          <h2>Activities and quizzes</h2>
+          <p>Check what you learned with chapter quizzes and final assessments.</p>
+          <span class="hv-feature-link">Take a quiz</span>
+        </a>
+
+        <a class="hv-feature" href="glossary.html">
+          <span class="hv-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </span>
+          <h2>Glossary and references</h2>
+          <p>Look up IT terms, definitions and the references behind each lesson.</p>
+          <span class="hv-feature-link">Open the glossary</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- YEAR-LEVEL SHELF -->
+    <section class="hv-wrap hv-shelf-section" aria-labelledby="shelfTitle">
+      <div class="hv-section-head">
+        <h2 id="shelfTitle">Pick your year level</h2>
+        <p>Each year level has its own shelf of 10 e-books.</p>
+      </div>
+
+      <div class="hv-shelf">
+        <a class="hv-book hv-book-1" href="library.html#year-1">
+          <span class="hv-book-year">1st</span>
+          <span class="hv-book-label">Year BSIT</span>
+          <span class="hv-book-desc">Computer basics, hardware and software, number systems, the internet and cybersecurity.</span>
+          <span class="hv-book-cta">Open shelf</span>
+        </a>
+
+        <a class="hv-book hv-book-2" href="library.html#year-2">
+          <span class="hv-book-year">2nd</span>
+          <span class="hv-book-label">Year BSIT</span>
+          <span class="hv-book-desc">Computer system platforms, architecture, operating systems and process scheduling.</span>
+          <span class="hv-book-cta">Open shelf</span>
+        </a>
+
+        <a class="hv-book hv-book-3" href="library.html#year-3">
+          <span class="hv-book-year">3rd</span>
+          <span class="hv-book-label">Year BSIT</span>
+          <span class="hv-book-desc">The web, HTML, CSS, responsive design, forms and user interface design.</span>
+          <span class="hv-book-cta">Open shelf</span>
+        </a>
+      </div>
+      <div class="hv-plank" aria-hidden="true"></div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="hv-wrap hv-steps-section" aria-labelledby="stepsTitle">
+      <div class="hv-section-head">
+        <h2 id="stepsTitle">How to start reading</h2>
+      </div>
+
+      <ol class="hv-steps">
+        <li>
+          <span class="hv-step-num" aria-hidden="true">1</span>
+          <h3>Choose a book</h3>
+          <p>Open the library and pick a book from your year-level shelf.</p>
+        </li>
+        <li>
+          <span class="hv-step-num" aria-hidden="true">2</span>
+          <h3>Enter your passkey</h3>
+          <p>Type the passkey for your year level to open the book.</p>
+        </li>
+        <li>
+          <span class="hv-step-num" aria-hidden="true">3</span>
+          <h3>Read and practice</h3>
+          <p>Bookmark pages, then test yourself with the activities and quizzes.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="hv-about" id="about">
+      <div class="hv-wrap hv-about-grid">
+        <div>
+          <h2>Built for future IT professionals</h2>
+          <p>
+            ITVerse is a digital learning resource designed for Bachelor of
+            Science in Information Technology students. It brings organized
+            computing lessons, practical examples, activities and references
+            together so you can understand important IT concepts at your own pace.
+          </p>
+        </div>
+
+        <ul class="hv-checklist">
+          <li>Lessons organized by year level</li>
+          <li>Practical examples in every book</li>
+          <li>Activities and quizzes to check your learning</li>
+          <li>A glossary and references for quick lookups</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECT INFORMATION -->
+    <section class="hv-wrap hv-project" id="project">
+      <div class="hv-section-head">
+        <h2>Project information</h2>
+        <p>ITVerse is a school project.</p>
+      </div>
+
+      <dl class="hv-project-grid">
+        <div class="hv-project-item">
+          <dt>Project title</dt>
+          <dd>ITVerse: Digital Learning Website</dd>
+        </div>
+
+        <div class="hv-project-item">
+          <dt>Subject</dt>
+          <dd>Combinations of Web Systems and Technologies 1</dd>
+        </div>
+
+        <div class="hv-project-item">
+          <dt>Year level</dt>
+          <dd class="hv-chips">
+            <span>1st Year</span>
+            <span>2nd Year</span>
+            <span>3rd Year</span>
+          </dd>
+        </div>
+
+        <div class="hv-project-item">
+          <dt>Group members</dt>
+          <dd>
+            <ul class="hv-members">
+              <li>Viquiera, Siena</li>
+              <li>Baldava, Jochelle Jian</li>
+              <li>Barredo, Angel Mae</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+
+      <div class="hv-objectives">
+        <h3>Learning objectives</h3>
+        <p>
+          This website helps BSIT students understand essential computing
+          concepts, build technical knowledge, practice through interactive
+          assessments, and find organized learning materials that support
+          their studies.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hv-footer">
+    © <span id="year"></span> BSIT ITVerse E-Library | Educational Project
+  </footer>
+
+  <div class="it-profile-overlay" id="itProfileOverlay" hidden>
+    <section class="it-profile-dialog" role="dialog" aria-modal="true" aria-labelledby="itProfileDialogTitle">
+      <div class="it-profile-dialog-head"><h2 id="itProfileDialogTitle">My Profile</h2><button type="button" id="itProfileClose" aria-label="Close">×</button></div>
+      <div class="it-profile-dialog-content" id="itProfileDialogContent"></div>
+    </section>
+  </div>
+    <script>document.getElementById('year').textContent=new Date().getFullYear();
+var t=document.getElementById('menuToggle'),n=document.getElementById('mainNav');
+t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o)});</script></body>
+</html>

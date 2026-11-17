@@ -1,19 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js/itverse-auth-guard.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ITVerse is a digital e-library for BSIT students: organized lessons, quizzes, a glossary and references.">
   <title>ITVerse | Home</title>
   <link rel="icon" type="image/png" href="images/logo.png">
+
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/pink-theme.css">
-  <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/pink-theme.css">
-<link rel="stylesheet" href="css/ITVerse-mobile.css">
-<link rel="stylesheet" href="css/itverse-home-profile.css">
-  
+  <link rel="stylesheet" href="css/ITVerse-mobile.css">
+  <link rel="stylesheet" href="css/itverse-home-profile.css">
+  <!-- Keep this LAST so it can refine the homepage content -->
+  <link rel="stylesheet" href="css/itverse-home-polish.css">
 </head>
 <body>
 
@@ -55,137 +55,204 @@
 
   </header>
 
-  <main>
+  <main class="hv">
 
-    <!-- HOMEPAGE -->
-    <section class="hero" id="home">
+    <!-- HERO -->
+    <section class="hv-hero" id="home">
+      <div class="hv-wrap hv-hero-grid">
 
-      <div class="hero-content">
-        <p class="eyebrow">
-          <span></span>
-          LEARN · CODE · EXPLORE
-        </p>
+        <div class="hv-hero-text">
+          <p class="hv-kicker">The BSIT e-library</p>
+          <h1>Explore the universe of IT learning</h1>
+          <p class="hv-lead">
+            Read organized lessons, practice with quizzes, and look up
+            terms, all in one place for 1st, 2nd and 3rd year BSIT students.
+          </p>
 
-        <h1>IT <em>Verse </em></h1>
+          <div class="hv-actions">
+            <a class="hv-btn hv-btn-primary" href="library.html">Browse e-books</a>
+            <a class="hv-btn hv-btn-ghost" href="#about">About this project</a>
+          </div>
 
-        <p class="hero-description">
-         Explore the Universe of IT Learning
-        </p>
-
-        <div class="hero-actions">
-          <a class="button primary" href="library.html">
-    Explore E-Books <span>→</span></a>
-
-          <a class="button secondary" href="#about">
-            About This Project
-          </a>
+          <p class="hv-hero-note">30 e-books across 3 year levels, with quizzes and a glossary.</p>
         </div>
-      </div>
 
-      <div class="hero-art">
-        <img src="images/Removal-510.png"
-             alt="Illustrated colorful bookshelf">
-      </div>
+        <div class="hv-hero-art">
+          <div class="hv-niche">
+            <img src="images/Removal-510.png" alt="Illustrated colorful bookshelf">
+          </div>
+        </div>
 
+      </div>
     </section>
 
-    <!-- HOMEPAGE FEATURE CARDS -->
-    <section class="features" aria-label="Explore ITVerse features">
-      <a class="feature" href="resources.html">
-        <span class="feature-icon green" aria-hidden="true">📚</span>
-        <span class="feature-content">
-          <h2>Learning Resources</h2>
-          <p>Explore tutorials, coding websites, and video lessons.</p>
-          <small>Explore Resources →</small>
-        </span>
-      </a>
-      <a class="feature" href="activities.html">
-        <span class="feature-icon blue" aria-hidden="true">📝</span>
-        <span class="feature-content">
-          <h2>Activities &amp; Quizzes</h2>
-          <p>Answer chapter quizzes and final assessments.</p>
-          <small>Take a Quiz →</small>
-        </span>
-      </a>
-      <a class="feature" href="glossary.html">
-        <span class="feature-icon pink" aria-hidden="true">📖</span>
-        <span class="feature-content">
-          <h2>Glossary &amp; References</h2>
-          <p>Find useful IT terms, definitions, and references.</p>
-          <small>View Glossary →</small>
-        </span>
-      </a>
+    <!-- WHAT YOU CAN DO -->
+    <section class="hv-wrap hv-features-wrap" aria-label="Explore ITVerse features">
+      <div class="hv-features">
+
+        <a class="hv-feature" href="resources.html">
+          <span class="hv-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19V5.5"/></svg>
+          </span>
+          <h2>Learning resources</h2>
+          <p>Tutorials, coding websites and video lessons picked for BSIT topics.</p>
+          <span class="hv-feature-link">Explore resources</span>
+        </a>
+
+        <a class="hv-feature" href="activities.html">
+          <span class="hv-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="m9 14 2 2 4-4"/></svg>
+          </span>
+          <h2>Activities and quizzes</h2>
+          <p>Check what you learned with chapter quizzes and final assessments.</p>
+          <span class="hv-feature-link">Take a quiz</span>
+        </a>
+
+        <a class="hv-feature" href="glossary.html">
+          <span class="hv-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </span>
+          <h2>Glossary and references</h2>
+          <p>Look up IT terms, definitions and the references behind each lesson.</p>
+          <span class="hv-feature-link">Open the glossary</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- YEAR-LEVEL SHELF -->
+    <section class="hv-wrap hv-shelf-section" aria-labelledby="shelfTitle">
+      <div class="hv-section-head">
+        <h2 id="shelfTitle">Pick your year level</h2>
+        <p>Each year level has its own shelf of 10 e-books.</p>
+      </div>
+
+      <div class="hv-shelf">
+        <a class="hv-book hv-book-1" href="library.html#year-1">
+          <span class="hv-book-year">1st</span>
+          <span class="hv-book-label">Year BSIT</span>
+          <span class="hv-book-desc">Computer basics, hardware and software, number systems, the internet and cybersecurity.</span>
+          <span class="hv-book-cta">Open shelf</span>
+        </a>
+
+        <a class="hv-book hv-book-2" href="library.html#year-2">
+          <span class="hv-book-year">2nd</span>
+          <span class="hv-book-label">Year BSIT</span>
+          <span class="hv-book-desc">Computer system platforms, architecture, operating systems and process scheduling.</span>
+          <span class="hv-book-cta">Open shelf</span>
+        </a>
+
+        <a class="hv-book hv-book-3" href="library.html#year-3">
+          <span class="hv-book-year">3rd</span>
+          <span class="hv-book-label">Year BSIT</span>
+          <span class="hv-book-desc">The web, HTML, CSS, responsive design, forms and user interface design.</span>
+          <span class="hv-book-cta">Open shelf</span>
+        </a>
+      </div>
+      <div class="hv-plank" aria-hidden="true"></div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="hv-wrap hv-steps-section" aria-labelledby="stepsTitle">
+      <div class="hv-section-head">
+        <h2 id="stepsTitle">How to start reading</h2>
+      </div>
+
+      <ol class="hv-steps">
+        <li>
+          <span class="hv-step-num" aria-hidden="true">1</span>
+          <h3>Choose a book</h3>
+          <p>Open the library and pick a book from your year-level shelf.</p>
+        </li>
+        <li>
+          <span class="hv-step-num" aria-hidden="true">2</span>
+          <h3>Enter your passkey</h3>
+          <p>Type the passkey for your year level to open the book.</p>
+        </li>
+        <li>
+          <span class="hv-step-num" aria-hidden="true">3</span>
+          <h3>Read and practice</h3>
+          <p>Bookmark pages, then test yourself with the activities and quizzes.</p>
+        </li>
+      </ol>
     </section>
 
     <!-- ABOUT -->
-    <section class="info-section" id="about">
-      <p class="section-label">ABOUT THE WEBSITE</p>
+    <section class="hv-about" id="about">
+      <div class="hv-wrap hv-about-grid">
+        <div>
+          <h2>Built for future IT professionals</h2>
+          <p>
+            ITVerse is a digital learning resource designed for Bachelor of
+            Science in Information Technology students. It brings organized
+            computing lessons, practical examples, activities and references
+            together so you can understand important IT concepts at your own pace.
+          </p>
+        </div>
 
-      <h2>Built for Future IT Professionals</h2>
-
-      <p>
-        ITVerse is a digital learning resource designed
-        for Bachelor of Science in Information Technology
-        students. It provides organized computing lessons,
-        practical examples, activities, and references to
-        support students in understanding important IT concepts.
-      </p>
+        <ul class="hv-checklist">
+          <li>Lessons organized by year level</li>
+          <li>Practical examples in every book</li>
+          <li>Activities and quizzes to check your learning</li>
+          <li>A glossary and references for quick lookups</li>
+        </ul>
+      </div>
     </section>
 
-
-
     <!-- PROJECT INFORMATION -->
-    <section class="project-section" id="project">
-
-      <p class="section-label">SCHOOL PROJECT</p>
-      <h2>Project Information</h2>
-
-      <div class="project-grid">
-
-        <div>
-          <strong>Project Title</strong>
-          <span>ITVerse: Digital Learning Website</span>
-        </div>
-
-        <div>
-          <strong>Subject</strong>
-          <span>Combinations of</span>
-          <span> Web Systems and Technologies 1</span>
-        </div>
-
-        <div>
-          <strong>Year Level</strong>
-          <span>3rd Year</span>
-          <span>2nd Year</span>
-          <span>1st Year</span>
-        </div>
-
-        <div>
-          <strong>Group Members</strong>
-          <span>Viquiera, Siena  </span>
-          <span>Baldava, Jochelle Jian </span>
-          <span>Barredo, Angel Mae  </span>
-        </div>
-
+    <section class="hv-wrap hv-project" id="project">
+      <div class="hv-section-head">
+        <h2>Project information</h2>
+        <p>ITVerse is a school project.</p>
       </div>
 
-      <h3>Learning Objectives</h3>
+      <dl class="hv-project-grid">
+        <div class="hv-project-item">
+          <dt>Project title</dt>
+          <dd>ITVerse: Digital Learning Website</dd>
+        </div>
 
-      <p>
-        This website aims to help BSIT students understand
-        essential computing concepts, develop technical
-        knowledge, practice through interactive assessments,
-        and access organized learning materials that support
-        their academic studies.
-      </p>
+        <div class="hv-project-item">
+          <dt>Subject</dt>
+          <dd>Combinations of Web Systems and Technologies 1</dd>
+        </div>
 
+        <div class="hv-project-item">
+          <dt>Year level</dt>
+          <dd class="hv-chips">
+            <span>1st Year</span>
+            <span>2nd Year</span>
+            <span>3rd Year</span>
+          </dd>
+        </div>
+
+        <div class="hv-project-item">
+          <dt>Group members</dt>
+          <dd>
+            <ul class="hv-members">
+              <li>Viquiera, Siena</li>
+              <li>Baldava, Jochelle Jian</li>
+              <li>Barredo, Angel Mae</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+
+      <div class="hv-objectives">
+        <h3>Learning objectives</h3>
+        <p>
+          This website helps BSIT students understand essential computing
+          concepts, build technical knowledge, practice through interactive
+          assessments, and find organized learning materials that support
+          their studies.
+        </p>
+      </div>
     </section>
 
   </main>
 
-  <footer>
-    © <span id="year"></span> BSIT ITVerse E-Library |
-    Educational Project
+  <footer class="hv-footer">
+    © <span id="year"></span> BSIT ITVerse E-Library | Educational Project
   </footer>
 
   <div class="it-profile-overlay" id="itProfileOverlay" hidden>

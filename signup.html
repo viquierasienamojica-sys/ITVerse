@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Student Sign Up | ITVerse</title>
     <link rel="stylesheet" href="css/student-auth.css">
+<link rel="stylesheet" href="css/itverse-password-toggle.css">
 </head>
 
 <body data-page="signup">
@@ -15,11 +16,11 @@
             <p class="subtitle">Create Student Account</p>
             <form id="signupForm"><label for="fullName">Full Name</label><input id="fullName" type="text"
                     autocomplete="name" required><label for="studentNumber">Student Number</label><input
-                    id="studentNumber" type="text" required><label for="email">Email Address</label><input id="email"
+                    id="studentNumber" type="text" inputmode="numeric" pattern="[0-9]+" title="Numbers only" required><label for="email">Email Address</label><input id="email"
                     type="email" autocomplete="email" required><label for="password">Password</label><input
-                    id="password" type="password" autocomplete="new-password" minlength="6" required><label
+                    id="password" type="password" autocomplete="new-password" minlength="8" required><label
                     for="confirmPassword">Confirm Password</label><input id="confirmPassword" type="password"
-                    autocomplete="new-password" minlength="6" required><button class="wide" type="submit">Create
+                    autocomplete="new-password" minlength="8" required><button class="wide" type="submit">Create
                     Account</button>
                 <p id="message" class="message" role="status"></p>
             </form>
@@ -27,6 +28,7 @@
         </section>
     </main>
     <script src="js/student-auth.js"></script>
+<script src="js/itverse-password-toggle.js"></script>
 </body>
 
 </html>
