@@ -1,0 +1,19 @@
+
+/* ITVerse shared reader enhancements — original lessons and pictures are untouched */
+:root{--it-pink:#c34f90;--it-light:#fff1f8;--it-dark:#612c4d}
+.it-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 14px;background:#fff2f9;border-bottom:1px solid #eab2d0;position:relative;z-index:12}
+.it-toolbar input{min-width:145px;max-width:245px;flex:1;padding:10px;border:1px solid #e6a5c7;border-radius:9px;background:white;color:#54213f}
+.it-btn{border:1px solid #d77cac;background:white;color:#6d234d;padding:10px 12px;border-radius:9px;cursor:pointer;font:600 13px Arial,sans-serif;text-decoration:none;display:inline-flex;gap:5px;align-items:center}
+.it-btn:hover,.it-btn.primary{background:#c34f90;color:white}.it-btn:disabled{opacity:.5;cursor:not-allowed}
+.it-panel{position:fixed;right:14px;top:118px;z-index:9999;width:min(390px,calc(100vw - 28px));max-height:calc(100vh - 140px);overflow:auto;background:#fff9fc;color:#54213f;border:1px solid #e7a7c7;border-radius:14px;box-shadow:0 8px 35px #54213f44;padding:16px}
+.it-panel[hidden]{display:none!important}.it-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.it-panel h3{margin:0 0 10px}.it-result{display:block;width:100%;text-align:left;border:1px solid #f0c5db;background:white;border-radius:9px;margin:8px 0;padding:11px;cursor:pointer;color:#54213f;line-height:1.5}.it-result:hover{background:#fce1ef}
+.it-panel textarea{width:100%;min-height:150px;padding:12px;border:1px solid #e6a5c7;border-radius:9px;resize:vertical;box-sizing:border-box}.it-panel label{display:block;font-weight:bold;margin:12px 0 6px}.it-note-item{border:1px solid #f0c5db;border-radius:8px;padding:10px;margin:8px 0;white-space:pre-wrap}.it-note-item button{margin:5px 4px 0 0}.it-highlight{background:#ffdf59!important;color:#231900!important;border-radius:2px}
+body.itverse-reader header strong,body.itverse-reader .brand{color:#8f2e62}body.itverse-reader .reader,body.itverse-reader .book-page,body.itverse-reader .page{--it-reading-surface:#fffafd}
+@media(max-width:700px){.it-toolbar{padding:7px;gap:5px}.it-toolbar input{min-width:100px;max-width:100%;order:1;flex-basis:100%}.it-btn{padding:8px;font-size:12px}.it-panel{top:135px;max-height:calc(100vh - 155px)}}
+@media print{.it-toolbar,.it-panel,header,aside,.sidebar,.pager,footer,.nav-buttons,.controls,.overlay{display:none!important}body,html,main,.layout,.viewport,.reader,#reading{height:auto!important;max-height:none!important;overflow:visible!important;display:block!important;background:white!important;color:black!important}.book-page,.page{display:block!important;visibility:visible!important;break-after:page;page-break-after:always;position:static!important;max-height:none!important;min-height:0!important;overflow:visible!important;box-shadow:none!important;background:white!important;color:black!important;margin:0!important;padding:12mm!important;box-sizing:border-box!important}.book-page *, .page *{color:inherit}img{max-width:100%!important;max-height:190mm!important;object-fit:contain!important} @page{size:A4;margin:8mm}}
+/* Unified Book 03-inspired ITVerse palette and reader surfaces */
+body.itverse-reader{--bg:#fde4f2;--header:#f9cee7;--sidebar:#f4b8da;--accent:#eea1cd;--hover:#e68bbe;--ink:#612c4d;--paper:#fffafd;--head:#f9cee7;--side:#f4b8da;--line:#eea1cd}
+body.itverse-reader>header{background:#f9cee7!important;color:#612c4d!important;border-bottom:1px solid #eea1cd!important}
+body.itverse-reader aside,body.itverse-reader #sidebar{background:#f4b8da!important;color:#612c4d!important}
+body.itverse-reader .toc-link:hover,body.itverse-reader .toc-link.active,body.itverse-reader .nav:hover,body.itverse-reader .nav.active{background:#e68bbe!important;color:#612c4d!important}
+body.itverse-reader .book-page,body.itverse-reader .page{border-color:#eea1cd}
