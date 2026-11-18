@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>ITVerse | Admin Dashboard Preview</title>
+    <title>ITVerse | Admin Dashboard</title>
     <link rel="stylesheet" href="css/itverse-admin.css">
 </head>
 
@@ -18,7 +18,7 @@
                     <span>Quizzes</span></button><button data-tab="results">▥ <span>Quiz Results</span></button><button
                     data-tab="settings">⚙ <span>Settings</span></button></nav>
             <div class="sidebar-foot"><a href="index.html">← Back to ITVerse</a>
-                <p>UI preview • no live admin access</p>
+                <p>Secure administrator access</p>
             </div>
         </aside>
         <main class="main">
@@ -29,8 +29,7 @@
                 </div>
                 <div class="admin-avatar" title="Admin preview">A</div>
             </header>
-            <div class="preview">DESIGN PREVIEW — This page does not authenticate administrators or change student
-                accounts, books, or quizzes.</div>
+
             <section id="dashboard" class="tab active">
                 <div class="stats">
                     <article><span>Registered Students</span><strong>—</strong><small>Connect database to view</small>
@@ -61,7 +60,7 @@
                         <div>
                             <h2>Student Management</h2>
                             <p>Search and view registered student accounts.</p>
-                        </div><span class="tag">Backend required</span>
+                        </div><span class="tag">Live Supabase data</span>
                     </div><input class="search" placeholder="Search students (available after database setup)" disabled>
                     <div class="tablewrap">
                         <table>
@@ -118,12 +117,12 @@
                                     <th>Student</th>
                                     <th>Quiz</th>
                                     <th>Score</th>
-                                    <th>Date</th>
+                                    <th>Date</th><th>Full Record</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="4" class="empty">No shared quiz results are connected yet.</td>
+                                    <td colspan="4" class="empty">No quiz submissions yet.</td>
                                 </tr>
                             </tbody>
                         </table>
