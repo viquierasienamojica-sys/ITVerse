@@ -812,18 +812,21 @@ function renderQuiz(key, index) {
   result.id = 'quizResult';
   result.setAttribute('aria-live', 'polite');
   form.append(submit, result);
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
+    submit.disabled = true;
     let correct = 0;
     let gradedCount = 0;
     let manualCount = 0;
     const review = createElement('div', undefined, 'answer-review');
+    const answerRecords = [];
     quiz.questions.forEach((question, i) => {
       let isCorrect;
       let correctAnswer;
       if (question.type === 'short_response') {
         manualCount++;
         const response = form.elements[`q${i}`].value.trim();
+        answerRecords.push({number:i+1,question:question.q,student_answer:response,correct_answer:null,is_correct:null,manual_review:true});
         review.append(createElement('p', `${i + 1}. Manual review — Your response: ${response || '(No response entered)'}. This question is not included in the automatic score.`));
         return;
       }
@@ -837,12 +840,28 @@ function renderQuiz(key, index) {
         isCorrect = selected !== null && Number(selected.value) === question.answer;
         correctAnswer = `${String.fromCharCode(65 + question.answer)}. ${question.options[question.answer]}`;
       }
+      const studentAnswer = question.type === 'identification' ? form.elements[`q${i}`].value.trim() : (form.querySelector(`input[name="q${i}"]:checked`) ? question.options[Number(form.querySelector(`input[name="q${i}"]:checked`).value)] : '');
+      answerRecords.push({number:i+1,question:question.q,student_answer:studentAnswer,correct_answer:correctAnswer,is_correct:isCorrect,manual_review:false});
       if (isCorrect) correct++;
       const explanation = question.explanation ? ` ${question.explanation}` : '';
       review.append(createElement('p', `${i + 1}. ${isCorrect ? 'Correct' : 'Incorrect'} — Correct answer: ${correctAnswer}.${explanation}`));
     });
     const percent = gradedCount ? Math.round(correct / gradedCount * 100) : 0;
     result.replaceChildren(createElement('h3', `Score: ${correct}/${gradedCount} (${percent}%)${manualCount ? ' · ' + manualCount + ' short response pending manual review' : ''}`), review);
+    const status = createElement('p', 'Saving your quiz record...');
+    result.append(status);
+    try {
+      const db = window.ITVerseDB;
+      if (!db) throw new Error('Online database unavailable. Refresh the page.');
+      const {data:{user},error:authError} = await db.auth.getUser();
+      if (authError || !user) throw new Error('Please log in again to save your score.');
+      const {error:saveError} = await db.from('quiz_attempts').insert({student_id:user.id,book_key:key,year_level:Number(key.split('-')[0]),quiz_title:quiz.title,score:correct,graded_total:gradedCount,manual_total:manualCount,answers:answerRecords});
+      if (saveError) throw saveError;
+      status.textContent='Saved successfully! Your admin can now view this quiz record.';
+    } catch(error) {
+      status.textContent='Score displayed, but NOT saved online: '+(error.message||error);
+      submit.disabled=false;
+    }
     result.scrollIntoView({behavior: 'smooth', block: 'nearest'});
   });
   quizArea.replaceChildren(form);
