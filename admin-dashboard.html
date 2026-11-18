@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>ITVerse | Admin Dashboard</title>
     <link rel="stylesheet" href="css/itverse-admin.css">
+    <link rel="stylesheet" href="css/itverse-admin-icons.css">
 </head>
 
 <body>
     <div class="shell">
         <aside class="sidebar"><a class="brand" href="index.html">✿ ITVerse <small>ADMIN</small></a>
             <p class="sidebar-label">MANAGEMENT</p>
-            <nav id="nav" aria-label="Admin sections"><button data-tab="dashboard" class="active">▦
-                    <span>Dashboard</span></button><button data-tab="students">♙ <span>Students</span></button><button
-                    data-tab="books">▤ <span>E-Books</span></button><button data-tab="quizzes">☷
-                    <span>Quizzes</span></button><button data-tab="results">▥ <span>Quiz Results</span></button><button
-                    data-tab="settings">⚙ <span>Settings</span></button></nav>
+            <nav id="nav" aria-label="Admin sections"><button data-tab="dashboard" class="active"><i data-lucide="layout-dashboard" aria-hidden="true"></i> <span>Dashboard</span></button><button data-tab="students"><i data-lucide="users-round" aria-hidden="true"></i> <span>Students</span></button><button
+                    data-tab="books"><i data-lucide="book-open" aria-hidden="true"></i> <span>E-Books</span></button><button data-tab="quizzes"><i data-lucide="clipboard-list" aria-hidden="true"></i> <span>Quizzes</span></button><button data-tab="results"><i data-lucide="chart-no-axes-column" aria-hidden="true"></i> <span>Quiz Results</span></button><button
+                    data-tab="settings"><i data-lucide="settings" aria-hidden="true"></i> <span>Settings</span></button></nav>
             <div class="sidebar-foot"><a href="index.html">← Back to ITVerse</a>
                 <p>Secure administrator access</p>
             </div>
@@ -34,8 +33,8 @@
                 <div class="stats">
                     <article><span>Registered Students</span><strong>—</strong><small>Connect database to view</small>
                     </article>
-                    <article><span>E-Books</span><strong>—</strong><small>Connect book catalog</small></article>
-                    <article><span>Quizzes</span><strong>—</strong><small>Connect quiz catalog</small></article>
+                    <article><span>E-Books</span><strong id="itvBookCount">…</strong><small>Available books in Library</small></article>
+                    <article><span>Quizzes</span><strong id="itvQuizCount">…</strong><small>Published quizzes</small></article>
                     <article><span>Quiz Submissions</span><strong>—</strong><small>Connect results storage</small>
                     </article>
                 </div>
@@ -138,10 +137,12 @@
             </section>
         </main>
     </div>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/itverse-supabase.js"></script>
 <script src="js/itverse-admin.js"></script>
 <script src="js/itverse-admin-content.js"></script>
+<script src="js/itverse-dashboard-stats.js"></script>
 </body>
 
 </html>
