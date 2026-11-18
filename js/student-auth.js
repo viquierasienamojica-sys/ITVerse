@@ -7,7 +7,9 @@ const strong=p=>p.length>=8&&/[A-Z]/.test(p)&&/[a-z]/.test(p)&&/\d/.test(p)&&/[^
 if(page==='signup'){
  const number=$('studentNumber');number.addEventListener('input',()=>number.value=number.value.replace(/\D/g,''));
  $('signupForm').addEventListener('submit',async e=>{
-  e.preventDefault();const btn=e.currentTarget.querySelector('[type=submit]');
+  e.preventDefault();
+const form = e.currentTarget;
+const btn = form.querySelector('[type=submit]');
   const full_name=$('fullName').value.trim(),student_number=number.value.trim(),email=$('email').value.trim().toLowerCase(),password=$('password').value,confirm=$('confirmPassword').value;
   if(!full_name||!/^\d+$/.test(student_number)){msg('Enter your full name and numeric student number.');return}
   if(!strong(password)){msg('Use 8+ characters with uppercase, lowercase, number and special character.');return}
@@ -18,7 +20,7 @@ if(page==='signup'){
    if(error)throw error;
    if(data.user?.identities?.length===0){msg('If this email can register, check your inbox for a confirmation link.',true)}
    else msg('Account submitted! Check your email and confirm it before logging in.',true);
-   e.currentTarget.reset();
+   form.reset();
   }catch(err){msg(err.message||'Signup failed. Please try again.')}finally{btn.disabled=false}
  });
 }
