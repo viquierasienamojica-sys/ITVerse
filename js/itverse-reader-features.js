@@ -42,6 +42,14 @@ function updateBookmark(){const page=currentIndex();$('it-bookmark').textContent
 setInterval(updateBookmark,1300);updateBookmark();
 function showNotes(){open('Personal Study Notes');const notes=read('notes',[]).filter(n=>n.file===file);const label=document.createElement('label');label.textContent='Notes for page '+(currentIndex()+1);const area=document.createElement('textarea');area.placeholder='Write your study notes here...';const save=document.createElement('button');save.className='it-btn primary';save.textContent='Save Note';save.onclick=()=>{const text=area.value.trim();if(!text)return;const all=read('notes',[]);all.unshift({id:Date.now()+'-'+Math.random(),file,page:currentIndex(),text});write('notes',all);showNotes()};body.append(label,area,save);const title=document.createElement('h4');title.textContent='Saved Notes ('+notes.length+')';body.append(title);notes.forEach(n=>{const div=document.createElement('div');div.className='it-note-item';const t=document.createElement('div');t.textContent='Page '+(n.page+1)+' — '+n.text;const goBtn=document.createElement('button');goBtn.className='it-btn';goBtn.textContent='Go to page';goBtn.onclick=()=>{jump(n.page);panel.hidden=true};const edit=document.createElement('button');edit.className='it-btn';edit.textContent='Edit';edit.onclick=()=>{area.value=n.text;jump(n.page);const all=read('notes',[]).filter(x=>x.id!==n.id);write('notes',all);area.focus()};const del=document.createElement('button');del.className='it-btn';del.textContent='Delete';del.onclick=()=>{write('notes',read('notes',[]).filter(x=>x.id!==n.id));showNotes()};div.append(t,goBtn,edit,del);body.append(div)})}
 $('it-notes').onclick=showNotes;
-let requested=null;try{requested=JSON.parse(sessionStorage.getItem('itverse_profile_jump')||'null')}catch{};
-if(requested?.file===file&&Number.isInteger(requested.page)&&requested.page>=0){sessionStorage.removeItem('itverse_profile_jump');setTimeout(()=>jump(requested.page),180)}else {const saved=read('reading',{})[bookKey];if(saved&&saved.page>0){setTimeout(()=>jump(saved.page),180)}else saveProgress(0)};
+// Always open every book at the cover (Page 1).
+sessionStorage.removeItem('itverse_profile_jump');
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        jump(0);
+        saveProgress(0);
+    }, 250);
+});
+
 })();

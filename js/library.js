@@ -66,7 +66,7 @@ const books = Array.from({ length: 3 }, (_, yearIndex) =>
 
 const firstYearBook1 = books.find(book => book.id === 'y1-b1');
 if (firstYearBook1) {
-    firstYearBook1.title = 'Computer Generations and Classification';
+    firstYearBook1.title = 'History and evolution of computers';
     firstYearBook1.available = true;
     firstYearBook1.url = 'book-firstyear1.html';
 }
@@ -164,6 +164,48 @@ if (secondYearBook4) {
     secondYearBook4.url = 'book-secondyear4.html';
 }
 
+const secondYearBook5 = books.find(book => book.id === 'y2-b5');
+if (secondYearBook5) {
+    secondYearBook5.title = 'FILE SYSTEMS AND STORAGE MANAGEMENT';
+    secondYearBook5.available = true;
+    secondYearBook5.url = 'book-secondyear5.html';
+}
+
+const secondYearBook6 = books.find(book => book.id === 'y2-b6');
+if (secondYearBook6) {
+    secondYearBook6.title = 'DEVICE AND INPUT/OUTPUT MANAGEMENT';
+    secondYearBook6.available = true;
+    secondYearBook6.url = 'book-secondyear6.html';
+}
+
+const secondYearBook7 = books.find(book => book.id === 'y2-b7');
+if (secondYearBook7) {
+    secondYearBook7.title = 'DEADLOCKS AND RESOURCE ALLOCATION';
+    secondYearBook7.available = true;
+    secondYearBook7.url = 'book-secondyear7.html';
+}
+
+const secondYearBook8 = books.find(book => book.id === 'y2-b8');
+if (secondYearBook8) {
+    secondYearBook8.title = 'VIRTUALIZATION AND VIRTUAL MACHINES';
+    secondYearBook8.available = true;
+    secondYearBook8.url = 'book-secondyear8.html';
+}
+
+const secondYearBook9 = books.find(book => book.id === 'y2-b9');
+if (secondYearBook9) {
+    secondYearBook9.title = 'COMMAND-LINE INTERFACES AND SYSTEM UTILITIES';
+    secondYearBook9.available = true;
+    secondYearBook9.url = 'book-secondyear9.html';
+}
+
+const secondYearBook10 = books.find(book => book.id === 'y2-b10');
+if (secondYearBook10) {
+    secondYearBook10.title = 'MOBILE AND APPLICATIONS PLATFORM';
+    secondYearBook10.available = true;
+    secondYearBook10.url = 'book-secondyear10.html';
+}
+
 // THIRD YEAR BOOKS
 
 const firstBook = books.find(book => book.id === 'y3-b1');
@@ -217,21 +259,21 @@ if (seventhBook) {
 
 const eighthBook = books.find(book => book.id === 'y3-b8');
 if (eighthBook) {
-    eighthBook.title = 'User Interface Design and Accessibility';
+    eighthBook.title = 'JavaScript Fundamentals & DOM Manipulation';
     eighthBook.available = true;
     eighthBook.url = 'book-thirdyear8.html';
 }
 
 const ninthBook = books.find(book => book.id === 'y3-b9');
 if (ninthBook) {
-    ninthBook.title = 'User Interface Design and Accessibility';
+    ninthBook.title = 'Authentication, Authorization & Web Security';
     ninthBook.available = true;
     ninthBook.url = 'book-thirdyear9.html';
 }
 
 const tenthBook = books.find(book => book.id === 'y3-b10');
 if (tenthBook) {
-    tenthBook.title = 'User Interface Design and Accessibility';
+    tenthBook.title = 'Website Testing, Hosting, Deployment, and Maintenance';
     tenthBook.available = true;
     tenthBook.url = 'book-thirdyear10.html';
 }
