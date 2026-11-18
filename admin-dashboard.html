@@ -10,7 +10,7 @@
 
 <body>
     <div class="shell">
-        <aside class="sidebar"><a class="brand" href="index.html"> ITVerse <small>ADMIN</small></a>
+        <aside class="sidebar"><a class="brand" href="index.html">✿ ITVerse <small>ADMIN</small></a>
             <p class="sidebar-label">MANAGEMENT</p>
             <nav id="nav" aria-label="Admin sections"><button data-tab="dashboard" class="active">▦
                     <span>Dashboard</span></button><button data-tab="students">♙ <span>Students</span></button><button
@@ -27,7 +27,7 @@
                     <h1 id="heading">Dashboard Overview</h1>
                     <p id="subheading">A central place to manage your e-library.</p>
                 </div>
-                <div class="admin-avatar" title="Admin preview">A</div>
+                <div class="admin-avatar" title="Admin">A</div>
             </header>
 
             <section id="dashboard" class="tab active">
@@ -88,10 +88,9 @@
                         <div>
                             <h2>E-Book Management</h2>
                             <p>Add, edit, or remove books once content storage is connected.</p>
-                        </div><button class="primary" disabled>+ Add E-Book</button>
+                        </div><button class="primary" id="addBookBtn">+ Add E-Book</button>
                     </div>
-                    <div class="empty">Your current books are static HTML files. An editable online catalog and
-                        publishing workflow are needed for admin changes.</div>
+                    <div id="managedBooks"></div>
                 </div>
             </section>
             <section id="quizzes" class="tab">
@@ -100,10 +99,9 @@
                         <div>
                             <h2>Quiz Management</h2>
                             <p>Create questions, answers, and quizzes.</p>
-                        </div><button class="primary" disabled>+ Create Quiz</button>
+                        </div><button class="primary" id="addQuizBtn">+ Create Quiz</button>
                     </div>
-                    <div class="empty">Quiz editing will be enabled after connecting the website quiz data to shared
-                        storage.</div>
+                    <div id="managedQuizzes"></div>
                 </div>
             </section>
             <section id="results" class="tab">
@@ -143,6 +141,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/itverse-supabase.js"></script>
 <script src="js/itverse-admin.js"></script>
+<script src="js/itverse-admin-content.js"></script>
 </body>
 
 </html>
