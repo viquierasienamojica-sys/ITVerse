@@ -6,6 +6,10 @@
 (async () => {
   'use strict';
 
+  const guardScriptUrl =
+    document.currentScript?.src ||
+    new URL('js/itverse-auth-guard.js', location.href).href;
+
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
@@ -32,8 +36,7 @@
       await loadScript(
         new URL(
           'itverse-supabase.js',
-          document.currentScript?.src ||
-          new URL('js/itverse-auth-guard.js', location.href)
+          guardScriptUrl
         ).href
       );
     }
