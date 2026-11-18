@@ -28,16 +28,16 @@ const bookCoverImages = {
     'y1-b9': 'images/1yrbook9.png',
     'y1-b10': 'images/1yrbook10.png',
     // 2nd Year
-    'y2-b1': '',
-    'y2-b2': '',
-    'y2-b3': '',
-    'y2-b4': '',
-    'y2-b5': '',
-    'y2-b6': '',
-    'y2-b7': '',
-    'y2-b8': '',
-    'y2-b9': '',
-    'y2-b10': '',
+    'y2-b1': 'images/2ndyrbook1.png',
+    'y2-b2': 'images/2ndyrbook2.png',
+    'y2-b3': 'images/2ndyrbook3.png',
+    'y2-b4': 'images/2ndyrbook4.png',
+    'y2-b5': 'images/2ndyrbook5.png',
+    'y2-b6': 'images/2ndyrbook6.png',
+    'y2-b7': 'images/2ndyrbook7.png',
+    'y2-b8': 'images/2ndyrbook8.png',
+    'y2-b9': 'images/2ndyrbook9.png',
+    'y2-b10': 'images/2ndyrbook10.png',
     // 3rd Year
     'y3-b1': '',
     'y3-b2': '',
@@ -152,14 +152,14 @@ if (secondYearBook2) {
 
 const secondYearBook3 = books.find(book => book.id === 'y2-b3');
 if (secondYearBook3) {
-    secondYearBook3.title = 'OPERATING SYSTEMCONCEPTS AND FUNCTIONS';
+    secondYearBook3.title = 'Processes, Threads, and Process Scheduling';
     secondYearBook3.available = true;
     secondYearBook3.url = 'book-secondyear3.html';
 }
 
 const secondYearBook4 = books.find(book => book.id === 'y2-b4');
 if (secondYearBook4) {
-    secondYearBook4.title = 'PROCESSES, THREADS,AND PROCESS SCHEDULING';
+    secondYearBook4.title = 'Memory Management and Virtual Memory';
     secondYearBook4.available = true;
     secondYearBook4.url = 'book-secondyear4.html';
 }
