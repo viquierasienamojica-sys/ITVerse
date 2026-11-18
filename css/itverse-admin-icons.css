@@ -1,0 +1,5 @@
+/* Sidebar icons: consistent Lucide SVGs with ITVerse pink theme. */
+.sidebar nav button{display:flex;align-items:center;gap:12px;width:100%;transition:background .18s,color .18s}
+.sidebar nav button svg{width:18px;height:18px;stroke-width:2;flex-shrink:0;color:#b23a7b}
+.sidebar nav button.active svg,.sidebar nav button:hover svg{color:#a52971}
+@media(max-width:650px){.sidebar nav button{width:auto;gap:7px}.sidebar nav button svg{width:16px;height:16px}}
