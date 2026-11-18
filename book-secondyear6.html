@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>2nd Year Book 06 | Device and Input/Output Management | ITVerse</title><script src="js/itverse-auth-guard.js"></script><style>
+        :root {
+            --bg: #FDE4F2;
+            --header: #F9CEE7;
+            --sidebar: #F4B8DA;
+            --accent: #EEA1CD;
+            --hover: #E68BBE;
+            --ink: #612C4D
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            height: 70px;
+            background: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 12px;
+            border-bottom: 1px solid var(--accent)
+        }
+
+        header a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        header strong {
+            font-size: 21px
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .theme-toggle,
+        .navbtn,
+        .toc-link,
+        .toc-entry {
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .theme-toggle {
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            border-radius: 10px;
+            background: #fff5fb;
+            color: var(--ink);
+            font-weight: bold
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            height: calc(100dvh - 70px)
+        }
+
+        aside {
+            background: var(--sidebar);
+            padding: 20px 12px;
+            overflow: auto;
+            border-right: 1px solid var(--accent)
+        }
+
+        aside h2 {
+            font-size: 19px;
+            margin: 4px 6px 18px
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-radius: 7px;
+            padding: 13px 12px;
+            color: var(--ink);
+            line-height: 1.35;
+            margin-bottom: 5px
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: var(--hover)
+        }
+
+        .toc-link small {
+            white-space: nowrap
+        }
+
+        main {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px
+        }
+
+        .viewport {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start
+        }
+
+        .reader {
+            background: #fffafc;
+            color: #44283c;
+            width: min(100%, 900px);
+            min-height: 100%;
+            padding: 46px 58px;
+            border: 1px solid #edc2d8;
+            box-shadow: 0 5px 25px #6b365333;
+            border-radius: 4px
+        }
+
+        .reader h1 {
+            font-size: 29px;
+            color: #8d3769;
+            line-height: 1.25;
+            margin: 12px 0 22px
+        }
+
+        .reader h2 {
+            font-size: 18px;
+            color: #a33d79;
+            margin: 28px 0 12px
+        }
+
+        .reader p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 10px 0 18px
+        }
+
+        .reader .eyebrow {
+            color: #a24d7d;
+            font-weight: bold;
+            letter-spacing: .12em;
+            font-size: 12px
+        }
+
+        .reader pre {
+            background: #f7e8f1;
+            border: 1px solid #e8c3d7;
+            border-left: 4px solid #C34F91;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.6;
+            font-size: 14px;
+            color: #542c48
+        }
+
+        .reader .note {
+            background: #fff0f8;
+            border-left: 4px solid #EEA1CD;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 25px
+        }
+
+        .reader .note h2 {
+            margin: 6px 0
+        }
+
+        .reader .note p {
+            margin-bottom: 8px
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 4px 0 8px
+        }
+
+        .navbtn {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1px solid #d88eb8;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: bold
+        }
+
+        .navbtn:hover {
+            background: var(--hover)
+        }
+
+        .navbtn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        #counter {
+            min-width: 115px;
+            text-align: center;
+            font-weight: bold
+        }
+
+        .cover {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 570px;
+            gap: 24px
+        }
+
+        .cover-mark {
+            font-size: 13px;
+            letter-spacing: .18em;
+            font-weight: bold;
+            color: #b45b8c
+        }
+
+        .cover-icon {
+            font-size: 64px;
+            color: #c34f91
+        }
+
+        .cover h1 {
+            font-size: 44px;
+            margin: 0
+        }
+
+        .cover p {
+            font-size: 19px
+        }
+
+        .cover-bottom {
+            margin-top: 80px;
+            font-size: 14px;
+            color: #9b5b7f
+        }
+
+        .chapter-list h1 {
+            margin-bottom: 28px
+        }
+
+        .chapter-list h2 {
+            border-bottom: 1px solid #f0c8df;
+            padding-bottom: 8px
+        }
+
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            padding: 10px;
+            color: inherit;
+            font-size: 15px
+        }
+
+        .toc-entry:hover {
+            background: #f7e1ee;
+            border-radius: 6px
+        }
+
+        .reader.dark-mode {
+            background: #25212D;
+            color: #F8EAF5;
+            border-color: #51475D
+        }
+
+        .reader.dark-mode h1,
+        .reader.dark-mode h2 {
+            color: #ffc3e2
+        }
+
+        .reader.dark-mode .eyebrow {
+            color: #f5a9d1
+        }
+
+        .reader.dark-mode pre {
+            background: #342a3b;
+            color: #ffe5f4;
+            border-color: #76546d
+        }
+
+        .reader.dark-mode .note {
+            background: #382b3c;
+            border-color: #c777a4
+        }
+
+        .reader.dark-mode .toc-entry:hover {
+            background: #46334a
+        }
+
+        .theme-toggle.active {
+            background: #352b3c;
+            color: #f8eaf5
+        }
+
+        @media(max-width:700px) {
+            header {
+                height: auto;
+                min-height: 70px;
+                padding: 10px;
+                flex-wrap: wrap
+            }
+
+            header strong {
+                font-size: 17px
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                height: calc(100dvh - 100px)
+            }
+
+            aside {
+                max-height: 130px;
+                padding: 8px 12px;
+                border-right: 0;
+                border-bottom: 1px solid var(--accent)
+            }
+
+            aside h2 {
+                margin: 4px 6px
+            }
+
+            .toc-link {
+                display: inline-flex;
+                width: auto;
+                padding: 8px
+            }
+
+            main {
+                padding: 10px 6px
+            }
+
+            .reader {
+                padding: 24px 18px
+            }
+
+            .reader h1 {
+                font-size: 24px
+            }
+
+            .cover h1 {
+                font-size: 30px
+            }
+
+            .pager {
+                gap: 8px
+            }
+
+            .navbtn {
+                padding: 10px 12px
+            }
+        }
+    
+.book-page[hidden]{display:none!important}.reader img{max-width:100%;height:auto;display:block;margin:18px auto}.lesson p{overflow-wrap:anywhere}.toc-entry{cursor:default;pointer-events:none}.toc-entry:hover{background:transparent!important}.reader .lesson h1{margin-top:10px}.lesson .eyebrow{margin-bottom:8px}.reader .lesson p{margin:8px 0 12px;line-height:1.65}.reader .lesson h2{margin:20px 0 8px}.reader .chapter-heading{font-size:14px;color:#a24d7d;letter-spacing:.05em}.reader .lesson-divider{border:0;border-top:1px solid #efc8dc;margin:30px 0}.reader .diagram{font-family:monospace;white-space:pre-wrap;background:#fff1f8;border-left:3px solid #e68bbe;padding:12px}.reader.dark-mode .diagram{background:#382b3c}.reader .cover{min-height:570px}@media(max-width:700px){.layout{height:calc(100dvh - 100px)}.reader{padding:24px 18px}}</style><link href="css/itverse-reader-features.css" rel="stylesheet"/><style>aside{overflow-x:hidden!important}.toc-link{overflow-wrap:anywhere;word-break:normal;align-items:flex-start}.toc-link small{flex-shrink:0}.toc-link.active{background:#df86bc!important;font-weight:700}.source-diagram{margin:16px auto;text-align:center}.source-diagram img{width:min(100%,420px);height:auto;object-fit:contain}.chapter-list .toc-entry{pointer-events:none}.reader .lesson p{line-height:1.65}</style></head><body><header><a href="library.html">← Back to Library</a><strong>ITVerse</strong><div class="actions"><span>2nd Year · Book 06</span><button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button></div></header><div class="layout"><aside><h2>Table of Contents</h2><button class="toc-link" data-go="0">Cover <small>p. 1</small></button><button class="toc-link" data-go="1">Table of Contents <small>p. 2</small></button><button class="toc-link" data-go="2">Chapter 1: Introduction <small>p. 3</small></button><button class="toc-link" data-go="7">Chapter 2: Device Controllers and Interfaces <small>p. 8</small></button><button class="toc-link" data-go="12">Chapter 3: Display Interfaces and Graphics Output <small>p. 13</small></button><button class="toc-link" data-go="18">Chapter 4: Plug and Play <small>p. 19</small></button><button class="toc-link" data-go="23">Chapter 5: Power Management for Devices <small>p. 24</small></button><button class="toc-link" data-go="27">Chapter 6: Compare I/O Transfer Methods <small>p. 28</small></button></aside><main><div class="viewport" id="viewport"><div class="reader" id="reader"><section aria-label="Page 1 of 28" class="book-page"><div class="cover"><div class="cover-mark">ITVerse • 2ND YEAR BOOK 06</div><div class="cover-icon">📖</div><h1>Device and Input/Output Management</h1><p>A Practical Educational Book for BSIT Students</p><div class="cover-bottom">6 Chapters · Lesson Content</div></div></section><section aria-label="Page 2 of 28" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><h2>Chapter 1: Introduction</h2><div class="toc-entry"><span>1.1 Introduction</span><span>3</span></div><div class="toc-entry"><span>1.2 Understanding Computer Input and Output</span><span>4</span></div><div class="toc-entry"><span>1.3 The Role of I/O in a Computer System</span><span>4</span></div><div class="toc-entry"><span>1.4 Input Devices and Their Functions</span><span>5</span></div><div class="toc-entry"><span>1.5 Output Devices and Their Functions</span><span>6</span></div><div class="toc-entry"><span>1.6 Peripheral Devices and Ports</span><span>7</span></div><div class="toc-entry"><span>1.7 The I/O Subsystem</span><span>7</span></div><h2>Chapter 2: Device Controllers and Interfaces</h2><div class="toc-entry"><span>2.1 Device Controllers and Interfaces</span><span>8</span></div><div class="toc-entry"><span>2.2 Device Drivers</span><span>9</span></div><div class="toc-entry"><span>2.3 Interrupts and Interrupt Handling</span><span>10</span></div><div class="toc-entry"><span>2.4 Polling and Programmed I/O</span><span>10</span></div><div class="toc-entry"><span>2.5 Direct Memory Access</span><span>11</span></div><div class="toc-entry"><span>2.6 I/O Buses and Expansion Interfaces</span><span>12</span></div><h2>Chapter 3: Display Interfaces and Graphics Output</h2><div class="toc-entry"><span>2.7 USB Technology and Device Classes</span><span>13</span></div><div class="toc-entry"><span>3.1 Display Interfaces and Graphics Output</span><span>13</span></div><div class="toc-entry"><span>3.2 Storage Devices as I/O Devices</span><span>14</span></div><div class="toc-entry"><span>3.3 Printers and Printing Systems</span><span>15</span></div><div class="toc-entry"><span>3.4 Audio Input and Output</span><span>16</span></div><div class="toc-entry"><span>3.5 Network Interface Devices</span><span>17</span></div><div class="toc-entry"><span>3.6 Human Interface Devices</span><span>17</span></div><div class="toc-entry"><span>3.7 Device Installation and Configuration</span><span>18</span></div><h2>Chapter 4: Plug and Play</h2><div class="toc-entry"><span>4.1 Plug and Play</span><span>19</span></div><div class="toc-entry"><span>4.2 Device Management in Operating Systems</span><span>20</span></div><div class="toc-entry"><span>4.3 Buffering and Caching</span><span>20</span></div><div class="toc-entry"><span>4.4 Spooling and Queue Management</span><span>21</span></div><div class="toc-entry"><span>4.5 Synchronous and Asynchronous I/O</span><span>22</span></div><div class="toc-entry"><span>4.6 I/O Performance and Bottlenecks</span><span>23</span></div><div class="toc-entry"><span>4.7 Device Errors and Troubleshooting</span><span>23</span></div><h2>Chapter 5: Power Management for Devices</h2><div class="toc-entry"><span>5.1 Power Management for Devices</span><span>24</span></div><div class="toc-entry"><span>5.2 Security and Safe Device Use</span><span>25</span></div><div class="toc-entry"><span>5.3 Virtual Devices and Device Emulation</span><span>26</span></div><div class="toc-entry"><span>5.4 Emerging I/O Technologies</span><span>26</span></div><div class="toc-entry"><span>5.6 Building Practical I/O Knowledge</span><span>27</span></div><h2>Chapter 6: Compare I/O Transfer Methods</h2><div class="toc-entry"><span>6.1 Compare I/O Transfer Methods</span><span>28</span></div></div></section><section aria-label="Page 3 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.1 Introduction</h1><p>A computer is useful because it can receive information, process it, store it, and communicate results. Input and output (I/O) management is the part of computer-system organization that coordinates communication between the processor, memory, the operating system, and devices such as keyboards, displays, printers, cameras, storage drives, and network adapters.</p><p>This e-book explains how that communication works and why it needs careful management. Devices differ greatly in speed, data format, timing, and purpose. A keyboard produces small bursts of data when a person types; a storage drive transfers blocks; a display refreshes an image repeatedly; and a network adapter sends and receives packets. The operating system provides a consistent way for applications to use these different devices.</p><p>The lessons move from basic device categories to device controllers, drivers, interrupts, programmed I/O, direct memory access, interfaces, buffering, spooling, performance, troubleshooting, security, and emerging technologies. Diagrams summarize important relationships, while activities and assessments help learners apply the ideas.</p><p>Learning outcomes</p><h2>By the end of this guide, learners should be able to:</h2><p>• Distinguish input, output, and combined I/O devices. • Explain the roles of device controllers, drivers, and operating-system services. • Compare polling, interrupt-driven I/O, and direct memory access. • Describe common interfaces and device-management techniques. • Identify performance problems and apply a systematic troubleshooting process. • Explain safe, secure, and responsible device use.</p><p>How to study this guide</p><p>Read each lesson in order, study its diagram, and connect the concept to devices you use every day. Complete the activities before checking the assessment answers. When working with physical hardware, follow your instructor’s safety procedures and never open powered equipment.</p><p>Key idea: I/O management hides hardware complexity from applications while coordinating reliable, efficient communication with devices.</p></article></section><section aria-label="Page 4 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.2 Understanding Computer Input and Output</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Input is information entering a computer system, while output is information the system sends to a user or another system. A keyboard, microphone, scanner, and camera are common input devices. A monitor, speaker, and printer are output devices. Some devices perform both roles: a touchscreen displays images and detects touch, while a network adapter sends and receives data.</p><p>The I/O process begins when a device produces or requests data. The operating system coordinates the transfer, and the application interprets the information. For example, when a learner types a sentence, the keyboard reports key events, the driver communicates them to the operating system, and the active application updates its document. When the application displays the sentence, the graphics subsystem sends output to the screen.</p><h2>CONCEPT OVERVIEW</h2><p>User or application I/O software Device interface Physical device</p><p>Remember that a device’s category depends on the direction of information relative to the computer. A storage drive can read data into memory and write data from memory, so it is both an input and an output device.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.3 The Role of I/O in a Computer System</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>The I/O subsystem connects the central processing unit (CPU) and main memory to external and internal devices. Its purpose is to provide access to hardware without requiring every application to understand device-specific electrical signals, timing rules, or command formats.</p><p>Operating systems organize I/O through abstractions such as files, streams, device objects, and system calls. A program may request that data be read from a file without knowing whether the file is on a solid-state drive, a hard disk, or a network location. Device-specific code translates general requests into commands understood by hardware.</p><h2>CONCEPT OVERVIEW</h2><p>Application request Operating-system service Driver and controller Device operation</p><p>I/O management also handles sharing, access permissions, error reporting, buffering, scheduling, and performance. Without these services, devices could compete unpredictably for resources or deliver data at the wrong time.</p></article></section><section aria-label="Page 5 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.4 Input Devices and Their Functions</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Input devices convert actions or physical information into data that a computer can process. Keyboards generate key events; pointing devices report movement and clicks; scanners convert printed images into digital representations; microphones convert sound waves into electrical signals that are sampled; and cameras capture light through image sensors.</p><p>Different input devices have different accuracy, resolution, and sampling characteristics. A barcode reader is designed to capture encoded patterns quickly, while a graphics tablet records stylus position and pressure. Biometric sensors may capture fingerprints or facial features, so they require strong privacy and security protections.</p><h2>CONCEPT OVERVIEW</h2><p>Physical action or signal Sensor conversion Digital data Application input</p><p>Input quality affects the usefulness of the resulting data. Calibration, cleaning, correct drivers, appropriate settings, and user technique can all improve reliability. When input is inaccurate, the problem may originate in the sensor, connection, driver, or application rather than in the computer’s processor.</p></article></section><section aria-label="Page 6 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.5 Output Devices and Their Functions</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Output devices present processed information in a form that people or other systems can use. Monitors display text and graphics, printers create physical copies, speakers reproduce sound, and projectors enlarge visual output for a group. Some output devices provide feedback to machines rather than directly to people.</p><p>Output quality can be measured in different ways. Displays are described by resolution, refresh rate, brightness, and color capability. Printers may be evaluated by speed, resolution, color accuracy, and media support. Speakers are affected by frequency response, power, and acoustic environment.</p><h2>CONCEPT OVERVIEW</h2><p>Application data Formatting and driver Device signal Visible or audible result</p><p>The operating system and applications must format output for the target device. A page layout sent to a printer is not identical to the pixel data sent to a monitor. Drivers and device services translate a common request into device-specific instructions.</p></article></section><section aria-label="Page 7 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.6 Peripheral Devices and Ports</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A peripheral is a device connected to a computer to add a function or extend its capabilities. Examples include external drives, webcams, keyboards, printers, headsets, game controllers, and docking stations. A port is the physical or logical connection point used to attach a device or establish communication.</p><p>Ports may carry data, power, video, or several of these at once. USB is widely used for general peripherals; HDMI and DisplayPort commonly carry digital video and audio; Ethernet connects network equipment; and audio jacks connect microphones or headphones. The connector shape alone does not always reveal the supported speed or features.</p><h2>CONCEPT OVERVIEW</h2><p>Peripheral Connector and cable Host port Operating system</p><p>Before connecting a peripheral, check compatibility, power requirements, supported standards, and operating-system support. A cable may fit physically but still fail to provide the speed or functions expected if it supports an older standard.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.7 The I/O Subsystem</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>The I/O subsystem is the combination of operating-system components and hardware mechanisms that manage device communication. It commonly includes system-call interfaces, device-independent services, device drivers, interrupt handlers, device controllers, and the devices themselves.</p><p>A layered design separates general functions from hardware-specific details. Device-independent code can manage naming, permissions, buffering, and error conventions. A driver handles the commands and status information for a particular device or family. The controller performs low-level operations and reports completion or faults.</p><h2>CONCEPT OVERVIEW</h2><p>Application interface Device-independent I/O Device driver Controller and device</p><p>This organization improves portability and maintainability. A new device may require a new driver while applications continue using familiar operating-system interfaces. The exact architecture differs among operating systems, but the goal of controlled abstraction is shared.</p></article></section><section aria-label="Page 8 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: Device Controllers and Interfaces</div><h1>2.1 Device Controllers and Interfaces</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A device controller is hardware logic that manages a device or a group of related devices. It may contain control registers, status registers, data registers, buffers, and logic for coordinating transfers. The CPU or driver communicates with the controller through a defined interface.</p><p>Control information tells a controller what operation to perform. Status information reports whether it is ready, busy, or experiencing an error. Data registers or memory-mapped regions provide a path for transferring information. Some controllers include their own processors and substantial buffering.</p><h2>CONCEPT OVERVIEW</h2><p>CPU / driver Control and status registers Device controller Attached device</p><p>The controller reduces the need for the CPU to manage every electrical detail. However, software must still follow the controller’s programming model, including valid command sequences, timing rules, and error handling.</p></article></section><section aria-label="Page 9 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: Device Controllers and Interfaces</div><h1>2.2 Device Drivers</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A device driver is software that allows an operating system to communicate with a particular hardware device. It translates general operating-system requests into commands and data formats that the device understands, and it reports results back to the operating system.</p><p>Drivers may be included with an operating system, supplied by a device manufacturer, or installed through a trusted update mechanism. A driver can operate in kernel mode or user mode depending on the operating-system design and the device’s requirements. Kernel-mode drivers can have broad privileges, so defects can affect system stability and security.</p><h2>CONCEPT OVERVIEW</h2><p>Application request Operating-system I/O layer Device driver Hardware interface</p><p>Use drivers that match the device model, operating-system version, and system architecture. Obtain them from the operating-system update service or the manufacturer’s official support channel. Avoid unknown driver-download sites and do not install a driver simply because its name looks similar.</p></article></section><section aria-label="Page 10 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: Device Controllers and Interfaces</div><h1>2.3 Interrupts and Interrupt Handling</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>An interrupt is a signal that asks the processor to pause its current instruction flow and respond to an event. Devices use interrupts to report events such as data arrival, transfer completion, or an error. Interrupts allow the CPU to do other work instead of repeatedly checking a device.</p><p>When an interrupt occurs, the processor saves enough execution state to resume later and transfers control to an interrupt handler. The handler identifies the source, acknowledges or services the event, records relevant information, and schedules any work that should happen outside the most time-critical part of the handler.</p><h2>CONCEPT OVERVIEW</h2><p>Device event Interrupt signal Interrupt handler Resume normal work</p><p>Interrupt handling must be efficient. A handler that performs too much work can delay other events and reduce system responsiveness. Modern systems often defer lengthy processing to a later software mechanism such as a tasklet, work queue, or equivalent deferred procedure.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 2: Device Controllers and Interfaces</div><h1>2.4 Polling and Programmed I/O</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Polling is a method in which the CPU repeatedly checks a device’s status to determine whether it is ready for a transfer or has completed an operation. Programmed I/O is a broader approach in which the CPU executes instructions to move data between a device interface and memory or registers.</p><p>Polling is straightforward and can be suitable when a device responds quickly or when the system must check at very short intervals. However, frequent status checks consume processor time. If the device is slow, the CPU may waste many cycles waiting for a change.</p><h2>CONCEPT OVERVIEW</h2><p>CPU checks status Device ready? CPU transfers data Repeat or continue</p><p>The choice depends on workload, hardware design, latency requirements, and power constraints. Polling can be efficient in specialized high-performance systems when carefully tuned, but interrupt-driven approaches are often preferable for events that occur unpredictably.</p></article></section><section aria-label="Page 11 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: Device Controllers and Interfaces</div><h1>2.5 Direct Memory Access</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Direct memory access (DMA) allows a device or DMA-capable controller to transfer data directly between the device and main memory with limited ongoing CPU involvement. The CPU typically prepares the transfer by specifying a memory location, direction, size, and other control information.</p><p>After setup, the DMA engine performs the transfer and signals completion, often through an interrupt. DMA is valuable for high-volume transfers such as storage, networking, and audio/video data because it avoids requiring the CPU to copy every unit of information.</p><h2>CONCEPT OVERVIEW</h2><p>CPU configures transfer DMA engine moves data Device and memory exchange Completion notification</p><p>DMA requires careful coordination. The operating system and hardware must handle memory protection, address translation, cache coherence, and ownership of buffers. Incorrect DMA configuration can cause data corruption or expose memory to an unsafe device.</p></article></section><section aria-label="Page 12 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: Device Controllers and Interfaces</div><h1>2.6 I/O Buses and Expansion Interfaces</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A bus is a communication pathway that connects components and carries data, addresses, and control signals. Modern computers use multiple interconnects, including processor-memory links and peripheral interfaces. Expansion interfaces allow additional devices such as graphics cards, network adapters, and storage controllers to connect.</p><p>PCI Express (PCIe) is a high-speed serial expansion interface that uses lanes to provide bandwidth. A device may use one or more lanes, and the available throughput depends on the PCIe generation, lane count, and implementation. Other interfaces serve specialized or external connection needs.</p><h2>CONCEPT OVERVIEW</h2><p>Processor and memory System interconnect Expansion interface Peripheral card</p><p>Compatibility involves more than physical fit. Check the slot size, lane configuration, supported generation, firmware support, power connector, cooling, and operating-system driver. A device may function in a compatible slot but operate at a lower negotiated speed.</p></article></section><section aria-label="Page 13 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: Device Controllers and Interfaces</div><h1>2.7 USB Technology and Device Classes</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Universal Serial Bus (USB) is a common interface for connecting peripherals. It supports devices such as keyboards, mice, cameras, storage devices, printers, audio interfaces, and many other accessories. USB standards define signaling, data rates, power behavior, and connector capabilities.</p><p>USB devices are organized using descriptors and classes that help the host identify their functions. Common device classes include human interface devices, mass storage, audio, video, and communications. Class support can allow a device to work with a standard driver rather than requiring a unique driver for every model.</p><h2>CONCEPT OVERVIEW</h2><p>USB host Cable and connector USB device interface Peripheral function</p><p>USB-C describes a connector shape, not one guaranteed transfer speed or feature set. A USB-C port may support different data rates, charging capabilities, or alternate modes depending on the host, cable, and device. Read the specifications rather than assuming all USB-C connections are equivalent.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 3: Display Interfaces and Graphics Output</div><h1>3.1 Display Interfaces and Graphics Output</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A display interface transfers image information from a computer’s graphics system to a monitor, television, or projector. HDMI and DisplayPort are common digital interfaces. They can carry high-resolution video and, depending on the version and equipment, audio and additional display features.</p><p>Graphics output depends on the graphics processing unit, display engine, cable, port, monitor, and software configuration. Resolution describes the number of pixels, while refresh rate describes how often the displayed image is updated. Color depth and compression also affect bandwidth requirements.</p><h2>CONCEPT OVERVIEW</h2><p>Graphics processor Display interface Cable or adapter Monitor or projector</p><p>When a display does not work as expected, check the selected input, cable, adapter, port capability, refresh-rate setting, resolution, and graphics driver. Some laptops have ports connected to different graphics processors or support external displays only through particular connectors.</p></article></section><section aria-label="Page 14 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Display Interfaces and Graphics Output</div><h1>3.2 Storage Devices as I/O Devices</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Storage devices are both input and output devices because they read data into the computer and write data from the computer. Hard disk drives store data magnetically on rotating platters, while solid-state drives use flash memory and have no moving parts.</p><p>Storage interfaces and protocols influence how devices communicate. SATA is common in many internal drives, while NVMe uses PCIe to provide a high-performance path for solid-state storage. External storage may use USB or other interfaces. Performance depends on more than the interface: controller design, flash type, workload, queue depth, and thermal conditions matter.</p><h2>CONCEPT OVERVIEW</h2><p>Application read or write Storage driver and queue Storage controller Drive media</p><p>Operating systems coordinate storage requests, manage queues, enforce access permissions, and maintain file-system consistency. Safe removal procedures are important for removable drives because pending writes may still be in progress.</p></article></section><section aria-label="Page 15 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Display Interfaces and Graphics Output</div><h1>3.3 Printers and Printing Systems</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A printer converts digital documents into physical output. Inkjet printers place droplets of ink on paper, while laser printers use an electro-photographic process involving toner. Other printer types are designed for labels, receipts, photographs, or specialized production.</p><p>Printing usually involves several software stages. An application creates a print job, the operating system or print service formats it, a queue holds it until the printer is ready, and a driver or rendering component translates it into printer-specific instructions.</p><h2>CONCEPT OVERVIEW</h2><p>Application print request Print service and queue Printer driver Printed document</p><p>Common problems include paper jams, low supplies, offline status, network disconnection, incompatible drivers, and jobs stuck in the queue. Check the printer display, paper path, connection, queue status, and official driver before reinstalling software.</p></article></section><section aria-label="Page 16 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Display Interfaces and Graphics Output</div><h1>3.4 Audio Input and Output</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Audio input captures sound through microphones or line-level connections. Audio output sends digital audio to speakers, headphones, or other equipment. A sound device converts between digital samples and analog signals using analog-to-digital and digital-to-analog conversion.</p><p>Audio quality depends on sampling rate, bit depth, channel count, microphone placement, noise, and the quality of the audio path. Operating systems may provide audio services that mix multiple applications, apply volume controls, and route sound to selected devices.</p><h2>CONCEPT OVERVIEW</h2><p>Microphone or application Audio processing Sound interface Speaker or headphones</p><p>If audio fails, verify the selected input or output device, mute settings, application permissions, cable connections, device volume, and driver status. For microphones, check privacy settings and confirm that the correct device is selected in the application.</p></article></section><section aria-label="Page 17 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Display Interfaces and Graphics Output</div><h1>3.5 Network Interface Devices</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A network interface connects a computer to a wired or wireless network. Ethernet adapters use cables and network equipment, while Wi-Fi adapters communicate through radio signals. These devices send and receive frames or packets and work with protocol software to provide network communication.</p><p>A network interface has hardware addresses and configuration settings. The operating system manages the interface, while network protocols handle addressing, routing, error detection, and higher-level communication. Wireless performance is affected by signal strength, interference, distance, and access-point capacity.</p><h2>CONCEPT OVERVIEW</h2><p>Application data Network stack and driver Network adapter Network medium</p><p>Troubleshooting should proceed from the physical or radio connection to configuration and then to the remote service. Check link lights or Wi-Fi status, airplane mode, adapter enablement, IP configuration, signal quality, and whether other devices can reach the same network.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 3: Display Interfaces and Graphics Output</div><h1>3.6 Human Interface Devices</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Human interface devices (HIDs) allow people to control or interact with computers. Keyboards, mice, touchpads, game controllers, joysticks, styluses, and many accessibility devices fall into this broad category. They transform human actions into events that applications can interpret.</p><p>The HID concept includes more than traditional keyboards and mice. Adaptive switches, eye-tracking systems, alternative keyboards, and specialized controllers can provide access for people with different physical abilities. Standardized reports and operating-system support can make many devices usable without a custom driver.</p><h2>CONCEPT OVERVIEW</h2><p>Human action HID sensor or control Input report Application response</p><p>Good input design considers comfort, accuracy, accessibility, and safety. Repetitive movement and poor posture can cause discomfort. Users should adjust device placement and sensitivity and use accessibility settings when they improve control.</p></article></section><section aria-label="Page 18 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Display Interfaces and Graphics Output</div><h1>3.7 Device Installation and Configuration</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Device installation includes connecting hardware, allowing the operating system to detect it, installing or selecting suitable drivers, and configuring options. Some devices work automatically through built-in class drivers, while others require manufacturer software or additional setup.</p><p>Configuration may include selecting default devices, setting resolution, choosing audio formats, assigning buttons, calibrating sensors, and managing power behavior. A device can be physically connected but unavailable because it is disabled, unsupported, or incorrectly configured.</p><h2>CONCEPT OVERVIEW</h2><p>Check compatibility Connect device Detect and install driver Configure and test</p><p>A reliable installation process begins with compatibility checks and trusted software sources. Record the device model and operating-system version, follow the manufacturer’s instructions, restart only when needed, and test the device using a simple known-good application.</p></article></section><section aria-label="Page 19 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: Plug and Play</div><h1>4.1 Plug and Play</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Plug and Play (PnP) is a set of hardware and operating-system capabilities that help detect, identify, configure, and make devices available with minimal manual intervention. When a device is connected, the system may identify it, assign resources, and load an appropriate driver.</p><p>PnP reduces configuration effort, but it does not guarantee that every device will work automatically. The operating system still needs compatible support, and a device may require permissions, firmware, a vendor utility, or a restart.</p><h2>CONCEPT OVERVIEW</h2><p>Device connected System detects identity Resources and driver</p><p>configured Device ready</p><p>When PnP fails, check the connection, device power, operating-system updates, device manager or equivalent system utility, and manufacturer documentation. Avoid repeatedly disconnecting a device while firmware updates or data transfers are in progress.</p></article></section><section aria-label="Page 20 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: Plug and Play</div><h1>4.2 Device Management in Operating Systems</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>An operating system manages devices by tracking their state, coordinating access, and providing common services to applications. It may maintain device objects, queues, access controls, power states, and status information.</p><p>Device management must balance fairness, performance, and reliability. Multiple applications may request the same printer or storage device. The operating system determines how requests are queued, whether access is permitted, and how errors are reported.</p><h2>CONCEPT OVERVIEW</h2><p>Applications request resources OS checks policy and state Requests are scheduled Device is monitored</p><p>Administrative tools help users inspect device status, enable or disable hardware, update drivers, view events, and adjust settings. Changes should be made carefully, especially when disabling a device that is needed for networking, input, or system recovery.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 4: Plug and Play</div><h1>4.3 Buffering and Caching</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A buffer is a temporary memory area that holds data while it moves between components operating at different speeds or in different-sized units. Buffering helps smooth bursts, match transfer sizes, and allow a producer and consumer to work at different rates.</p><p>A cache stores copies of data that may be needed again, with the goal of reducing access time. For example, a file-system cache can keep recently used disk data in memory. A buffer primarily helps manage transfer; a cache primarily helps avoid repeating slower work, although one memory area can serve both roles.</p><h2>CONCEPT OVERVIEW</h2><p>Producer creates data Buffer holds transfer Consumer processes data Cache may reuse data</p><p>Caching introduces consistency questions. If data changes in memory but has not yet been written to storage, the system must track the update and eventually make it persistent. Applications should use appropriate flush or synchronization mechanisms when durability matters.</p></article></section><section aria-label="Page 21 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: Plug and Play</div><h1>4.4 Spooling and Queue Management</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Spooling places work in a queue so a device can process it at its own pace. Printing is a familiar example: several users can submit jobs while a printer completes them one at a time. The spooler stores job information and coordinates delivery to the printer.</p><p>Queues help manage shared devices and separate application speed from device speed. Queue policies may determine job order, priority, retry behavior, and cancellation. A print queue can show whether a job is waiting, printing, paused, or failed.</p><h2>CONCEPT OVERVIEW</h2><p>Applications submit jobs Spool queue stores work Scheduler selects job Device processes output</p><p>A stuck queue may result from a damaged job, offline printer, driver problem, or communication failure. Administrators should identify the cause before clearing the queue, because deleting queued work may remove documents users still need.</p></article></section><section aria-label="Page 22 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: Plug and Play</div><h1>4.5 Synchronous and Asynchronous I/O</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Synchronous I/O generally means that a requesting operation waits until the requested I/O has completed or reached a defined result. Asynchronous I/O allows a program to start an operation and continue other work while the system completes the transfer and later reports the result.</p><p>Asynchronous operations can improve responsiveness and throughput, especially when many operations wait on storage or networks. They require careful handling of completion notifications, buffers, cancellation, and errors. The application must not reuse a buffer before the operation is finished.</p><h2>CONCEPT OVERVIEW</h2><p>Request submitted Operation waits or continues I/O completes Result is reported</p><p>The right model depends on the application. A simple utility may benefit from synchronous calls because they are easy to reason about. A high-throughput server may use asynchronous operations to keep many requests in progress without dedicating a thread to each wait.</p></article></section><section aria-label="Page 23 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: Plug and Play</div><h1>4.6 I/O Performance and Bottlenecks</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>I/O performance describes how quickly and consistently a system moves data between devices and memory or applications. Important measures include throughput, latency, operations per second, queue depth, and utilization. A high throughput does not always mean low latency.</p><p>A bottleneck occurs when one component limits the performance of the whole path. A fast storage drive cannot deliver its full benefit if the connection is slow, the workload is highly random, the CPU is overloaded, or the application issues requests inefficiently.</p><h2>CONCEPT OVERVIEW</h2><p>throughput</p><p>Workload generates requests Requests enter queue Device services requests Measure latency and</p><p>Performance analysis should begin with measurement. Identify the workload, record baseline behavior, inspect device utilization and queue length, and change one factor at a time. Avoid assuming that buying a faster device will solve a problem caused by software or configuration.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 4: Plug and Play</div><h1>4.7 Device Errors and Troubleshooting</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Device errors can be caused by loose cables, insufficient power, damaged hardware, outdated drivers, incorrect settings, firmware defects, overheating, or application problems. A useful troubleshooting method narrows the possible causes instead of changing many settings at once.</p><p>Start by describing the symptom and when it occurs. Check power and connections, confirm the device is enabled, inspect system status messages, and test with a known-good cable, port, or application when safe. Review recent changes such as updates or new software.</p><h2>CONCEPT OVERVIEW</h2><p>Identify symptom Check simple causes Test one variable Verify and document fix</p><p>Document each test and its result. If a device is damaged, produces unusual smells or heat, or exposes electrical components, stop using it and seek qualified assistance. Never open equipment that is connected to power unless trained and authorized.</p></article></section><section aria-label="Page 24 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Power Management for Devices</div><h1>5.1 Power Management for Devices</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Power management reduces energy use and heat while keeping devices available when needed. Computers may place displays, storage devices, wireless adapters, and other peripherals into low-power states after periods of inactivity.</p><p>Power states can include active operation, idle, sleep, and off states. The exact states and transitions depend on the device and platform. A device must be able to wake or resume safely when the system or user requests it.</p><h2>CONCEPT OVERVIEW</h2><p>Active use Idle detection Low-power state Wake and resume</p><p>Aggressive power saving can sometimes cause delayed reconnection, dropped wireless links, or devices that fail to resume. Balance battery life with reliability by using supported settings and updating firmware or drivers when the manufacturer documents a relevant fix.</p></article></section><section aria-label="Page 25 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Power Management for Devices</div><h1>5.2 Security and Safe Device Use</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>Devices can create security risks because they connect the computer to the outside world and may process sensitive information. Removable storage can carry malware or expose confidential files; cameras and microphones can capture private activity; and insecure peripherals may contain vulnerable firmware.</p><p>Use trusted devices and cables, keep operating systems and firmware updated, restrict unnecessary permissions, and scan removable media according to organizational policy. Lock screens when away and disconnect devices that are not needed. Sensitive data should be encrypted when appropriate.</p><h2>CONCEPT OVERVIEW</h2><p>Assess device trust Limit permissions Update and protect Monitor and disconnect safely</p><p>Do not plug unknown USB devices into a personal or school computer. Avoid charging from untrusted public ports when data connections may be exposed; use a trusted charger or a charge-only cable where suitable. Follow institutional rules for handling personal and work data.</p></article></section><section aria-label="Page 26 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Power Management for Devices</div><h1>5.3 Virtual Devices and Device Emulation</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>A virtual device is a software representation of a hardware device or interface. Virtual machines may be presented with virtual disks, network adapters, display devices, and input devices even though the underlying hardware is shared by the host computer.</p><p>Emulation imitates the behavior of another device or platform so software designed for one environment can run in another. Virtualization and emulation are useful for testing, compatibility, isolation, and cloud computing, but they can add overhead or omit hardware-specific features.</p><h2>CONCEPT OVERVIEW</h2><p>Guest application Virtual device interface Hypervisor or emulator Physical host hardware</p><p>Virtual device management includes allocating resources, selecting virtual drivers, connecting virtual devices to host resources, and controlling permissions. Administrators should avoid exposing unnecessary host devices to virtual machines, especially when the guest environment is untrusted.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 5: Power Management for Devices</div><h1>5.4 Emerging I/O Technologies</h1><p>Learning focus: Understand the purpose, operation, and practical importance of this part of device and I/O management.</p><p>I/O continues to evolve as devices become faster, smaller, more connected, and more specialized. Examples include high-speed PCIe storage, Thunderbolt connections, advanced wireless interfaces, high-resolution displays, haptic feedback, depth cameras, and sensor-rich wearable devices.</p><p>New technologies create opportunities and new management challenges. Higher bandwidth can increase power and thermal demands. Wireless devices may face interference and privacy concerns. AI-enabled peripherals may process audio or images locally, making data handling and transparency especially important.</p><h2>CONCEPT OVERVIEW</h2><p>New sensor or peripheral Modern interface OS and driver support New user capability</p><p>When evaluating a new I/O technology, consider compatibility, standards support, security, accessibility, energy use, lifecycle cost, and whether the new capability solves a real need. A newer connector or higher advertised speed is not automatically the best choice for every system.</p></article></section><section aria-label="Page 27 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Power Management for Devices</div><h1>5.6 Building Practical I/O Knowledge</h1><p>Hands-on observation can make abstract concepts easier to understand. The following mini-investigations can be completed using a computer without opening its case.</p><p>Device inventory</p><p>List the input, output, and combined I/O devices connected to a computer. Record how each one connects and what task it performs. Identify whether the connection is wired, wireless, internal, or virtual.</p><p>Operating-system inspection</p><p>Open the device-management utility available on your operating system. Observe device categories, status messages, driver information, and available configuration options. Do not uninstall or disable hardware as part of this observation exercise.</p><p>Transfer-path mapping</p><p>Choose a simple task such as saving a document, recording audio, printing a file, or copying a photo to removable storage. Draw the path from the application through the operating system and driver to the physical device.</p><p>Performance observation</p><p>Compare the time needed to copy a small group of files with the time needed to copy one large file of similar total size. Record the results and consider how file size, device speed, caching, and workload affect performance.</p><p>Reflection</p><p>Which concept became clearer after observing a real device? Which part of the process remains difficult to explain? Write a short reflection and identify a reliable resource that could answer your question.</p></article></section><section aria-label="Page 28 of 28" class="book-page" hidden=""><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 6: Compare I/O Transfer Methods</div><h1>6.1 Compare I/O Transfer Methods</h1><p>Task</p><p>Prepare a comparison of polling, interrupt-driven I/O, and DMA. For each method, describe who moves the data, how the CPU is involved, one advantage, one limitation, and a suitable example.</p><p>Success criteria</p><p>The comparison should correctly distinguish status checking, event notification, and direct device-to-memory transfer.</p><p>Record your work</p><p>Write your observations, include a labeled diagram or table when appropriate, and conclude with one lesson learned. Use clear technical vocabulary and cite any external information you consult.</p><p>Plan a Safe Device Installation</p><p>Task</p><p>Write a step-by-step checklist for installing a new USB webcam or printer. Include compatibility checks, trusted driver sources, connection, configuration, testing, privacy, and troubleshooting.</p><p>Success criteria</p><p>The checklist should prioritize official software sources, safe connection practices, and a test that confirms the device works.</p><p>Record your work</p><p>Write your observations, include a labeled diagram or table when appropriate, and conclude with one lesson learned. Use clear technical vocabulary and cite any external information you consult.</p></article></section></div></div><div class="pager"><button class="navbtn" id="prev">← Previous</button><span id="counter">Page 1 of 30</span><button class="navbtn" id="next">Next →</button></div></main></div><script>const pages=[...document.querySelectorAll('.book-page')],links=[...document.querySelectorAll('.toc-link')];const viewport=document.getElementById('viewport'),counter=document.getElementById('counter'),prev=document.getElementById('prev'),next=document.getElementById('next'),reader=document.getElementById('reader'),theme=document.getElementById('themeToggle');let current=0;function go(i){current=Math.max(0,Math.min(pages.length-1,i));pages.forEach((p,n)=>p.hidden=n!==current);counter.textContent=`Page ${current+1} of ${pages.length}`;prev.disabled=current===0;next.disabled=current===pages.length-1;let active=links[0];for(const link of links){if(Number(link.dataset.go)<=current)active=link;else break;}links.forEach(link=>{link.classList.toggle('active',link===active);if(link===active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});viewport.scrollTop=0;}document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));prev.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));const saved=localStorage.getItem('ITVerse-reader-theme');function setTheme(dark){reader.classList.toggle('dark-mode',dark);theme.classList.toggle('active',dark);theme.textContent=dark?'☀️ Light Mode':'🌙 Dark Mode';localStorage.setItem('ITVerse-reader-theme',dark?'dark':'light')}setTheme(saved==='dark');theme.addEventListener('click',()=>setTheme(!reader.classList.contains('dark-mode')));go(0);</script><script src="js/itverse-reader-features.js"></script><script id="itverse-cover-first-fix">
+/* Always begin a newly opened book on its cover, even if browser restores scroll. */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+function resetBookToCover() {
+  if (typeof go === 'function') go(0);
+  const v = document.getElementById('viewport');
+  if (v) v.scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+window.addEventListener('pageshow', () => {
+  resetBookToCover();
+  requestAnimationFrame(resetBookToCover);
+});
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', resetBookToCover, {once:true});
+} else { resetBookToCover(); }
+</script></body></html>

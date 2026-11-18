@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>2nd Year Book 07 | Deadlocks and Resource Allocation | ITVerse</title><script src="js/itverse-auth-guard.js"></script><style>
+        :root {
+            --bg: #FDE4F2;
+            --header: #F9CEE7;
+            --sidebar: #F4B8DA;
+            --accent: #EEA1CD;
+            --hover: #E68BBE;
+            --ink: #612C4D
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            height: 70px;
+            background: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 12px;
+            border-bottom: 1px solid var(--accent)
+        }
+
+        header a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        header strong {
+            font-size: 21px
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .theme-toggle,
+        .navbtn,
+        .toc-link,
+        .toc-entry {
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .theme-toggle {
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            border-radius: 10px;
+            background: #fff5fb;
+            color: var(--ink);
+            font-weight: bold
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            height: calc(100dvh - 70px)
+        }
+
+        aside {
+            background: var(--sidebar);
+            padding: 20px 12px;
+            overflow: auto;
+            border-right: 1px solid var(--accent)
+        }
+
+        aside h2 {
+            font-size: 19px;
+            margin: 4px 6px 18px
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-radius: 7px;
+            padding: 13px 12px;
+            color: var(--ink);
+            line-height: 1.35;
+            margin-bottom: 5px
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: var(--hover)
+        }
+
+        .toc-link small {
+            white-space: nowrap
+        }
+
+        main {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px
+        }
+
+        .viewport {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start
+        }
+
+        .reader {
+            background: #fffafc;
+            color: #44283c;
+            width: min(100%, 900px);
+            min-height: 100%;
+            padding: 46px 58px;
+            border: 1px solid #edc2d8;
+            box-shadow: 0 5px 25px #6b365333;
+            border-radius: 4px
+        }
+
+        .reader h1 {
+            font-size: 29px;
+            color: #8d3769;
+            line-height: 1.25;
+            margin: 12px 0 22px
+        }
+
+        .reader h2 {
+            font-size: 18px;
+            color: #a33d79;
+            margin: 28px 0 12px
+        }
+
+        .reader p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 10px 0 18px
+        }
+
+        .reader .eyebrow {
+            color: #a24d7d;
+            font-weight: bold;
+            letter-spacing: .12em;
+            font-size: 12px
+        }
+
+        .reader pre {
+            background: #f7e8f1;
+            border: 1px solid #e8c3d7;
+            border-left: 4px solid #C34F91;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.6;
+            font-size: 14px;
+            color: #542c48
+        }
+
+        .reader .note {
+            background: #fff0f8;
+            border-left: 4px solid #EEA1CD;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 25px
+        }
+
+        .reader .note h2 {
+            margin: 6px 0
+        }
+
+        .reader .note p {
+            margin-bottom: 8px
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 4px 0 8px
+        }
+
+        .navbtn {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1px solid #d88eb8;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: bold
+        }
+
+        .navbtn:hover {
+            background: var(--hover)
+        }
+
+        .navbtn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        #counter {
+            min-width: 115px;
+            text-align: center;
+            font-weight: bold
+        }
+
+        .cover {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 570px;
+            gap: 24px
+        }
+
+        .cover-mark {
+            font-size: 13px;
+            letter-spacing: .18em;
+            font-weight: bold;
+            color: #b45b8c
+        }
+
+        .cover-icon {
+            font-size: 64px;
+            color: #c34f91
+        }
+
+        .cover h1 {
+            font-size: 44px;
+            margin: 0
+        }
+
+        .cover p {
+            font-size: 19px
+        }
+
+        .cover-bottom {
+            margin-top: 80px;
+            font-size: 14px;
+            color: #9b5b7f
+        }
+
+        .chapter-list h1 {
+            margin-bottom: 28px
+        }
+
+        .chapter-list h2 {
+            border-bottom: 1px solid #f0c8df;
+            padding-bottom: 8px
+        }
+
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            padding: 10px;
+            color: inherit;
+            font-size: 15px
+        }
+
+        .toc-entry:hover {
+            background: #f7e1ee;
+            border-radius: 6px
+        }
+
+        .reader.dark-mode {
+            background: #25212D;
+            color: #F8EAF5;
+            border-color: #51475D
+        }
+
+        .reader.dark-mode h1,
+        .reader.dark-mode h2 {
+            color: #ffc3e2
+        }
+
+        .reader.dark-mode .eyebrow {
+            color: #f5a9d1
+        }
+
+        .reader.dark-mode pre {
+            background: #342a3b;
+            color: #ffe5f4;
+            border-color: #76546d
+        }
+
+        .reader.dark-mode .note {
+            background: #382b3c;
+            border-color: #c777a4
+        }
+
+        .reader.dark-mode .toc-entry:hover {
+            background: #46334a
+        }
+
+        .theme-toggle.active {
+            background: #352b3c;
+            color: #f8eaf5
+        }
+
+        @media(max-width:700px) {
+            header {
+                height: auto;
+                min-height: 70px;
+                padding: 10px;
+                flex-wrap: wrap
+            }
+
+            header strong {
+                font-size: 17px
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                height: calc(100dvh - 100px)
+            }
+
+            aside {
+                max-height: 130px;
+                padding: 8px 12px;
+                border-right: 0;
+                border-bottom: 1px solid var(--accent)
+            }
+
+            aside h2 {
+                margin: 4px 6px
+            }
+
+            .toc-link {
+                display: inline-flex;
+                width: auto;
+                padding: 8px
+            }
+
+            main {
+                padding: 10px 6px
+            }
+
+            .reader {
+                padding: 24px 18px
+            }
+
+            .reader h1 {
+                font-size: 24px
+            }
+
+            .cover h1 {
+                font-size: 30px
+            }
+
+            .pager {
+                gap: 8px
+            }
+
+            .navbtn {
+                padding: 10px 12px
+            }
+        }
+    
+.book-page[hidden]{display:none!important}.reader img{max-width:100%;height:auto;display:block;margin:18px auto}.lesson p{overflow-wrap:anywhere}.toc-entry{cursor:default;pointer-events:none}.toc-entry:hover{background:transparent!important}.reader .lesson h1{margin-top:10px}.lesson .eyebrow{margin-bottom:8px}.reader .lesson p{margin:8px 0 12px;line-height:1.65}.reader .lesson h2{margin:20px 0 8px}.reader .chapter-heading{font-size:14px;color:#a24d7d;letter-spacing:.05em}.reader .lesson-divider{border:0;border-top:1px solid #efc8dc;margin:30px 0}.reader .diagram{font-family:monospace;white-space:pre-wrap;background:#fff1f8;border-left:3px solid #e68bbe;padding:12px}.reader.dark-mode .diagram{background:#382b3c}.reader .cover{min-height:570px}@media(max-width:700px){.layout{height:calc(100dvh - 100px)}.reader{padding:24px 18px}}</style><link href="css/itverse-reader-features.css" rel="stylesheet"/><style>aside{overflow-x:hidden!important}.toc-link{overflow-wrap:anywhere;word-break:normal;align-items:flex-start}.toc-link small{flex-shrink:0}.toc-link.active{background:#df86bc!important;font-weight:700}.source-diagram{margin:16px auto;text-align:center}.source-diagram img{width:min(100%,420px);height:auto;object-fit:contain}.chapter-list .toc-entry{pointer-events:none}.reader .lesson p{line-height:1.65}</style></head><body><header><a href="library.html">← Back to Library</a><strong>ITVerse</strong><div class="actions"><span>2nd Year · Book 07</span><button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button></div></header><div class="layout"><aside><h2>Table of Contents</h2><button class="toc-link" data-go="0">Cover <small>p. 1</small></button><button class="toc-link" data-go="1">Table of Contents <small>p. 2</small></button><button class="toc-link" data-go="2">Chapter 1: Introduction <small>p. 3</small></button><button class="toc-link" data-go="7">Chapter 2: The Four Necessary Conditions <small>p. 8</small></button><button class="toc-link" data-go="12">Chapter 3: Deadlock Prevention <small>p. 13</small></button><button class="toc-link" data-go="17">Chapter 4: The Banker’s Algorithm <small>p. 18</small></button><button class="toc-link" data-go="21">Chapter 5: Starvation and Fairness <small>p. 22</small></button><button class="toc-link" data-go="26">Chapter 6: Developing Practical Understanding <small>p. 27</small></button></aside><main><div class="viewport" id="viewport"><div class="reader" id="reader"><section aria-label="Page 1 of 28" class="book-page"><div class="cover"><div class="cover-mark">ITVerse • 2ND YEAR BOOK 07</div><div class="cover-icon">📖</div><h1>Deadlocks and Resource Allocation</h1><p>A Practical Educational Book for BSIT Students</p><div class="cover-bottom">6 Chapters · Lesson Content</div></div></section><section aria-label="Page 2 of 28" class="book-page" hidden=""><div class="chapter-list"><h1>Table of Contents</h1><h2>Chapter 1: Introduction</h2><div class="toc-entry"><span>1.1 Introduction</span><span>3</span></div><div class="toc-entry"><span>1.2 Processes, Resources, and Concurrency</span><span>4</span></div><div class="toc-entry"><span>1.3 Understanding Resource Allocation</span><span>4</span></div><div class="toc-entry"><span>1.4 Resource Types and Resource Instances</span><span>5</span></div><div class="toc-entry"><span>1.5 Process States and Resource Needs</span><span>6</span></div><div class="toc-entry"><span>1.6 The Resource Allocation Graph</span><span>6</span></div><div class="toc-entry"><span>1.7 What Is a Deadlock?</span><span>7</span></div><h2>Chapter 2: The Four Necessary Conditions</h2><div class="toc-entry"><span>2.1 The Four Necessary Conditions</span><span>8</span></div><div class="toc-entry"><span>2.2 Mutual Exclusion</span><span>8</span></div><div class="toc-entry"><span>2.3 Hold and Wait</span><span>9</span></div><div class="toc-entry"><span>2.4 No Preemption</span><span>10</span></div><div class="toc-entry"><span>2.5 Circular Wait</span><span>11</span></div><div class="toc-entry"><span>2.6 How Deadlocks Develop</span><span>11</span></div><div class="toc-entry"><span>2.7 Deadlock Examples in Everyday Computing</span><span>12</span></div><h2>Chapter 3: Deadlock Prevention</h2><div class="toc-entry"><span>3.1 Deadlock Prevention</span><span>13</span></div><div class="toc-entry"><span>3.2 Breaking Mutual Exclusion</span><span>13</span></div><div class="toc-entry"><span>3.3 Reducing Hold and Wait</span><span>14</span></div><div class="toc-entry"><span>3.4 Allowing Preemption</span><span>15</span></div><div class="toc-entry"><span>3.5 Preventing Circular Wait</span><span>15</span></div><div class="toc-entry"><span>3.6 Deadlock Avoidance</span><span>16</span></div><div class="toc-entry"><span>3.7 The Safe-State Concept</span><span>17</span></div><h2>Chapter 4: The Banker’s Algorithm</h2><div class="toc-entry"><span>4.1 The Banker’s Algorithm</span><span>18</span></div><div class="toc-entry"><span>4.2 Resource Allocation and Request Matrices</span><span>18</span></div><div class="toc-entry"><span>4.3 Deadlock Detection</span><span>19</span></div><div class="toc-entry"><span>4.4 Detection Algorithms</span><span>20</span></div><div class="toc-entry"><span>4.5 Deadlock Recovery</span><span>20</span></div><div class="toc-entry"><span>4.6 Process Termination Strategies</span><span>21</span></div><h2>Chapter 5: Starvation and Fairness</h2><div class="toc-entry"><span>4.7 Resource Preemption and Rollback</span><span>22</span></div><div class="toc-entry"><span>5.1 Starvation and Fairness</span><span>22</span></div><div class="toc-entry"><span>5.2 Livelock and Related Problems</span><span>23</span></div><div class="toc-entry"><span>5.3 Deadlocks in Databases</span><span>24</span></div><div class="toc-entry"><span>5.4 Deadlocks in Distributed Systems</span><span>25</span></div><div class="toc-entry"><span>5.5 Synchronization Tools and Locks</span><span>25</span></div><div class="toc-entry"><span>5.6 Practical Design and Troubleshooting</span><span>26</span></div><h2>Chapter 6: Developing Practical Understanding</h2><div class="toc-entry"><span>6.1 Developing Practical Understanding</span><span>27</span></div><div class="toc-entry"><span>6.5 Distinguish Deadlock, Starvation, and Livelock</span><span>28</span></div></div></section><section aria-label="Page 3 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.1 Introduction</h1><p>An operating system coordinates many programs that compete for limited resources. A process may need processor time, memory, files, printers, database records, network connections, or other devices. Resource allocation determines which process receives a resource, when it receives it, and when it must release it.</p><p>A deadlock occurs when a group of processes becomes permanently blocked because each is waiting for a resource or event that another process in the group can provide. Deadlocks are important because they can stop useful work even when a computer still has available processing power. They can appear in operating systems, databases, distributed applications, and systems that use locks or shared devices.</p><p>This guide explains the foundations of resource allocation, the four necessary conditions for deadlock, resource-allocation graphs, prevention, avoidance, detection, and recovery. It also distinguishes deadlock from starvation and livelock and applies the ideas to practical computing scenarios.</p><p>Learning outcomes</p><p>After studying this guide, learners should be able to explain how operating systems allocate resources; identify the four necessary conditions for deadlock; interpret resource-allocation graphs; compare prevention, avoidance, detection, and recovery; describe the Banker’s algorithm at a conceptual level; and recommend safer synchronization and resource-management practices.</p><p>How to use this guide</p><p>Study the lessons in sequence and redraw the diagrams in your own notes. Complete the activities before answering the assessment. For calculation and algorithm questions, show each step rather than giving only the final result.</p><p>Key idea: Deadlock management is about coordinating resource ownership and waiting so that processes can make progress safely.</p></article></section><section aria-label="Page 4 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.2 Processes, Resources, and Concurrency</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>An operating system runs processes that perform work. A process is an executing program together with its current state, memory, and allocated resources. Many processes appear to run at the same time because the operating system switches among them or executes them on multiple processor cores.</p><p>Concurrency allows several processes to make progress during overlapping periods. It improves responsiveness and resource use, but it creates coordination challenges when processes share data or hardware. A process may need a resource temporarily, use it, and then release it so another process can proceed.</p><h2>CONCEPT OVERVIEW</h2><p>Process A Operating system Process B Shared resources</p><p>Deadlock is one possible outcome of poor coordination. Understanding processes and resources is therefore the starting point for studying deadlocks.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.3 Understanding Resource Allocation</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Resource allocation is the process of assigning system resources to processes that request them. Resources may be physical, such as printers and memory, or logical, such as files, locks, database connections, and communication channels.</p><p>An allocation request generally involves a process asking for a resource, the operating system or resource manager checking availability and policy, and the resource being granted or the process being made to wait. When the process finishes using the resource, it should release it.</p><h2>CONCEPT OVERVIEW</h2><p>Process requests Resource manager Grant or wait Process releases</p><p>Allocation policy affects efficiency, fairness, and safety. A policy that grants every request immediately may create conflicts, while a policy that is too restrictive can reduce performance. The system must balance progress and protection.</p></article></section><section aria-label="Page 5 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.4 Resource Types and Resource Instances</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>A resource type describes a category of resource, while an instance is one particular usable unit of that type. For example, a system may have one scanner resource type with two physical scanner instances, or a pool of database connections with several available instances.</p><p>Some resources are reusable: a printer, lock, or memory buffer can be used by one process and later assigned to another. Other resources may be consumable, such as a message or signal that is produced and then received. Deadlock analysis often focuses on reusable resources because ownership and release are central to the problem.</p><h2>CONCEPT OVERVIEW</h2><p>Resource type Instance A Instance B Available pool</p><p>Knowing whether a resource has one instance or multiple instances matters. A cycle in a resource-allocation graph has a stronger implication when every resource type in the cycle has only one instance.</p></article></section><section aria-label="Page 6 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.5 Process States and Resource Needs</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>A process changes state as it executes. Common states include new, ready, running, waiting or blocked, and terminated. A process can become blocked when it requests a resource that is not currently available.</p><p>Resource needs can change throughout execution. A process might acquire a file lock, read data, request a second lock, update a record, and then release both locks. If several processes acquire resources in different orders, they may form a circular dependency.</p><h2>CONCEPT OVERVIEW</h2><p>Ready Running Waiting Completed</p><p>Good program design makes resource needs predictable. Developers should document which resources are acquired, in what order, and where they are released, including error and exception paths.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.6 The Resource Allocation Graph</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>A resource-allocation graph is a directed graph used to represent processes and resource types. Process nodes are often drawn as circles, and resource nodes as rectangles. A request edge points from a process to a resource; an assignment edge points from a resource to a process.</p><p>The graph helps visualize who owns each resource and which process is waiting. A cycle indicates a potential deadlock. If each resource type has exactly one instance, a cycle is both necessary and sufficient for deadlock in the basic model. With multiple instances, a cycle alone does not prove deadlock.</p><h2>CONCEPT OVERVIEW</h2><p>Process requests resource Resource is assigned Another process waits Trace possible cycle</p><p>To analyze a graph, identify every request and assignment edge, trace directed paths, and check how many instances each resource type has. Never conclude that every cycle automatically means deadlock in a multi-instance system.</p></article></section><section aria-label="Page 7 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 1: Introduction</div><h1>1.7 What Is a Deadlock?</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>A deadlock is a situation in which a set of processes is blocked because each process is waiting for an event or resource that can be caused or released only by another process in the same set. As a result, none of the processes can continue.</p><p>A simple example involves two processes and two locks. Process A owns Lock 1 and requests Lock 2. Process B owns Lock 2 and requests Lock 1. Each process waits for the other to release its lock, but neither can reach the code that releases its current lock.</p><h2>CONCEPT OVERVIEW</h2><p>Process A holds Lock 1 Process A waits for Lock 2 Process B holds Lock 2 Process B waits for Lock 1</p><p>Deadlock is different from a slow system. In a deadlock, the blocked processes cannot make progress without outside intervention or a change in resource ownership.</p></article></section><section aria-label="Page 8 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: The Four Necessary Conditions</div><h1>2.1 The Four Necessary Conditions</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Four conditions must all hold simultaneously for a deadlock to occur in the classic operating-system model: mutual exclusion, hold and wait, no preemption, and circular wait. These are known as the Coffman conditions.</p><p>Mutual exclusion means at least one resource cannot be shared. Hold and wait means a process holds one resource while requesting another. No preemption means a resource cannot simply be taken away; it must be released voluntarily. Circular wait means a chain of processes exists in which each waits for a resource held by the next.</p><h2>CONCEPT OVERVIEW</h2><p>Mutual exclusion Hold and wait No preemption Circular wait</p><p>If a system can reliably prevent at least one of these conditions, it can prevent deadlock under the model. The challenge is choosing a prevention strategy without making the system inefficient or impractical.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 2: The Four Necessary Conditions</div><h1>2.2 Mutual Exclusion</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Mutual exclusion means that a resource can be used by only one process at a time. It is necessary for resources that cannot safely be shared, such as a physical printer performing one print job or a lock protecting a critical section.</p><p>Some resources can be made shareable. Read-only files, immutable data, and replicated services may allow multiple processes to access information concurrently. Converting an exclusive resource into a shareable one can remove the mutual-exclusion condition for that resource.</p><h2>CONCEPT OVERVIEW</h2><p>Shared requests Exclusive resource One owner Release for next user</p><p>Not every resource can be shared. A printer cannot usually print two unrelated pages in the same physical operation without a queue or spooler. Designers should identify which resources truly require exclusive access and use sharing or virtualization where appropriate.</p></article></section><section aria-label="Page 9 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: The Four Necessary Conditions</div><h1>2.3 Hold and Wait</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Hold and wait occurs when a process keeps at least one resource while waiting to acquire another. For example, a process may hold a database lock and then request a file lock while another process holds the file lock and requests the database lock.</p><p>One prevention strategy is to require a process to request all needed resources before it begins. Another is to require it to release its current resources before requesting additional ones. These policies can prevent the hold-and-wait condition but may reduce resource utilization.</p><h2>CONCEPT OVERVIEW</h2><p>Acquire resource A Keep A while requesting B Wait for B Potential dependency</p><p>All-at-once allocation can be difficult when a program does not know every future resource need. Releasing and reacquiring resources can also require extra work and may cause starvation if a process repeatedly loses access.</p></article></section><section aria-label="Page 10 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: The Four Necessary Conditions</div><h1>2.4 No Preemption</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>No preemption means a resource cannot be forcibly taken from a process that owns it. Many resources must be released through a controlled operation. For example, a process using a printer or updating a file may need to finish or safely cancel its operation before the resource can be reassigned.</p><p>Preemption can prevent deadlock for some resource types. If a process requests a resource that is unavailable, the system may require it to release resources it already holds and retry later. This is practical for resources whose state can be saved and restored.</p><h2>CONCEPT OVERVIEW</h2><p>Process owns resource New request cannot proceed Save or roll back state Release and retry</p><p>Preemption is not safe for every resource. Taking a lock away while shared data is halfway through an update could corrupt that data. The system needs a rollback, checkpoint, or other mechanism to restore a consistent state.</p></article></section><section aria-label="Page 11 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: The Four Necessary Conditions</div><h1>2.5 Circular Wait</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Circular wait occurs when a chain of processes exists such that each process waits for a resource held by the next process in the chain, and the final process waits for a resource held by the first.</p><p>A common prevention technique is to impose a strict ordering on resource types. Every process must request resources in increasing order. If all processes follow the same global order, a circular chain cannot form.</p><h2>CONCEPT OVERVIEW</h2><p>Process A waits for B Process B waits for C Process C waits for A Circular dependency</p><p>Ordering must be applied consistently. If one code path acquires Lock A before Lock B while another path acquires Lock B before Lock A, the ordering rule is broken and deadlock remains possible.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 2: The Four Necessary Conditions</div><h1>2.6 How Deadlocks Develop</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Deadlocks often develop through a sequence of individually reasonable actions. A process acquires a resource, performs work, and requests another resource. Another process has acquired the second resource and requests the first. Each request is valid in isolation, but their combination creates a cycle.</p><p>The timing of operations can determine whether a deadlock appears. A program may work correctly during many tests and still deadlock under a different scheduling order or heavier concurrency. This makes deadlocks difficult to reproduce.</p><h2>CONCEPT OVERVIEW</h2><p>A acquires X B acquires Y A requests Y B requests X</p><p>Developers reduce risk by reviewing lock order, minimizing the time resources are held, avoiding calls that may block while holding locks, and testing concurrent paths under stress.</p></article></section><section aria-label="Page 12 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 2: The Four Necessary Conditions</div><h1>2.7 Deadlock Examples in Everyday Computing</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Deadlock-like situations can occur in many areas. A desktop application may freeze because two threads wait on locks held by each other. A database transaction may wait for a row locked by another transaction. A print workflow may be blocked by interdependent services.</p><p>Not every frozen application is deadlocked. It may be waiting for a slow device, network timeout, user input, or a process that will eventually respond. A true deadlock requires a circular or otherwise closed waiting dependency that prevents progress.</p><h2>CONCEPT OVERVIEW</h2><p>Application thread Lock or service Database or device Waiting dependency</p><p>When investigating a real incident, collect logs, thread or process state, lock ownership, and wait information. A visible symptom is only the starting point; the dependency structure explains the cause.</p></article></section><section aria-label="Page 13 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Deadlock Prevention</div><h1>3.1 Deadlock Prevention</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Deadlock prevention designs the resource-allocation rules so that at least one of the four necessary conditions can never hold. It is a proactive strategy because the system is structured to make deadlock impossible under its assumptions.</p><p>Prevention methods include making resources shareable where possible, requiring resources to be requested together, allowing safe preemption, and imposing a global resource order. Each method has trade-offs in flexibility, throughput, and resource utilization.</p><h2>CONCEPT OVERVIEW</h2><p>Identify necessary conditions Choose one to prevent Enforce policy Test for progress</p><p>A prevention policy should match the system. A strict ordering rule may work well for locks in a program, while all-at-once resource allocation may be unrealistic for a general-purpose operating system.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 3: Deadlock Prevention</div><h1>3.2 Breaking Mutual Exclusion</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Breaking mutual exclusion means changing a resource so it can be shared safely. For example, a read-only data structure can be accessed by multiple processes without requiring exclusive ownership. A print spooler allows applications to submit jobs to a queue rather than controlling the printer directly.</p><p>Sharing is not always possible. When multiple processes modify the same data, synchronization may still be required to prevent race conditions. The goal is not to remove every lock, but to avoid unnecessary exclusive resources.</p><h2>CONCEPT OVERVIEW</h2><p>One physical resource Queue or shared abstraction Multiple clients Controlled access</p><p>Virtualization and replication can also reduce contention. A service may provide separate logical instances or copies so processes do not compete for one physical resource, although consistency and synchronization must still be managed.</p></article></section><section aria-label="Page 14 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Deadlock Prevention</div><h1>3.3 Reducing Hold and Wait</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>A system can prevent hold and wait by requiring processes to request all resources they need before execution, or by requiring them to release held resources before requesting new ones. Both policies prevent a process from holding one resource while waiting for another.</p><p>Requesting everything at once is simple in theory but may be wasteful. A process may reserve resources long before it uses them, reducing availability for other processes. It may also be impossible to know all resource needs in advance.</p><h2>CONCEPT OVERVIEW</h2><p>Declare resource needs Request as a set Grant if available Release when finished</p><p>Release-before-request can lead to repeated acquisition attempts and lost work. It may be combined with checkpoints so a process can safely pause, release resources, and resume later.</p></article></section><section aria-label="Page 15 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Deadlock Prevention</div><h1>3.4 Allowing Preemption</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Preemption-based prevention allows the system to reclaim selected resources when a process cannot obtain a new request. The process may be rolled back to a safe checkpoint and restarted when the needed resources become available.</p><p>This approach is suitable only when the resource state can be saved, restored, or reconstructed. CPU time can be preempted easily, while a partially completed physical print operation or an unprotected update may not be safely reversible.</p><h2>CONCEPT OVERVIEW</h2><p>Process requests resource Check preemption support Checkpoint or rollback Retry allocation</p><p>Good preemption policies define which resources can be reclaimed, how progress is saved, and how repeated rollbacks are limited. Without these rules, a process may lose work indefinitely.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 3: Deadlock Prevention</div><h1>3.5 Preventing Circular Wait</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>A global ordering of resource types can prevent circular wait. Assign each resource type a rank, then require every process to acquire resources in ascending rank order. A process holding a higher-ranked resource cannot request a lower-ranked one.</p><p>For example, if Lock A has rank 1 and Lock B has rank 2, every code path must acquire A before B. If a process needs only B, it may acquire B directly, but it must not later request A while holding B.</p><h2>CONCEPT OVERVIEW</h2><p>Rank resources Acquire low rank first Acquire higher rank next No cycle can form</p><p>Resource ordering is widely used in concurrent programming, but it requires documentation and code review. Nested locks, callbacks, and library functions can introduce hidden lock acquisitions that violate the intended order.</p></article></section><section aria-label="Page 16 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Deadlock Prevention</div><h1>3.6 Deadlock Avoidance</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Deadlock avoidance evaluates resource requests at runtime and grants a request only if doing so leaves the system in a safe state. Unlike prevention, avoidance does not prohibit every potentially risky pattern in advance; it checks the consequences of each allocation.</p><p>A safe state is one in which there exists at least one order for all processes to finish, assuming each process may request up to its declared maximum remaining needs. An unsafe state is not necessarily deadlocked, but it cannot be guaranteed to avoid deadlock under the model.</p><h2>CONCEPT OVERVIEW</h2><p>Current allocation New request Safety test Grant or make wait</p><p>Avoidance requires information about maximum resource demands and current allocations. It is useful in systems where these requirements are known and manageable, but it may be impractical for general workloads with unpredictable resource needs.</p></article></section><section aria-label="Page 17 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 3: Deadlock Prevention</div><h1>3.7 The Safe-State Concept</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>A system is in a safe state if there is a safe sequence: an ordering of processes such that each process can obtain its remaining resources, finish, and release its allocation for the next process.</p><p>Safety is a guarantee based on declared maximum needs and available resources. It does not mean every process is currently running or that no process is waiting. It means there is a possible completion order that avoids deadlock if processes stay within their declared requirements.</p><h2>CONCEPT OVERVIEW</h2><p>Available resources Process can finish Release its allocation Next process can finish</p><p>An unsafe state means the system has lost that guarantee. It may continue operating without deadlock, but future requests could lead to a deadlocked condition. Avoidance algorithms reject allocations that would make the state unsafe.</p></article></section><section aria-label="Page 18 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: The Banker’s Algorithm</div><h1>4.1 The Banker’s Algorithm</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>The Banker’s algorithm is a classic deadlock-avoidance method for systems with multiple instances of resource types. It compares each process’s maximum declared demand with its current allocation and the resources still available.</p><p>The algorithm first calculates each process’s remaining need. It then searches for a process whose need can be satisfied by the currently available resources. If found, the algorithm treats that process as finished and adds its allocated resources back to the available pool. It repeats until all processes can finish or no eligible process remains.</p><h2>CONCEPT OVERVIEW</h2><p>Calculate remaining need Find satisfiable process Assume completion Return resources and repeat</p><p>A request is safe to grant only if the resulting state passes the safety test. The algorithm is educationally important, though real systems may use different strategies because maximum needs can be hard to predict.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 4: The Banker’s Algorithm</div><h1>4.2 Resource Allocation and Request Matrices</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Matrix representations make resource allocation easier to analyze. The Allocation matrix records how many instances of each resource type are currently assigned to each process. The Max matrix records the maximum demand each process may make. Need is calculated as Max minus Allocation.</p><p>The Available vector records the number of free instances of each resource type. A request vector describes what one process is asking for now. These values are used by the Banker’s algorithm and related safety checks.</p><h2>CONCEPT OVERVIEW</h2><p>Allocation matrix Maximum demand Need = Max − Allocation Available vector</p><p>All values must use consistent units and refer to the same resource types. A negative need or an allocation larger than the declared maximum indicates invalid input or an inconsistent model.</p></article></section><section aria-label="Page 19 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: The Banker’s Algorithm</div><h1>4.3 Deadlock Detection</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Deadlock detection allows the system to allocate resources without preventing every risky state, then checks whether a deadlock has occurred. This may be suitable when deadlocks are rare or when prevention would impose too much overhead.</p><p>Detection can use wait-for graphs for single-instance resources or matrix-based algorithms for multiple instances. The system examines which processes can finish with current resources and which remain blocked after all possible progress has been considered.</p><h2>CONCEPT OVERVIEW</h2><p>Collect allocation state Analyze dependencies Identify blocked set Report deadlock</p><p>Detection frequency matters. Running checks too often consumes resources, while checking too rarely allows deadlocks to persist longer. Systems may trigger detection when performance symptoms appear, at scheduled intervals, or when resource pressure becomes high.</p></article></section><section aria-label="Page 20 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: The Banker’s Algorithm</div><h1>4.4 Detection Algorithms</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>For single-instance resource types, a wait-for graph can simplify a resource-allocation graph. Each node represents a process, and an edge from one process to another means the first is waiting for a resource held by the second. A cycle indicates deadlock.</p><p>For multiple instances, detection uses available resources, current allocations, and outstanding requests. The algorithm repeatedly finds a process whose outstanding request can be satisfied, assumes it completes, and releases its allocated resources. Processes that cannot be marked complete may be deadlocked, depending on the model’s assumptions.</p><h2>CONCEPT OVERVIEW</h2><p>Build wait relationships Search for cycle Check resource instances Identify deadlocked processes</p><p>Detection results must be interpreted carefully. Some systems include external events, timeouts, or resource managers not represented in the model. The graph or matrix is only as accurate as the state information collected.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 4: The Banker’s Algorithm</div><h1>4.5 Deadlock Recovery</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>After detecting a deadlock, the system needs a recovery strategy. Common approaches include terminating one or more processes, preempting resources, rolling processes back to checkpoints, or asking an administrator to intervene.</p><p>Recovery has costs. Termination may lose unsaved work; preemption may require complex rollback; and waiting for a user may leave the system unavailable. The best strategy depends on the importance of the affected processes and the ability to restore consistent state.</p><h2>CONCEPT OVERVIEW</h2><p>Detect deadlock Choose recovery policy Restore safe state Verify progress</p><p>Recovery should also address the underlying cause. If the same lock-order problem remains, deadlock may recur. Logs, diagnostic information, and code changes can help prevent repeated incidents.</p></article></section><section aria-label="Page 21 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: The Banker’s Algorithm</div><h1>4.6 Process Termination Strategies</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>One recovery method is to terminate processes involved in a deadlock. The system may terminate every process in the deadlocked set or terminate them one at a time until the cycle disappears.</p><p>Choosing a process involves considering priority, work already completed, resources held, resources still needed, restart cost, and whether the process performs critical work. A database transaction may be rolled back, while an interactive application may require user notification.</p><h2>CONCEPT OVERVIEW</h2><p>Identify deadlocked set Select victim process Terminate or roll back Recheck dependencies</p><p>Repeatedly selecting the same low-priority process can cause starvation. Recovery policies should account for previous termination or rollback history so one process is not always sacrificed.</p></article></section><section aria-label="Page 22 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 4: The Banker’s Algorithm</div><h1>4.7 Resource Preemption and Rollback</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Resource preemption recovers a resource from a process and assigns it elsewhere. To do this safely, the system may need to save a checkpoint, undo partial work, or restart the affected process later.</p><p>Victim selection can consider the cost of preemption, the number of resources held, process priority, progress already made, and the number of times a process has been rolled back. A fair policy should avoid repeatedly selecting the same victim.</p><h2>CONCEPT OVERVIEW</h2><p>Select preemptible resource Save consistent checkpoint Reassign resource Resume or restart process</p><p>Some resources cannot be preempted safely. If a process is writing to a device or updating shared data, taking the resource away mid-operation can leave the system inconsistent. Recovery design must respect the resource’s semantics.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 5: Starvation and Fairness</div><h1>5.1 Starvation and Fairness</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Starvation occurs when a process waits indefinitely because resources or CPU time are repeatedly given to other processes. Unlike deadlock, the system may continue making progress overall, but one process is continually denied its turn.</p><p>Priority scheduling, unfair locks, and repeated victim selection can contribute to starvation. Aging gradually increases the priority of a process that has waited for a long time. Fair queues and bounded waiting rules can also improve fairness.</p><h2>CONCEPT OVERVIEW</h2><p>Process waits Other requests repeatedly win Waiting time grows Fairness policy intervenes</p><p>A resource-management policy should consider both system throughput and individual progress. A system that completes many tasks but leaves one task waiting forever is not fair or dependable.</p></article></section><section aria-label="Page 23 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Starvation and Fairness</div><h1>5.2 Livelock and Related Problems</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Livelock occurs when processes remain active and repeatedly change their state in response to one another, but useful progress does not occur. For example, two systems may repeatedly yield to each other and then retry at the same time.</p><p>Deadlocked processes are typically blocked and inactive, while livelocked processes continue executing. Starvation describes one process being denied progress while others may complete. These problems require different diagnostic approaches.</p><h2>CONCEPT OVERVIEW</h2><p>Process A retries Process B retries Both change state No useful completion</p><p>Randomized backoff, priority rules, and carefully designed retry limits can reduce livelock. A system should distinguish useful work from repeated activity that produces no completed result.</p></article></section><section aria-label="Page 24 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Starvation and Fairness</div><h1>5.3 Deadlocks in Databases</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Database deadlocks occur when transactions hold locks on records, rows, tables, or other objects while requesting locks held by other transactions. For example, Transaction A updates Row 1 then requests Row 2, while Transaction B updates Row 2 then requests Row 1.</p><p>Database systems commonly detect lock cycles and choose a transaction as a victim. The victim is rolled back, releasing its locks so the other transaction can proceed. Applications should be prepared to retry transactions that are selected as victims.</p><h2>CONCEPT OVERVIEW</h2><p>Transaction A locks Row 1 Transaction B locks Row 2 Each requests the other row Database detects cycle</p><p>Consistent access order, short transactions, appropriate indexes, and avoiding unnecessary user interaction inside a transaction can reduce deadlock frequency. Applications should handle retryable deadlock errors safely.</p></article></section><section aria-label="Page 25 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Starvation and Fairness</div><h1>5.4 Deadlocks in Distributed Systems</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Distributed systems coordinate processes and resources across multiple computers. A process may wait for a remote service, message, lock, or network response. Because state is spread across machines, detecting a global cycle is more difficult than in one operating system.</p><p>Network delay and failures can make waiting look like deadlock. A remote process may be slow, disconnected, or crashed. Distributed deadlock detection therefore needs careful treatment of timeouts, stale information, message ordering, and failure detection.</p><h2>CONCEPT OVERVIEW</h2><p>Service A waits on B Service B waits on C Service C waits on A Global dependency cycle</p><p>Leases, timeouts, distributed lock services, idempotent operations, and clear ownership rules can reduce risk. A timeout alone does not prove deadlock; it is a policy decision that a wait has lasted too long.</p></article><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 5: Starvation and Fairness</div><h1>5.5 Synchronization Tools and Locks</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Synchronization tools coordinate concurrent access to shared data. A mutex allows one thread at a time to enter a protected region. Semaphores control access to a limited number of identical resources. Read-write locks allow multiple readers or one writer under defined rules.</p><p>These tools prevent race conditions when used correctly, but they can also create deadlocks if locks are acquired in inconsistent orders or held too long. Condition variables and events allow threads to wait for a condition without continuously checking it.</p><h2>CONCEPT OVERVIEW</h2><p>Thread requests lock Synchronization primitive Critical section Release and notify</p><p>Good synchronization practice includes documenting lock ownership, keeping critical sections short, using a consistent acquisition order, avoiding blocking operations while holding locks, and releasing resources on every exit path.</p></article></section><section aria-label="Page 26 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 5: Starvation and Fairness</div><h1>5.6 Practical Design and Troubleshooting</h1><p>Learning focus: Understand the operating-system concept and recognize how it appears in practical computing.</p><p>Preventing deadlocks in real systems requires design discipline and observation. Developers should map resource dependencies, define a lock order, avoid nested locks where possible, and keep resource ownership limited to the work that requires it.</p><p>When a system hangs, collect process or thread states, lock ownership, stack traces, database wait information, and logs. Look for cycles and determine whether the waiting processes depend on one another or are waiting on an external event.</p><h2>CONCEPT OVERVIEW</h2><p>Observe blocked processes Map resource ownership Find dependency cycle Apply and verify fix</p><p>After resolving the incident, reproduce the issue if possible, add tests for the problematic interleaving, and improve monitoring. A fix should address the dependency pattern rather than merely increasing timeouts.</p></article></section><section aria-label="Page 27 of 28" class="book-page" hidden=""><hr class="lesson-divider"/><article class="lesson"><div class="eyebrow">Chapter 6: Developing Practical Understanding</div><h1>6.1 Developing Practical Understanding</h1><p>Use these approaches to connect the theory to software and systems you encounter.</p><p>Observe lock behavior</p><p>Study a simple multithreaded program that uses two locks. Trace the order in which each thread acquires and releases the locks. Discuss how reversing the order could create a circular wait.</p><p>Explore a database transaction</p><p>Use a training database or a classroom demonstration to observe how transactions update records. Learn how the database reports a deadlock and why an application may need to retry a transaction.</p><p>Practice resource graphs</p><p>Draw a graph with process nodes and resource nodes. Add request and assignment edges one at a time. Determine whether a cycle exists and whether the number of resource instances changes the conclusion.</p><p>Review safe-state calculations</p><p>Practice small Banker’s algorithm examples. Calculate each process’s remaining need, find a process whose need can be met, and return its allocation to the available pool as though it completed.</p><p>Reflect</p><p>Which strategy seems most practical for the system you studied: prevention, avoidance, detection, or recovery? Explain what information the system has and what trade-offs matter.</p></article></section><section aria-label="Page 28 of 28" class="book-page" hidden=""><article class="lesson"><div class="eyebrow">Chapter 6: Developing Practical Understanding</div><h1>6.5 Distinguish Deadlock, Starvation, and Livelock</h1><p>Task</p><p>Write one short computing scenario for each condition. Describe whether the processes are blocked, active without progress, or unfairly delayed.</p><p>Success criteria</p><p>The examples should clearly distinguish the three outcomes.</p><p>Record your work</p><p>Include labeled diagrams, calculations, or tables where appropriate. End with a short reflection explaining what the activity taught you about safe resource allocation.</p><p>Design a Troubleshooting Checklist</p><p>Task</p><p>Create a checklist for investigating a frozen application that may be deadlocked. Include evidence to collect, how to identify lock ownership, and how to verify a proposed fix.</p><p>Success criteria</p><p>The checklist should use evidence, avoid assumptions, and include a post-fix test.</p><p>Record your work</p><p>Include labeled diagrams, calculations, or tables where appropriate. End with a short reflection explaining what the activity taught you about safe resource allocation.</p></article></section></div></div><div class="pager"><button class="navbtn" id="prev">← Previous</button><span id="counter">Page 1 of 30</span><button class="navbtn" id="next">Next →</button></div></main></div><script>const pages=[...document.querySelectorAll('.book-page')],links=[...document.querySelectorAll('.toc-link')];const viewport=document.getElementById('viewport'),counter=document.getElementById('counter'),prev=document.getElementById('prev'),next=document.getElementById('next'),reader=document.getElementById('reader'),theme=document.getElementById('themeToggle');let current=0;function go(i){current=Math.max(0,Math.min(pages.length-1,i));pages.forEach((p,n)=>p.hidden=n!==current);counter.textContent=`Page ${current+1} of ${pages.length}`;prev.disabled=current===0;next.disabled=current===pages.length-1;let active=links[0];for(const link of links){if(Number(link.dataset.go)<=current)active=link;else break;}links.forEach(link=>{link.classList.toggle('active',link===active);if(link===active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});viewport.scrollTop=0;}document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));prev.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));const saved=localStorage.getItem('ITVerse-reader-theme');function setTheme(dark){reader.classList.toggle('dark-mode',dark);theme.classList.toggle('active',dark);theme.textContent=dark?'☀️ Light Mode':'🌙 Dark Mode';localStorage.setItem('ITVerse-reader-theme',dark?'dark':'light')}setTheme(saved==='dark');theme.addEventListener('click',()=>setTheme(!reader.classList.contains('dark-mode')));go(0);</script><script src="js/itverse-reader-features.js"></script><script id="itverse-cover-first-fix">
+/* Always begin a newly opened book on its cover, even if browser restores scroll. */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+function resetBookToCover() {
+  if (typeof go === 'function') go(0);
+  const v = document.getElementById('viewport');
+  if (v) v.scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+window.addEventListener('pageshow', () => {
+  resetBookToCover();
+  requestAnimationFrame(resetBookToCover);
+});
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', resetBookToCover, {once:true});
+} else { resetBookToCover(); }
+</script></body></html>
